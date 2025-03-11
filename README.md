@@ -14,6 +14,6 @@ I'm a passionate software developer with **3+ years** of experience, primarily f
 
 ## 📫 Let's Connect!  
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/jazeel-zainudeen)  
-[![GitHub](https://img.shields.io/badge/GitHub-%23181717.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/jazeel-zainudeen)  
+[![Instagram](https://img.shields.io/badge/Instagram-%23181717.svg?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/jazeelzainudeen/)  
 
 🚀 **Open to collaboration & new opportunities!**  
