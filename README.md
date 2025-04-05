@@ -7,7 +7,7 @@ I'm a passionate software developer with **3+ years** of experience, primarily f
 ![Jazeel's GitHub stats](https://github-readme-stats.vercel.app/api?username=jazeel-zainudeen&show_icons=true&theme=radical)
   
 ## 💻 Tech Stack  
-- **Backend:** Laravel, Core PHP, CodeIgniter.
+- **Backend:** Laravel, Core PHP, CodeIgniter
 - **Frontend:** React(Learning), Tailwind CSS, Bootstrap  
 - **Database:** MySQL, MSSQL  
 - **Other Tools:** Docker, Vite, GSAP
