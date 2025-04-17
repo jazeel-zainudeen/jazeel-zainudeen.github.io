@@ -1,19 +1,37 @@
-# Hi there! 👋 I'm Jazeel
+# 👋 Hi, I'm Jazeel Zainudeen
 
-🚀 **Software Developer | Laravel & PHP Enthusiast**  
+**Full Stack Developer** | Laravel & PHP Enthusiast | React Learner | Open to Remote Opportunities
 
-I'm a passionate software developer with **3+ years** of experience, primarily focusing on **Laravel backend development**. I also work with **CS-Cart (Smarty)**, **CodeIgniter**, and **Core PHP** to build scalable and efficient applications.
+I'm a passionate developer with 3+ years of experience building web applications — from backend architecture with Laravel and MySQL to sleek UIs using Tailwind CSS and Bootstrap. I love optimizing backend logic with design patterns and DSA, writing clean code, and crafting fast, user-friendly interfaces.
+
+---
+
+## 🚀 Tech Stack
+
+- **Languages:** PHP, JavaScript, Python, HTML, CSS  
+- **Frameworks:** Laravel, React
+- **Frontend:** Tailwind CSS, Bootstrap, Alpine.js  
+- **Database:** MySQL  
+- **Tools:** Docker, Git, Pest, PHPUnit, VS Code  
+- **Practices:** REST APIs, DSA, Design Patterns, Testing
+
+---
+
+## 📊 GitHub Stats
 
 ![Jazeel's GitHub stats](https://github-readme-stats.vercel.app/api?username=jazeel-zainudeen&show_icons=true&theme=radical)
-  
-## 💻 Tech Stack  
-- **Backend:** Laravel, Core PHP, CodeIgniter
-- **Frontend:** React(Learning), Tailwind CSS, Bootstrap  
-- **Database:** MySQL, MSSQL  
-- **Other Tools:** Docker, Vite, GSAP
 
-## 📫 Let's Connect!  
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/jazeel-zainudeen)  
-[![Instagram](https://img.shields.io/badge/Instagram-%23181717.svg?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/jazeelzainudeen/)  
+---
 
-🚀 **Open to collaboration & new opportunities!**  
+## 📫 Let's Connect!
+
+- 📧 Email: [zainudheenjazeel@gmail.com](mailto:zainudheenjazeel@gmail.com)
+- 💼 LinkedIn: [linkedin.com/in/jazeel-zainudeen](https://linkedin.com/in/jazeel-zainudeen)
+- 📸 Instagram: [@jazeel_zainudeen](https://instagram.com/jazeel_zainudeen)
+- 💬 WhatsApp: [wa.me/918086482422](https://wa.me/918086482422)
+
+---
+
+> 💡 “Code is like humor. When you have to explain it, it’s bad.” – Cory House
+
+Thanks for stopping by! ⭐️
