@@ -9,10 +9,10 @@ I'm a passionate developer with 3+ years of experience building web applications
 ## 🚀 Tech Stack
 
 - **Languages:** PHP, JavaScript, Python, HTML, CSS  
-- **Frameworks:** Laravel, React
+- **Frameworks:** Laravel, CodeIgniter, React
 - **Frontend:** Tailwind CSS, Bootstrap, Alpine.js  
-- **Database:** MySQL  
-- **Tools:** Docker, Git, Pest, PHPUnit, VS Code  
+- **Database:** MySQL, MongoDB
+- **Tools:** CS-Cart, Docker, Git, Pest, PHPUnit, VS Code  
 - **Practices:** REST APIs, DSA, Design Patterns, Testing
 
 ---
@@ -26,9 +26,9 @@ I'm a passionate developer with 3+ years of experience building web applications
 ## 📫 Let's Connect!
 
 - 📧 Email: [zainudheenjazeel@gmail.com](mailto:zainudheenjazeel@gmail.com)
-- 💼 LinkedIn: [linkedin.com/in/jazeel-zainudeen](https://linkedin.com/in/jazeel-zainudeen)
-- 📸 Instagram: [@jazeel_zainudeen](https://instagram.com/jazeel_zainudeen)
-- 💬 WhatsApp: [wa.me/918086482422](https://wa.me/918086482422)
+- 💼 LinkedIn: <a href="https://linkedin.com/in/jazeel-zainudeen" target="_blank">linkedin.com/in/jazeel-zainudeen</a>
+- 📸 Instagram: <a href="https://instagram.com/jazeelzainudeen" target="_blank">@jazeelzainudeen</a>
+- 💬 WhatsApp: <a href="https://wa.me/918086482422" target="_blank">Connect on WhatsApp</a>
 
 ---
 
