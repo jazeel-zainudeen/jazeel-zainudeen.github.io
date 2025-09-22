@@ -2,7 +2,7 @@
 
 **Full Stack Developer** | Laravel & PHP Enthusiast | React Learner | Open to Remote Opportunities
 
-I'm a passionate developer with 3+ years of experience building web applications — from backend architecture with Laravel and MySQL to sleek UIs using Tailwind CSS and Bootstrap. I love optimizing backend logic with design patterns and DSA, writing clean code, and crafting fast, user-friendly interfaces.
+I'm a passionate developer with 4+ years of experience building web applications — from backend architecture with Laravel and MySQL to sleek UIs using Tailwind CSS and Bootstrap. I love optimizing backend logic with design patterns and DSA, writing clean code, and crafting fast, user-friendly interfaces.
 
 ---
 
