@@ -667,7 +667,7 @@ export default function Home() {
       {/* Main Content */}
       <main>
         {/* Hero Section */}
-        <section id="top" className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
+        <section id="top" className="relative overflow-hidden pt-28 pb-14 sm:pt-36 sm:pb-20">
           <div className="absolute inset-0 grid-bg opacity-50 [mask-image:radial-gradient(60%_60%_at_50%_30%,black,transparent)]"></div>
           <div className="absolute left-1/2 top-10 -z-10 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-[image:var(--gradient-brand)] opacity-20 blur-[120px]"></div>
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -763,7 +763,7 @@ export default function Home() {
         </section>
 
         {/* About Section */}
-        <section id="about" className="relative py-24 sm:py-32">
+        <section id="about" className="relative py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
               <motion.div 
@@ -814,7 +814,7 @@ export default function Home() {
         </section>
 
         {/* Services Section */}
-        <section id="services" className="relative py-24 sm:py-32">
+        <section id="services" className="relative py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
               <span className="text-xs uppercase tracking-[0.2em] text-brand-glow">Services</span>
@@ -858,7 +858,7 @@ export default function Home() {
         </section>
 
         {/* Why Work With Me Section */}
-        <section className="relative py-24 sm:py-32">
+        <section className="relative py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
               <span className="text-xs uppercase tracking-[0.2em] text-brand-glow">Why work with me</span>
@@ -883,7 +883,7 @@ export default function Home() {
         </section>
 
         {/* Process Section */}
-        <section id="process" className="relative py-24 sm:py-32">
+        <section id="process" className="relative py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
               <span className="text-xs uppercase tracking-[0.2em] text-brand-glow">How we work</span>
@@ -909,7 +909,7 @@ export default function Home() {
         </section>
 
         {/* Selected Work Section */}
-        <section id="work" className="relative py-24 sm:py-32">
+        <section id="work" className="relative py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
               <span className="text-xs uppercase tracking-[0.2em] text-brand-glow">Selected work</span>
@@ -959,7 +959,7 @@ export default function Home() {
         </section>
 
         {/* Testimonials */}
-        <section className="relative py-24 sm:py-32">
+        <section className="relative py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
               <span className="text-xs uppercase tracking-[0.2em] text-brand-glow">Testimonials</span>
@@ -993,7 +993,7 @@ export default function Home() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="relative py-24 sm:py-32">
+        <section id="faq" className="relative py-16 sm:py-20">
           <motion.div 
             {...fadeIn}
             className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8"
@@ -1063,7 +1063,7 @@ export default function Home() {
         </section>
 
         {/* Contact Form Section */}
-        <section id="contact" className="relative overflow-hidden py-24 sm:py-32">
+        <section id="contact" className="relative overflow-hidden py-16 sm:py-20">
           <div className="absolute left-1/2 top-1/2 -z-10 h-[28rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[image:var(--gradient-brand)] opacity-15 blur-[120px]"></div>
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <motion.div 
