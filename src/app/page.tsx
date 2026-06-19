@@ -8,6 +8,7 @@ interface FAQItem {
 }
 
 export default function Home() {
+  const basePath = process.env.NODE_ENV === "production" ? "/jazeel-zainudeen" : "";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   
@@ -92,7 +93,7 @@ export default function Home() {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <a href="#top" className="flex items-center gap-2 font-display text-lg font-semibold">
             <img 
-              src="/logo.png" 
+              src={`${basePath}/logo.png`} 
               alt="Jazeel" 
               className="h-9 w-9 rounded-full border border-border bg-surface object-cover" 
             />
@@ -135,7 +136,7 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <a href="#top" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2 font-display text-lg font-semibold">
               <img 
-                src="/logo.png" 
+                src={`${basePath}/logo.png`} 
                 alt="Jazeel" 
                 className="h-9 w-9 rounded-full border border-border bg-surface object-cover" 
               />
@@ -302,7 +303,7 @@ export default function Home() {
                 <div className="absolute -inset-4 rounded-3xl bg-[image:var(--gradient-brand)] opacity-25 blur-2xl"></div>
                 <div className="relative overflow-hidden rounded-3xl border border-border bg-surface shadow-[var(--shadow-elegant)]">
                   <img 
-                    src="/portrait-BNAY2NPR.jpg" 
+                    src={`${basePath}/portrait-BNAY2NPR.jpg`} 
                     alt="Jazeel Zainudeen, Full Stack Developer" 
                     width="768" 
                     height="896" 
@@ -709,7 +710,7 @@ export default function Home() {
               <article className="group overflow-hidden rounded-2xl border border-border bg-surface/60 backdrop-blur transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-elegant)]" style={{ opacity: 1, transform: "none" }}>
                 <div className="relative aspect-[16/10] overflow-hidden bg-background">
                   <img 
-                    src="/project-myg-CQpClQIo.jpg" 
+                    src={`${basePath}/project-myg-CQpClQIo.jpg`} 
                     alt="Retail Operations Platform — Retail · India" 
                     loading="lazy" 
                     width="1024" 
@@ -741,7 +742,7 @@ export default function Home() {
               <article className="group overflow-hidden rounded-2xl border border-border bg-surface/60 backdrop-blur transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-elegant)]" style={{ opacity: 1, transform: "none" }}>
                 <div className="relative aspect-[16/10] overflow-hidden bg-background">
                   <img 
-                    src="/project-handyman-Bz-oztfK.jpg" 
+                    src={`${basePath}/project-handyman-Bz-oztfK.jpg`} 
                     alt="Handyman Marketplace App — On-demand services" 
                     loading="lazy" 
                     width="1024" 
@@ -773,7 +774,7 @@ export default function Home() {
               <article className="group overflow-hidden rounded-2xl border border-border bg-surface/60 backdrop-blur transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-elegant)]" style={{ opacity: 1, transform: "none" }}>
                 <div className="relative aspect-[16/10] overflow-hidden bg-background">
                   <img 
-                    src="/project-hrms-AYNMxAXq.jpg" 
+                    src={`${basePath}/project-hrms-AYNMxAXq.jpg`} 
                     alt="HRMS — Software Revamp — Recruitment &amp; HR" 
                     loading="lazy" 
                     width="1024" 
@@ -805,7 +806,7 @@ export default function Home() {
               <article className="group overflow-hidden rounded-2xl border border-border bg-surface/60 backdrop-blur transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-elegant)]" style={{ opacity: 1, transform: "none" }}>
                 <div className="relative aspect-[16/10] overflow-hidden bg-background">
                   <img 
-                    src="/project-gasstation-DLudRX2w.jpg" 
+                    src={`${basePath}/project-gasstation-DLudRX2w.jpg`} 
                     alt="IoT Gas Station Management Portal — Energy · IoT" 
                     loading="lazy" 
                     width="1024" 
@@ -1119,7 +1120,7 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-2 font-display text-lg font-semibold">
                 <img 
-                  src="/logo.png" 
+                  src={`${basePath}/logo.png`} 
                   alt="Jazeel" 
                   className="h-7 w-7 rounded-full border border-border bg-surface object-cover" 
                 />
