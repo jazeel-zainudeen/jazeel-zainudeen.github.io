@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, FormEvent } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface FAQItem {
   question: string;
@@ -904,7 +904,10 @@ export default function Home() {
 
         {/* FAQ Section */}
         <section id="faq" className="relative py-24 sm:py-32">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            {...fadeIn}
+            className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8"
+          >
             <div className="text-center">
               <span className="text-xs uppercase tracking-[0.2em] text-brand-glow">FAQ</span>
               <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">Questions, answered</h2>
@@ -922,9 +925,9 @@ export default function Home() {
                         type="button"
                         onClick={() => handleFaqToggle(index)}
                         aria-expanded={isOpen}
-                        className="flex flex-1 w-full items-center justify-between cursor-pointer py-5 text-left font-display text-base font-medium hover:no-underline"
+                        className="flex flex-1 w-full items-center justify-between cursor-pointer py-5 text-left font-display text-base font-medium text-foreground hover:no-underline"
                       >
-                        {faq.question}
+                        <span>{faq.question}</span>
                         <svg 
                           xmlns="http://www.w3.org/2000/svg" 
                           width="24" 
@@ -942,21 +945,31 @@ export default function Home() {
                         </svg>
                       </button>
                     </h3>
-                    <div 
-                      className={`overflow-hidden transition-all duration-300 ${
-                        isOpen ? 'max-h-[300px] pb-5 opacity-100 border-t border-border/30 pt-4' : 'max-h-0 opacity-0'
-                      }`}
-                      role="region"
-                    >
-                      <p className="text-sm leading-relaxed text-muted-foreground">
-                        {faq.answer}
-                      </p>
-                    </div>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial="collapsed"
+                          animate="open"
+                          exit="collapsed"
+                          variants={{
+                            open: { opacity: 1, height: "auto" },
+                            collapsed: { opacity: 0, height: 0 }
+                          }}
+                          transition={{ duration: 0.2, ease: "easeOut" }}
+                          className="overflow-hidden"
+                          role="region"
+                        >
+                          <div className="pt-0 pb-5 text-sm leading-relaxed text-muted-foreground">
+                            <p>{faq.answer}</p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 );
               })}
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Contact Form Section */}
