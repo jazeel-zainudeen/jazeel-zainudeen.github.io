@@ -421,7 +421,18 @@ export default function Home() {
     }
 
     setFormSubmitting(true);
+
+    // Build Calendly URL with prefilled params
+    const calendlyBase = "https://calendly.com/zainudheenjazeel/30min";
+    const params = new URLSearchParams();
+    if (formData.name) params.set("name", formData.name);
+    if (formData.email) params.set("email", formData.email);
+    if (formData.phone) params.set("a1", formData.phone);
+    const calendlyUrl = `${calendlyBase}?${params.toString()}`;
+
+    // Short delay for UX, then open Calendly in a new tab
     setTimeout(() => {
+      window.open(calendlyUrl, "_blank", "noopener,noreferrer");
       setFormSubmitting(false);
       setFormSubmitted(true);
       setFormData({
@@ -438,7 +449,7 @@ export default function Home() {
         phone: false,
         message: false
       });
-    }, 1200);
+    }, 800);
   };
 
   const renderServiceIcon = (icon: string) => {
@@ -1073,7 +1084,7 @@ export default function Home() {
               <div className="lg:col-span-2">
                 <span className="text-xs uppercase tracking-[0.2em] text-brand-glow">Get in touch</span>
                 <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">Let&apos;s discuss your software project</h2>
-                <p className="mt-4 text-muted-foreground">Share a few details and I&apos;ll get back within one business day with next steps and a no-pressure consultation slot.</p>
+                <p className="mt-4 text-muted-foreground">Share a few details and book a free 30-minute consultation call directly on my calendar.</p>
                 <div className="mt-8 space-y-4 text-sm">
                   <a href="tel:+918086482422" className="flex items-center gap-3 text-muted-foreground transition-colors hover:text-foreground">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-phone size-4 text-brand-glow" aria-hidden="true">
@@ -1105,9 +1116,9 @@ export default function Home() {
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                     </div>
-                    <h3 className="font-display text-2xl font-semibold mb-2">Message Sent Successfully!</h3>
+                    <h3 className="font-display text-2xl font-semibold mb-2">Calendly is Open!</h3>
                     <p className="text-muted-foreground text-sm max-w-sm mb-6">
-                      Thank you for getting in touch. I have received your request and will get back to you within one business day.
+                      A new tab has opened with my calendar. Pick a 30-minute slot that works for you and I&apos;ll confirm within hours.
                     </p>
                     <button 
                       onClick={() => setFormSubmitted(false)}
@@ -1243,7 +1254,25 @@ export default function Home() {
                       disabled={formSubmitting}
                       className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[image:var(--gradient-brand)] px-6 py-3.5 text-sm font-semibold text-brand-foreground shadow-[var(--shadow-glow)] transition-transform hover:scale-[1.01] disabled:opacity-70 cursor-pointer"
                     >
-                      {formSubmitting ? "Submitting..." : "Get Free Consultation"}
+                      {formSubmitting ? (
+                        <>
+                          <svg className="animate-spin size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                          </svg>
+                          Opening Calendly...
+                        </>
+                      ) : (
+                        <>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-4" aria-hidden="true">
+                            <path d="M8 2v4"></path>
+                            <path d="M16 2v4"></path>
+                            <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                            <path d="M3 10h18"></path>
+                          </svg>
+                          Book Free Consultation
+                        </>
+                      )}
                     </button>
                   </form>
                 )}
