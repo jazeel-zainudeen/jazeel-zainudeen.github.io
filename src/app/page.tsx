@@ -290,6 +290,7 @@ export default function Home() {
   });
   const [formSubmitting, setFormSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [calendlyUrl, setCalendlyUrl] = useState("");
 
   const [formErrors, setFormErrors] = useState({
     name: "",
@@ -428,10 +429,13 @@ export default function Home() {
     if (formData.name) params.set("name", formData.name);
     if (formData.email) params.set("email", formData.email);
     if (formData.phone) params.set("a1", formData.phone);
-    const calendlyUrl = `${calendlyBase}?${params.toString()}`;
+    if (formData.company) params.set("a2", formData.company);
+    if (formData.projectType) params.set("a3", formData.projectType);
+    const builtUrl = `${calendlyBase}?${params.toString()}`;
+    setCalendlyUrl(builtUrl);
 
     // Open Calendly immediately (must be synchronous to avoid popup blocker)
-    window.open(calendlyUrl, "_blank", "noopener,noreferrer");
+    window.open(builtUrl, "_blank", "noopener,noreferrer");
 
     // Update UI state after a brief delay
     setTimeout(() => {
@@ -1119,9 +1123,22 @@ export default function Home() {
                       </svg>
                     </div>
                     <h3 className="font-display text-2xl font-semibold mb-2">Calendly is Open!</h3>
-                    <p className="text-muted-foreground text-sm max-w-sm mb-6">
+                    <p className="text-muted-foreground text-sm max-w-sm mb-4">
                       A new tab has opened with my calendar. Pick a 30-minute slot that works for you and I&apos;ll confirm within hours.
                     </p>
+                    {calendlyUrl && (
+                      <p className="text-muted-foreground text-xs max-w-sm mb-6">
+                        Popup didn&apos;t open?{" "}
+                        <a
+                          href={calendlyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gradient font-semibold underline decoration-brand/40 underline-offset-2 hover:decoration-brand transition-colors"
+                        >
+                          Click here to open Calendly
+                        </a>
+                      </p>
+                    )}
                     <button 
                       onClick={() => setFormSubmitted(false)}
                       className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-5 py-2.5 text-sm font-semibold hover:bg-surface-2 transition-colors"
