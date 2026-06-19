@@ -1,16 +1,283 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
+import { motion } from "framer-motion";
 
 interface FAQItem {
   question: string;
   answer: string;
 }
 
+const fadeIn = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-80px" },
+  transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as const }
+};
+
+const fadeInDelay = (delay: number) => ({
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-80px" },
+  transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as const, delay }
+});
+
+const heroFadeIn = {
+  initial: { opacity: 0, y: 16 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as const }
+};
+
+const aboutImageAnim = {
+  initial: { opacity: 0, x: -20 },
+  whileInView: { opacity: 1, x: 0 },
+  viewport: { once: true, margin: "-80px" },
+  transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as const }
+};
+
+const aboutTextAnim = {
+  initial: { opacity: 0, y: 16 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-80px" },
+  transition: { duration: 0.6, delay: 0.1, ease: [0.21, 0.47, 0.32, 0.98] as const }
+};
+
+const serviceCardAnim = (index: number) => ({
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+  transition: { duration: 0.5, delay: index * 0.05, ease: [0.21, 0.47, 0.32, 0.98] as const }
+});
+
+const whyCardAnim = (index: number) => ({
+  initial: { opacity: 0, y: 16 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+  transition: { duration: 0.5, delay: index * 0.04, ease: [0.21, 0.47, 0.32, 0.98] as const }
+});
+
+const processStepAnim = (index: number) => ({
+  initial: { opacity: 0, y: 16 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+  transition: { duration: 0.5, delay: index * 0.05, ease: [0.21, 0.47, 0.32, 0.98] as const }
+});
+
+const workCardAnim = (index: number) => ({
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+  transition: { duration: 0.5, delay: index * 0.05, ease: [0.21, 0.47, 0.32, 0.98] as const }
+});
+
+const testimonialCardAnim = (index: number) => ({
+  initial: { opacity: 0, y: 16 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+  transition: { duration: 0.5, delay: index * 0.05, ease: [0.21, 0.47, 0.32, 0.98] as const }
+});
+
+const servicesData = [
+  {
+    title: "ERP Development",
+    description: "Custom ERP development services tailored to inventory, finance, manufacturing and operations workflows.",
+    benefits: [
+      "Unified data across departments",
+      "Real-time reporting",
+      "Scales with your business"
+    ],
+    solves: "Replaces spreadsheets, disconnected tools and slow manual processes.",
+    icon: "database"
+  },
+  {
+    title: "CRM Development",
+    description: "Bespoke CRM development from a focused CRM development company — built around your sales pipeline, not someone else's.",
+    benefits: [
+      "360° customer view",
+      "Sales automation",
+      "Custom pipelines & reports"
+    ],
+    solves: "Lost leads, no follow-up visibility, sales teams stuck in email.",
+    icon: "users"
+  },
+  {
+    title: "HRMS Development",
+    description: "HRMS software development covering attendance, payroll, leave, performance and employee self-service.",
+    benefits: [
+      "Payroll & attendance in one place",
+      "Employee self-service portal",
+      "Compliance-ready reports"
+    ],
+    solves: "Manual HR ops, payroll errors, scattered employee data.",
+    icon: "users-round"
+  },
+  {
+    title: "Web Application Maintenance",
+    description: "Reliable web application maintenance and software maintenance services — bug fixes, security patches, feature work and uptime support.",
+    benefits: [
+      "Predictable monthly retainers",
+      "Performance & security monitoring",
+      "Fast response SLAs"
+    ],
+    solves: "Aging codebases, broken features, no dev on call.",
+    icon: "wrench"
+  },
+  {
+    title: "Legacy Software Modernization",
+    description: "Legacy application modernization — re-architect old PHP, jQuery or desktop apps into modern Laravel + React stacks.",
+    benefits: [
+      "Modern UI / UX",
+      "Cloud-ready architecture",
+      "Lower hosting costs"
+    ],
+    solves: "Outdated tech, security risks, vendors that disappeared.",
+    icon: "refresh-cw"
+  },
+  {
+    title: "Dedicated Full Stack Developer",
+    description: "Hire a remote software developer on a monthly basis — direct communication, your roadmap, your codebase.",
+    benefits: [
+      "Full-time or part-time",
+      "Async + daily standups",
+      "No agency overhead"
+    ],
+    solves: "Need consistent dev velocity without hiring full-time.",
+    icon: "code-xml"
+  }
+];
+
+const whyWorkWithMeData = [
+  {
+    title: "5+ Years Experience",
+    description: "Shipped production systems across ERP, CRM, HRMS and IoT-driven platforms.",
+    icon: "award"
+  },
+  {
+    title: "Business-Focused Development",
+    description: "Software that maps to real workflows — not abstract feature lists.",
+    icon: "target"
+  },
+  {
+    title: "Long-Term Maintenance",
+    description: "Stay on as your maintenance partner. Predictable retainers, fast response.",
+    icon: "life-buoy"
+  },
+  {
+    title: "Scalable Architecture",
+    description: "Clean Laravel + React foundations that grow from MVP to enterprise.",
+    icon: "layers"
+  },
+  {
+    title: "Fast Communication",
+    description: "Direct line. No account managers, no week-long email threads.",
+    icon: "message-square"
+  },
+  {
+    title: "Cost-Effective Alternative",
+    description: "Agency-quality output without agency overhead pricing.",
+    icon: "wallet"
+  }
+];
+
+const processData = [
+  {
+    step: "01",
+    title: "Discovery Call",
+    description: "Understand your business, current systems, pain points and goals."
+  },
+  {
+    step: "02",
+    title: "Requirement Analysis",
+    description: "Document workflows, user roles, integrations and success metrics."
+  },
+  {
+    step: "03",
+    title: "Development Plan",
+    description: "Clear scope, milestones, timelines and transparent pricing."
+  },
+  {
+    step: "04",
+    title: "Agile Development",
+    description: "Weekly demos, frequent feedback, working software early."
+  },
+  {
+    step: "05",
+    title: "Testing & Deployment",
+    description: "QA, UAT, secure deployment, data migration and team training."
+  },
+  {
+    step: "06",
+    title: "Ongoing Support",
+    description: "Maintenance retainers, feature work and 24×7 monitoring options."
+  }
+];
+
+const selectedWorkData = [
+  {
+    title: "Retail Operations Platform",
+    tag: "Retail · India",
+    description: "Internal business platform supporting one of India's largest electronics retail chains with operations, inventory and reporting modules.",
+    impact: "Streamlined multi-branch workflows and reduced manual reporting time across stores.",
+    image: "project-myg-CQpClQIo.jpg"
+  },
+  {
+    title: "Handyman Marketplace App",
+    tag: "On-demand services",
+    description: "Two-sided mobile platform connecting customers with verified handymen — bookings, live tracking, in-app payments and provider onboarding.",
+    impact: "Replaced WhatsApp-based dispatch with a fully automated booking & payout pipeline.",
+    image: "project-handyman-Bz-oztfK.jpg"
+  },
+  {
+    title: "HRMS — Software Revamp",
+    tag: "Recruitment & HR",
+    description: "Complete revamp of a legacy HRMS used by a recruitment group — attendance, payroll, leave management and employee self-service.",
+    impact: "Cut payroll processing time and modernized the UX for hundreds of daily users.",
+    image: "project-hrms-AYNMxAXq.jpg"
+  },
+  {
+    title: "IoT Gas Station Management Portal",
+    tag: "Energy · IoT",
+    description: "Full IoT-integrated web application + API layer for fuel station operations — live pump telemetry, sales reconciliation and admin dashboards.",
+    impact: "Real-time visibility into pump activity and automated end-of-day sales reporting.",
+    image: "project-gasstation-DLudRX2w.jpg"
+  }
+];
+
+const testimonialsData = [
+  {
+    quote: "Jazeel rebuilt our internal production tracking tool from a tangled spreadsheet into a real ERP module. Reporting that used to take a full day now runs in minutes.",
+    author: "Operations Director",
+    company: "Manufacturing Company",
+    initials: "MC"
+  },
+  {
+    quote: "Our HRMS revamp was on time, on scope, and the team still maintains it on a monthly retainer. Communication is the best we've had with any developer.",
+    author: "Head of Talent",
+    company: "Recruitment Agency",
+    initials: "RA"
+  },
+  {
+    quote: "We needed a logistics dashboard tied into our existing systems. The API work and the React UI were both rock solid — leads now have clear delivery visibility.",
+    author: "Founder",
+    company: "Logistics Company",
+    initials: "LC"
+  }
+];
+
 export default function Home() {
   const basePath = "";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   
   // Contact Form State
   const [formData, setFormData] = useState({
@@ -70,11 +337,9 @@ export default function Home() {
       return;
     }
     setFormSubmitting(true);
-    // Simulate submission API call
     setTimeout(() => {
       setFormSubmitting(false);
       setFormSubmitted(true);
-      // Reset form
       setFormData({
         name: "",
         company: "",
@@ -86,10 +351,119 @@ export default function Home() {
     }, 1200);
   };
 
+  const renderServiceIcon = (icon: string) => {
+    switch (icon) {
+      case "database":
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-database size-5" aria-hidden="true">
+            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+            <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+            <path d="M3 12A9 3 0 0 0 21 12"></path>
+          </svg>
+        );
+      case "users":
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-users size-5" aria-hidden="true">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <path d="M16 3.128a4 4 0 0 1 0 7.744"></path>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+          </svg>
+        );
+      case "users-round":
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-users-round size-5" aria-hidden="true">
+            <path d="M18 21a8 8 0 0 0-16 0"></path>
+            <circle cx="10" cy="8" r="5"></circle>
+            <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"></path>
+          </svg>
+        );
+      case "wrench":
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-wrench size-5" aria-hidden="true">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"></path>
+          </svg>
+        );
+      case "refresh-cw":
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-refresh-cw size-5" aria-hidden="true">
+            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+            <path d="M21 3v5h-5"></path>
+            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+            <path d="M8 16H3v5"></path>
+          </svg>
+        );
+      case "code-xml":
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-code-xml size-5" aria-hidden="true">
+            <path d="m18 16 4-4-4-4"></path>
+            <path d="m6 8-4 4 4 4"></path>
+            <path d="m14.5 4-5 16"></path>
+          </svg>
+        );
+      default:
+        return null;
+    }
+  };
+
+  const renderWhyIcon = (icon: string) => {
+    switch (icon) {
+      case "award":
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-award size-5" aria-hidden="true">
+            <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
+            <circle cx="12" cy="8" r="6"></circle>
+          </svg>
+        );
+      case "target":
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-target size-5" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="6"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+          </svg>
+        );
+      case "life-buoy":
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-life-buoy size-5" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="m4.93 4.93 4.24 4.24"></path>
+            <path d="m14.83 9.17 4.24-4.24"></path>
+            <path d="m14.83 14.83 4.24 4.24"></path>
+            <path d="m9.17 14.83-4.24 4.24"></path>
+            <circle cx="12" cy="12" r="4"></circle>
+          </svg>
+        );
+      case "layers":
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-layers size-5" aria-hidden="true">
+            <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path>
+            <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path>
+            <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path>
+          </svg>
+        );
+      case "message-square":
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-message-square size-5" aria-hidden="true">
+            <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"></path>
+          </svg>
+        );
+      case "wallet":
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-wallet size-5" aria-hidden="true">
+            <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"></path>
+            <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path>
+          </svg>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="dark relative min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="fixed inset-x-0 top-0 z-50 transition-all backdrop-blur-xl bg-background/70 border-b border-border">
+      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? 'backdrop-blur-xl bg-background/70 border-b border-border' : 'bg-transparent'}`}>
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <a href="#top" className="flex items-center gap-2 font-display text-lg font-semibold">
             <img 
@@ -207,7 +581,10 @@ export default function Home() {
           <div className="absolute inset-0 grid-bg opacity-50 [mask-image:radial-gradient(60%_60%_at_50%_30%,black,transparent)]"></div>
           <div className="absolute left-1/2 top-10 -z-10 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-[image:var(--gradient-brand)] opacity-20 blur-[120px]"></div>
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-4xl text-center" style={{ opacity: 1, transform: "none" }}>
+            <motion.div 
+              {...heroFadeIn}
+              className="mx-auto max-w-4xl text-center"
+            >
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
                 <span className="size-1.5 rounded-full bg-success animate-pulse"></span>
                 Available for new projects · Remote worldwide
@@ -272,7 +649,7 @@ export default function Home() {
                   Ongoing Maintenance &amp; Support
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -299,7 +676,10 @@ export default function Home() {
         <section id="about" className="relative py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-              <div className="relative" style={{ opacity: 1, transform: "none" }}>
+              <motion.div 
+                {...aboutImageAnim}
+                className="relative"
+              >
                 <div className="absolute -inset-4 rounded-3xl bg-[image:var(--gradient-brand)] opacity-25 blur-2xl"></div>
                 <div className="relative overflow-hidden rounded-3xl border border-border bg-surface shadow-[var(--shadow-elegant)]">
                   <img 
@@ -314,8 +694,10 @@ export default function Home() {
                   <div className="text-2xl font-semibold text-gradient">5+ yrs</div>
                   <div className="text-xs text-muted-foreground">Full stack experience</div>
                 </div>
-              </div>
-              <div style={{ opacity: 1, transform: "none" }}>
+              </motion.div>
+              <motion.div 
+                {...aboutTextAnim}
+              >
                 <span className="text-xs uppercase tracking-[0.2em] text-brand-glow">About</span>
                 <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">Meet Your Software Development Partner</h2>
                 <p className="mt-5 text-muted-foreground">
@@ -336,7 +718,7 @@ export default function Home() {
                     <span className="rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-muted-foreground">Enterprise Web Applications</span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -350,203 +732,37 @@ export default function Home() {
               <p className="mt-4 text-muted-foreground">Custom software development for SMBs, manufacturing, logistics, healthcare, recruitment and enterprises that need business process automation that actually ships.</p>
             </div>
             <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              <article className="group relative flex flex-col rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6 transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-glow)]" style={{ opacity: 1, transform: "none" }}>
-                <div className="mb-5 inline-flex size-11 items-center justify-center rounded-xl bg-surface-2 text-brand-glow ring-1 ring-border">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-database size-5" aria-hidden="true">
-                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-                    <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
-                    <path d="M3 12A9 3 0 0 0 21 12"></path>
-                  </svg>
-                </div>
-                <h3 className="font-display text-xl font-semibold">ERP Development</h3>
-                <p className="mt-2 text-sm text-muted-foreground">Custom ERP development services tailored to inventory, finance, manufacturing and operations workflows.</p>
-                <ul className="mt-4 space-y-1.5 text-sm text-muted-foreground">
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>Unified data across departments
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>Real-time reporting
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>Scales with your business
-                  </li>
-                </ul>
-                <p className="mt-4 rounded-lg border border-border bg-background/40 p-3 text-xs text-muted-foreground">
-                  <span className="font-medium text-foreground">Solves:</span> Replaces spreadsheets, disconnected tools and slow manual processes.
-                </p>
-                <a href="#contact" className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-brand-glow">
-                  Discuss this service
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right size-4" aria-hidden="true">
-                    <path d="M7 7h10v10"></path>
-                    <path d="M7 17 17 7"></path>
-                  </svg>
-                </a>
-              </article>
-
-              <article className="group relative flex flex-col rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6 transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-glow)]" style={{ opacity: 1, transform: "none" }}>
-                <div className="mb-5 inline-flex size-11 items-center justify-center rounded-xl bg-surface-2 text-brand-glow ring-1 ring-border">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-users size-5" aria-hidden="true">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                    <path d="M16 3.128a4 4 0 0 1 0 7.744"></path>
-                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                  </svg>
-                </div>
-                <h3 className="font-display text-xl font-semibold">CRM Development</h3>
-                <p className="mt-2 text-sm text-muted-foreground">Bespoke CRM development from a focused CRM development company — built around your sales pipeline, not someone else&apos;s.</p>
-                <ul className="mt-4 space-y-1.5 text-sm text-muted-foreground">
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>360° customer view
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>Sales automation
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>Custom pipelines &amp; reports
-                  </li>
-                </ul>
-                <p className="mt-4 rounded-lg border border-border bg-background/40 p-3 text-xs text-muted-foreground">
-                  <span className="font-medium text-foreground">Solves:</span> Lost leads, no follow-up visibility, sales teams stuck in email.
-                </p>
-                <a href="#contact" className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-brand-glow">
-                  Discuss this service
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right size-4" aria-hidden="true">
-                    <path d="M7 7h10v10"></path>
-                    <path d="M7 17 17 7"></path>
-                  </svg>
-                </a>
-              </article>
-
-              <article className="group relative flex flex-col rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6 transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-glow)]" style={{ opacity: 1, transform: "none" }}>
-                <div className="mb-5 inline-flex size-11 items-center justify-center rounded-xl bg-surface-2 text-brand-glow ring-1 ring-border">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-users-round size-5" aria-hidden="true">
-                    <path d="M18 21a8 8 0 0 0-16 0"></path>
-                    <circle cx="10" cy="8" r="5"></circle>
-                    <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"></path>
-                  </svg>
-                </div>
-                <h3 className="font-display text-xl font-semibold">HRMS Development</h3>
-                <p className="mt-2 text-sm text-muted-foreground">HRMS software development covering attendance, payroll, leave, performance and employee self-service.</p>
-                <ul className="mt-4 space-y-1.5 text-sm text-muted-foreground">
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>Payroll &amp; attendance in one place
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>Employee self-service portal
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>Compliance-ready reports
-                  </li>
-                </ul>
-                <p className="mt-4 rounded-lg border border-border bg-background/40 p-3 text-xs text-muted-foreground">
-                  <span className="font-medium text-foreground">Solves:</span> Manual HR ops, payroll errors, scattered employee data.
-                </p>
-                <a href="#contact" className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-brand-glow">
-                  Discuss this service
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-arrow-up-right size-4" aria-hidden="true">
-                    <path d="M7 7h10v10"></path>
-                    <path d="M7 17 17 7"></path>
-                  </svg>
-                </a>
-              </article>
-
-              <article className="group relative flex flex-col rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6 transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-glow)]" style={{ opacity: 1, transform: "none" }}>
-                <div className="mb-5 inline-flex size-11 items-center justify-center rounded-xl bg-surface-2 text-brand-glow ring-1 ring-border">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-wrench size-5" aria-hidden="true">
-                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"></path>
-                  </svg>
-                </div>
-                <h3 className="font-display text-xl font-semibold">Web Application Maintenance</h3>
-                <p className="mt-2 text-sm text-muted-foreground">Reliable web application maintenance and software maintenance services — bug fixes, security patches, feature work and uptime support.</p>
-                <ul className="mt-4 space-y-1.5 text-sm text-muted-foreground">
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>Predictable monthly retainers
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>Performance &amp; security monitoring
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>Fast response SLAs
-                  </li>
-                </ul>
-                <p className="mt-4 rounded-lg border border-border bg-background/40 p-3 text-xs text-muted-foreground">
-                  <span className="font-medium text-foreground">Solves:</span> Aging codebases, broken features, no dev on call.
-                </p>
-                <a href="#contact" className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-brand-glow">
-                  Discuss this service
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-arrow-up-right size-4" aria-hidden="true">
-                    <path d="M7 7h10v10"></path>
-                    <path d="M7 17 17 7"></path>
-                  </svg>
-                </a>
-              </article>
-
-              <article className="group relative flex flex-col rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6 transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-glow)]" style={{ opacity: 1, transform: "none" }}>
-                <div className="mb-5 inline-flex size-11 items-center justify-center rounded-xl bg-surface-2 text-brand-glow ring-1 ring-border">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-refresh-cw size-5" aria-hidden="true">
-                    <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
-                    <path d="M21 3v5h-5"></path>
-                    <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
-                    <path d="M8 16H3v5"></path>
-                  </svg>
-                </div>
-                <h3 className="font-display text-xl font-semibold">Legacy Software Modernization</h3>
-                <p className="mt-2 text-sm text-muted-foreground">Legacy application modernization — re-architect old PHP, jQuery or desktop apps into modern Laravel + React stacks.</p>
-                <ul className="mt-4 space-y-1.5 text-sm text-muted-foreground">
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>Modern UI / UX
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>Cloud-ready architecture
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>Lower hosting costs
-                  </li>
-                </ul>
-                <p className="mt-4 rounded-lg border border-border bg-background/40 p-3 text-xs text-muted-foreground">
-                  <span className="font-medium text-foreground">Solves:</span> Outdated tech, security risks, vendors that disappeared.
-                </p>
-                <a href="#contact" className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-brand-glow">
-                  Discuss this service
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right size-4" aria-hidden="true">
-                    <path d="M7 7h10v10"></path>
-                    <path d="M7 17 17 7"></path>
-                  </svg>
-                </a>
-              </article>
-
-              <article className="group relative flex flex-col rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6 transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-glow)]" style={{ opacity: 1, transform: "none" }}>
-                <div className="mb-5 inline-flex size-11 items-center justify-center rounded-xl bg-surface-2 text-brand-glow ring-1 ring-border">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-code-xml size-5" aria-hidden="true">
-                    <path d="m18 16 4-4-4-4"></path>
-                    <path d="m6 8-4 4 4 4"></path>
-                    <path d="m14.5 4-5 16"></path>
-                  </svg>
-                </div>
-                <h3 className="font-display text-xl font-semibold">Dedicated Full Stack Developer</h3>
-                <p className="mt-2 text-sm text-muted-foreground">Hire a remote software developer on a monthly basis — direct communication, your roadmap, your codebase.</p>
-                <ul className="mt-4 space-y-1.5 text-sm text-muted-foreground">
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>Full-time or part-time
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>Async + daily standups
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>No agency overhead
-                  </li>
-                </ul>
-                <p className="mt-4 rounded-lg border border-border bg-background/40 p-3 text-xs text-muted-foreground">
-                  <span className="font-medium text-foreground">Solves:</span> Need consistent dev velocity without hiring full-time.
-                </p>
-                <a href="#contact" className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-brand-glow">
-                  Discuss this service
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right size-4" aria-hidden="true">
-                    <path d="M7 7h10v10"></path>
-                    <path d="M7 17 17 7"></path>
-                  </svg>
-                </a>
-              </article>
+              {servicesData.map((service, index) => (
+                <motion.article 
+                  key={index}
+                  {...serviceCardAnim(index)}
+                  className="group relative flex flex-col rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6 transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-glow)]"
+                >
+                  <div className="mb-5 inline-flex size-11 items-center justify-center rounded-xl bg-surface-2 text-brand-glow ring-1 ring-border">
+                    {renderServiceIcon(service.icon)}
+                  </div>
+                  <h3 className="font-display text-xl font-semibold">{service.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{service.description}</p>
+                  <ul className="mt-4 space-y-1.5 text-sm text-muted-foreground">
+                    {service.benefits.map((benefit, bIndex) => (
+                      <li key={bIndex} className="flex gap-2">
+                        <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>
+                        {benefit}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-4 rounded-lg border border-border bg-background/40 p-3 text-xs text-muted-foreground">
+                    <span className="font-medium text-foreground">Solves:</span> {service.solves}
+                  </p>
+                  <a href="#contact" className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-brand-glow">
+                    Discuss this service
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right size-4" aria-hidden="true">
+                      <path d="M7 7h10v10"></path>
+                      <path d="M7 17 17 7"></path>
+                    </svg>
+                  </a>
+                </motion.article>
+              ))}
             </div>
           </div>
         </section>
@@ -559,76 +775,19 @@ export default function Home() {
               <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">A senior developer, not a sales pitch</h2>
             </div>
             <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="rounded-2xl border border-border bg-surface/60 p-6 backdrop-blur" style={{ opacity: 1, transform: "none" }}>
-                <div className="mb-4 inline-flex size-10 items-center justify-center rounded-lg bg-[image:var(--gradient-brand)] text-brand-foreground">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-award size-5" aria-hidden="true">
-                    <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
-                    <circle cx="12" cy="8" r="6"></circle>
-                  </svg>
-                </div>
-                <h3 className="font-display text-lg font-semibold">5+ Years Experience</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground">Shipped production systems across ERP, CRM, HRMS and IoT-driven platforms.</p>
-              </div>
-
-              <div className="rounded-2xl border border-border bg-surface/60 p-6 backdrop-blur" style={{ opacity: 1, transform: "none" }}>
-                <div className="mb-4 inline-flex size-10 items-center justify-center rounded-lg bg-[image:var(--gradient-brand)] text-brand-foreground">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-target size-5" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <circle cx="12" cy="12" r="6"></circle>
-                    <circle cx="12" cy="12" r="2"></circle>
-                  </svg>
-                </div>
-                <h3 className="font-display text-lg font-semibold">Business-Focused Development</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground">Software that maps to real workflows — not abstract feature lists.</p>
-              </div>
-
-              <div className="rounded-2xl border border-border bg-surface/60 p-6 backdrop-blur" style={{ opacity: 1, transform: "none" }}>
-                <div className="mb-4 inline-flex size-10 items-center justify-center rounded-lg bg-[image:var(--gradient-brand)] text-brand-foreground">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-life-buoy size-5" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="m4.93 4.93 4.24 4.24"></path>
-                    <path d="m14.83 9.17 4.24-4.24"></path>
-                    <path d="m14.83 14.83 4.24 4.24"></path>
-                    <path d="m9.17 14.83-4.24 4.24"></path>
-                    <circle cx="12" cy="12" r="4"></circle>
-                  </svg>
-                </div>
-                <h3 className="font-display text-lg font-semibold">Long-Term Maintenance</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground">Stay on as your maintenance partner. Predictable retainers, fast response.</p>
-              </div>
-
-              <div className="rounded-2xl border border-border bg-surface/60 p-6 backdrop-blur" style={{ opacity: 1, transform: "none" }}>
-                <div className="mb-4 inline-flex size-10 items-center justify-center rounded-lg bg-[image:var(--gradient-brand)] text-brand-foreground">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-layers size-5" aria-hidden="true">
-                    <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path>
-                    <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path>
-                    <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path>
-                  </svg>
-                </div>
-                <h3 className="font-display text-lg font-semibold">Scalable Architecture</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground">Clean Laravel + React foundations that grow from MVP to enterprise.</p>
-              </div>
-
-              <div className="rounded-2xl border border-border bg-surface/60 p-6 backdrop-blur" style={{ opacity: 1, transform: "none" }}>
-                <div className="mb-4 inline-flex size-10 items-center justify-center rounded-lg bg-[image:var(--gradient-brand)] text-brand-foreground">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-message-square size-5" aria-hidden="true">
-                    <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"></path>
-                  </svg>
-                </div>
-                <h3 className="font-display text-lg font-semibold">Fast Communication</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground">Direct line. No account managers, no week-long email threads.</p>
-              </div>
-
-              <div className="rounded-2xl border border-border bg-surface/60 p-6 backdrop-blur" style={{ opacity: 1, transform: "none" }}>
-                <div className="mb-4 inline-flex size-10 items-center justify-center rounded-lg bg-[image:var(--gradient-brand)] text-brand-foreground">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-wallet size-5" aria-hidden="true">
-                    <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"></path>
-                    <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path>
-                  </svg>
-                </div>
-                <h3 className="font-display text-lg font-semibold">Cost-Effective Alternative</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground">Agency-quality output without agency overhead pricing.</p>
-              </div>
+              {whyWorkWithMeData.map((item, index) => (
+                <motion.div 
+                  key={index}
+                  {...whyCardAnim(index)}
+                  className="rounded-2xl border border-border bg-surface/60 p-6 backdrop-blur"
+                >
+                  <div className="mb-4 inline-flex size-10 items-center justify-center rounded-lg bg-[image:var(--gradient-brand)] text-brand-foreground">
+                    {renderWhyIcon(item.icon)}
+                  </div>
+                  <h3 className="font-display text-lg font-semibold">{item.title}</h3>
+                  <p className="mt-1.5 text-sm text-muted-foreground">{item.description}</p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
@@ -641,59 +800,20 @@ export default function Home() {
               <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">A predictable, transparent process</h2>
             </div>
             <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="relative overflow-hidden rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6" style={{ opacity: 1, transform: "none" }}>
-                <span className="absolute -right-2 -top-4 font-display text-7xl font-bold text-foreground/[0.05]">01</span>
-                <div className="relative">
-                  <span className="font-display text-sm font-semibold text-brand-glow">Step 01</span>
-                  <h3 className="mt-2 font-display text-xl font-semibold">Discovery Call</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">Understand your business, current systems, pain points and goals.</p>
-                </div>
-              </div>
-
-              <div className="relative overflow-hidden rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6" style={{ opacity: 1, transform: "none" }}>
-                <span className="absolute -right-2 -top-4 font-display text-7xl font-bold text-foreground/[0.05]">02</span>
-                <div className="relative">
-                  <span className="font-display text-sm font-semibold text-brand-glow">Step 02</span>
-                  <h3 className="mt-2 font-display text-xl font-semibold">Requirement Analysis</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">Document workflows, user roles, integrations and success metrics.</p>
-                </div>
-              </div>
-
-              <div className="relative overflow-hidden rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6" style={{ opacity: 1, transform: "none" }}>
-                <span className="absolute -right-2 -top-4 font-display text-7xl font-bold text-foreground/[0.05]">03</span>
-                <div className="relative">
-                  <span className="font-display text-sm font-semibold text-brand-glow">Step 03</span>
-                  <h3 className="mt-2 font-display text-xl font-semibold">Development Plan</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">Clear scope, milestones, timelines and transparent pricing.</p>
-                </div>
-              </div>
-
-              <div className="relative overflow-hidden rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6" style={{ opacity: 1, transform: "none" }}>
-                <span className="absolute -right-2 -top-4 font-display text-7xl font-bold text-foreground/[0.05]">04</span>
-                <div className="relative">
-                  <span className="font-display text-sm font-semibold text-brand-glow">Step 04</span>
-                  <h3 className="mt-2 font-display text-xl font-semibold">Agile Development</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">Weekly demos, frequent feedback, working software early.</p>
-                </div>
-              </div>
-
-              <div className="relative overflow-hidden rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6" style={{ opacity: 1, transform: "none" }}>
-                <span className="absolute -right-2 -top-4 font-display text-7xl font-bold text-foreground/[0.05]">05</span>
-                <div className="relative">
-                  <span className="font-display text-sm font-semibold text-brand-glow">Step 05</span>
-                  <h3 className="mt-2 font-display text-xl font-semibold">Testing &amp; Deployment</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">QA, UAT, secure deployment, data migration and team training.</p>
-                </div>
-              </div>
-
-              <div className="relative overflow-hidden rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6" style={{ opacity: 1, transform: "none" }}>
-                <span className="absolute -right-2 -top-4 font-display text-7xl font-bold text-foreground/[0.05]">06</span>
-                <div className="relative">
-                  <span className="font-display text-sm font-semibold text-brand-glow">Step 06</span>
-                  <h3 className="mt-2 font-display text-xl font-semibold">Ongoing Support</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">Maintenance retainers, feature work and 24×7 monitoring options.</p>
-                </div>
-              </div>
+              {processData.map((step, index) => (
+                <motion.div 
+                  key={index}
+                  {...processStepAnim(index)}
+                  className="relative overflow-hidden rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6"
+                >
+                  <span className="absolute -right-2 -top-4 font-display text-7xl font-bold text-foreground/[0.05]">{step.step}</span>
+                  <div className="relative">
+                    <span className="font-display text-sm font-semibold text-brand-glow">Step {step.step}</span>
+                    <h3 className="mt-2 font-display text-xl font-semibold">{step.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground">{step.description}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
@@ -707,133 +827,43 @@ export default function Home() {
               <p className="mt-4 text-muted-foreground">A few highlights — several client engagements are under NDA, described here by domain only.</p>
             </div>
             <div className="mt-14 grid gap-6 md:grid-cols-2">
-              <article className="group overflow-hidden rounded-2xl border border-border bg-surface/60 backdrop-blur transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-elegant)]" style={{ opacity: 1, transform: "none" }}>
-                <div className="relative aspect-[16/10] overflow-hidden bg-background">
-                  <img 
-                    src={`${basePath}/project-myg-CQpClQIo.jpg`} 
-                    alt="Retail Operations Platform — Retail · India" 
-                    loading="lazy" 
-                    width="1024" 
-                    height="640" 
-                    className="h-full w-full object-cover opacity-80 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100" 
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent"></div>
-                  <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-border bg-background/80 px-2.5 py-1 text-xs text-muted-foreground backdrop-blur">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock size-3" aria-hidden="true">
-                      <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
-                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                    </svg>
-                    NDA Signed
-                  </span>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="font-display text-xl font-semibold">Retail Operations Platform</h3>
-                    <span className="text-xs text-muted-foreground">Retail · India</span>
+              {selectedWorkData.map((project, index) => (
+                <motion.article 
+                  key={index}
+                  {...workCardAnim(index)}
+                  className="group overflow-hidden rounded-2xl border border-border bg-surface/60 backdrop-blur transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-elegant)]"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden bg-background">
+                    <img 
+                      src={`${basePath}/${project.image}`} 
+                      alt={`${project.title} — ${project.tag}`} 
+                      loading="lazy" 
+                      width="1024" 
+                      height="640" 
+                      className="h-full w-full object-cover opacity-80 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent"></div>
+                    <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-border bg-background/80 px-2.5 py-1 text-xs text-muted-foreground backdrop-blur">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock size-3" aria-hidden="true">
+                        <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                      </svg>
+                      NDA Signed
+                    </span>
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground">Internal business platform supporting one of India&apos;s largest electronics retail chains with operations, inventory and reporting modules.</p>
-                  <p className="mt-4 border-t border-border pt-4 text-sm">
-                    <span className="font-medium text-brand-glow">Impact: </span>
-                    <span className="text-muted-foreground">Streamlined multi-branch workflows and reduced manual reporting time across stores.</span>
-                  </p>
-                </div>
-              </article>
-
-              <article className="group overflow-hidden rounded-2xl border border-border bg-surface/60 backdrop-blur transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-elegant)]" style={{ opacity: 1, transform: "none" }}>
-                <div className="relative aspect-[16/10] overflow-hidden bg-background">
-                  <img 
-                    src={`${basePath}/project-handyman-Bz-oztfK.jpg`} 
-                    alt="Handyman Marketplace App — On-demand services" 
-                    loading="lazy" 
-                    width="1024" 
-                    height="640" 
-                    className="h-full w-full object-cover opacity-80 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100" 
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent"></div>
-                  <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-border bg-background/80 px-2.5 py-1 text-xs text-muted-foreground backdrop-blur">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock size-3" aria-hidden="true">
-                      <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
-                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                    </svg>
-                    NDA Signed
-                  </span>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="font-display text-xl font-semibold">Handyman Marketplace App</h3>
-                    <span className="text-xs text-muted-foreground">On-demand services</span>
+                  <div className="p-6">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <h3 className="font-display text-xl font-semibold">{project.title}</h3>
+                      <span className="text-xs text-muted-foreground">{project.tag}</span>
+                    </div>
+                    <p className="mt-2 text-sm text-muted-foreground">{project.description}</p>
+                    <p className="mt-4 border-t border-border pt-4 text-sm">
+                      <span className="font-medium text-brand-glow">Impact: </span>
+                      <span className="text-muted-foreground">{project.impact}</span>
+                    </p>
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground">Two-sided mobile platform connecting customers with verified handymen — bookings, live tracking, in-app payments and provider onboarding.</p>
-                  <p className="mt-4 border-t border-border pt-4 text-sm">
-                    <span className="font-medium text-brand-glow">Impact: </span>
-                    <span className="text-muted-foreground">Replaced WhatsApp-based dispatch with a fully automated booking &amp; payout pipeline.</span>
-                  </p>
-                </div>
-              </article>
-
-              <article className="group overflow-hidden rounded-2xl border border-border bg-surface/60 backdrop-blur transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-elegant)]" style={{ opacity: 1, transform: "none" }}>
-                <div className="relative aspect-[16/10] overflow-hidden bg-background">
-                  <img 
-                    src={`${basePath}/project-hrms-AYNMxAXq.jpg`} 
-                    alt="HRMS — Software Revamp — Recruitment &amp; HR" 
-                    loading="lazy" 
-                    width="1024" 
-                    height="640" 
-                    className="h-full w-full object-cover opacity-80 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100" 
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent"></div>
-                  <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-border bg-background/80 px-2.5 py-1 text-xs text-muted-foreground backdrop-blur">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock size-3" aria-hidden="true">
-                      <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
-                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                    </svg>
-                    NDA Signed
-                  </span>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="font-display text-xl font-semibold">HRMS — Software Revamp</h3>
-                    <span className="text-xs text-muted-foreground">Recruitment &amp; HR</span>
-                  </div>
-                  <p className="mt-2 text-sm text-muted-foreground">Complete revamp of a legacy HRMS used by a recruitment group — attendance, payroll, leave management and employee self-service.</p>
-                  <p className="mt-4 border-t border-border pt-4 text-sm">
-                    <span className="font-medium text-brand-glow">Impact: </span>
-                    <span className="text-muted-foreground">Cut payroll processing time and modernized the UX for hundreds of daily users.</span>
-                  </p>
-                </div>
-              </article>
-
-              <article className="group overflow-hidden rounded-2xl border border-border bg-surface/60 backdrop-blur transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-elegant)]" style={{ opacity: 1, transform: "none" }}>
-                <div className="relative aspect-[16/10] overflow-hidden bg-background">
-                  <img 
-                    src={`${basePath}/project-gasstation-DLudRX2w.jpg`} 
-                    alt="IoT Gas Station Management Portal — Energy · IoT" 
-                    loading="lazy" 
-                    width="1024" 
-                    height="640" 
-                    className="h-full w-full object-cover opacity-80 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100" 
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent"></div>
-                  <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-border bg-background/80 px-2.5 py-1 text-xs text-muted-foreground backdrop-blur">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock size-3" aria-hidden="true">
-                      <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
-                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                    </svg>
-                    NDA Signed
-                  </span>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="font-display text-xl font-semibold">IoT Gas Station Management Portal</h3>
-                    <span className="text-xs text-muted-foreground">Energy · IoT</span>
-                  </div>
-                  <p className="mt-2 text-sm text-muted-foreground">Full IoT-integrated web application + API layer for fuel station operations — live pump telemetry, sales reconciliation and admin dashboards.</p>
-                  <p className="mt-4 border-t border-border pt-4 text-sm">
-                    <span className="font-medium text-brand-glow">Impact: </span>
-                    <span className="text-muted-foreground">Real-time visibility into pump activity and automated end-of-day sales reporting.</span>
-                  </p>
-                </div>
-              </article>
+                </motion.article>
+              ))}
             </div>
           </div>
         </section>
@@ -846,56 +876,28 @@ export default function Home() {
               <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">Trusted by teams that ship</h2>
             </div>
             <div className="mt-14 grid gap-5 lg:grid-cols-3">
-              <figure className="relative flex flex-col rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6" style={{ opacity: 1, transform: "none" }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-quote size-7 text-brand-glow/60" aria-hidden="true">
-                  <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
-                  <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
-                </svg>
-                <blockquote className="mt-4 text-sm leading-relaxed text-foreground/90">
-                  &quot;Jazeel rebuilt our internal production tracking tool from a tangled spreadsheet into a real ERP module. Reporting that used to take a full day now runs in minutes.&quot;
-                </blockquote>
-                <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-5">
-                  <div className="grid size-10 place-items-center rounded-full bg-[image:var(--gradient-brand)] text-sm font-semibold text-brand-foreground">MC</div>
-                  <div>
-                    <div className="text-sm font-medium text-foreground">Operations Director</div>
-                    <div className="text-xs text-muted-foreground">Manufacturing Company</div>
-                  </div>
-                </figcaption>
-              </figure>
-
-              <figure className="relative flex flex-col rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6" style={{ opacity: 1, transform: "none" }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-quote size-7 text-brand-glow/60" aria-hidden="true">
-                  <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
-                  <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
-                </svg>
-                <blockquote className="mt-4 text-sm leading-relaxed text-foreground/90">
-                  &quot;Our HRMS revamp was on time, on scope, and the team still maintains it on a monthly retainer. Communication is the best we&apos;ve had with any developer.&quot;
-                </blockquote>
-                <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-5">
-                  <div className="grid size-10 place-items-center rounded-full bg-[image:var(--gradient-brand)] text-sm font-semibold text-brand-foreground">RA</div>
-                  <div>
-                    <div className="text-sm font-medium text-foreground">Head of Talent</div>
-                    <div className="text-xs text-muted-foreground">Recruitment Agency</div>
-                  </div>
-                </figcaption>
-              </figure>
-
-              <figure className="relative flex flex-col rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6" style={{ opacity: 1, transform: "none" }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-quote size-7 text-brand-glow/60" aria-hidden="true">
-                  <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
-                  <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
-                </svg>
-                <blockquote className="mt-4 text-sm leading-relaxed text-foreground/90">
-                  &quot;We needed a logistics dashboard tied into our existing systems. The API work and the React UI were both rock solid — leads now have clear delivery visibility.&quot;
-                </blockquote>
-                <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-5">
-                  <div className="grid size-10 place-items-center rounded-full bg-[image:var(--gradient-brand)] text-sm font-semibold text-brand-foreground">LC</div>
-                  <div>
-                    <div className="text-sm font-medium text-foreground">Founder</div>
-                    <div className="text-xs text-muted-foreground">Logistics Company</div>
-                  </div>
-                </figcaption>
-              </figure>
+              {testimonialsData.map((item, index) => (
+                <motion.figure 
+                  key={index}
+                  {...testimonialCardAnim(index)}
+                  className="relative flex flex-col rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-quote size-7 text-brand-glow/60" aria-hidden="true">
+                    <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+                    <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+                  </svg>
+                  <blockquote className="mt-4 text-sm leading-relaxed text-foreground/90">
+                    &quot;{item.quote}&quot;
+                  </blockquote>
+                  <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-5">
+                    <div className="grid size-10 place-items-center rounded-full bg-[image:var(--gradient-brand)] text-sm font-semibold text-brand-foreground">{item.initials}</div>
+                    <div>
+                      <div className="text-sm font-medium text-foreground">{item.author}</div>
+                      <div className="text-xs text-muted-foreground">{item.company}</div>
+                    </div>
+                  </figcaption>
+                </motion.figure>
+              ))}
             </div>
           </div>
         </section>
@@ -961,7 +963,10 @@ export default function Home() {
         <section id="contact" className="relative overflow-hidden py-24 sm:py-32">
           <div className="absolute left-1/2 top-1/2 -z-10 h-[28rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[image:var(--gradient-brand)] opacity-15 blur-[120px]"></div>
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-10 rounded-3xl border border-border bg-[image:var(--gradient-surface)] p-6 shadow-[var(--shadow-elegant)] sm:p-10 lg:grid-cols-5 lg:p-14">
+            <motion.div 
+              {...fadeIn}
+              className="grid gap-10 rounded-3xl border border-border bg-[image:var(--gradient-surface)] p-6 shadow-[var(--shadow-elegant)] sm:p-10 lg:grid-cols-5 lg:p-14"
+            >
               <div className="lg:col-span-2">
                 <span className="text-xs uppercase tracking-[0.2em] text-brand-glow">Get in touch</span>
                 <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">Let&apos;s discuss your software project</h2>
@@ -1108,7 +1113,7 @@ export default function Home() {
                   </form>
                 )}
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
       </main>

@@ -8,6 +8,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Jazeel Zainudeen — Custom ERP, CRM & HRMS Developer",
   description: "Full stack developer building custom ERP, CRM, HRMS and business automation software with Laravel, React, Next.js and MERN stack.",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   keywords: [
     "custom software development",
     "business software development",
