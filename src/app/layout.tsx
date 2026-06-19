@@ -1,5 +1,16 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+});
 
 export const viewport: Viewport = {
   themeColor: "#1a1f33",
@@ -60,7 +71,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full scroll-smooth">
+    <html lang="en" className={`h-full scroll-smooth ${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="min-h-full bg-background text-foreground antialiased selection:bg-brand/30 selection:text-white">
         {children}
       </body>
