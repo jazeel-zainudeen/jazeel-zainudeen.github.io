@@ -8,7 +8,7 @@ interface FAQItem {
 }
 
 export default function Home() {
-  const basePath = process.env.NODE_ENV === "production" ? "/jazeel-zainudeen" : "";
+  const basePath = "";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   
