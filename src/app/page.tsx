@@ -430,9 +430,11 @@ export default function Home() {
     if (formData.phone) params.set("a1", formData.phone);
     const calendlyUrl = `${calendlyBase}?${params.toString()}`;
 
-    // Short delay for UX, then open Calendly in a new tab
+    // Open Calendly immediately (must be synchronous to avoid popup blocker)
+    window.open(calendlyUrl, "_blank", "noopener,noreferrer");
+
+    // Update UI state after a brief delay
     setTimeout(() => {
-      window.open(calendlyUrl, "_blank", "noopener,noreferrer");
       setFormSubmitting(false);
       setFormSubmitted(true);
       setFormData({
@@ -449,7 +451,7 @@ export default function Home() {
         phone: false,
         message: false
       });
-    }, 800);
+    }, 600);
   };
 
   const renderServiceIcon = (icon: string) => {
