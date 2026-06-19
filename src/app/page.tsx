@@ -291,6 +291,20 @@ export default function Home() {
   const [formSubmitting, setFormSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: ""
+  });
+
+  const [touched, setTouched] = useState({
+    name: false,
+    email: false,
+    phone: false,
+    message: false
+  });
+
   const faqs: FAQItem[] = [
     {
       question: "How much does custom software development cost?",
@@ -322,20 +336,90 @@ export default function Home() {
     setActiveFaq(activeFaq === index ? null : index);
   };
 
+  const validateField = (name: string, value: string) => {
+    let error = "";
+    if (name === "name") {
+      if (!value.trim()) {
+        error = "Name is required";
+      }
+    } else if (name === "email") {
+      if (!value.trim()) {
+        error = "Email is required";
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+        error = "Invalid email address";
+      }
+    } else if (name === "message") {
+      if (!value.trim()) {
+        error = "Message is required";
+      } else if (value.trim().length < 10) {
+        error = "Message must be at least 10 characters";
+      }
+    } else if (name === "phone") {
+      if (value.trim() && !/^\+?[0-9\s\-()]{7,20}$/.test(value)) {
+        error = "Invalid phone number";
+      }
+    }
+    return error;
+  };
+
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
+
+    if (touched[name as keyof typeof touched]) {
+      const error = validateField(name, value);
+      setFormErrors(prev => ({
+        ...prev,
+        [name]: error
+      }));
+    }
+  };
+
+  const handleFormBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setTouched(prev => ({
+      ...prev,
+      [name]: true
+    }));
+    const error = validateField(name, value);
+    setFormErrors(prev => ({
+      ...prev,
+      [name]: error
+    }));
   };
 
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
-      alert("Please fill in all required fields (Name, Email, Message).");
+
+    const newTouched = {
+      name: true,
+      email: true,
+      phone: true,
+      message: true
+    };
+    setTouched(newTouched);
+
+    const nameError = validateField("name", formData.name);
+    const emailError = validateField("email", formData.email);
+    const phoneError = validateField("phone", formData.phone);
+    const messageError = validateField("message", formData.message);
+
+    const errors = {
+      name: nameError,
+      email: emailError,
+      phone: phoneError,
+      message: messageError
+    };
+
+    setFormErrors(errors);
+
+    if (nameError || emailError || phoneError || messageError) {
       return;
     }
+
     setFormSubmitting(true);
     setTimeout(() => {
       setFormSubmitting(false);
@@ -347,6 +431,12 @@ export default function Home() {
         phone: "",
         projectType: "Custom ERP Development",
         message: ""
+      });
+      setTouched({
+        name: false,
+        email: false,
+        phone: false,
+        message: false
       });
     }, 1200);
   };
@@ -1036,11 +1126,19 @@ export default function Home() {
                           name="name"
                           value={formData.name}
                           onChange={handleFormChange}
+                          onBlur={handleFormBlur}
                           autoComplete="name" 
                           required
-                          className="w-full rounded-lg border border-input bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:border-brand focus:ring-2 focus:ring-brand/30" 
+                          className={`w-full rounded-lg border bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:ring-2 ${
+                            formErrors.name 
+                              ? 'border-destructive focus:border-destructive focus:ring-destructive/30' 
+                              : 'border-input focus:border-brand focus:ring-brand/30'
+                          }`}
                           placeholder="Your full name" 
                         />
+                        {formErrors.name && (
+                          <span className="mt-1.5 block text-xs text-destructive">{formErrors.name}</span>
+                        )}
                       </label>
                       <label className="block">
                         <span className="mb-1.5 block text-xs font-medium text-muted-foreground">Company</span>
@@ -1061,11 +1159,19 @@ export default function Home() {
                           name="email"
                           value={formData.email}
                           onChange={handleFormChange}
+                          onBlur={handleFormBlur}
                           autoComplete="email" 
                           required
-                          className="w-full rounded-lg border border-input bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:border-brand focus:ring-2 focus:ring-brand/30" 
+                          className={`w-full rounded-lg border bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:ring-2 ${
+                            formErrors.email 
+                              ? 'border-destructive focus:border-destructive focus:ring-destructive/30' 
+                              : 'border-input focus:border-brand focus:ring-brand/30'
+                          }`}
                           placeholder="you@company.com" 
                         />
+                        {formErrors.email && (
+                          <span className="mt-1.5 block text-xs text-destructive">{formErrors.email}</span>
+                        )}
                       </label>
                       <label className="block">
                         <span className="mb-1.5 block text-xs font-medium text-muted-foreground">Phone</span>
@@ -1074,10 +1180,18 @@ export default function Home() {
                           name="phone"
                           value={formData.phone}
                           onChange={handleFormChange}
+                          onBlur={handleFormBlur}
                           autoComplete="tel" 
-                          className="w-full rounded-lg border border-input bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:border-brand focus:ring-2 focus:ring-brand/30" 
+                          className={`w-full rounded-lg border bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:ring-2 ${
+                            formErrors.phone 
+                              ? 'border-destructive focus:border-destructive focus:ring-destructive/30' 
+                              : 'border-input focus:border-brand focus:ring-brand/30'
+                          }`}
                           placeholder="+91 ..." 
                         />
+                        {formErrors.phone && (
+                          <span className="mt-1.5 block text-xs text-destructive">{formErrors.phone}</span>
+                        )}
                       </label>
                     </div>
                     <label className="block">
@@ -1110,11 +1224,19 @@ export default function Home() {
                         name="message"
                         value={formData.message}
                         onChange={handleFormChange}
+                        onBlur={handleFormBlur}
                         rows={5} 
                         required
-                        className="w-full rounded-lg border border-input bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:border-brand focus:ring-2 focus:ring-brand/30" 
+                        className={`w-full rounded-lg border bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:ring-2 ${
+                          formErrors.message 
+                            ? 'border-destructive focus:border-destructive focus:ring-destructive/30' 
+                            : 'border-input focus:border-brand focus:ring-brand/30'
+                        }`}
                         placeholder="Tell me about your business, current systems and what you'd like to build or improve."
                       ></textarea>
+                      {formErrors.message && (
+                        <span className="mt-1.5 block text-xs text-destructive">{formErrors.message}</span>
+                      )}
                     </label>
                     <button 
                       type="submit" 
