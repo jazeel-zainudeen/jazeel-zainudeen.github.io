@@ -1,0 +1,22 @@
+# Jazeel Zainudeen — Full Stack Developer & Software Engineer
+
+## Summary
+Jazeel Zainudeen is a Senior Full Stack Developer based in Kerala, India with over 5+ years of production experience building custom enterprise web applications, ERP, CRM, HRMS platforms, and complex REST APIs.
+
+## Primary Skills & Tech Stack
+- **Backend**: Laravel, PHP, Node.js, Express.js, REST APIs, GraphQL
+- **Frontend**: React, Next.js, TypeScript, Tailwind CSS, HTML5, JavaScript
+- **Databases**: MySQL, PostgreSQL, MongoDB, Redis
+- **Architecture**: Enterprise ERP Systems, CRM Applications, HRMS Revamps, Legacy Software Modernization, Business Process Automation, IoT Telemetry Dashboards
+
+## Location & Contact Information
+- **Location**: Kerala, India (Remote Available Worldwide)
+- **Email**: zainudheenjazeel@gmail.com
+- **Phone / WhatsApp**: +91 80864 82422
+- **Website**: https://jazeel-zainudeen.github.io
+
+## Featured Projects & Experience
+1. **Internal Production ERP System**: Manufacturing resource planning, stock reconciliation, real-time job-card tracking.
+2. **Handyman & On-Demand Service Marketplace**: Customer booking mobile portal + admin dispatch.
+3. **Recruitment HRMS Revamp**: Complete modernized UX for payroll, attendance, leave management.
+4. **IoT Fuel Station Portal**: Real-time telemetry, automated pump reconciliation dashboards.

@@ -17,41 +17,64 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
+const siteUrl = "https://jazeel-zainudeen.github.io";
+
 export const metadata: Metadata = {
-  title: "Jazeel Zainudeen — Full Stack Developer",
-  description: "Personal site of Jazeel Zainudeen, a full stack developer from Kerala, India, building ERP, CRM, HRMS and business software with Laravel, React and Next.js.",
+  metadataBase: new URL(siteUrl),
+  title: "Jazeel Zainudeen — Full Stack Developer | Web Application & ERP Specialist",
+  description: "Jazeel Zainudeen is a full stack developer from Kerala, India specializing in custom ERP, CRM, HRMS systems, modern Web Applications, Laravel, React & Next.js development.",
   icons: {
     icon: "/logo.png",
     shortcut: "/logo.png",
     apple: "/logo.png",
   },
+  alternates: {
+    canonical: siteUrl,
+  },
   keywords: [
+    "Jazeel Zainudeen",
+    "Jazeel Zainudeen developer",
+    "Jazeel Zainudeen Kerala",
+    "Jazeel full stack developer",
+    "web development Kerala",
+    "freelance software developer India",
     "custom software development",
-    "business software development",
-    "erp development services",
-    "crm development company",
-    "hrms software development",
-    "web application maintenance",
-    "legacy application modernization",
-    "laravel development services",
-    "php development company",
-    "react development services",
-    "custom business applications",
-    "software maintenance services",
-    "enterprise application development",
+    "business software developer",
+    "ERP software developer",
+    "CRM developer",
+    "HRMS software development",
+    "Laravel developer Kerala",
+    "React developer India",
+    "Next.js developer",
+    "PHP developer",
+    "MERN stack developer",
+    "web application modernization",
     "business process automation",
-    "remote software developer"
+    "dedicated remote developer"
   ],
-  authors: [{ name: "Jazeel Zainudeen" }],
+  authors: [{ name: "Jazeel Zainudeen", url: siteUrl }],
+  creator: "Jazeel Zainudeen",
+  publisher: "Jazeel Zainudeen",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Jazeel Zainudeen — Full Stack Developer",
-    description: "Personal site of Jazeel Zainudeen, a full stack developer from Kerala, India, building ERP, CRM, HRMS and business software with Laravel, React and Next.js.",
-    url: "/",
-    siteName: "Jazeel.dev",
-    type: "website",
+    title: "Jazeel Zainudeen — Full Stack Developer & Software Engineer",
+    description: "Personal portfolio of Jazeel Zainudeen — Full Stack Developer building ERP, CRM, HRMS & custom web applications using Laravel, React, and Next.js.",
+    url: siteUrl,
+    siteName: "Jazeel Zainudeen — Jazeel.dev",
+    locale: "en_US",
+    type: "profile",
     images: [
       {
-        url: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/9555b5e2-f1f1-4a56-b72f-a5a39d708dcb",
+        url: "/portrait-BNAY2NPR.jpg",
         width: 1200,
         height: 630,
         alt: "Jazeel Zainudeen — Full Stack Developer",
@@ -61,9 +84,44 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Jazeel Zainudeen — Full Stack Developer",
-    description: "Personal site of Jazeel Zainudeen, a full stack developer from Kerala, India, building ERP, CRM, HRMS and business software with Laravel, React and Next.js.",
-    images: ["https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/9555b5e2-f1f1-4a56-b72f-a5a39d708dcb"],
+    description: "Building custom ERP, CRM, HRMS systems & business software with Laravel, React & Next.js.",
+    images: ["/portrait-BNAY2NPR.jpg"],
   },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jazeel Zainudeen",
+  "url": siteUrl,
+  "image": `${siteUrl}/portrait-BNAY2NPR.jpg`,
+  "jobTitle": "Full Stack Developer & Software Engineer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Freelance / Remote Developer"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kerala",
+    "addressCountry": "India"
+  },
+  "sameAs": [
+    "https://wa.me/918086482422",
+    "https://linkedin.com",
+    "https://github.com/jazeel-zainudeen"
+  ],
+  "knowsAbout": [
+    "Custom ERP Development",
+    "CRM Development",
+    "HRMS Development",
+    "Web Application Development",
+    "Laravel",
+    "PHP",
+    "React",
+    "Next.js",
+    "MySQL",
+    "REST APIs"
+  ]
 };
 
 export default function RootLayout({
@@ -73,6 +131,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full scroll-smooth ${manrope.variable} ${sora.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full bg-background text-foreground antialiased selection:bg-brand/20 selection:text-brand">
         {children}
       </body>
