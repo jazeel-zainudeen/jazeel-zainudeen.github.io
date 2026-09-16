@@ -64,6 +64,10 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  category: "technology",
+  formatDetection: {
+    telephone: false,
+  },
   openGraph: {
     title: "Jazeel Zainudeen — Full Stack Engineer & Cloud Architect",
     description: "Personal portfolio of Jazeel Zainudeen — Full Stack Engineer building high-performance web applications, enterprise platforms & cloud solutions using Next.js, React, and TypeScript.",
@@ -83,43 +87,77 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jazeel Zainudeen — Full Stack Engineer",
+    title: "Jazeel Zainudeen — Full Stack Engineer & Cloud Architect",
     description: "Building modern web applications, scalable APIs & cloud platforms with Next.js, React & TypeScript.",
     images: ["/og-image.jpg"],
+    creator: "@jazeeldev",
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Jazeel Zainudeen",
-  "url": siteUrl,
-  "image": `${siteUrl}/portrait-BNAY2NPR.jpg`,
-  "jobTitle": "Full Stack Engineer & Cloud Architect",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "Freelance / Remote Engineer"
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Kerala",
-    "addressCountry": "India"
-  },
-  "sameAs": [
-    "https://wa.me/918086482422",
-    "https://linkedin.com",
-    "https://github.com/jazeel-zainudeen"
-  ],
-  "knowsAbout": [
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Node.js",
-    "Cloud Architecture",
-    "Web Application Development",
-    "Custom ERP & CRM Systems",
-    "PostgreSQL & Databases",
-    "REST & GraphQL APIs"
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#person`,
+      "name": "Jazeel Zainudeen",
+      "url": siteUrl,
+      "image": `${siteUrl}/portrait-BNAY2NPR.jpg`,
+      "jobTitle": "Full Stack Engineer & Cloud Architect",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance / Remote Engineer"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kerala",
+        "addressCountry": "India"
+      },
+      "sameAs": [
+        "https://wa.me/918086482422",
+        "https://linkedin.com",
+        "https://github.com/jazeel-zainudeen"
+      ],
+      "knowsAbout": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Node.js",
+        "Cloud Architecture",
+        "Web Application Development",
+        "Custom ERP & CRM Systems",
+        "PostgreSQL & Databases",
+        "REST & GraphQL APIs"
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${siteUrl}/#service`,
+      "name": "Jazeel Zainudeen — Web Application & Custom Software Development",
+      "url": siteUrl,
+      "image": `${siteUrl}/og-image.jpg`,
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kerala",
+        "addressCountry": "India"
+      },
+      "provider": {
+        "@id": `${siteUrl}/#person`
+      },
+      "areaServed": "Worldwide",
+      "knowsLanguage": ["English", "Malayalam"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      "url": siteUrl,
+      "name": "Jazeel Zainudeen Portfolio",
+      "description": "Full Stack Engineer specializing in Next.js, React, TypeScript & Custom Enterprise Software.",
+      "publisher": {
+        "@id": `${siteUrl}/#person`
+      }
+    }
   ]
 };
 
