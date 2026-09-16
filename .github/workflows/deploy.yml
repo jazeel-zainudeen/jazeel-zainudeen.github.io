@@ -43,6 +43,8 @@ jobs:
       - name: Build Next.js
         env:
           NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
+          NEXT_PUBLIC_TAWKTO_PROPERTY_ID: ${{ secrets.NEXT_PUBLIC_TAWKTO_PROPERTY_ID }}
+          NEXT_PUBLIC_TAWKTO_WIDGET_ID: ${{ secrets.NEXT_PUBLIC_TAWKTO_WIDGET_ID }}
         run: pnpm run build
 
       - name: Upload artifact
