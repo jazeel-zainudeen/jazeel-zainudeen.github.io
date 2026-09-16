@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Sora } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -176,6 +177,9 @@ export default function RootLayout({
       </head>
       <body className="min-h-full bg-background text-foreground antialiased selection:bg-brand/20 selection:text-brand">
         {children}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
       </body>
     </html>
   );
