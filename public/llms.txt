@@ -1,13 +1,13 @@
-# Jazeel Zainudeen — Full Stack Developer & Software Engineer
+# Jazeel Zainudeen — Full Stack Engineer & Cloud Architect
 
 ## Summary
-Jazeel Zainudeen is a Senior Full Stack Developer based in Kerala, India with over 5+ years of production experience building custom enterprise web applications, ERP, CRM, HRMS platforms, and complex REST APIs.
+Jazeel Zainudeen is a Senior Full Stack Engineer based in Kerala, India with over 5+ years of production experience building modern web applications, high-performance Cloud solutions, Next.js / React platforms, custom enterprise ERP/CRM systems, and scalable APIs.
 
 ## Primary Skills & Tech Stack
-- **Backend**: Laravel, PHP, Node.js, Express.js, REST APIs, GraphQL
-- **Frontend**: React, Next.js, TypeScript, Tailwind CSS, HTML5, JavaScript
-- **Databases**: MySQL, PostgreSQL, MongoDB, Redis
-- **Architecture**: Enterprise ERP Systems, CRM Applications, HRMS Revamps, Legacy Software Modernization, Business Process Automation, IoT Telemetry Dashboards
+- **Frontend & Modern Web**: Next.js, React, TypeScript, Tailwind CSS, Modern Web Architecture
+- **Backend & Cloud**: Node.js, TypeScript, REST APIs, GraphQL, Serverless / Cloud Architecture
+- **Databases**: PostgreSQL, MongoDB, Redis, MySQL
+- **Architecture**: Modern Web Applications, Custom ERP Systems, CRM Platforms, Legacy App Modernization, Cloud Migration
 
 ## Location & Contact Information
 - **Location**: Kerala, India (Remote Available Worldwide)

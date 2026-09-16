@@ -70,11 +70,11 @@ const servicesData = [
   },
   {
     num: "05",
-    title: "Legacy Software Modernization",
-    description: "Legacy application modernization — re-architect old PHP, jQuery or desktop apps into modern Laravel + React stacks.",
+    title: "Legacy Application Modernization",
+    description: "Legacy application modernization — re-architect old monolithic apps into high-performance Next.js + React + Cloud architectures.",
     benefits: [
       "Modern UI / UX",
-      "Cloud-ready architecture",
+      "Cloud-ready & Serverless",
       "Lower hosting costs"
     ],
     solves: "Outdated tech, security risks, vendors that disappeared.",
@@ -118,7 +118,7 @@ const whyWorkWithMeData = [
   {
     num: "04",
     title: "Clean foundations",
-    description: "Laravel + React setups that survive growth instead of collapsing under it.",
+    description: "Next.js + React + TypeScript setups that survive growth instead of collapsing under it.",
     ruleL: ""
   },
   {
@@ -129,11 +129,48 @@ const whyWorkWithMeData = [
   },
   {
     num: "06",
-    title: "Always learning",
-    description: "Next.js, MERN, IoT — I pick the stack that fits, not the one that trends.",
+    title: "No fluff",
+    description: "Honest feedback, realistic timelines, zero jargon.",
     ruleL: "lg:border-l lg:border-ink-foreground/20 lg:pl-8"
   }
 ];
+
+const faqData: FAQItem[] = [
+  {
+    question: "What types of applications do you build?",
+    answer: "I specialize in custom Enterprise Software (ERP, CRM, HRMS platforms), modern SaaS web applications, customer-facing portals, real-time dashboards, and REST API integrations."
+  },
+  {
+    question: "How long does a typical project take?",
+    answer: "A MVP or specialized web application feature usually takes 2 to 4 weeks. Comprehensive ERP, CRM or enterprise platform developments range from 6 to 12 weeks depending on scope, module depth, and integration needs."
+  },
+  {
+    question: "How much does custom software development cost?",
+    answer: "Custom business software development is priced by scope — small internal tools typically start in the low thousands USD, while full ERP, CRM or HRMS builds are scoped after a discovery call. You'll get a clear fixed quote or milestone-based proposal before any work starts. Monthly maintenance retainers are also available."
+  },
+  {
+    question: "Do you provide software maintenance?",
+    answer: "Yes. Web application maintenance and software maintenance services are a core part of what I offer — bug fixes, security patches, performance work, feature additions and uptime monitoring on predictable monthly retainers."
+  },
+  {
+    question: "Can you work with existing applications?",
+    answer: "Absolutely. I regularly take over existing React, Next.js, Node.js, and legacy codebases — including legacy application modernization, refactors, and adding new modules without breaking what already works."
+  },
+  {
+    question: "Do you provide dedicated developer services?",
+    answer: "Yes — you can hire me as a dedicated remote software developer on a part-time or full-time monthly basis, working directly inside your team, tools and roadmap."
+  },
+  {
+    question: "How do you communicate with clients?",
+    answer: "Direct and async-first. WhatsApp, email, Slack or your preferred tool, with scheduled weekly demos, written updates and a shared task board. No account managers between you and the person writing the code."
+  },
+  {
+    question: "What technologies do you use?",
+    answer: "Primary stack: Next.js, React, TypeScript, Node.js, Tailwind CSS, PostgreSQL, REST & GraphQL APIs, plus Payload CMS and Laravel where required. The right choice depends on your existing systems and long-term goals — I recommend based on fit and performance."
+  }
+];
+
+const faqs = faqData;
 
 const processData = [
   {
@@ -236,32 +273,6 @@ const testimonialsData = [
   }
 ];
 
-const faqs: FAQItem[] = [
-  {
-    question: "How much does custom software development cost?",
-    answer: "Custom business software development is priced by scope — small internal tools typically start in the low thousands USD, while full ERP, CRM or HRMS builds are scoped after a discovery call. You'll get a clear fixed quote or milestone-based proposal before any work starts. Monthly maintenance retainers are also available."
-  },
-  {
-    question: "Do you provide software maintenance?",
-    answer: "Yes. Web application maintenance and software maintenance services are a core part of what I offer — bug fixes, security patches, performance work, feature additions and uptime monitoring on predictable monthly retainers."
-  },
-  {
-    question: "Can you work with existing applications?",
-    answer: "Absolutely. I regularly take over existing Laravel, PHP, React and MERN codebases — including legacy application modernization, refactors, and adding new modules without breaking what already works."
-  },
-  {
-    question: "Do you provide dedicated developer services?",
-    answer: "Yes — you can hire me as a dedicated remote software developer on a part-time or full-time monthly basis, working directly inside your team, tools and roadmap."
-  },
-  {
-    question: "How do you communicate with clients?",
-    answer: "Direct and async-first. WhatsApp, email, Slack or your preferred tool, with scheduled weekly demos, written updates and a shared task board. No account managers between you and the person writing the code."
-  },
-  {
-    question: "What technologies do you use?",
-    answer: "Primary stack: Laravel, PHP, React, Next.js, MERN stack, MySQL, REST APIs, Tailwind CSS and Payload CMS. The right choice depends on your existing systems and long-term goals — I'll recommend based on fit, not fashion."
-  }
-];
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -674,10 +685,10 @@ export default function Home() {
               <div className="col-span-12 lg:col-span-10 lg:col-start-2">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                   <motion.div whileHover={{ y: -3 }} className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm transition-colors hover:border-brand/30 hover:bg-surface/60">
-                    <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">01</span>Full stack since 2019
+                    <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">01</span>Full Stack since 2019
                   </motion.div>
                   <motion.div whileHover={{ y: -3 }} className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm transition-colors hover:border-brand/30 hover:bg-surface/60">
-                    <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">02</span>Laravel · React · Next.js
+                    <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">02</span>Next.js · React · TypeScript
                   </motion.div>
                   <motion.div whileHover={{ y: -3 }} className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm transition-colors hover:border-brand/30 hover:bg-surface/60">
                     <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">03</span>ERP, CRM &amp; HRMS
@@ -696,16 +707,14 @@ export default function Home() {
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
             <p className="font-display text-[0.68rem] uppercase tracking-[0.24em] text-ink-foreground/50">Tools I work with every day</p>
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">Laravel<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
-              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">PHP<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
-              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">React<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
               <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">Next.js<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
-              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">MERN Stack<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
-              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">MySQL<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
-              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">Payload CMS<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
-              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">REST APIs<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
+              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">React<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
+              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">TypeScript<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
+              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">Node.js<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
               <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">Tailwind CSS<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
-              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">Node.js</span>
+              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">PostgreSQL<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
+              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">REST &amp; GraphQL<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
+              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">Cloud / Serverless</span>
             </div>
           </div>
         </section>
@@ -743,10 +752,10 @@ export default function Home() {
                   A little<br />about me
                 </h2>
                 <p className="mt-7 max-w-xl text-muted-foreground">
-                  I&apos;m <span className="font-medium text-foreground">Jazeel Zainudeen</span>, a full stack developer based in Kerala, India. Over the last five years I&apos;ve worked mostly on the unglamorous side of software — ERP systems, CRM platforms, HRMS tools, internal dashboards and the automations that quietly save people hours every week.
+                  I&apos;m <span className="font-medium text-foreground">Jazeel Zainudeen</span>, a full stack engineer based in Kerala, India. Over the last five years I&apos;ve built production web applications, high-performance Cloud solutions, ERP systems, CRM platforms, and internal automations that quietly save teams hours every week.
                 </p>
                 <p className="mt-4 max-w-xl text-muted-foreground">
-                  I&apos;ve worked with small teams and larger companies across manufacturing, logistics, healthcare and recruitment. I like problems that involve messy real-world workflows, and I tend to stick around long after launch.
+                  I&apos;ve worked with small teams and larger companies across manufacturing, logistics, healthcare and recruitment. I specialize in modern JavaScript/TypeScript ecosystems, micro-frontends, and robust cloud backend architectures.
                 </p>
                 <div className="mt-10 grid grid-cols-3">
                   <div className="rule-t py-4 pr-3">
@@ -765,12 +774,13 @@ export default function Home() {
                 <div className="mt-10">
                   <p className="eyebrow mb-4">Core expertise</p>
                   <div className="flex flex-wrap gap-x-5 gap-y-2">
-                    <span className="font-display text-sm text-muted-foreground">Laravel</span>
-                    <span className="font-display text-sm text-muted-foreground">PHP</span>
-                    <span className="font-display text-sm text-muted-foreground">React</span>
-                    <span className="font-display text-sm text-muted-foreground">MySQL</span>
-                    <span className="font-display text-sm text-muted-foreground">REST APIs</span>
+                    <span className="font-display text-sm text-muted-foreground">Next.js 15</span>
+                    <span className="font-display text-sm text-muted-foreground">React 19</span>
+                    <span className="font-display text-sm text-muted-foreground">TypeScript</span>
+                    <span className="font-display text-sm text-muted-foreground">Node.js</span>
                     <span className="font-display text-sm text-muted-foreground">Tailwind CSS</span>
+                    <span className="font-display text-sm text-muted-foreground">PostgreSQL</span>
+                    <span className="font-display text-sm text-muted-foreground">Cloud Architecture</span>
                     <span className="font-display text-sm text-muted-foreground">Enterprise Web Applications</span>
                   </div>
                 </div>

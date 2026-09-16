@@ -21,8 +21,8 @@ const siteUrl = "https://jazeel-zainudeen.github.io";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Jazeel Zainudeen — Full Stack Developer | Web Application & ERP Specialist",
-  description: "Jazeel Zainudeen is a full stack developer from Kerala, India specializing in custom ERP, CRM, HRMS systems, modern Web Applications, Laravel, React & Next.js development.",
+  title: "Jazeel Zainudeen — Full Stack Engineer | Next.js, React & Cloud Architect",
+  description: "Jazeel Zainudeen is a full stack engineer from Kerala, India specializing in high-performance Web Applications, Next.js, React, TypeScript, Cloud APIs & custom Enterprise Software.",
   icons: {
     icon: "/logo.png",
     shortcut: "/logo.png",
@@ -34,19 +34,18 @@ export const metadata: Metadata = {
   keywords: [
     "Jazeel Zainudeen",
     "Jazeel Zainudeen developer",
-    "Jazeel Zainudeen Kerala",
-    "Jazeel full stack developer",
+    "Next.js developer Kerala",
+    "React developer India",
+    "TypeScript software engineer",
+    "Full stack engineer India",
     "web development Kerala",
     "freelance software developer India",
-    "custom software development",
-    "business software developer",
+    "custom web applications",
+    "cloud software engineer",
     "ERP software developer",
     "CRM developer",
     "HRMS software development",
-    "Laravel developer Kerala",
-    "React developer India",
-    "Next.js developer",
-    "PHP developer",
+    "Node.js developer",
     "MERN stack developer",
     "web application modernization",
     "business process automation",
@@ -66,26 +65,27 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Jazeel Zainudeen — Full Stack Developer & Software Engineer",
-    description: "Personal portfolio of Jazeel Zainudeen — Full Stack Developer building ERP, CRM, HRMS & custom web applications using Laravel, React, and Next.js.",
+    title: "Jazeel Zainudeen — Full Stack Engineer & Cloud Architect",
+    description: "Personal portfolio of Jazeel Zainudeen — Full Stack Engineer building high-performance web applications, enterprise platforms & cloud solutions using Next.js, React, and TypeScript.",
     url: siteUrl,
     siteName: "Jazeel Zainudeen — Jazeel.dev",
     locale: "en_US",
     type: "profile",
     images: [
       {
-        url: "/portrait-BNAY2NPR.jpg",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Jazeel Zainudeen — Full Stack Developer",
+        type: "image/jpeg",
+        alt: "Jazeel Zainudeen — Full Stack Engineer & Cloud Architect",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jazeel Zainudeen — Full Stack Developer",
-    description: "Building custom ERP, CRM, HRMS systems & business software with Laravel, React & Next.js.",
-    images: ["/portrait-BNAY2NPR.jpg"],
+    title: "Jazeel Zainudeen — Full Stack Engineer",
+    description: "Building modern web applications, scalable APIs & cloud platforms with Next.js, React & TypeScript.",
+    images: ["/og-image.jpg"],
   },
 };
 
@@ -95,10 +95,10 @@ const jsonLd = {
   "name": "Jazeel Zainudeen",
   "url": siteUrl,
   "image": `${siteUrl}/portrait-BNAY2NPR.jpg`,
-  "jobTitle": "Full Stack Developer & Software Engineer",
+  "jobTitle": "Full Stack Engineer & Cloud Architect",
   "worksFor": {
     "@type": "Organization",
-    "name": "Freelance / Remote Developer"
+    "name": "Freelance / Remote Engineer"
   },
   "address": {
     "@type": "PostalAddress",
@@ -111,16 +111,15 @@ const jsonLd = {
     "https://github.com/jazeel-zainudeen"
   ],
   "knowsAbout": [
-    "Custom ERP Development",
-    "CRM Development",
-    "HRMS Development",
-    "Web Application Development",
-    "Laravel",
-    "PHP",
-    "React",
     "Next.js",
-    "MySQL",
-    "REST APIs"
+    "React",
+    "TypeScript",
+    "Node.js",
+    "Cloud Architecture",
+    "Web Application Development",
+    "Custom ERP & CRM Systems",
+    "PostgreSQL & Databases",
+    "REST & GraphQL APIs"
   ]
 };
 
