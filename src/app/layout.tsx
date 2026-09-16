@@ -1,24 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Manrope, Sora } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-manrope",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const sora = Sora({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-sora",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#1a1f33",
+  themeColor: "#FAF8F5",
 };
 
 export const metadata: Metadata = {
-  title: "Jazeel Zainudeen — Custom ERP, CRM & HRMS Developer",
-  description: "Full stack developer building custom ERP, CRM, HRMS and business automation software with Laravel, React, Next.js and MERN stack.",
+  title: "Jazeel Zainudeen — Full Stack Developer",
+  description: "Personal site of Jazeel Zainudeen, a full stack developer from Kerala, India, building ERP, CRM, HRMS and business software with Laravel, React and Next.js.",
   icons: {
     icon: "/logo.png",
     shortcut: "/logo.png",
@@ -43,8 +43,8 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Jazeel Zainudeen" }],
   openGraph: {
-    title: "Jazeel Zainudeen — Custom ERP, CRM & HRMS Developer",
-    description: "Full stack developer building custom ERP, CRM, HRMS and business automation software with Laravel, React, Next.js and MERN stack.",
+    title: "Jazeel Zainudeen — Full Stack Developer",
+    description: "Personal site of Jazeel Zainudeen, a full stack developer from Kerala, India, building ERP, CRM, HRMS and business software with Laravel, React and Next.js.",
     url: "/",
     siteName: "Jazeel.dev",
     type: "website",
@@ -53,14 +53,14 @@ export const metadata: Metadata = {
         url: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/9555b5e2-f1f1-4a56-b72f-a5a39d708dcb",
         width: 1200,
         height: 630,
-        alt: "Jazeel Zainudeen Portfolio",
+        alt: "Jazeel Zainudeen — Full Stack Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jazeel Zainudeen — Custom ERP, CRM & HRMS Developer",
-    description: "Full stack developer building custom ERP, CRM, HRMS and business automation software with Laravel, React, Next.js and MERN stack.",
+    title: "Jazeel Zainudeen — Full Stack Developer",
+    description: "Personal site of Jazeel Zainudeen, a full stack developer from Kerala, India, building ERP, CRM, HRMS and business software with Laravel, React and Next.js.",
     images: ["https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/9555b5e2-f1f1-4a56-b72f-a5a39d708dcb"],
   },
 };
@@ -71,8 +71,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`h-full scroll-smooth ${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="min-h-full bg-background text-foreground antialiased selection:bg-brand/30 selection:text-white">
+    <html lang="en" className={`h-full scroll-smooth ${manrope.variable} ${sora.variable}`}>
+      <body className="min-h-full bg-background text-foreground antialiased selection:bg-brand/20 selection:text-brand">
         {children}
       </body>
     </html>

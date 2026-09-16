@@ -8,77 +8,16 @@ interface FAQItem {
   answer: string;
 }
 
-const fadeIn = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-80px" },
-  transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as const }
-};
-
-const fadeInDelay = (delay: number) => ({
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-80px" },
-  transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as const, delay }
-});
-
-const heroFadeIn = {
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as const }
-};
-
-const aboutImageAnim = {
-  initial: { opacity: 0, x: -20 },
-  whileInView: { opacity: 1, x: 0 },
-  viewport: { once: true, margin: "-80px" },
-  transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as const }
-};
-
-const aboutTextAnim = {
-  initial: { opacity: 0, y: 16 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-80px" },
-  transition: { duration: 0.6, delay: 0.1, ease: [0.21, 0.47, 0.32, 0.98] as const }
-};
-
-const serviceCardAnim = (index: number) => ({
+const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-60px" },
-  transition: { duration: 0.5, delay: index * 0.05, ease: [0.21, 0.47, 0.32, 0.98] as const }
-});
-
-const whyCardAnim = (index: number) => ({
-  initial: { opacity: 0, y: 16 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-60px" },
-  transition: { duration: 0.5, delay: index * 0.04, ease: [0.21, 0.47, 0.32, 0.98] as const }
-});
-
-const processStepAnim = (index: number) => ({
-  initial: { opacity: 0, y: 16 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-60px" },
-  transition: { duration: 0.5, delay: index * 0.05, ease: [0.21, 0.47, 0.32, 0.98] as const }
-});
-
-const workCardAnim = (index: number) => ({
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-60px" },
-  transition: { duration: 0.5, delay: index * 0.05, ease: [0.21, 0.47, 0.32, 0.98] as const }
-});
-
-const testimonialCardAnim = (index: number) => ({
-  initial: { opacity: 0, y: 16 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-60px" },
-  transition: { duration: 0.5, delay: index * 0.05, ease: [0.21, 0.47, 0.32, 0.98] as const }
-});
+  transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as const }
+};
 
 const servicesData = [
   {
+    num: "01",
     title: "ERP Development",
     description: "Custom ERP development services tailored to inventory, finance, manufacturing and operations workflows.",
     benefits: [
@@ -87,9 +26,11 @@ const servicesData = [
       "Scales with your business"
     ],
     solves: "Replaces spreadsheets, disconnected tools and slow manual processes.",
-    icon: "database"
+    colSpan: "lg:col-span-2",
+    ruleL: ""
   },
   {
+    num: "02",
     title: "CRM Development",
     description: "Bespoke CRM development from a focused CRM development company — built around your sales pipeline, not someone else's.",
     benefits: [
@@ -98,9 +39,11 @@ const servicesData = [
       "Custom pipelines & reports"
     ],
     solves: "Lost leads, no follow-up visibility, sales teams stuck in email.",
-    icon: "users"
+    colSpan: "",
+    ruleL: "lg:rule-l"
   },
   {
+    num: "03",
     title: "HRMS Development",
     description: "HRMS software development covering attendance, payroll, leave, performance and employee self-service.",
     benefits: [
@@ -109,9 +52,11 @@ const servicesData = [
       "Compliance-ready reports"
     ],
     solves: "Manual HR ops, payroll errors, scattered employee data.",
-    icon: "users-round"
+    colSpan: "",
+    ruleL: "lg:rule-l"
   },
   {
+    num: "04",
     title: "Web Application Maintenance",
     description: "Reliable web application maintenance and software maintenance services — bug fixes, security patches, feature work and uptime support.",
     benefits: [
@@ -120,9 +65,11 @@ const servicesData = [
       "Fast response SLAs"
     ],
     solves: "Aging codebases, broken features, no dev on call.",
-    icon: "wrench"
+    colSpan: "",
+    ruleL: ""
   },
   {
+    num: "05",
     title: "Legacy Software Modernization",
     description: "Legacy application modernization — re-architect old PHP, jQuery or desktop apps into modern Laravel + React stacks.",
     benefits: [
@@ -131,9 +78,11 @@ const servicesData = [
       "Lower hosting costs"
     ],
     solves: "Outdated tech, security risks, vendors that disappeared.",
-    icon: "refresh-cw"
+    colSpan: "",
+    ruleL: "lg:rule-l"
   },
   {
+    num: "06",
     title: "Dedicated Full Stack Developer",
     description: "Hire a remote software developer on a monthly basis — direct communication, your roadmap, your codebase.",
     benefits: [
@@ -142,40 +91,47 @@ const servicesData = [
       "No agency overhead"
     ],
     solves: "Need consistent dev velocity without hiring full-time.",
-    icon: "code-xml"
+    colSpan: "lg:col-span-2",
+    ruleL: "lg:rule-l"
   }
 ];
 
 const whyWorkWithMeData = [
   {
-    title: "5+ Years Experience",
-    description: "Shipped production systems across ERP, CRM, HRMS and IoT-driven platforms.",
-    icon: "award"
+    num: "01",
+    title: "Five years in",
+    description: "Production systems across ERP, CRM, HRMS and IoT-driven platforms.",
+    ruleL: ""
   },
   {
-    title: "Business-Focused Development",
-    description: "Software that maps to real workflows — not abstract feature lists.",
-    icon: "target"
+    num: "02",
+    title: "Workflow first",
+    description: "I start from how people actually work, not from a feature list.",
+    ruleL: "lg:border-l lg:border-ink-foreground/20 lg:pl-8"
   },
   {
-    title: "Long-Term Maintenance",
-    description: "Stay on as your maintenance partner. Predictable retainers, fast response.",
-    icon: "life-buoy"
+    num: "03",
+    title: "I stay around",
+    description: "Most systems I build, I keep maintaining long after launch.",
+    ruleL: "lg:border-l lg:border-ink-foreground/20 lg:pl-8"
   },
   {
-    title: "Scalable Architecture",
-    description: "Clean Laravel + React foundations that grow from MVP to enterprise.",
-    icon: "layers"
+    num: "04",
+    title: "Clean foundations",
+    description: "Laravel + React setups that survive growth instead of collapsing under it.",
+    ruleL: ""
   },
   {
-    title: "Fast Communication",
-    description: "Direct line. No account managers, no week-long email threads.",
-    icon: "message-square"
+    num: "05",
+    title: "Direct to me",
+    description: "You talk to the person writing the code. No layers in between.",
+    ruleL: "lg:border-l lg:border-ink-foreground/20 lg:pl-8"
   },
   {
-    title: "Cost-Effective Alternative",
-    description: "Agency-quality output without agency overhead pricing.",
-    icon: "wallet"
+    num: "06",
+    title: "Always learning",
+    description: "Next.js, MERN, IoT — I pick the stack that fits, not the one that trends.",
+    ruleL: "lg:border-l lg:border-ink-foreground/20 lg:pl-8"
   }
 ];
 
@@ -214,32 +170,48 @@ const processData = [
 
 const selectedWorkData = [
   {
-    title: "Retail Operations Platform",
+    num: "01",
     tag: "Retail · India",
+    title: "Retail Operations Platform",
     description: "Internal business platform supporting one of India's largest electronics retail chains with operations, inventory and reporting modules.",
     impact: "Streamlined multi-branch workflows and reduced manual reporting time across stores.",
-    image: "project-myg-CQpClQIo.jpg"
+    image: "/project-myg-BTHHvbmM.jpg",
+    alt: "Retail Operations Platform — Retail · India",
+    orderImage: "",
+    orderText: "lg:col-start-9"
   },
   {
-    title: "Handyman Marketplace App",
+    num: "02",
     tag: "On-demand services",
+    title: "Handyman Marketplace App",
     description: "Two-sided mobile platform connecting customers with verified handymen — bookings, live tracking, in-app payments and provider onboarding.",
     impact: "Replaced WhatsApp-based dispatch with a fully automated booking & payout pipeline.",
-    image: "project-handyman-Bz-oztfK.jpg"
+    image: "/project-handyman-CCj8He0-.jpg",
+    alt: "Handyman Marketplace App — On-demand services",
+    orderImage: "lg:order-2 lg:col-start-6",
+    orderText: "lg:order-1 lg:col-start-1"
   },
   {
-    title: "HRMS — Software Revamp",
+    num: "03",
     tag: "Recruitment & HR",
+    title: "HRMS — Software Revamp",
     description: "Complete revamp of a legacy HRMS used by a recruitment group — attendance, payroll, leave management and employee self-service.",
     impact: "Cut payroll processing time and modernized the UX for hundreds of daily users.",
-    image: "project-hrms-AYNMxAXq.jpg"
+    image: "/project-hrms-XV0SNF7i.jpg",
+    alt: "HRMS — Software Revamp — Recruitment & HR",
+    orderImage: "",
+    orderText: "lg:col-start-9"
   },
   {
-    title: "IoT Gas Station Management Portal",
+    num: "04",
     tag: "Energy · IoT",
+    title: "IoT Gas Station Management Portal",
     description: "Full IoT-integrated web application + API layer for fuel station operations — live pump telemetry, sales reconciliation and admin dashboards.",
     impact: "Real-time visibility into pump activity and automated end-of-day sales reporting.",
-    image: "project-gasstation-DLudRX2w.jpg"
+    image: "/project-gasstation-CkzHaHlv.jpg",
+    alt: "IoT Gas Station Management Portal — Energy · IoT",
+    orderImage: "lg:order-2 lg:col-start-6",
+    orderText: "lg:order-1 lg:col-start-1"
   }
 ];
 
@@ -248,37 +220,53 @@ const testimonialsData = [
     quote: "Jazeel rebuilt our internal production tracking tool from a tangled spreadsheet into a real ERP module. Reporting that used to take a full day now runs in minutes.",
     author: "Operations Director",
     company: "Manufacturing Company",
-    initials: "MC"
+    ruleL: ""
   },
   {
     quote: "Our HRMS revamp was on time, on scope, and the team still maintains it on a monthly retainer. Communication is the best we've had with any developer.",
     author: "Head of Talent",
     company: "Recruitment Agency",
-    initials: "RA"
+    ruleL: "lg:rule-l lg:pl-8"
   },
   {
     quote: "We needed a logistics dashboard tied into our existing systems. The API work and the React UI were both rock solid — leads now have clear delivery visibility.",
     author: "Founder",
     company: "Logistics Company",
-    initials: "LC"
+    ruleL: "lg:rule-l lg:pl-8"
+  }
+];
+
+const faqs: FAQItem[] = [
+  {
+    question: "How much does custom software development cost?",
+    answer: "Custom business software development is priced by scope — small internal tools typically start in the low thousands USD, while full ERP, CRM or HRMS builds are scoped after a discovery call. You'll get a clear fixed quote or milestone-based proposal before any work starts. Monthly maintenance retainers are also available."
+  },
+  {
+    question: "Do you provide software maintenance?",
+    answer: "Yes. Web application maintenance and software maintenance services are a core part of what I offer — bug fixes, security patches, performance work, feature additions and uptime monitoring on predictable monthly retainers."
+  },
+  {
+    question: "Can you work with existing applications?",
+    answer: "Absolutely. I regularly take over existing Laravel, PHP, React and MERN codebases — including legacy application modernization, refactors, and adding new modules without breaking what already works."
+  },
+  {
+    question: "Do you provide dedicated developer services?",
+    answer: "Yes — you can hire me as a dedicated remote software developer on a part-time or full-time monthly basis, working directly inside your team, tools and roadmap."
+  },
+  {
+    question: "How do you communicate with clients?",
+    answer: "Direct and async-first. WhatsApp, email, Slack or your preferred tool, with scheduled weekly demos, written updates and a shared task board. No account managers between you and the person writing the code."
+  },
+  {
+    question: "What technologies do you use?",
+    answer: "Primary stack: Laravel, PHP, React, Next.js, MERN stack, MySQL, REST APIs, Tailwind CSS and Payload CMS. The right choice depends on your existing systems and long-term goals — I'll recommend based on fit, not fashion."
   }
 ];
 
 export default function Home() {
-  const basePath = "";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
-  const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 0);
-    };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-  
   // Contact Form State
   const [formData, setFormData] = useState({
     name: "",
@@ -305,33 +293,6 @@ export default function Home() {
     phone: false,
     message: false
   });
-
-  const faqs: FAQItem[] = [
-    {
-      question: "How much does custom software development cost?",
-      answer: "Custom business software development is priced by scope — small internal tools typically start in the low thousands USD, while full ERP, CRM or HRMS builds are scoped after a discovery call. You'll get a clear fixed quote or milestone-based proposal before any work starts. Monthly maintenance retainers are also available."
-    },
-    {
-      question: "Do you provide software maintenance?",
-      answer: "Yes. Web application maintenance and software maintenance services are a core part of what I offer — bug fixes, security patches, performance work, feature additions and uptime monitoring on predictable monthly retainers."
-    },
-    {
-      question: "Can you work with existing applications?",
-      answer: "Absolutely. I regularly take over existing Laravel, PHP, React and MERN codebases — including legacy application modernization, refactors, and adding new modules without breaking what already works."
-    },
-    {
-      question: "Do you provide dedicated developer services?",
-      answer: "Yes — you can hire me as a dedicated remote software developer on a part-time or full-time monthly basis, working directly inside your team, tools and roadmap."
-    },
-    {
-      question: "How do you communicate with clients?",
-      answer: "Direct and async-first. WhatsApp, email, Slack or your preferred tool, with scheduled weekly demos, written updates and a shared task board. No account managers between you and the person writing the code."
-    },
-    {
-      question: "What technologies do you use?",
-      answer: "Primary stack: Laravel, PHP, React, Next.js, MERN stack, MySQL, REST APIs, Tailwind CSS and Payload CMS. The right choice depends on your existing systems and long-term goals — I'll recommend based on fit, not fashion."
-    }
-  ];
 
   const handleFaqToggle = (index: number) => {
     setActiveFaq(activeFaq === index ? null : index);
@@ -423,7 +384,6 @@ export default function Home() {
 
     setFormSubmitting(true);
 
-    // Build Calendly URL with prefilled params
     const calendlyBase = "https://calendly.com/zainudheenjazeel/30min";
     const params = new URLSearchParams();
     if (formData.name) params.set("name", formData.name);
@@ -434,10 +394,8 @@ export default function Home() {
     const builtUrl = `${calendlyBase}?${params.toString()}`;
     setCalendlyUrl(builtUrl);
 
-    // Open Calendly immediately (must be synchronous to avoid popup blocker)
     window.open(builtUrl, "_blank", "noopener,noreferrer");
 
-    // Update UI state after a brief delay
     setTimeout(() => {
       setFormSubmitting(false);
       setFormSubmitted(true);
@@ -458,415 +416,394 @@ export default function Home() {
     }, 600);
   };
 
-  const renderServiceIcon = (icon: string) => {
-    switch (icon) {
-      case "database":
-        return (
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-database size-5" aria-hidden="true">
-            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-            <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
-            <path d="M3 12A9 3 0 0 0 21 12"></path>
-          </svg>
-        );
-      case "users":
-        return (
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-users size-5" aria-hidden="true">
-            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-            <path d="M16 3.128a4 4 0 0 1 0 7.744"></path>
-            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-          </svg>
-        );
-      case "users-round":
-        return (
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-users-round size-5" aria-hidden="true">
-            <path d="M18 21a8 8 0 0 0-16 0"></path>
-            <circle cx="10" cy="8" r="5"></circle>
-            <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"></path>
-          </svg>
-        );
-      case "wrench":
-        return (
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-wrench size-5" aria-hidden="true">
-            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"></path>
-          </svg>
-        );
-      case "refresh-cw":
-        return (
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-refresh-cw size-5" aria-hidden="true">
-            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
-            <path d="M21 3v5h-5"></path>
-            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
-            <path d="M8 16H3v5"></path>
-          </svg>
-        );
-      case "code-xml":
-        return (
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-code-xml size-5" aria-hidden="true">
-            <path d="m18 16 4-4-4-4"></path>
-            <path d="m6 8-4 4 4 4"></path>
-            <path d="m14.5 4-5 16"></path>
-          </svg>
-        );
-      default:
-        return null;
-    }
-  };
-
-  const renderWhyIcon = (icon: string) => {
-    switch (icon) {
-      case "award":
-        return (
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-award size-5" aria-hidden="true">
-            <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
-            <circle cx="12" cy="8" r="6"></circle>
-          </svg>
-        );
-      case "target":
-        return (
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-target size-5" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"></circle>
-            <circle cx="12" cy="12" r="6"></circle>
-            <circle cx="12" cy="12" r="2"></circle>
-          </svg>
-        );
-      case "life-buoy":
-        return (
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-life-buoy size-5" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="m4.93 4.93 4.24 4.24"></path>
-            <path d="m14.83 9.17 4.24-4.24"></path>
-            <path d="m14.83 14.83 4.24 4.24"></path>
-            <path d="m9.17 14.83-4.24 4.24"></path>
-            <circle cx="12" cy="12" r="4"></circle>
-          </svg>
-        );
-      case "layers":
-        return (
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-layers size-5" aria-hidden="true">
-            <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path>
-            <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path>
-            <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path>
-          </svg>
-        );
-      case "message-square":
-        return (
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-message-square size-5" aria-hidden="true">
-            <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"></path>
-          </svg>
-        );
-      case "wallet":
-        return (
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-wallet size-5" aria-hidden="true">
-            <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"></path>
-            <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path>
-          </svg>
-        );
-      default:
-        return null;
-    }
-  };
-
   return (
-    <div className="dark relative min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? 'backdrop-blur-xl bg-background/70 border-b border-border' : 'bg-transparent'}`}>
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <a href="#top" className="flex items-center gap-2 font-display text-lg font-semibold">
+    <div className="relative min-h-screen bg-background text-foreground">
+      {/* Floating Capsule Header on Mobile, Full Glass Navbar on Desktop */}
+      <header className="fixed inset-x-0 top-3 z-50 transition-all md:top-0 md:bg-background/90 md:backdrop-blur-xl md:border-b md:border-border">
+        {/* Floating Capsule Container on Mobile, Standard Flex Container on Desktop */}
+        <div className="mx-auto flex h-12 max-w-[calc(100%-1.5rem)] items-center justify-between rounded-full border border-border/70 bg-background/80 px-3.5 backdrop-blur-xl shadow-lg sm:max-w-[calc(100%-2rem)] md:h-16 md:max-w-[88rem] md:rounded-none md:border-0 md:bg-transparent md:px-8 md:shadow-none md:backdrop-blur-none">
+          <a href="#top" className="flex items-center gap-2 font-display text-sm font-bold tracking-tight md:text-base">
             <img 
-              src={`${basePath}/logo.png`} 
+              src="/logo.png" 
               alt="Jazeel" 
-              className="h-9 w-9 rounded-full border border-border bg-surface object-cover" 
+              className="h-6 w-6 rounded-full border border-border object-cover md:h-8 md:w-8" 
             />
-            <span>
-              Jazeel<span className="text-gradient">.dev</span>
-            </span>
+            <span>Jazeel<span className="text-brand-glow">.dev</span></span>
           </a>
-          
-          <nav className="hidden items-center gap-8 md:flex">
-            <a href="#services" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Services</a>
-            <a href="#about" className="text-sm text-muted-foreground transition-colors hover:text-foreground">About</a>
-            <a href="#process" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Process</a>
-            <a href="#work" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Work</a>
-            <a href="#faq" className="text-sm text-muted-foreground transition-colors hover:text-foreground">FAQ</a>
+
+          <nav className="hidden items-center gap-9 md:flex">
+            <a href="#services" className="link-rule font-display text-[0.7rem] font-medium uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground">What I do</a>
+            <a href="#about" className="link-rule font-display text-[0.7rem] font-medium uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground">About</a>
+            <a href="#process" className="link-rule font-display text-[0.7rem] font-medium uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground">Process</a>
+            <a href="#work" className="link-rule font-display text-[0.7rem] font-medium uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground">Work</a>
+            <a href="#faq" className="link-rule font-display text-[0.7rem] font-medium uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground">FAQ</a>
           </nav>
 
           <div className="hidden md:block">
-            <a href="#contact" className="inline-flex items-center rounded-full bg-[image:var(--gradient-brand)] px-4 py-2 text-sm font-medium text-brand-foreground shadow-[var(--shadow-glow)] transition-transform hover:scale-[1.03]">
-              Book a call →
-            </a>
-          </div>
-
-          <button 
-            onClick={() => setMobileMenuOpen(true)}
-            className="md:hidden rounded-md p-2 text-foreground" 
-            aria-label="Toggle menu"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-menu size-5" aria-hidden="true">
-              <path d="M4 5h16"></path>
-              <path d="M4 12h16"></path>
-              <path d="M4 19h16"></path>
-            </svg>
-          </button>
-        </div>
-      </header>
-
-      {/* Mobile Menu Overlay */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 flex flex-col bg-background/95 backdrop-blur-md p-6 transition-all duration-300 md:hidden">
-          <div className="flex items-center justify-between">
-            <a href="#top" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2 font-display text-lg font-semibold">
-              <img 
-                src={`${basePath}/logo.png`} 
-                alt="Jazeel" 
-                className="h-9 w-9 rounded-full border border-border bg-surface object-cover" 
-              />
-              <span>Jazeel<span className="text-gradient">.dev</span></span>
-            </a>
-            <button 
-              onClick={() => setMobileMenuOpen(false)}
-              className="rounded-md p-2 text-foreground" 
-              aria-label="Close menu"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x size-6">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-          </div>
-          <div className="flex flex-col gap-6 mt-16 text-center text-xl font-medium">
-            <a 
-              href="#services" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-muted-foreground hover:text-foreground transition-colors py-2"
-            >
-              Services
-            </a>
-            <a 
-              href="#about" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-muted-foreground hover:text-foreground transition-colors py-2"
-            >
-              About
-            </a>
-            <a 
-              href="#process" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-muted-foreground hover:text-foreground transition-colors py-2"
-            >
-              Process
-            </a>
-            <a 
-              href="#work" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-muted-foreground hover:text-foreground transition-colors py-2"
-            >
-              Work
-            </a>
-            <a 
-              href="#faq" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-muted-foreground hover:text-foreground transition-colors py-2"
-            >
-              FAQ
-            </a>
             <a 
               href="#contact" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="inline-flex items-center justify-center rounded-full bg-[image:var(--gradient-brand)] px-6 py-3.5 text-base font-semibold text-brand-foreground shadow-[var(--shadow-glow)] mt-6"
+              className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 font-display text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-brand-foreground transition-all hover:bg-brand-glow shadow-sm"
             >
-              Book a call
+              Say hello
             </a>
           </div>
-        </div>
-      )}
 
-      {/* Main Content */}
-      <main>
-        {/* Hero Section */}
-        <section id="top" className="relative overflow-hidden pt-28 pb-14 sm:pt-36 sm:pb-20">
-          <div className="absolute inset-0 grid-bg opacity-50 [mask-image:radial-gradient(60%_60%_at_50%_30%,black,transparent)]"></div>
-          <div className="absolute left-1/2 top-10 -z-10 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-[image:var(--gradient-brand)] opacity-20 blur-[120px]"></div>
-          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <motion.div 
-              {...heroFadeIn}
-              className="mx-auto max-w-4xl text-center"
+          <div className="flex items-center gap-2 md:hidden">
+            <a 
+              href="#contact" 
+              className="inline-flex items-center rounded-full bg-brand px-3 py-1 font-display text-[0.65rem] font-semibold uppercase tracking-wider text-brand-foreground shadow-sm"
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
-                <span className="size-1.5 rounded-full bg-success animate-pulse"></span>
-                Available for new projects · Remote worldwide
-              </span>
-              <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-                Custom <span className="text-gradient">ERP, CRM &amp; Business</span>
-                <br className="hidden sm:block" /> Software Development
-              </h1>
-              <p className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg">
-                Helping businesses build, maintain and scale mission-critical business applications with over 5 years of full-stack development experience — from custom ERP and CRM platforms to legacy modernization and dedicated remote developer services.
-              </p>
-              <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              Say hello
+            </a>
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="flex items-center justify-center p-1.5 text-foreground rounded-full border border-border bg-surface active:scale-95 transition-transform" 
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-menu">
+                  <path d="M4 6h16"></path>
+                  <path d="M4 12h16"></path>
+                  <path d="M4 18h16"></path>
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu Overlay - 2 Column Interactive Grid Layout */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: -8 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -8 }}
+              transition={{ duration: 0.16 }}
+              className="mx-auto mt-2 max-w-[calc(100%-1.5rem)] rounded-2xl border border-border bg-background/98 p-4 backdrop-blur-2xl md:hidden shadow-2xl"
+            >
+              <div className="grid grid-cols-2 gap-2.5">
                 <a 
-                  href="#contact" 
-                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[image:var(--gradient-brand)] px-6 py-3.5 text-sm font-semibold text-brand-foreground shadow-[var(--shadow-glow)] transition-transform hover:scale-[1.03] sm:w-auto"
+                  href="#services" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-all hover:bg-surface active:scale-95"
                 >
-                  Schedule Free Consultation
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                  </svg>
+                  <div className="flex items-center justify-between text-muted-foreground">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-code-2 text-brand-glow">
+                      <path d="m18 16 4-4-4-4"/>
+                      <path d="m6 8-4 4 4 4"/>
+                      <path d="m14.5 4-5 16"/>
+                    </svg>
+                    <span className="font-mono text-[0.62rem] text-muted-foreground">01</span>
+                  </div>
+                  <div className="mt-4">
+                    <span className="block font-display text-xs font-bold text-foreground">What I do</span>
+                    <span className="text-[0.65rem] text-muted-foreground">Services &amp; Stack</span>
+                  </div>
+                </a>
+
+                <a 
+                  href="#about" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-all hover:bg-surface active:scale-95"
+                >
+                  <div className="flex items-center justify-between text-muted-foreground">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user text-brand-glow">
+                      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                      <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span className="font-mono text-[0.62rem] text-muted-foreground">02</span>
+                  </div>
+                  <div className="mt-4">
+                    <span className="block font-display text-xs font-bold text-foreground">About</span>
+                    <span className="text-[0.65rem] text-muted-foreground">5+ Yrs Experience</span>
+                  </div>
+                </a>
+
+                <a 
+                  href="#process" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-all hover:bg-surface active:scale-95"
+                >
+                  <div className="flex items-center justify-between text-muted-foreground">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-workflow text-brand-glow">
+                      <rect width="8" height="8" x="3" y="3" rx="2"/>
+                      <path d="M7 11v4a2 2 0 0 0 2 2h4"/>
+                      <rect width="8" height="8" x="13" y="13" rx="2"/>
+                    </svg>
+                    <span className="font-mono text-[0.62rem] text-muted-foreground">03</span>
+                  </div>
+                  <div className="mt-4">
+                    <span className="block font-display text-xs font-bold text-foreground">Process</span>
+                    <span className="text-[0.65rem] text-muted-foreground">How I work</span>
+                  </div>
+                </a>
+
+                <a 
+                  href="#work" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-all hover:bg-surface active:scale-95"
+                >
+                  <div className="flex items-center justify-between text-muted-foreground">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-briefcase text-brand-glow">
+                      <rect width="20" height="14" x="2" y="7" rx="2" ry="2"/>
+                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                    <span className="font-mono text-[0.62rem] text-muted-foreground">04</span>
+                  </div>
+                  <div className="mt-4">
+                    <span className="block font-display text-xs font-bold text-foreground">Work</span>
+                    <span className="text-[0.65rem] text-muted-foreground">Selected Projects</span>
+                  </div>
+                </a>
+              </div>
+
+              <div className="mt-2.5 flex items-center gap-2">
+                <a 
+                  href="#faq" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex flex-1 items-center justify-between rounded-xl border border-border/60 bg-surface/40 px-3.5 py-2.5 font-display text-xs font-semibold text-foreground transition-all hover:bg-surface"
+                >
+                  <span>FAQ</span>
+                  <span className="font-mono text-[0.62rem] text-muted-foreground">05</span>
                 </a>
                 <a 
-                  href="https://wa.me/918086482422?text=Hi%20Jazeel%2C%20I%27d%20like%20to%20discuss%20a%20software%20project." 
+                  href="https://wa.me/918086482422" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border bg-surface/70 px-6 py-3.5 text-sm font-semibold text-foreground backdrop-blur transition-colors hover:bg-surface-2 sm:w-auto"
+                  className="flex items-center justify-center gap-1.5 rounded-xl bg-brand/10 border border-brand/20 px-3.5 py-2.5 font-display text-xs font-bold text-brand-glow transition-all"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-message-circle size-4" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-message-circle">
                     <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path>
                   </svg>
-                  WhatsApp Now
+                  <span>WhatsApp</span>
                 </a>
               </div>
-              <div className="mx-auto mt-10 flex max-w-3xl flex-wrap items-center justify-center gap-x-6 gap-y-3">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-circle-check size-4 text-success" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="m9 12 2 2 4-4"></path>
-                  </svg>
-                  5+ Years Experience
-                </div>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-circle-check size-4 text-success" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="m9 12 2 2 4-4"></path>
-                  </svg>
-                  Full Stack Development
-                </div>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-circle-check size-4 text-success" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="m9 12 2 2 4-4"></path>
-                  </svg>
-                  ERP, CRM &amp; HRMS Solutions
-                </div>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-circle-check size-4 text-success" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="m9 12 2 2 4-4"></path>
-                  </svg>
-                  Ongoing Maintenance &amp; Support
-                </div>
+
+              <div className="mt-3 pt-3 border-t border-border flex items-center justify-between text-[0.68rem] text-muted-foreground font-display">
+                <span>Kerala, India — Remote</span>
+                <span className="flex items-center gap-1.5 text-brand-glow font-semibold">
+                  <span className="size-1.5 rounded-full bg-brand-glow animate-pulse"></span>
+                  Open for work
+                </span>
               </div>
             </motion.div>
-          </div>
-        </section>
+          )}
+        </AnimatePresence>
+      </header>
 
-        {/* Tech Stack Band */}
-        <section aria-label="Tech stack" className="border-y border-border bg-surface/40 py-6 backdrop-blur">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <p className="text-center text-xs uppercase tracking-[0.2em] text-muted-foreground">Trusted stack · Enterprise web applications</p>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-base font-medium text-muted-foreground/80">
-              <span className="transition-colors hover:text-foreground">Laravel</span>
-              <span className="transition-colors hover:text-foreground">PHP</span>
-              <span className="transition-colors hover:text-foreground">React</span>
-              <span className="transition-colors hover:text-foreground">Next.js</span>
-              <span className="transition-colors hover:text-foreground">MERN Stack</span>
-              <span className="transition-colors hover:text-foreground">MySQL</span>
-              <span className="transition-colors hover:text-foreground">Payload CMS</span>
-              <span className="transition-colors hover:text-foreground">REST APIs</span>
-              <span className="transition-colors hover:text-foreground">Tailwind CSS</span>
-              <span className="transition-colors hover:text-foreground">Node.js</span>
+      <main>
+        {/* Hero Section */}
+        <section id="top" className="relative overflow-hidden pt-20 sm:pt-36 md:pt-44">
+          <div className="mx-auto max-w-[88rem] px-4 sm:px-6 lg:px-8">
+            {/* Top Status Strip */}
+            <div className="rule-b hidden sm:flex flex-wrap items-center gap-x-4 gap-y-2 pb-4 font-display text-[0.68rem] uppercase tracking-[0.22em] text-muted-foreground">
+              <span className="flex items-center gap-2 text-brand-glow">
+                <span className="size-1.5 rounded-full bg-brand-glow animate-pulse"></span>
+                Open to interesting work
+              </span>
+              <span>/</span>
+              <span>Kerala, India — remote</span>
+              <span className="ml-auto hidden lg:inline">Personal site of Jazeel Zainudeen</span>
+            </div>
+
+            {/* Main Hero Header & Paragraph */}
+            <div className="grid grid-cols-12 gap-y-8 pt-4 sm:pt-16 md:pt-20 lg:gap-y-12">
+              <div className="col-span-12 lg:col-span-9">
+                <h1 className="font-display text-[2.5rem] font-semibold leading-[1.05] tracking-[-0.04em] sm:text-7xl lg:text-[6.2rem]">
+                  Hi, I&apos;m Jazeel.<br />
+                  I build <span className="text-brand-glow">software</span><br />
+                  <span className="text-muted-foreground">for real work.</span>
+                </h1>
+              </div>
+
+              <div className="col-span-12 lg:col-span-5 lg:col-start-8 lg:-mt-16">
+                <p className="rule-l pl-5 sm:pl-6 text-base sm:text-lg leading-relaxed text-muted-foreground">
+                  A full stack developer from Kerala, India. For the past five years I&apos;ve spent my days building ERP, CRM and HRMS systems, modernizing old codebases, and keeping them alive long after launch. This is my corner of the internet.
+                </p>
+                <div className="mt-8 sm:mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <a 
+                    href="#contact" 
+                    className="group inline-flex items-center justify-center gap-3 rounded-full bg-ink px-7 py-3.5 font-display text-xs font-semibold tracking-wider text-ink-foreground shadow-md transition-all hover:bg-ink/90 active:scale-95"
+                  >
+                    <span>Book a discovery call</span>
+                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand text-brand-foreground transition-transform group-hover:translate-x-0.5">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                      </svg>
+                    </span>
+                  </a>
+                  <a 
+                    href="https://wa.me/918086482422?text=Hi%20Jazeel%2C%20saw%20your%20site%20%E2%80%94%20wanted%20to%20say%20hi." 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="inline-flex items-center justify-center gap-2.5 rounded-full border border-border bg-background px-7 py-3.5 font-display text-xs font-semibold tracking-wider text-foreground shadow-sm transition-all hover:bg-surface hover:border-brand-glow/40 active:scale-95"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-message-circle text-brand-glow">
+                      <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path>
+                    </svg>
+                    <span>Direct WhatsApp</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Stats Row - Spacious layout */}
+            <div className="relative mt-14 sm:mt-20 md:mt-24 grid grid-cols-12 gap-y-6 pb-16 sm:pb-24">
+              <div className="col-span-12 lg:col-span-10 lg:col-start-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm">
+                    <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">01</span>Full stack since 2019
+                  </div>
+                  <div className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm">
+                    <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">02</span>Laravel · React · Next.js
+                  </div>
+                  <div className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm">
+                    <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">03</span>ERP, CRM &amp; HRMS
+                  </div>
+                  <div className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm">
+                    <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">04</span>Kerala, India — Remote
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* About Section */}
-        <section id="about" className="relative py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-              <motion.div 
-                {...aboutImageAnim}
-                className="relative"
-              >
-                <div className="absolute -inset-4 rounded-3xl bg-[image:var(--gradient-brand)] opacity-25 blur-2xl"></div>
-                <div className="relative overflow-hidden rounded-3xl border border-border bg-surface shadow-[var(--shadow-elegant)]">
+        {/* Tech Stack Banner */}
+        <section aria-label="Tech stack" className="bg-ink py-10 text-ink-foreground">
+          <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
+            <p className="font-display text-[0.68rem] uppercase tracking-[0.24em] text-ink-foreground/50">Tools I work with every day</p>
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">Laravel<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
+              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">PHP<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
+              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">React<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
+              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">Next.js<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
+              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">MERN Stack<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
+              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">MySQL<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
+              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">Payload CMS<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
+              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">REST APIs<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
+              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">Tailwind CSS<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
+              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">Node.js</span>
+            </div>
+          </div>
+        </section>
+
+        {/* About Section - Soft Surface Background */}
+        <section id="about" className="bg-surface/50 py-14 sm:bg-transparent sm:py-32">
+          <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
+            <div className="rule-b flex items-baseline justify-between pb-4">
+              <span className="eyebrow">About</span>
+              <span className="index-num text-xs text-muted-foreground">01</span>
+            </div>
+            <div className="grid grid-cols-12 gap-y-8 pt-8 lg:gap-x-12">
+              <div className="col-span-12 sm:col-span-6 lg:col-span-4">
+                <div className="relative">
+                  <div className="absolute -bottom-4 -right-4 hidden h-full w-full bg-sand sm:block"></div>
                   <img 
-                    src={`${basePath}/portrait-BNAY2NPR.jpg`} 
+                    src="/portrait-BNAY2NPR.jpg" 
                     alt="Jazeel Zainudeen, Full Stack Developer" 
                     width="768" 
                     height="896" 
-                    className="h-auto w-full object-cover" 
+                    loading="lazy" 
+                    className="relative aspect-[4/5] w-full object-cover object-top"
                   />
                 </div>
-                <div className="absolute -bottom-4 -right-4 hidden rounded-2xl border border-border bg-background/90 p-4 backdrop-blur sm:block">
-                  <div className="text-2xl font-semibold text-gradient">5+ yrs</div>
-                  <div className="text-xs text-muted-foreground">Full stack experience</div>
-                </div>
-              </motion.div>
-              <motion.div 
-                {...aboutTextAnim}
-              >
-                <span className="text-xs uppercase tracking-[0.2em] text-brand-glow">About</span>
-                <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">Meet Your Software Development Partner</h2>
-                <p className="mt-5 text-muted-foreground">
-                  I&apos;m <span className="font-medium text-foreground">Jazeel Zainudeen</span>, a Full Stack Developer with 5+ years of experience building and maintaining business-critical applications. I help companies develop custom ERP systems, CRM platforms, HRMS solutions, internal business tools, customer portals and workflow automation software.
+              </div>
+              <div className="col-span-12 lg:col-span-7 lg:col-start-6">
+                <h2 className="font-display text-3xl font-semibold leading-[1.05] sm:text-5xl">
+                  A little<br />about me
+                </h2>
+                <p className="mt-7 max-w-xl text-muted-foreground">
+                  I&apos;m <span className="font-medium text-foreground">Jazeel Zainudeen</span>, a full stack developer based in Kerala, India. Over the last five years I&apos;ve worked mostly on the unglamorous side of software — ERP systems, CRM platforms, HRMS tools, internal dashboards and the automations that quietly save people hours every week.
                 </p>
-                <p className="mt-4 text-muted-foreground">
-                  From SMBs to enterprises in manufacturing, logistics, healthcare and recruitment — I deliver scalable enterprise application development with long-term maintenance support.
+                <p className="mt-4 max-w-xl text-muted-foreground">
+                  I&apos;ve worked with small teams and larger companies across manufacturing, logistics, healthcare and recruitment. I like problems that involve messy real-world workflows, and I tend to stick around long after launch.
                 </p>
-                <div className="mt-7">
-                  <p className="mb-3 text-sm font-medium text-foreground">Core expertise</p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-muted-foreground">Laravel</span>
-                    <span className="rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-muted-foreground">PHP</span>
-                    <span className="rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-muted-foreground">React</span>
-                    <span className="rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-muted-foreground">MySQL</span>
-                    <span className="rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-muted-foreground">REST APIs</span>
-                    <span className="rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-muted-foreground">Tailwind CSS</span>
-                    <span className="rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-muted-foreground">Enterprise Web Applications</span>
+                <div className="mt-10 grid grid-cols-3">
+                  <div className="rule-t py-4 pr-3">
+                    <div className="index-num text-3xl font-semibold sm:text-4xl">5+</div>
+                    <div className="mt-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">Years building</div>
+                  </div>
+                  <div className="rule-t py-4 pr-3">
+                    <div className="index-num text-3xl font-semibold sm:text-4xl">20+</div>
+                    <div className="mt-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">Systems shipped</div>
+                  </div>
+                  <div className="rule-t py-4 pr-3">
+                    <div className="index-num text-3xl font-semibold sm:text-4xl">4</div>
+                    <div className="mt-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">Industries</div>
                   </div>
                 </div>
-              </motion.div>
+                <div className="mt-10">
+                  <p className="eyebrow mb-4">Core expertise</p>
+                  <div className="flex flex-wrap gap-x-5 gap-y-2">
+                    <span className="font-display text-sm text-muted-foreground">Laravel</span>
+                    <span className="font-display text-sm text-muted-foreground">PHP</span>
+                    <span className="font-display text-sm text-muted-foreground">React</span>
+                    <span className="font-display text-sm text-muted-foreground">MySQL</span>
+                    <span className="font-display text-sm text-muted-foreground">REST APIs</span>
+                    <span className="font-display text-sm text-muted-foreground">Tailwind CSS</span>
+                    <span className="font-display text-sm text-muted-foreground">Enterprise Web Applications</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Services Section */}
-        <section id="services" className="relative py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="text-xs uppercase tracking-[0.2em] text-brand-glow">Services</span>
-              <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">Custom business software, end to end</h2>
-              <p className="mt-4 text-muted-foreground">Custom software development for SMBs, manufacturing, logistics, healthcare, recruitment and enterprises that need business process automation that actually ships.</p>
+        {/* Services Section - Clean Background */}
+        <section id="services" className="bg-background py-14 sm:py-32">
+          <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
+            <div className="rule-b flex items-baseline justify-between pb-4">
+              <span className="eyebrow">What I work on</span>
+              <span className="index-num text-xs text-muted-foreground">02</span>
             </div>
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {servicesData.map((service, index) => (
+            <div className="grid grid-cols-12 gap-y-6 pt-8 lg:gap-x-12">
+              <h2 className="col-span-12 font-display text-3xl font-semibold leading-[1.05] sm:text-5xl lg:col-span-6">
+                The kind of things<br />I build
+              </h2>
+              <p className="col-span-12 max-w-xl self-end text-muted-foreground lg:col-span-5 lg:col-start-8">
+                Most of my work lives inside companies rather than on the open web — internal systems for manufacturing, logistics, healthcare and recruitment teams.
+              </p>
+            </div>
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+              {servicesData.map((service, i) => (
                 <motion.article 
-                  key={index}
-                  {...serviceCardAnim(index)}
-                  className="group relative flex flex-col rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6 transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-glow)]"
+                  key={i} 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.5, delay: i * 0.05 }}
+                  className={`group rule-t flex flex-col p-6 transition-colors hover:bg-surface sm:p-8 ${service.colSpan} ${service.ruleL}`}
                 >
-                  <div className="mb-5 inline-flex size-11 items-center justify-center rounded-xl bg-surface-2 text-brand-glow ring-1 ring-border">
-                    {renderServiceIcon(service.icon)}
+                  <div className="flex items-start justify-between">
+                    <span className="index-num text-4xl font-semibold text-sand transition-colors group-hover:text-brand">{service.num}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right size-5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand" aria-hidden="true">
+                      <path d="M7 7h10v10"></path>
+                      <path d="M7 17 17 7"></path>
+                    </svg>
                   </div>
-                  <h3 className="font-display text-xl font-semibold">{service.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{service.description}</p>
-                  <ul className="mt-4 space-y-1.5 text-sm text-muted-foreground">
-                    {service.benefits.map((benefit, bIndex) => (
-                      <li key={bIndex} className="flex gap-2">
-                        <span className="mt-2 size-1 shrink-0 rounded-full bg-brand-glow"></span>
+                  <h3 className="mt-8 font-display text-2xl font-semibold tracking-tight">{service.title}</h3>
+                  <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">{service.description}</p>
+                  <ul className="mt-6 space-y-2 text-sm text-foreground/80">
+                    {service.benefits.map((benefit, bIdx) => (
+                      <li key={bIdx} className="flex gap-3">
+                        <span className="mt-2.5 h-px w-3 shrink-0 bg-brand"></span>
                         {benefit}
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-4 rounded-lg border border-border bg-background/40 p-3 text-xs text-muted-foreground">
-                    <span className="font-medium text-foreground">Solves:</span> {service.solves}
+                  <p className="rule-t mt-auto pt-5 text-xs leading-relaxed text-muted-foreground">
+                    <span className="font-display font-semibold uppercase tracking-[0.14em] text-foreground">Solves — </span>
+                    {service.solves}
                   </p>
-                  <a href="#contact" className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-brand-glow">
-                    Discuss this service
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right size-4" aria-hidden="true">
-                      <path d="M7 7h10v10"></path>
-                      <path d="M7 17 17 7"></path>
-                    </svg>
+                  <a href="#contact" className="link-rule mt-6 inline-flex w-fit items-center gap-1.5 font-display text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-foreground">
+                    Ask me about this
                   </a>
                 </motion.article>
               ))}
@@ -874,239 +811,228 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Why Work With Me Section */}
-        <section className="relative py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="text-xs uppercase tracking-[0.2em] text-brand-glow">Why work with me</span>
-              <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">A senior developer, not a sales pitch</h2>
+        {/* How I Work / Why Work With Me Section - Dark Ink */}
+        <section className="bg-ink py-14 text-ink-foreground sm:py-32">
+          <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
+            <div className="flex items-baseline justify-between border-b border-ink-foreground/20 pb-4">
+              <span className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-ink-foreground/60">How I work</span>
+              <span className="index-num text-xs text-ink-foreground/50">03</span>
             </div>
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {whyWorkWithMeData.map((item, index) => (
-                <motion.div 
-                  key={index}
-                  {...whyCardAnim(index)}
-                  className="rounded-2xl border border-border bg-surface/60 p-6 backdrop-blur"
-                >
-                  <div className="mb-4 inline-flex size-10 items-center justify-center rounded-lg bg-[image:var(--gradient-brand)] text-brand-foreground">
-                    {renderWhyIcon(item.icon)}
-                  </div>
-                  <h3 className="font-display text-lg font-semibold">{item.title}</h3>
-                  <p className="mt-1.5 text-sm text-muted-foreground">{item.description}</p>
-                </motion.div>
+            <h2 className="max-w-3xl pt-8 font-display text-3xl font-semibold leading-[1.05] sm:text-5xl">
+              A few things<br />worth knowing
+            </h2>
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+              {whyWorkWithMeData.map((item, idx) => (
+                <div key={idx} className={`border-t border-ink-foreground/20 py-6 pr-6 ${item.ruleL}`}>
+                  <span className="index-num text-xs text-ink-foreground/45">{item.num}</span>
+                  <h3 className="mt-3 font-display text-xl font-semibold">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-foreground/65">{item.description}</p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Process Section */}
-        <section id="process" className="relative py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="text-xs uppercase tracking-[0.2em] text-brand-glow">How we work</span>
-              <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">A predictable, transparent process</h2>
+        {/* Process Section - Soft Surface Background */}
+        <section id="process" className="bg-surface/50 py-14 sm:bg-transparent sm:py-32">
+          <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
+            <div className="rule-b flex items-baseline justify-between pb-4">
+              <span className="eyebrow">My process</span>
+              <span className="index-num text-xs text-muted-foreground">04</span>
             </div>
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {processData.map((step, index) => (
-                <motion.div 
-                  key={index}
-                  {...processStepAnim(index)}
-                  className="relative overflow-hidden rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6"
-                >
-                  <span className="absolute -right-2 -top-4 font-display text-7xl font-bold text-foreground/[0.05]">{step.step}</span>
-                  <div className="relative">
-                    <span className="font-display text-sm font-semibold text-brand-glow">Step {step.step}</span>
-                    <h3 className="mt-2 font-display text-xl font-semibold">{step.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">{step.description}</p>
-                  </div>
-                </motion.div>
+            <h2 className="max-w-3xl pt-8 font-display text-3xl font-semibold leading-[1.05] sm:text-5xl">
+              How a project<br />usually goes
+            </h2>
+            <div className="mt-10">
+              {processData.map((p, pIdx) => (
+                <div key={pIdx} className="rule-t group grid grid-cols-12 items-baseline gap-y-2 py-5 transition-colors hover:bg-surface">
+                  <span className="index-num col-span-12 text-3xl font-semibold text-sand transition-colors group-hover:text-brand sm:col-span-2 sm:text-5xl">{p.step}</span>
+                  <h3 className="col-span-12 font-display text-xl font-semibold sm:col-span-4">{p.title}</h3>
+                  <p className="col-span-12 text-sm text-muted-foreground sm:col-span-6">{p.description}</p>
+                </div>
               ))}
+              <div className="rule-t"></div>
             </div>
           </div>
         </section>
 
-        {/* Selected Work Section */}
-        <section id="work" className="relative py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="text-xs uppercase tracking-[0.2em] text-brand-glow">Selected work</span>
-              <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">Real business software, shipped</h2>
-              <p className="mt-4 text-muted-foreground">A few highlights — several client engagements are under NDA, described here by domain only.</p>
+        {/* Selected Work Section - Clean Background */}
+        <section id="work" className="bg-background py-14 sm:py-32">
+          <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
+            <div className="rule-b flex items-baseline justify-between pb-4">
+              <span className="eyebrow">Things I&apos;ve built</span>
+              <span className="index-num text-xs text-muted-foreground">05</span>
             </div>
-            <div className="mt-14 grid gap-6 md:grid-cols-2">
-              {selectedWorkData.map((project, index) => (
-                <motion.article 
-                  key={index}
-                  {...workCardAnim(index)}
-                  className="group overflow-hidden rounded-2xl border border-border bg-surface/60 backdrop-blur transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-[var(--shadow-elegant)]"
-                >
-                  <div className="relative aspect-[16/10] overflow-hidden bg-background">
-                    <img 
-                      src={`${basePath}/${project.image}`} 
-                      alt={`${project.title} — ${project.tag}`} 
-                      loading="lazy" 
-                      width="1024" 
-                      height="640" 
-                      className="h-full w-full object-cover opacity-80 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent"></div>
-                    <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-border bg-background/80 px-2.5 py-1 text-xs text-muted-foreground backdrop-blur">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock size-3" aria-hidden="true">
-                        <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
-                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                      </svg>
-                      NDA Signed
-                    </span>
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-baseline justify-between gap-3">
-                      <h3 className="font-display text-xl font-semibold">{project.title}</h3>
-                      <span className="text-xs text-muted-foreground">{project.tag}</span>
+            <div className="grid grid-cols-12 gap-y-6 pt-8 lg:gap-x-12">
+              <h2 className="col-span-12 font-display text-3xl font-semibold leading-[1.05] sm:text-5xl lg:col-span-6">
+                A few projects<br />I&apos;m proud of
+              </h2>
+              <p className="col-span-12 max-w-xl self-end text-muted-foreground lg:col-span-5 lg:col-start-8">
+                Most of this work sits behind NDAs, so it&apos;s described by domain rather than by client name.
+              </p>
+            </div>
+            <div className="mt-10 space-y-12 sm:space-y-20">
+              {selectedWorkData.map((work, wIdx) => (
+                <article key={wIdx} className="group grid grid-cols-12 gap-y-6 lg:gap-x-12">
+                  <div className={`col-span-12 lg:col-span-7 ${work.orderImage}`}>
+                    <div className="relative overflow-hidden">
+                      <img 
+                        src={work.image} 
+                        alt={work.alt} 
+                        loading="lazy" 
+                        width="1024" 
+                        height="640" 
+                        className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                      />
+                      <span className="absolute left-0 top-0 inline-flex items-center gap-1.5 bg-ink px-3 py-1.5 font-display text-[0.62rem] uppercase tracking-[0.16em] text-ink-foreground">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock size-3" aria-hidden="true">
+                          <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        NDA Signed
+                      </span>
                     </div>
-                    <p className="mt-2 text-sm text-muted-foreground">{project.description}</p>
-                    <p className="mt-4 border-t border-border pt-4 text-sm">
-                      <span className="font-medium text-brand-glow">Impact: </span>
-                      <span className="text-muted-foreground">{project.impact}</span>
+                  </div>
+                  <div className={`col-span-12 self-center lg:col-span-4 ${work.orderText}`}>
+                    <span className="index-num text-xs text-muted-foreground">{work.num} / {work.tag}</span>
+                    <h3 className="mt-3 font-display text-2xl font-semibold leading-tight sm:text-3xl">{work.title}</h3>
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{work.description}</p>
+                    <p className="rule-t mt-6 pt-5 text-sm">
+                      <span className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-brand">Impact — </span>
+                      <span className="text-muted-foreground">{work.impact}</span>
                     </p>
                   </div>
-                </motion.article>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section className="relative py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="text-xs uppercase tracking-[0.2em] text-brand-glow">Testimonials</span>
-              <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">Trusted by teams that ship</h2>
+        {/* Testimonials Section - Soft Surface Background */}
+        <section className="bg-surface/50 py-14 sm:bg-transparent sm:py-32">
+          <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
+            <div className="rule-b flex items-baseline justify-between pb-4">
+              <span className="eyebrow">Kind words</span>
+              <span className="index-num text-xs text-muted-foreground">06</span>
             </div>
-            <div className="mt-14 grid gap-5 lg:grid-cols-3">
-              {testimonialsData.map((item, index) => (
-                <motion.figure 
-                  key={index}
-                  {...testimonialCardAnim(index)}
-                  className="relative flex flex-col rounded-2xl border border-border bg-[image:var(--gradient-surface)] p-6"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-quote size-7 text-brand-glow/60" aria-hidden="true">
-                    <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
-                    <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
-                  </svg>
-                  <blockquote className="mt-4 text-sm leading-relaxed text-foreground/90">
-                    &quot;{item.quote}&quot;
+            <h2 className="max-w-3xl pt-8 font-display text-3xl font-semibold leading-[1.05] sm:text-5xl">
+              What people<br />I&apos;ve worked with say
+            </h2>
+            <div className="mt-10 grid grid-cols-1 lg:grid-cols-3">
+              {testimonialsData.map((t, tIdx) => (
+                <figure key={tIdx} className={`rule-t flex flex-col py-6 pr-8 ${t.ruleL}`}>
+                  <span className="font-display text-4xl leading-none text-sand">“</span>
+                  <blockquote className="mt-3 font-display text-base leading-snug tracking-tight text-foreground sm:text-lg">
+                    {t.quote}
                   </blockquote>
-                  <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-5">
-                    <div className="grid size-10 place-items-center rounded-full bg-[image:var(--gradient-brand)] text-sm font-semibold text-brand-foreground">{item.initials}</div>
-                    <div>
-                      <div className="text-sm font-medium text-foreground">{item.author}</div>
-                      <div className="text-xs text-muted-foreground">{item.company}</div>
-                    </div>
+                  <figcaption className="rule-t mt-auto pt-4">
+                    <div className="font-display text-sm font-semibold">{t.author}</div>
+                    <div className="mt-0.5 text-xs uppercase tracking-[0.14em] text-muted-foreground">{t.company}</div>
                   </figcaption>
-                </motion.figure>
+                </figure>
               ))}
             </div>
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section id="faq" className="relative py-16 sm:py-20">
-          <motion.div 
-            {...fadeIn}
-            className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8"
-          >
-            <div className="text-center">
-              <span className="text-xs uppercase tracking-[0.2em] text-brand-glow">FAQ</span>
-              <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">Questions, answered</h2>
+        {/* FAQ Section - Clean Background */}
+        <section id="faq" className="bg-background py-14 sm:py-32">
+          <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
+            <div className="rule-b flex items-baseline justify-between pb-4">
+              <span className="eyebrow">FAQ</span>
+              <span className="index-num text-xs text-muted-foreground">07</span>
             </div>
-            <div className="mt-10 space-y-3">
-              {faqs.map((faq, index) => {
-                const isOpen = activeFaq === index;
-                return (
-                  <div 
-                    key={index}
-                    className="rounded-2xl border border-border bg-surface/60 px-5 backdrop-blur"
-                  >
-                    <h3>
-                      <button
-                        type="button"
-                        onClick={() => handleFaqToggle(index)}
-                        aria-expanded={isOpen}
-                        className="flex flex-1 w-full items-center justify-between cursor-pointer py-5 text-left font-display text-base font-medium text-foreground hover:no-underline"
-                      >
-                        <span>{faq.question}</span>
-                        <svg 
-                          xmlns="http://www.w3.org/2000/svg" 
-                          width="24" 
-                          height="24" 
-                          viewBox="0 0 24 24" 
-                          fill="none" 
-                          stroke="currentColor" 
-                          strokeWidth="2" 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round" 
-                          className={`lucide lucide-chevron-down h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
-                          aria-hidden="true"
-                        >
-                          <path d="m6 9 6 6 6-6"></path>
-                        </svg>
-                      </button>
-                    </h3>
-                    <AnimatePresence initial={false}>
-                      {isOpen && (
-                        <motion.div
-                          initial="collapsed"
-                          animate="open"
-                          exit="collapsed"
-                          variants={{
-                            open: { opacity: 1, height: "auto" },
-                            collapsed: { opacity: 0, height: 0 }
-                          }}
-                          transition={{ duration: 0.2, ease: "easeOut" }}
-                          className="overflow-hidden"
-                          role="region"
-                        >
-                          <div className="pt-0 pb-5 text-sm leading-relaxed text-muted-foreground">
-                            <p>{faq.answer}</p>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                );
-              })}
+            <div className="grid grid-cols-12 gap-y-8 pt-8 lg:gap-x-12">
+              <h2 className="col-span-12 font-display text-3xl font-semibold leading-[1.05] sm:text-5xl lg:col-span-4">
+                Questions,<br />answered
+              </h2>
+              <div className="col-span-12 lg:col-span-7 lg:col-start-6">
+                <div>
+                  {faqs.map((faq, index) => {
+                    const isOpen = activeFaq === index;
+                    return (
+                      <div key={index} className="rule-t border-b-0">
+                        <h3>
+                          <button
+                            type="button"
+                            onClick={() => handleFaqToggle(index)}
+                            className="flex w-full items-center justify-between py-5 text-left font-display text-base font-medium transition-all hover:no-underline"
+                            aria-expanded={isOpen}
+                          >
+                            <span>{faq.question}</span>
+                            <svg 
+                              xmlns="http://www.w3.org/2000/svg" 
+                              width="24" 
+                              height="24" 
+                              viewBox="0 0 24 24" 
+                              fill="none" 
+                              stroke="currentColor" 
+                              strokeWidth="2" 
+                              strokeLinecap="round" 
+                              strokeLinejoin="round" 
+                              className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                              aria-hidden="true"
+                            >
+                              <path d="m6 9 6 6 6-6"></path>
+                            </svg>
+                          </button>
+                        </h3>
+                        <AnimatePresence initial={false}>
+                          {isOpen && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.2, ease: "easeOut" }}
+                              className="overflow-hidden text-sm"
+                            >
+                              <div className="pb-5 text-muted-foreground leading-relaxed">
+                                {faq.answer}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+                  <div className="rule-t"></div>
+                </div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         </section>
 
-        {/* Contact Form Section */}
-        <section id="contact" className="relative overflow-hidden py-16 sm:py-20">
-          <div className="absolute left-1/2 top-1/2 -z-10 h-[28rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[image:var(--gradient-brand)] opacity-15 blur-[120px]"></div>
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <motion.div 
-              {...fadeIn}
-              className="grid gap-10 rounded-3xl border border-border bg-[image:var(--gradient-surface)] p-6 shadow-[var(--shadow-elegant)] sm:p-10 lg:grid-cols-5 lg:p-14"
-            >
-              <div className="lg:col-span-2">
-                <span className="text-xs uppercase tracking-[0.2em] text-brand-glow">Get in touch</span>
-                <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">Let&apos;s discuss your software project</h2>
-                <p className="mt-4 text-muted-foreground">Share a few details and book a free 30-minute consultation call directly on my calendar.</p>
-                <div className="mt-8 space-y-4 text-sm">
-                  <a href="tel:+918086482422" className="flex items-center gap-3 text-muted-foreground transition-colors hover:text-foreground">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-phone size-4 text-brand-glow" aria-hidden="true">
+        {/* Contact Section */}
+        <section id="contact" className="overflow-hidden bg-ink py-14 text-ink-foreground sm:py-32">
+          <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
+            <div className="flex items-baseline justify-between border-b border-ink-foreground/20 pb-4">
+              <span className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-ink-foreground/60">Say hello</span>
+              <span className="index-num text-xs text-ink-foreground/50">08</span>
+            </div>
+            <div className="grid grid-cols-12 gap-y-12 pt-14 lg:gap-x-12">
+              <div className="col-span-12 lg:col-span-5">
+                <h2 className="font-display text-3xl font-semibold leading-[1.05] sm:text-5xl">
+                  Let&apos;s have<br />a conversation
+                </h2>
+                <p className="mt-6 max-w-md text-ink-foreground/65">
+                  An idea, a question, or just hello — drop me a line and I usually reply within a day. WhatsApp works too, if that&apos;s easier.
+                </p>
+                <div className="mt-10">
+                  <a href="tel:+918086482422" className="flex items-center gap-3 border-t border-ink-foreground/20 py-4 text-sm text-ink-foreground/75 transition-colors hover:text-ink-foreground">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-phone size-4 text-brand" aria-hidden="true">
                       <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path>
                     </svg>
                     +91 80864 82422
                   </a>
-                  <a href="mailto:zainudheenjazeel@gmail.com" className="flex items-center gap-3 text-muted-foreground transition-colors hover:text-foreground">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail size-4 text-brand-glow" aria-hidden="true">
+                  <a href="mailto:zainudheenjazeel@gmail.com" className="flex items-center gap-3 border-t border-ink-foreground/20 py-4 text-sm text-ink-foreground/75 transition-colors hover:text-ink-foreground">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail size-4 text-brand" aria-hidden="true">
                       <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
                       <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                     </svg>
                     zainudheenjazeel@gmail.com
                   </a>
-                  <a href="https://wa.me/918086482422" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-muted-foreground transition-colors hover:text-foreground">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-message-circle size-4 text-brand-glow" aria-hidden="true">
+                  <a href="https://wa.me/918086482422" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 border-y border-ink-foreground/20 py-4 text-sm text-ink-foreground/75 transition-colors hover:text-ink-foreground">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-message-circle size-4 text-brand" aria-hidden="true">
                       <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path>
                     </svg>
                     WhatsApp
@@ -1114,43 +1040,34 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="lg:col-span-3">
+              <form onSubmit={handleFormSubmit} className="col-span-12 space-y-5 lg:col-span-6 lg:col-start-7" noValidate>
                 {formSubmitted ? (
-                  <div className="flex flex-col items-center justify-center text-center p-8 h-full bg-surface-2/40 border border-border/30 rounded-2xl backdrop-blur">
-                    <div className="size-16 rounded-full bg-success/20 text-success flex items-center justify-center mb-6">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                    </div>
-                    <h3 className="font-display text-2xl font-semibold mb-2">Calendly is Open!</h3>
-                    <p className="text-muted-foreground text-sm max-w-sm mb-4">
-                      A new tab has opened with my calendar. Pick a 30-minute slot that works for you and I&apos;ll confirm within hours.
+                  <div className="border border-ink-foreground/25 p-8 text-center">
+                    <h3 className="font-display text-xl font-semibold mb-2 text-ink-foreground">Calendly Opened!</h3>
+                    <p className="text-ink-foreground/75 text-sm mb-4">
+                      A new tab has opened with my calendar. Pick a 30-minute slot that works for you.
                     </p>
                     {calendlyUrl && (
-                      <p className="text-muted-foreground text-xs max-w-sm mb-6">
+                      <p className="text-ink-foreground/60 text-xs mb-6">
                         Popup didn&apos;t open?{" "}
-                        <a
-                          href={calendlyUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gradient font-semibold underline decoration-brand/40 underline-offset-2 hover:decoration-brand transition-colors"
-                        >
+                        <a href={calendlyUrl} target="_blank" rel="noopener noreferrer" className="text-brand underline">
                           Click here to open Calendly
                         </a>
                       </p>
                     )}
                     <button 
+                      type="button"
                       onClick={() => setFormSubmitted(false)}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-5 py-2.5 text-sm font-semibold hover:bg-surface-2 transition-colors"
+                      className="inline-flex items-center justify-center gap-2 bg-background px-6 py-3 font-display text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-foreground"
                     >
                       Send another message
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleFormSubmit} className="space-y-4" noValidate>
-                    <div className="grid gap-4 sm:grid-cols-2">
+                  <>
+                    <div className="grid gap-5 sm:grid-cols-2">
                       <label className="block">
-                        <span className="mb-1.5 block text-xs font-medium text-muted-foreground">Name *</span>
+                        <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/55">Name</span>
                         <input 
                           type="text" 
                           name="name"
@@ -1158,32 +1075,29 @@ export default function Home() {
                           onChange={handleFormChange}
                           onBlur={handleFormBlur}
                           autoComplete="name" 
-                          required
-                          className={`w-full rounded-lg border bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:ring-2 ${
-                            formErrors.name 
-                              ? 'border-destructive focus:border-destructive focus:ring-destructive/30' 
-                              : 'border-input focus:border-brand focus:ring-brand/30'
-                          }`}
+                          className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand" 
                           placeholder="Your full name" 
                         />
-                        {formErrors.name && (
-                          <span className="mt-1.5 block text-xs text-destructive">{formErrors.name}</span>
+                        {touched.name && formErrors.name && (
+                          <span className="mt-1 block text-xs text-red-400">{formErrors.name}</span>
                         )}
                       </label>
+
                       <label className="block">
-                        <span className="mb-1.5 block text-xs font-medium text-muted-foreground">Company</span>
+                        <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/55">Company</span>
                         <input 
                           type="text" 
                           name="company"
                           value={formData.company}
                           onChange={handleFormChange}
                           autoComplete="organization" 
-                          className="w-full rounded-lg border border-input bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:border-brand focus:ring-2 focus:ring-brand/30" 
+                          className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand" 
                           placeholder="Company name" 
                         />
                       </label>
+
                       <label className="block">
-                        <span className="mb-1.5 block text-xs font-medium text-muted-foreground">Email *</span>
+                        <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/55">Email</span>
                         <input 
                           type="email" 
                           name="email"
@@ -1191,20 +1105,16 @@ export default function Home() {
                           onChange={handleFormChange}
                           onBlur={handleFormBlur}
                           autoComplete="email" 
-                          required
-                          className={`w-full rounded-lg border bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:ring-2 ${
-                            formErrors.email 
-                              ? 'border-destructive focus:border-destructive focus:ring-destructive/30' 
-                              : 'border-input focus:border-brand focus:ring-brand/30'
-                          }`}
+                          className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand" 
                           placeholder="you@company.com" 
                         />
-                        {formErrors.email && (
-                          <span className="mt-1.5 block text-xs text-destructive">{formErrors.email}</span>
+                        {touched.email && formErrors.email && (
+                          <span className="mt-1 block text-xs text-red-400">{formErrors.email}</span>
                         )}
                       </label>
+
                       <label className="block">
-                        <span className="mb-1.5 block text-xs font-medium text-muted-foreground">Phone</span>
+                        <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/55">Phone</span>
                         <input 
                           type="tel" 
                           name="phone"
@@ -1212,116 +1122,94 @@ export default function Home() {
                           onChange={handleFormChange}
                           onBlur={handleFormBlur}
                           autoComplete="tel" 
-                          className={`w-full rounded-lg border bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:ring-2 ${
-                            formErrors.phone 
-                              ? 'border-destructive focus:border-destructive focus:ring-destructive/30' 
-                              : 'border-input focus:border-brand focus:ring-brand/30'
-                          }`}
+                          className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand" 
                           placeholder="+91 ..." 
                         />
-                        {formErrors.phone && (
-                          <span className="mt-1.5 block text-xs text-destructive">{formErrors.phone}</span>
+                        {touched.phone && formErrors.phone && (
+                          <span className="mt-1 block text-xs text-red-400">{formErrors.phone}</span>
                         )}
                       </label>
                     </div>
+
                     <label className="block">
-                      <span className="mb-1.5 block text-xs font-medium text-muted-foreground">Project Type</span>
+                      <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/55">Project Type</span>
                       <select 
-                        name="projectType"
+                        name="projectType" 
                         value={formData.projectType}
                         onChange={handleFormChange}
-                        className="w-full rounded-lg border border-input bg-background/60 px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-brand focus:ring-2 focus:ring-brand/30 appearance-none"
+                        className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand"
                       >
-                        <option value="Custom ERP Development">Custom ERP Development</option>
-                        <option value="CRM Development">CRM Development</option>
-                        <option value="HRMS Development">HRMS Development</option>
-                        <option value="Business Process Automation">Business Process Automation</option>
-                        <option value="Custom Business Software">Custom Business Software</option>
-                        <option value="Legacy System Modernization">Legacy System Modernization</option>
-                        <option value="Web Application Maintenance">Web Application Maintenance</option>
-                        <option value="Next.js &amp; Payload CMS">Next.js &amp; Payload CMS</option>
-                        <option value="Laravel Development">Laravel Development</option>
-                        <option value="PHP Development">PHP Development</option>
-                        <option value="React Development">React Development</option>
-                        <option value="MERN Stack Development">MERN Stack Development</option>
-                        <option value="Dedicated Remote Developer">Dedicated Remote Developer</option>
-                        <option value="Other / Not Sure">Other / Not Sure</option>
+                        <option value="Custom ERP Development" className="bg-ink text-ink-foreground">Custom ERP Development</option>
+                        <option value="CRM Development" className="bg-ink text-ink-foreground">CRM Development</option>
+                        <option value="HRMS Development" className="bg-ink text-ink-foreground">HRMS Development</option>
+                        <option value="Business Process Automation" className="bg-ink text-ink-foreground">Business Process Automation</option>
+                        <option value="Custom Business Software" className="bg-ink text-ink-foreground">Custom Business Software</option>
+                        <option value="Legacy System Modernization" className="bg-ink text-ink-foreground">Legacy System Modernization</option>
+                        <option value="Web Application Maintenance" className="bg-ink text-ink-foreground">Web Application Maintenance</option>
+                        <option value="Next.js &amp; Payload CMS" className="bg-ink text-ink-foreground">Next.js &amp; Payload CMS</option>
+                        <option value="Laravel Development" className="bg-ink text-ink-foreground">Laravel Development</option>
+                        <option value="PHP Development" className="bg-ink text-ink-foreground">PHP Development</option>
+                        <option value="React Development" className="bg-ink text-ink-foreground">React Development</option>
+                        <option value="MERN Stack Development" className="bg-ink text-ink-foreground">MERN Stack Development</option>
+                        <option value="Dedicated Remote Developer" className="bg-ink text-ink-foreground">Dedicated Remote Developer</option>
+                        <option value="Other / Not Sure" className="bg-ink text-ink-foreground">Other / Not Sure</option>
                       </select>
                     </label>
+
                     <label className="block">
-                      <span className="mb-1.5 block text-xs font-medium text-muted-foreground">Message *</span>
+                      <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/55">Message</span>
                       <textarea 
-                        name="message"
+                        name="message" 
+                        rows={5} 
                         value={formData.message}
                         onChange={handleFormChange}
                         onBlur={handleFormBlur}
-                        rows={5} 
-                        required
-                        className={`w-full rounded-lg border bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:ring-2 ${
-                          formErrors.message 
-                            ? 'border-destructive focus:border-destructive focus:ring-destructive/30' 
-                            : 'border-input focus:border-brand focus:ring-brand/30'
-                        }`}
-                        placeholder="Tell me about your business, current systems and what you'd like to build or improve."
+                        className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand" 
+                        placeholder="Tell me a bit about what you have in mind."
                       ></textarea>
-                      {formErrors.message && (
-                        <span className="mt-1.5 block text-xs text-destructive">{formErrors.message}</span>
+                      {touched.message && formErrors.message && (
+                        <span className="mt-1 block text-xs text-red-400">{formErrors.message}</span>
                       )}
                     </label>
+
                     <button 
                       type="submit" 
                       disabled={formSubmitting}
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[image:var(--gradient-brand)] px-6 py-3.5 text-sm font-semibold text-brand-foreground shadow-[var(--shadow-glow)] transition-transform hover:scale-[1.01] disabled:opacity-70 cursor-pointer"
+                      className="inline-flex w-full items-center justify-center gap-2 bg-background px-6 py-4 font-display text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-foreground transition-colors hover:bg-brand hover:text-white disabled:opacity-70"
                     >
-                      {formSubmitting ? (
-                        <>
-                          <svg className="animate-spin size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
-                          </svg>
-                          Opening Calendly...
-                        </>
-                      ) : (
-                        <>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-4" aria-hidden="true">
-                            <path d="M8 2v4"></path>
-                            <path d="M16 2v4"></path>
-                            <rect width="18" height="18" x="3" y="4" rx="2"></rect>
-                            <path d="M3 10h18"></path>
-                          </svg>
-                          Book Free Consultation
-                        </>
-                      )}
+                      {formSubmitting ? "Sending..." : "Send message"}
                     </button>
-                  </form>
+                  </>
                 )}
-              </div>
-            </motion.div>
+              </form>
+            </div>
           </div>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-background/80 pt-16 pb-10 backdrop-blur">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-4">
+      <footer className="rule-t bg-background pt-16 pb-10">
+        <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
+          <div className="grid gap-12 lg:grid-cols-4">
             <div>
-              <div className="flex items-center gap-2 font-display text-lg font-semibold">
+              <div className="flex items-center gap-2.5 font-display text-base font-semibold tracking-tight">
                 <img 
-                  src={`${basePath}/logo.png`} 
+                  src="/logo.png" 
                   alt="Jazeel" 
-                  className="h-7 w-7 rounded-full border border-border bg-surface object-cover" 
+                  className="h-8 w-8 rounded-full border border-border object-cover" 
                 />
-                <span>Jazeel<span className="text-gradient">.dev</span></span>
+                <span>Jazeel<span className="text-brand">.dev</span></span>
               </div>
-              <p className="mt-4 text-sm text-muted-foreground">Full Stack Developer specializing in custom ERP, CRM, HRMS and business process automation for SMBs and enterprises worldwide.</p>
-              <div className="mt-5 flex gap-3">
+              <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
+                Full stack developer from Kerala, India. I build and look after business software — ERP, CRM, HRMS and the odd IoT platform.
+              </p>
+              <div className="mt-6 flex gap-2">
                 <a 
                   href="https://wa.me/918086482422" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   aria-label="WhatsApp" 
-                  className="grid size-9 place-items-center rounded-full border border-border bg-surface text-muted-foreground transition-colors hover:border-brand/40 hover:text-foreground"
+                  className="grid size-9 place-items-center border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-message-circle size-4" aria-hidden="true">
                     <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path>
@@ -1332,7 +1220,7 @@ export default function Home() {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   aria-label="LinkedIn" 
-                  className="grid size-9 place-items-center rounded-full border border-border bg-surface text-muted-foreground transition-colors hover:border-brand/40 hover:text-foreground"
+                  className="grid size-9 place-items-center border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-linkedin size-4" aria-hidden="true">
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
@@ -1345,7 +1233,7 @@ export default function Home() {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   aria-label="Email" 
-                  className="grid size-9 place-items-center rounded-full border border-border bg-surface text-muted-foreground transition-colors hover:border-brand/40 hover:text-foreground"
+                  className="grid size-9 place-items-center border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail size-4" aria-hidden="true">
                     <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
@@ -1357,7 +1245,7 @@ export default function Home() {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   aria-label="Phone" 
-                  className="grid size-9 place-items-center rounded-full border border-border bg-surface text-muted-foreground transition-colors hover:border-brand/40 hover:text-foreground"
+                  className="grid size-9 place-items-center border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-phone size-4" aria-hidden="true">
                     <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path>
@@ -1367,107 +1255,50 @@ export default function Home() {
             </div>
 
             <div>
-              <p className="font-display text-sm font-semibold">Quick Links</p>
-              <ul className="mt-4 space-y-2 text-sm">
-                <li>
-                  <a href="#services" className="text-muted-foreground transition-colors hover:text-foreground">Services</a>
-                </li>
-                <li>
-                  <a href="#about" className="text-muted-foreground transition-colors hover:text-foreground">About</a>
-                </li>
-                <li>
-                  <a href="#process" className="text-muted-foreground transition-colors hover:text-foreground">Process</a>
-                </li>
-                <li>
-                  <a href="#work" className="text-muted-foreground transition-colors hover:text-foreground">Work</a>
-                </li>
-                <li>
-                  <a href="#faq" className="text-muted-foreground transition-colors hover:text-foreground">FAQ</a>
-                </li>
-                <li>
-                  <a href="#contact" className="text-muted-foreground transition-colors hover:text-foreground">Contact</a>
-                </li>
+              <p className="eyebrow">Quick Links</p>
+              <ul className="mt-5 space-y-2.5 text-sm">
+                <li><a href="#services" className="text-muted-foreground transition-colors hover:text-foreground">Services</a></li>
+                <li><a href="#about" className="text-muted-foreground transition-colors hover:text-foreground">About</a></li>
+                <li><a href="#process" className="text-muted-foreground transition-colors hover:text-foreground">Process</a></li>
+                <li><a href="#work" className="text-muted-foreground transition-colors hover:text-foreground">Work</a></li>
+                <li><a href="#faq" className="text-muted-foreground transition-colors hover:text-foreground">FAQ</a></li>
+                <li><a href="#contact" className="text-muted-foreground transition-colors hover:text-foreground">Contact</a></li>
               </ul>
             </div>
 
             <div>
-              <p className="font-display text-sm font-semibold">Services</p>
-              <ul className="mt-4 space-y-2 text-sm">
-                <li>
-                  <a href="#services" className="text-muted-foreground transition-colors hover:text-foreground">ERP Development</a>
-                </li>
-                <li>
-                  <a href="#services" className="text-muted-foreground transition-colors hover:text-foreground">CRM Development</a>
-                </li>
-                <li>
-                  <a href="#services" className="text-muted-foreground transition-colors hover:text-foreground">HRMS Development</a>
-                </li>
-                <li>
-                  <a href="#services" className="text-muted-foreground transition-colors hover:text-foreground">Web App Maintenance</a>
-                </li>
-                <li>
-                  <a href="#services" className="text-muted-foreground transition-colors hover:text-foreground">Legacy Modernization</a>
-                </li>
-                <li>
-                  <a href="#services" className="text-muted-foreground transition-colors hover:text-foreground">Dedicated Developer</a>
-                </li>
+              <p className="eyebrow">What I do</p>
+              <ul className="mt-5 space-y-2.5 text-sm">
+                <li><a href="#services" className="text-muted-foreground transition-colors hover:text-foreground">ERP Development</a></li>
+                <li><a href="#services" className="text-muted-foreground transition-colors hover:text-foreground">CRM Development</a></li>
+                <li><a href="#services" className="text-muted-foreground transition-colors hover:text-foreground">HRMS Development</a></li>
+                <li><a href="#services" className="text-muted-foreground transition-colors hover:text-foreground">Web App Maintenance</a></li>
+                <li><a href="#services" className="text-muted-foreground transition-colors hover:text-foreground">Legacy Modernization</a></li>
+                <li><a href="#services" className="text-muted-foreground transition-colors hover:text-foreground">Dedicated Developer</a></li>
               </ul>
             </div>
 
             <div>
-              <p className="font-display text-sm font-semibold">Contact</p>
-              <ul className="mt-4 space-y-3 text-sm">
+              <p className="eyebrow">Contact</p>
+              <ul className="mt-5 space-y-3 text-sm">
                 <li className="text-muted-foreground">
-                  <span className="block text-foreground">Jazeel Zainudeen</span>
+                  <span className="block font-medium text-foreground">Jazeel Zainudeen</span>
                   Full Stack Developer
                 </li>
-                <li>
-                  <a href="tel:+918086482422" className="text-muted-foreground transition-colors hover:text-foreground">+91 80864 82422</a>
-                </li>
-                <li>
-                  <a href="mailto:zainudheenjazeel@gmail.com" className="text-muted-foreground transition-colors hover:text-foreground">zainudheenjazeel@gmail.com</a>
-                </li>
-                <li>
-                  <a href="https://wa.me/918086482422" target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-foreground">wa.me/918086482422</a>
-                </li>
+                <li><a href="tel:+918086482422" className="text-muted-foreground transition-colors hover:text-foreground">+91 80864 82422</a></li>
+                <li><a href="mailto:zainudheenjazeel@gmail.com" className="text-muted-foreground transition-colors hover:text-foreground">zainudheenjazeel@gmail.com</a></li>
+                <li><a href="https://wa.me/918086482422" target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-foreground">wa.me/918086482422</a></li>
               </ul>
             </div>
           </div>
 
-          <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row">
+          <div className="rule-t mt-14 flex flex-col items-center justify-between gap-3 pt-6 text-xs text-muted-foreground sm:flex-row">
             <p>© 2026 Jazeel Zainudeen. All rights reserved.</p>
-            <p>Custom Software Development · ERP · CRM · HRMS · Remote Developer</p>
+            <p>Personal site — built and maintained by me.</p>
           </div>
         </div>
       </footer>
 
-      {/* Mobile Fixed Sticky Call Bar */}
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/90 px-4 py-3 backdrop-blur-xl md:hidden">
-        <div className="flex gap-2">
-          <a href="#contact" className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-[image:var(--gradient-brand)] px-4 py-3 text-sm font-semibold text-brand-foreground">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-calendar-days size-4" aria-hidden="true">
-              <path d="M8 2v4"></path>
-              <path d="M16 2v4"></path>
-              <rect width="18" height="18" x="3" y="4" rx="2"></rect>
-              <path d="M3 10h18"></path>
-              <path d="M8 14h.01"></path>
-              <path d="M12 14h.01"></path>
-              <path d="M16 14h.01"></path>
-              <path d="M8 18h.01"></path>
-              <path d="M12 18h.01"></path>
-              <path d="M16 18h.01"></path>
-            </svg> 
-            Book a call
-          </a>
-          <a href="https://wa.me/918086482422" target="_blank" rel="noopener noreferrer" className="flex flex-1 items-center justify-center gap-1.5 rounded-full border border-border bg-surface px-4 py-3 text-sm font-semibold text-foreground">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-message-circle size-4" aria-hidden="true">
-              <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path>
-            </svg> 
-            WhatsApp
-          </a>
-        </div>
-      </div>
-      <div className="h-20 md:hidden"></div>
     </div>
   );
 }
