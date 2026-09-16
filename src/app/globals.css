@@ -36,8 +36,9 @@
 }
 
 :root {
+  color-scheme: light;
   --radius: 0.25rem;
-  /* Light Crisp Background with Subtle Soft Coral Red Accent */
+  /* Light Crisp Background with Clean Slate Monochrome Accent */
   --background: #fafafc;
   --foreground: #111827;
   --surface: #f3f4f8;
@@ -54,19 +55,19 @@
   --secondary-foreground: #111827;
   --muted: #e5e7eb;
   --muted-foreground: #64748b;
-  --accent: #f43f5e;
+  --accent: #111827;
   --accent-foreground: #ffffff;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
   --border: #e2e8f0;
   --input: #e2e8f0;
-  --ring: #f43f5e;
-  --brand: #f43f5e;
-  --brand-glow: #fb7185;
+  --ring: #111827;
+  --brand: #111827;
+  --brand-glow: #374151;
   --brand-foreground: #ffffff;
-  --sand: #fca5a5;
+  --sand: #94a3b8;
   --rule: 1px solid #e2e8f0;
-  --rule-strong: 1px solid #f43f5e;
+  --rule-strong: 1px solid #111827;
   --shadow-soft: 0 18px 40px -28px rgba(17, 24, 39, 0.12);
 }
 
@@ -76,14 +77,15 @@
   }
 
   html {
-    color-scheme: light;
+    color-scheme: light !important;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    background-color: #fafafc !important;
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: #fafafc !important;
+    color: #111827 !important;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
