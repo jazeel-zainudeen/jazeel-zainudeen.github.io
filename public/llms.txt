@@ -13,7 +13,12 @@ Jazeel Zainudeen is a Senior Full Stack Engineer based in Kerala, India with ove
 - **Location**: Kerala, India (Remote Available Worldwide)
 - **Email**: zainudheenjazeel@gmail.com
 - **Phone / WhatsApp**: +91 80864 82422
-- **Website**: https://jazeel-zainudeen.github.io
+- **Website**: [Jazeel Zainudeen portfolio](https://jazeel-zainudeen.github.io/)
+
+## Site Resources
+- [Homepage](https://jazeel-zainudeen.github.io/)
+- [Sitemap](https://jazeel-zainudeen.github.io/sitemap.xml)
+- [Robots.txt](https://jazeel-zainudeen.github.io/robots.txt)
 
 ## Featured Projects & Experience
 1. **Internal Production ERP System**: Manufacturing resource planning, stock reconciliation, real-time job-card tracking.
