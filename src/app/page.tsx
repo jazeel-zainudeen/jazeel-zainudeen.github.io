@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState, FormEvent } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 interface FAQItem {
   question: string;
@@ -486,13 +485,8 @@ export default function Home() {
         </div>
 
         {/* Mobile Menu Overlay - 2 Column Interactive Grid Layout */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: -8 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: -8 }}
-              transition={{ duration: 0.16 }}
+        {mobileMenuOpen && (
+            <div
               className="mx-auto mt-2 max-w-[calc(100%-1.5rem)] rounded-2xl border border-border bg-background/98 p-4 backdrop-blur-2xl md:hidden shadow-2xl"
             >
               <div className="grid grid-cols-2 gap-2.5">
@@ -600,9 +594,8 @@ export default function Home() {
                   Open for work
                 </span>
               </div>
-            </motion.div>
+            </div>
           )}
-        </AnimatePresence>
       </header>
 
       <main>
@@ -622,10 +615,7 @@ export default function Home() {
 
             {/* Main Hero Header & Paragraph */}
             <div className="grid grid-cols-12 gap-y-8 pt-4 sm:pt-16 md:pt-20 lg:gap-y-12">
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+              <div
                 className="col-span-12 lg:col-span-9"
               >
                 <h1 className="font-display text-[2.5rem] font-semibold leading-[1.05] tracking-[-0.04em] sm:text-7xl lg:text-[6.2rem]">
@@ -633,12 +623,9 @@ export default function Home() {
                   I build <span className="text-brand-glow">software</span><br />
                   <span className="text-muted-foreground">for real work.</span>
                 </h1>
-              </motion.div>
+              </div>
 
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+              <div
                 className="col-span-12 lg:col-span-5 lg:col-start-8 lg:-mt-16"
               >
                 <p className="rule-l pl-5 sm:pl-6 text-base sm:text-lg leading-relaxed text-muted-foreground">
@@ -669,34 +656,30 @@ export default function Home() {
                     <span>Direct WhatsApp</span>
                   </a>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
             {/* Stats Row - Spacious layout with Framer Motion staggered entrance */}
-            <motion.div 
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+            <div
               className="relative mt-14 sm:mt-20 md:mt-24 grid grid-cols-12 gap-y-6 pb-16 sm:pb-24"
             >
               <div className="col-span-12 lg:col-span-10 lg:col-start-2">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <motion.div whileHover={{ y: -3 }} className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm transition-colors hover:border-brand/30 hover:bg-surface/60">
+                  <div className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm transition-colors hover:border-brand/30 hover:bg-surface/60">
                     <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">01</span>Full Stack since 2019
-                  </motion.div>
-                  <motion.div whileHover={{ y: -3 }} className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm transition-colors hover:border-brand/30 hover:bg-surface/60">
+                  </div>
+                  <div className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm transition-colors hover:border-brand/30 hover:bg-surface/60">
                     <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">02</span>Next.js · React · TypeScript
-                  </motion.div>
-                  <motion.div whileHover={{ y: -3 }} className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm transition-colors hover:border-brand/30 hover:bg-surface/60">
+                  </div>
+                  <div className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm transition-colors hover:border-brand/30 hover:bg-surface/60">
                     <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">03</span>ERP, CRM &amp; HRMS
-                  </motion.div>
-                  <motion.div whileHover={{ y: -3 }} className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm transition-colors hover:border-brand/30 hover:bg-surface/60">
+                  </div>
+                  <div className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm transition-colors hover:border-brand/30 hover:bg-surface/60">
                     <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">04</span>Kerala, India — Remote
-                  </motion.div>
+                  </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -718,12 +701,8 @@ export default function Home() {
         </section>
 
         {/* About Section - Soft Surface Background */}
-        <motion.section 
+        <section 
           id="about" 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
           className="bg-surface/50 py-14 sm:bg-transparent sm:py-32"
         >
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
@@ -740,7 +719,6 @@ export default function Home() {
                     alt="Jazeel Zainudeen, Full Stack Developer" 
                     width={768}
                     height={960}
-                    priority
                     quality={80}
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     className="relative aspect-[4/5] w-full object-cover object-top"
@@ -787,7 +765,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Services Section - Clean Background */}
         <section id="services" className="bg-background py-14 sm:py-32">
@@ -806,12 +784,8 @@ export default function Home() {
             </div>
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {servicesData.map((service, i) => (
-                <motion.article 
+                <article 
                   key={i} 
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
                   className={`group rule-t flex flex-col p-6 transition-colors hover:bg-surface sm:p-8 ${service.colSpan} ${service.ruleL}`}
                 >
                   <div className="flex items-start justify-between">
@@ -838,18 +812,14 @@ export default function Home() {
                   <a href="#contact" className="link-rule mt-6 inline-flex w-fit items-center gap-1.5 font-display text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-foreground">
                     Ask me about this
                   </a>
-                </motion.article>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
         {/* How I Work / Why Work With Me Section - Dark Ink */}
-        <motion.section 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+        <section 
           className="bg-ink py-14 text-ink-foreground sm:py-32"
         >
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
@@ -862,30 +832,22 @@ export default function Home() {
             </h2>
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {whyWorkWithMeData.map((item, idx) => (
-                <motion.div 
+                <div 
                   key={idx} 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: idx * 0.08 }}
                   className={`border-t border-ink-foreground/20 py-6 pr-6 ${item.ruleL}`}
                 >
                   <span className="index-num text-xs text-ink-foreground/45">{item.num}</span>
                   <h3 className="mt-3 font-display text-xl font-semibold">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-foreground/65">{item.description}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Process Section - Soft Surface Background */}
-        <motion.section 
+        <section 
           id="process" 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
           className="bg-surface/50 py-14 sm:bg-transparent sm:py-32"
         >
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
@@ -898,23 +860,19 @@ export default function Home() {
             </h2>
             <div className="mt-10">
               {processData.map((p, pIdx) => (
-                <motion.div 
+                <div 
                   key={pIdx} 
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: pIdx * 0.08 }}
                   className="rule-t group grid grid-cols-12 items-baseline gap-y-2 py-5 transition-colors hover:bg-surface"
                 >
                   <span className="index-num col-span-12 text-3xl font-semibold text-sand transition-colors group-hover:text-brand sm:col-span-2 sm:text-5xl">{p.step}</span>
                   <h3 className="col-span-12 font-display text-xl font-semibold sm:col-span-4">{p.title}</h3>
                   <p className="col-span-12 text-sm text-muted-foreground sm:col-span-6">{p.description}</p>
-                </motion.div>
+                </div>
               ))}
               <div className="rule-t"></div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Selected Work Section - Clean Background */}
         <section id="work" className="bg-background py-14 sm:py-32">
@@ -933,12 +891,8 @@ export default function Home() {
             </div>
             <div className="mt-10 space-y-12 sm:space-y-20">
               {selectedWorkData.map((work, wIdx) => (
-                <motion.article 
+                <article 
                   key={wIdx} 
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.6, delay: wIdx * 0.1 }}
                   className="group grid grid-cols-12 gap-y-6 lg:gap-x-12"
                 >
                   <div className={`col-span-12 lg:col-span-7 ${work.orderImage}`}>
@@ -969,18 +923,14 @@ export default function Home() {
                       <span className="text-muted-foreground">{work.impact}</span>
                     </p>
                   </div>
-                </motion.article>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
         {/* Testimonials Section - Soft Surface Background */}
-        <motion.section 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+        <section 
           className="bg-surface/50 py-14 sm:bg-transparent sm:py-32"
         >
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
@@ -993,12 +943,8 @@ export default function Home() {
             </h2>
             <div className="mt-10 grid grid-cols-1 lg:grid-cols-3">
               {testimonialsData.map((t, tIdx) => (
-                <motion.figure 
+                <figure 
                   key={tIdx} 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: tIdx * 0.1 }}
                   className={`rule-t flex flex-col py-6 pr-8 ${t.ruleL}`}
                 >
                   <span className="font-display text-4xl leading-none text-sand">“</span>
@@ -1009,19 +955,15 @@ export default function Home() {
                     <div className="font-display text-sm font-semibold">{t.author}</div>
                     <div className="mt-0.5 text-xs uppercase tracking-[0.14em] text-muted-foreground">{t.company}</div>
                   </figcaption>
-                </motion.figure>
+                </figure>
               ))}
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* FAQ Section - Clean Background */}
-        <motion.section 
+        <section 
           id="faq" 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
           className="bg-background py-14 sm:py-32"
         >
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
@@ -1064,21 +1006,15 @@ export default function Home() {
                             </svg>
                           </button>
                         </h3>
-                        <AnimatePresence initial={false}>
-                          {isOpen && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.2, ease: "easeOut" }}
+                        {isOpen && (
+                            <div
                               className="overflow-hidden text-sm"
                             >
                               <div className="pb-5 text-muted-foreground leading-relaxed">
                                 {faq.answer}
                               </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
+                            </div>
+                        )}
                       </div>
                     );
                   })}
@@ -1087,15 +1023,11 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Contact Section */}
-        <motion.section 
+        <section 
           id="contact" 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
           className="overflow-hidden bg-ink py-14 text-ink-foreground sm:py-32"
         >
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
@@ -1278,7 +1210,7 @@ export default function Home() {
               </form>
             </div>
           </div>
-        </motion.section>
+        </section>
       </main>
 
       {/* Footer */}
