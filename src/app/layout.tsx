@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Manrope, Sora } from "next/font/google";
 
 import "./globals.css";
@@ -187,29 +187,7 @@ export default function RootLayout({
       <body className="min-h-full bg-background text-foreground antialiased selection:bg-brand/20 selection:text-brand">
         {children}
         {process.env.NEXT_PUBLIC_GA_ID && (
-          <>
-            <Script id="ga-data-layer" strategy="lazyOnload">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ window.dataLayer.push(arguments); }
-                window.gtag = gtag;
-              `}
-            </Script>
-            <Script
-              id="ga-script"
-              strategy="lazyOnload"
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-            />
-            <Script id="ga-config" strategy="lazyOnload">
-              {`
-                gtag('js', new Date());
-                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
-                  anonymize_ip: true,
-                  send_page_view: true,
-                });
-              `}
-            </Script>
-          </>
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         )}
       </body>
     </html>
