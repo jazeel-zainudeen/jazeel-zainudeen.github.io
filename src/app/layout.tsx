@@ -171,6 +171,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`h-full scroll-smooth ${manrope.variable} ${sora.variable}`}>
       <head>
+        <meta
+          name="google-site-verification"
+          content="wM1wDF69RqI0gn_ph5s78bvOjqQhFY3-CR8Hz2QVQzM"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
