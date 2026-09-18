@@ -206,7 +206,7 @@ const selectedWorkData = [
     title: "Retail Operations Platform",
     description: "Internal business platform supporting one of India's largest electronics retail chains with operations, inventory and reporting modules.",
     impact: "Streamlined multi-branch workflows and reduced manual reporting time across stores.",
-    image: "/project-myg-BTHHvbmM.jpg",
+    image: "/assets/projects/retail-operations-platform.jpg",
     alt: "Retail Operations Platform — Retail · India",
     orderImage: "",
     orderText: "lg:col-start-9"
@@ -217,7 +217,7 @@ const selectedWorkData = [
     title: "Handyman Marketplace App",
     description: "Two-sided mobile platform connecting customers with verified handymen — bookings, live tracking, in-app payments and provider onboarding.",
     impact: "Replaced WhatsApp-based dispatch with a fully automated booking & payout pipeline.",
-    image: "/project-handyman-CCj8He0-.jpg",
+    image: "/assets/projects/handyman-marketplace.jpg",
     alt: "Handyman Marketplace App — On-demand services",
     orderImage: "lg:order-2 lg:col-start-6",
     orderText: "lg:order-1 lg:col-start-1"
@@ -228,7 +228,7 @@ const selectedWorkData = [
     title: "HRMS — Software Revamp",
     description: "Complete revamp of a legacy HRMS used by a recruitment group — attendance, payroll, leave management and employee self-service.",
     impact: "Cut payroll processing time and modernized the UX for hundreds of daily users.",
-    image: "/project-hrms-XV0SNF7i.jpg",
+    image: "/assets/projects/hrms-revamp.jpg",
     alt: "HRMS — Software Revamp — Recruitment & HR",
     orderImage: "",
     orderText: "lg:col-start-9"
@@ -239,7 +239,7 @@ const selectedWorkData = [
     title: "IoT Gas Station Management Portal",
     description: "Full IoT-integrated web application + API layer for fuel station operations — live pump telemetry, sales reconciliation and admin dashboards.",
     impact: "Real-time visibility into pump activity and automated end-of-day sales reporting.",
-    image: "/project-gasstation-CkzHaHlv.jpg",
+    image: "/assets/projects/gas-station-portal.jpg",
     alt: "IoT Gas Station Management Portal — Energy · IoT",
     orderImage: "lg:order-2 lg:col-start-6",
     orderText: "lg:order-1 lg:col-start-1"
@@ -429,7 +429,7 @@ export default function Home() {
         <div className="mx-auto flex h-12 max-w-[calc(100%-1.5rem)] items-center justify-between rounded-full border border-border/70 bg-background/80 px-3.5 backdrop-blur-xl shadow-lg sm:max-w-[calc(100%-2rem)] md:h-16 md:max-w-[88rem] md:rounded-none md:border-0 md:bg-transparent md:px-8 md:shadow-none md:backdrop-blur-none">
           <a href="#top" className="flex items-center gap-2 font-display text-sm font-bold tracking-tight md:text-base">
             <Image 
-              src="/logo.png" 
+              src="/assets/brand/logo.png" 
               alt="Jazeel" 
               width={32}
               height={32}
@@ -736,7 +736,7 @@ export default function Home() {
                 <div className="relative">
                   <div className="absolute -bottom-4 -right-4 hidden h-full w-full bg-sand sm:block"></div>
                   <Image 
-                    src="/portrait-BNAY2NPR.jpg" 
+                    src="/assets/seo/profile-portrait.jpg" 
                     alt="Jazeel Zainudeen, Full Stack Developer" 
                     width={768} 
                     height={896} 
@@ -1287,7 +1287,7 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-2.5 font-display text-base font-semibold tracking-tight">
                 <Image 
-                  src="/logo.png" 
+                  src="/assets/brand/logo.png" 
                   alt="Jazeel" 
                   width={32}
                   height={32}

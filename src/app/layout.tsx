@@ -26,9 +26,9 @@ export const metadata: Metadata = {
   title: "Jazeel Zainudeen — Full Stack Engineer | Next.js, React & Cloud Architect",
   description: "Jazeel Zainudeen is a full stack engineer from Kerala, India specializing in high-performance Web Applications, Next.js, React, TypeScript, Cloud APIs & custom Enterprise Software.",
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: "/assets/brand/logo.png",
+    shortcut: "/assets/brand/logo.png",
+    apple: "/assets/brand/logo.png",
   },
   alternates: {
     canonical: siteUrl,
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     type: "profile",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/assets/seo/og-image.jpg",
         width: 1200,
         height: 630,
         type: "image/jpeg",
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Jazeel Zainudeen — Full Stack Engineer & Cloud Architect",
     description: "Building modern web applications, scalable APIs & cloud platforms with Next.js, React & TypeScript.",
-    images: ["/og-image.jpg"],
+    images: ["/assets/seo/og-image.jpg"],
     creator: "@jazeeldev",
   },
 };
@@ -104,7 +104,7 @@ const jsonLd = {
       "@id": `${siteUrl}/#person`,
       "name": "Jazeel Zainudeen",
       "url": siteUrl,
-      "image": `${siteUrl}/portrait-BNAY2NPR.jpg`,
+      "image": `${siteUrl}/assets/seo/profile-portrait.jpg`,
       "jobTitle": "Full Stack Engineer & Cloud Architect",
       "worksFor": {
         "@type": "Organization",
@@ -137,7 +137,7 @@ const jsonLd = {
       "@id": `${siteUrl}/#service`,
       "name": "Jazeel Zainudeen — Web Application & Custom Software Development",
       "url": siteUrl,
-      "image": `${siteUrl}/og-image.jpg`,
+      "image": `${siteUrl}/assets/seo/og-image.jpg`,
       "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
