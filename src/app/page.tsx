@@ -433,6 +433,8 @@ export default function Home() {
               alt="Jazeel" 
               width={32}
               height={32}
+              priority
+              sizes="32px"
               className="h-6 w-6 rounded-full border border-border object-cover md:h-8 md:w-8" 
             />
             <span>Jazeel<span className="text-brand-glow">.dev</span></span>
@@ -738,7 +740,8 @@ export default function Home() {
                     alt="Jazeel Zainudeen, Full Stack Developer" 
                     width={768} 
                     height={896} 
-                    loading="lazy" 
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 40vw"
                     className="relative aspect-[4/5] w-full object-cover object-top"
                   />
                 </div>
@@ -1288,6 +1291,8 @@ export default function Home() {
                   alt="Jazeel" 
                   width={32}
                   height={32}
+                  priority
+                  sizes="32px"
                   className="h-8 w-8 rounded-full border border-border object-cover" 
                 />
                 <span>Jazeel<span className="text-brand">.dev</span></span>
