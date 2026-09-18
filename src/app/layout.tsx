@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Sora } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import Script from "next/script";
+
 import "./globals.css";
 
 const manrope = Manrope({
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
   title: "Jazeel Zainudeen — Full Stack Engineer | Next.js, React & Cloud Architect",
   description: "Jazeel Zainudeen is a full stack engineer from Kerala, India specializing in high-performance Web Applications, Next.js, React, TypeScript, Cloud APIs & custom Enterprise Software.",
   icons: {
-    icon: "/assets/brand/logo.png",
-    shortcut: "/assets/brand/logo.png",
-    apple: "/assets/brand/logo.png",
+    icon: "/assets/brand/logo.svg",
+    shortcut: "/assets/brand/logo.svg",
+    apple: "/assets/brand/logo.svg",
   },
   alternates: {
     canonical: siteUrl,
@@ -184,20 +184,6 @@ export default function RootLayout({
         {children}
         {process.env.NEXT_PUBLIC_GA_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
-        )}
-        {process.env.NEXT_PUBLIC_TAWKTO_PROPERTY_ID && (
-          <Script id="tawk-to" strategy="lazyOnload">
-            {`
-              var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-              (function(){
-              var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-              s1.async=true;
-              s1.src='https://embed.tawk.to/${process.env.NEXT_PUBLIC_TAWKTO_PROPERTY_ID}/${process.env.NEXT_PUBLIC_TAWKTO_WIDGET_ID || 'default'}';
-              s1.charset='UTF-8';
-              s0.parentNode.insertBefore(s1,s0);
-              })();
-            `}
-          </Script>
         )}
       </body>
     </html>
