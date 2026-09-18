@@ -429,7 +429,7 @@ export default function Home() {
         <div className="mx-auto flex h-12 max-w-[calc(100%-1.5rem)] items-center justify-between rounded-full border border-border/70 bg-background/80 px-3.5 backdrop-blur-xl shadow-lg sm:max-w-[calc(100%-2rem)] md:h-16 md:max-w-[88rem] md:rounded-none md:border-0 md:bg-transparent md:px-8 md:shadow-none md:backdrop-blur-none">
           <a href="#top" className="flex items-center gap-2 font-display text-sm font-bold tracking-tight md:text-base">
             <Image 
-              src="/assets/brand/logo.svg" 
+              src="/assets/brand/logo.webp" 
               alt="Jazeel" 
               width={32}
               height={32}
@@ -736,10 +736,10 @@ export default function Home() {
                 <div className="relative">
                   <div className="absolute -bottom-4 -right-4 hidden h-full w-full bg-sand sm:block"></div>
                   <Image 
-                    src="/assets/seo/profile-portrait.jpg" 
+                    src="/assets/seo/profile-portrait.webp" 
                     alt="Jazeel Zainudeen, Full Stack Developer" 
                     width={768}
-                    height={896}
+                    height={960}
                     priority
                     quality={80}
                     sizes="(max-width: 1024px) 100vw, 40vw"
@@ -1288,7 +1288,7 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-2.5 font-display text-base font-semibold tracking-tight">
                 <Image 
-                  src="/assets/brand/logo.svg" 
+                  src="/assets/brand/logo.webp" 
                   alt="Jazeel" 
                   width={32}
                   height={32}
