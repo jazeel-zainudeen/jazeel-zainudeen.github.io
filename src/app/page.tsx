@@ -686,7 +686,7 @@ export default function Home() {
         {/* Tech Stack Banner */}
         <section aria-label="Tech stack" className="bg-ink py-10 text-ink-foreground">
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
-            <p className="font-display text-[0.68rem] uppercase tracking-[0.24em] text-ink-foreground/50">Tools I work with every day</p>
+            <p className="font-display text-[0.68rem] uppercase tracking-[0.24em] text-ink-foreground/75">Tools I work with every day</p>
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
               <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">Next.js<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
               <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">React<span className="h-4 w-px bg-ink-foreground/25" aria-hidden="true"></span></span>
@@ -824,8 +824,8 @@ export default function Home() {
         >
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
             <div className="flex items-baseline justify-between border-b border-ink-foreground/20 pb-4">
-              <span className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-ink-foreground/60">How I work</span>
-              <span className="index-num text-xs text-ink-foreground/50">03</span>
+              <span className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-ink-foreground/80">How I work</span>
+              <span className="index-num text-xs text-ink-foreground/75">03</span>
             </div>
             <h2 className="max-w-3xl pt-8 font-display text-3xl font-semibold leading-[1.05] sm:text-5xl">
               A few things<br />worth knowing
@@ -836,9 +836,9 @@ export default function Home() {
                   key={idx} 
                   className={`border-t border-ink-foreground/20 py-6 pr-6 ${item.ruleL}`}
                 >
-                  <span className="index-num text-xs text-ink-foreground/45">{item.num}</span>
+                  <span className="index-num text-xs text-ink-foreground/75">{item.num}</span>
                   <h3 className="mt-3 font-display text-xl font-semibold">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-foreground/65">{item.description}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-foreground/80">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -1032,32 +1032,32 @@ export default function Home() {
         >
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
             <div className="flex items-baseline justify-between border-b border-ink-foreground/20 pb-4">
-              <span className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-ink-foreground/60">Say hello</span>
-              <span className="index-num text-xs text-ink-foreground/50">08</span>
+              <span className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-ink-foreground/80">Say hello</span>
+              <span className="index-num text-xs text-ink-foreground/75">08</span>
             </div>
             <div className="grid grid-cols-12 gap-y-12 pt-14 lg:gap-x-12">
               <div className="col-span-12 lg:col-span-5">
                 <h2 className="font-display text-3xl font-semibold leading-[1.05] sm:text-5xl">
                   Let&apos;s have<br />a conversation
                 </h2>
-                <p className="mt-6 max-w-md text-ink-foreground/65">
+                <p className="mt-6 max-w-md text-ink-foreground/80">
                   An idea, a question, or just hello — drop me a line and I usually reply within a day. WhatsApp works too, if that&apos;s easier.
                 </p>
                 <div className="mt-10">
-                  <a href="tel:+918086482422" className="flex items-center gap-3 border-t border-ink-foreground/20 py-4 text-sm text-ink-foreground/75 transition-colors hover:text-ink-foreground">
+                  <a href="tel:+918086482422" className="flex items-center gap-3 border-t border-ink-foreground/20 py-4 text-sm text-ink-foreground/85 transition-colors hover:text-ink-foreground">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-phone size-4 text-brand" aria-hidden="true">
                       <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path>
                     </svg>
                     +91 80864 82422
                   </a>
-                  <a href="mailto:zainudheenjazeel@gmail.com" className="flex items-center gap-3 border-t border-ink-foreground/20 py-4 text-sm text-ink-foreground/75 transition-colors hover:text-ink-foreground">
+                  <a href="mailto:zainudheenjazeel@gmail.com" className="flex items-center gap-3 border-t border-ink-foreground/20 py-4 text-sm text-ink-foreground/85 transition-colors hover:text-ink-foreground">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail size-4 text-brand" aria-hidden="true">
                       <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
                       <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                     </svg>
                     zainudheenjazeel@gmail.com
                   </a>
-                  <a href="https://wa.me/918086482422" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 border-y border-ink-foreground/20 py-4 text-sm text-ink-foreground/75 transition-colors hover:text-ink-foreground">
+                  <a href="https://wa.me/918086482422" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 border-y border-ink-foreground/20 py-4 text-sm text-ink-foreground/85 transition-colors hover:text-ink-foreground">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-message-circle size-4 text-brand" aria-hidden="true">
                       <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path>
                     </svg>
@@ -1070,11 +1070,11 @@ export default function Home() {
                 {formSubmitted ? (
                   <div className="border border-ink-foreground/25 p-8 text-center">
                     <h3 className="font-display text-xl font-semibold mb-2 text-ink-foreground">Calendly Opened!</h3>
-                    <p className="text-ink-foreground/75 text-sm mb-4">
+                    <p className="text-ink-foreground/80 text-sm mb-4">
                       A new tab has opened with my calendar. Pick a 30-minute slot that works for you.
                     </p>
                     {calendlyUrl && (
-                      <p className="text-ink-foreground/60 text-xs mb-6">
+                      <p className="text-ink-foreground/75 text-xs mb-6">
                         Popup didn&apos;t open?{" "}
                         <a href={calendlyUrl} target="_blank" rel="noopener noreferrer" className="text-brand underline">
                           Click here to open Calendly
@@ -1093,7 +1093,7 @@ export default function Home() {
                   <>
                     <div className="grid gap-5 sm:grid-cols-2">
                       <label className="block">
-                        <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/55">Name</span>
+                        <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/75">Name</span>
                         <input 
                           type="text" 
                           name="name"
@@ -1101,7 +1101,7 @@ export default function Home() {
                           onChange={handleFormChange}
                           onBlur={handleFormBlur}
                           autoComplete="name" 
-                          className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand" 
+                          className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/65 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand" 
                           placeholder="Your full name" 
                         />
                         {touched.name && formErrors.name && (
@@ -1110,20 +1110,20 @@ export default function Home() {
                       </label>
 
                       <label className="block">
-                        <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/55">Company</span>
+                        <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/75">Company</span>
                         <input 
                           type="text" 
                           name="company"
                           value={formData.company}
                           onChange={handleFormChange}
                           autoComplete="organization" 
-                          className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand" 
+                          className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/65 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand" 
                           placeholder="Company name" 
                         />
                       </label>
 
                       <label className="block">
-                        <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/55">Email</span>
+                        <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/75">Email</span>
                         <input 
                           type="email" 
                           name="email"
@@ -1131,7 +1131,7 @@ export default function Home() {
                           onChange={handleFormChange}
                           onBlur={handleFormBlur}
                           autoComplete="email" 
-                          className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand" 
+                          className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/65 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand" 
                           placeholder="you@company.com" 
                         />
                         {touched.email && formErrors.email && (
@@ -1140,7 +1140,7 @@ export default function Home() {
                       </label>
 
                       <label className="block">
-                        <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/55">Phone</span>
+                        <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/75">Phone</span>
                         <input 
                           type="tel" 
                           name="phone"
@@ -1148,7 +1148,7 @@ export default function Home() {
                           onChange={handleFormChange}
                           onBlur={handleFormBlur}
                           autoComplete="tel" 
-                          className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand" 
+                          className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/65 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand" 
                           placeholder="+91 ..." 
                         />
                         {touched.phone && formErrors.phone && (
@@ -1158,7 +1158,7 @@ export default function Home() {
                     </div>
 
                     <label className="block">
-                      <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/55">Project Type</span>
+                      <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/75">Project Type</span>
                       <select 
                         name="projectType" 
                         value={formData.projectType}
@@ -1183,14 +1183,14 @@ export default function Home() {
                     </label>
 
                     <label className="block">
-                      <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/55">Message</span>
+                      <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/75">Message</span>
                       <textarea 
                         name="message" 
                         rows={5} 
                         value={formData.message}
                         onChange={handleFormChange}
                         onBlur={handleFormBlur}
-                        className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand" 
+                        className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/65 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand" 
                         placeholder="Tell me a bit about what you have in mind."
                       ></textarea>
                       {touched.message && formErrors.message && (
