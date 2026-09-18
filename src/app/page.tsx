@@ -1,19 +1,13 @@
 "use client";
 
-import { useState, useEffect, FormEvent } from "react";
+import Image from "next/image";
+import { useState, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface FAQItem {
   question: string;
   answer: string;
 }
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-60px" },
-  transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as const }
-};
 
 const servicesData = [
   {
@@ -434,9 +428,11 @@ export default function Home() {
         {/* Floating Capsule Container on Mobile, Standard Flex Container on Desktop */}
         <div className="mx-auto flex h-12 max-w-[calc(100%-1.5rem)] items-center justify-between rounded-full border border-border/70 bg-background/80 px-3.5 backdrop-blur-xl shadow-lg sm:max-w-[calc(100%-2rem)] md:h-16 md:max-w-[88rem] md:rounded-none md:border-0 md:bg-transparent md:px-8 md:shadow-none md:backdrop-blur-none">
           <a href="#top" className="flex items-center gap-2 font-display text-sm font-bold tracking-tight md:text-base">
-            <img 
+            <Image 
               src="/logo.png" 
               alt="Jazeel" 
+              width={32}
+              height={32}
               className="h-6 w-6 rounded-full border border-border object-cover md:h-8 md:w-8" 
             />
             <span>Jazeel<span className="text-brand-glow">.dev</span></span>
@@ -737,11 +733,11 @@ export default function Home() {
               <div className="col-span-12 sm:col-span-6 lg:col-span-4">
                 <div className="relative">
                   <div className="absolute -bottom-4 -right-4 hidden h-full w-full bg-sand sm:block"></div>
-                  <img 
+                  <Image 
                     src="/portrait-BNAY2NPR.jpg" 
                     alt="Jazeel Zainudeen, Full Stack Developer" 
-                    width="768" 
-                    height="896" 
+                    width={768} 
+                    height={896} 
                     loading="lazy" 
                     className="relative aspect-[4/5] w-full object-cover object-top"
                   />
@@ -943,12 +939,12 @@ export default function Home() {
                 >
                   <div className={`col-span-12 lg:col-span-7 ${work.orderImage}`}>
                     <div className="relative overflow-hidden rounded-xl border border-border/50 shadow-md transition-shadow group-hover:shadow-xl">
-                      <img 
+                      <Image 
                         src={work.image} 
                         alt={work.alt} 
                         loading="lazy" 
-                        width="1024" 
-                        height="640" 
+                        width={1024} 
+                        height={640} 
                         className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                       />
                       <span className="absolute left-0 top-0 inline-flex items-center gap-1.5 bg-ink px-3 py-1.5 font-display text-[0.62rem] uppercase tracking-[0.16em] text-ink-foreground">
@@ -1287,9 +1283,11 @@ export default function Home() {
           <div className="grid gap-12 lg:grid-cols-4">
             <div>
               <div className="flex items-center gap-2.5 font-display text-base font-semibold tracking-tight">
-                <img 
+                <Image 
                   src="/logo.png" 
                   alt="Jazeel" 
+                  width={32}
+                  height={32}
                   className="h-8 w-8 rounded-full border border-border object-cover" 
                 />
                 <span>Jazeel<span className="text-brand">.dev</span></span>
