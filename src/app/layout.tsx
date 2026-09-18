@@ -194,7 +194,6 @@ export default function RootLayout({
               s1.async=true;
               s1.src='https://embed.tawk.to/${process.env.NEXT_PUBLIC_TAWKTO_PROPERTY_ID}/${process.env.NEXT_PUBLIC_TAWKTO_WIDGET_ID || 'default'}';
               s1.charset='UTF-8';
-              s1.setAttribute('crossorigin','*');
               s0.parentNode.insertBefore(s1,s0);
               })();
             `}
