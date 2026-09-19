@@ -7,16 +7,12 @@ const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
   display: "swap",
-  adjustFontFallback: true,
-  preload: true,
 });
 
 const sora = Sora({
   subsets: ["latin"],
   variable: "--font-sora",
   display: "swap",
-  adjustFontFallback: true,
-  preload: true,
 });
 
 export const viewport: Viewport = {
