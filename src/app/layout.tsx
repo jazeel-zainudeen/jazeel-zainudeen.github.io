@@ -6,11 +6,13 @@ import "./globals.css";
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
+  display: "swap",
 });
 
 const sora = Sora({
   subsets: ["latin"],
   variable: "--font-sora",
+  display: "swap",
 });
 
 export const viewport: Viewport = {
