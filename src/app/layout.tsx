@@ -180,6 +180,13 @@ export default function RootLayout({
           name="google-site-verification"
           content="wM1wDF69RqI0gn_ph5s78bvOjqQhFY3-CR8Hz2QVQzM"
         />
+        <link
+          rel="preload"
+          href="/assets/seo/profile-portrait.webp"
+          as="image"
+          type="image/webp"
+          fetchPriority="high"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
