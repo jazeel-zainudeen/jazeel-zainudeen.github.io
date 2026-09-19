@@ -717,8 +717,8 @@ export default function Home() {
                   <Image 
                     src="/assets/seo/profile-portrait.webp" 
                     alt="Jazeel Zainudeen, Full Stack Developer" 
-                    width={768}
-                    height={960}
+                    width={500}
+                    height={625}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                     className="relative aspect-[4/5] w-full object-cover object-top"
                   />

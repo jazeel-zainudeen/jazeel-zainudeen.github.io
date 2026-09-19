@@ -24,12 +24,12 @@
     "typescript": "^5"
   },
   "browserslist": [
-    "chrome >= 93",
-    "and_chr >= 93",
-    "edge >= 93",
-    "firefox >= 90",
-    "safari >= 15.4",
-    "ios_saf >= 15.4",
+    "chrome >= 110",
+    "and_chr >= 110",
+    "edge >= 110",
+    "firefox >= 110",
+    "safari >= 16.4",
+    "ios_saf >= 16.4",
     "not dead"
   ]
 }
