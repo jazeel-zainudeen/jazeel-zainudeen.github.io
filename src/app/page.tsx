@@ -314,6 +314,13 @@ export default function Home() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const val = mobileMenuOpen ? "hidden" : "";
+    document.body.style.overflow = val;
+    document.documentElement.style.overflow = val;
+    return () => { document.body.style.overflow = ""; document.documentElement.style.overflow = ""; };
+  }, [mobileMenuOpen]);
+
   // Contact Form State
   const [formData, setFormData] = useState({
     name: "",
@@ -480,8 +487,8 @@ export default function Home() {
         <div
           className={`mx-auto flex items-center justify-between transition-all duration-300 md:h-16 md:max-w-[88rem] md:rounded-none md:border-0 md:bg-transparent md:px-8 md:shadow-none md:backdrop-blur-none ${
             headerScrolled
-              ? "h-12 max-w-[calc(100%-1.5rem)] rounded-full border border-border/70 bg-background/80 px-3.5 backdrop-blur-xl shadow-lg sm:max-w-[calc(100%-2rem)]"
-              : "h-14 max-w-full rounded-none border-b border-border/40 bg-background/60 px-4 backdrop-blur-md sm:px-6"
+              ? `h-12 max-w-[calc(100%-1.5rem)] rounded-full border border-border/70 px-3.5 backdrop-blur-xl shadow-lg sm:max-w-[calc(100%-2rem)] ${mobileMenuOpen ? "bg-background/95" : "bg-background/80"}`
+              : `h-14 max-w-full rounded-none border-b border-border/40 px-4 backdrop-blur-md sm:px-6 ${mobileMenuOpen ? "bg-background/95" : "bg-background/60"}`
           }`}
         >
           <a
@@ -594,9 +601,21 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Mobile Menu Overlay - 2 Column Interactive Grid Layout */}
-        {mobileMenuOpen && (
-          <div className="mx-auto mt-2 max-w-[calc(100%-1.5rem)] rounded-2xl border border-border bg-background/98 p-4 backdrop-blur-2xl md:hidden shadow-2xl">
+        {/* Mobile Menu Backdrop + Overlay */}
+        <div
+          className={`fixed inset-0 z-[-1] bg-black/10 backdrop-blur-sm md:hidden transition-opacity duration-300 ${
+            mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+        <div
+          className={`mx-auto mt-2 max-w-[calc(100%-1.5rem)] rounded-2xl border border-border bg-background/98 p-4 backdrop-blur-2xl md:hidden shadow-2xl transition-all duration-300 origin-top ${
+            mobileMenuOpen
+              ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+              : "opacity-0 -translate-y-2 scale-[0.97] pointer-events-none"
+          }`}
+        >
             <div className="grid grid-cols-2 gap-2.5">
               <a
                 href="#services"
@@ -784,7 +803,6 @@ export default function Home() {
               </span>
             </div>
           </div>
-        )}
       </header>
 
       <main>
