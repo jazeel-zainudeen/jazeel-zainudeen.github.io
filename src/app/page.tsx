@@ -833,7 +833,9 @@ export default function Home() {
                   <br />I build{" "}
                   <span className="text-brand-glow">software</span>
                   <br />
-                  <span className="text-muted-foreground">for real work.</span>
+                  <span className="text-muted-foreground">
+                    that solves real problems.
+                  </span>
                 </h1>
               </div>
 
