@@ -18,7 +18,7 @@ export function ScrollingImagePreview({ imageSrc, alt }: ScrollingImagePreviewPr
       </div>
 
       {/* Scrolling Container */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-border/40 bg-background md:aspect-video @container">
+      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-border/40 bg-background md:aspect-video [container-type:size]">
         <div className="absolute inset-x-0 top-0 w-full animate-scroll-up-down">
           <Image
             src={imageSrc}
