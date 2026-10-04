@@ -21,7 +21,11 @@ import {
   SiPhp,
   SiLaravel,
   SiCodeigniter,
-  SiJquery
+  SiJquery,
+  SiWordpress,
+  SiElementor,
+  SiBootstrap,
+  SiFigma
 } from "react-icons/si";
 import { FaCode, FaAws, FaCss3Alt, FaCartShopping, FaMagnifyingGlass, FaFileCode } from "react-icons/fa6";
 
@@ -101,6 +105,15 @@ export function TechStackIcon({ name, className = "w-4 h-4" }: TechStackIconProp
       return <FaFileCode className={className} />;
     case 'searchanise':
       return <FaMagnifyingGlass className={className} />;
+    case 'wordpress':
+      return <SiWordpress className={className} />;
+    case 'elementor':
+      return <SiElementor className={className} />;
+    case 'bootstrap':
+    case 'bootstrap5':
+      return <SiBootstrap className={className} />;
+    case 'figma':
+      return <SiFigma className={className} />;
     default:
       return <FaCode className={className} />;
   }

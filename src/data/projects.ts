@@ -67,7 +67,7 @@ export const projectsData: Project[] = [
     images: ["/assets/projects/coagmenta-thumbnail.jpg"],
     scrollingPreview: "/assets/projects/coagmenta-full-screenshot.png",
     previewUrl: "https://coagmenta.com/",
-    techStack: ["WordPress", "Elementor", "Bootstrap 5", "jQuery", "Figma"],
+    techStack: ["Figma", "HTML5", "CSS3", "Bootstrap 5", "jQuery", "WordPress", "Elementor"],
     keyFeatures: [
       "Pixel-perfect implementation from a high-fidelity Figma design.",
       "Custom-built, responsive frontend using Bootstrap 5 and jQuery.",
