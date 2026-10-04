@@ -636,7 +636,7 @@ export default function Home() {
                 <div className="relative">
                   <div className="absolute -bottom-4 -right-4 hidden h-full w-full bg-sand sm:block"></div>
                   <Image
-                    src="/assets/seo/profile-portrait.webp"
+                    src="/assets/seo/profile-portrait.jpg"
                     alt="Jazeel Zainudeen, Full Stack Developer"
                     width={440}
                     height={550}

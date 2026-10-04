@@ -194,9 +194,9 @@ export default function RootLayout({
         />
         <link
           rel="preload"
-          href="/assets/seo/profile-portrait.webp"
+          href="/assets/seo/profile-portrait.jpg"
           as="image"
-          type="image/webp"
+          type="image/jpeg"
           fetchPriority="high"
         />
         <script
