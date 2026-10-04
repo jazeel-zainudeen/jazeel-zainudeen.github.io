@@ -1,7 +1,14 @@
 import { projectsData } from "@/data/projects";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Code2 as Github, CheckCircle2, AlertTriangle, Lightbulb } from "lucide-react";
+import {
+  ArrowLeft,
+  ExternalLink,
+  Code2 as Github,
+  CheckCircle2,
+  AlertTriangle,
+  Lightbulb,
+} from "lucide-react";
 import { ImageCarousel } from "@/components/portfolio/ImageCarousel";
 import { ScrollingImagePreview } from "@/components/portfolio/ScrollingImagePreview";
 import { TechStackIcon } from "@/components/portfolio/TechStackIcon";
@@ -38,10 +45,9 @@ export default async function ProjectDetailsPage({ params }: Props) {
   return (
     <div className="min-h-screen bg-background pt-24 pb-20 sm:pt-32">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        
         {/* Back Link */}
-        <Link 
-          href="/portfolio" 
+        <Link
+          href="/portfolio"
           className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground mb-10"
         >
           <ArrowLeft className="h-4 w-4" />
@@ -58,10 +64,10 @@ export default async function ProjectDetailsPage({ params }: Props) {
               {project.shortDescription}
             </p>
           </div>
-          
+
           <div className="flex flex-wrap items-center gap-3">
             {project.previewUrl && (
-              <a 
+              <a
                 href={project.previewUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -72,7 +78,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
               </a>
             )}
             {project.githubUrl && (
-              <a 
+              <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -88,7 +94,11 @@ export default async function ProjectDetailsPage({ params }: Props) {
         {/* Media Showcase */}
         <div className="mb-16">
           {project.scrollingPreview ? (
-            <ScrollingImagePreview imageSrc={project.scrollingPreview} alt={project.title} previewUrl={project.previewUrl} />
+            <ScrollingImagePreview
+              imageSrc={project.scrollingPreview}
+              alt={project.title}
+              previewUrl={project.previewUrl}
+            />
           ) : (
             <ImageCarousel images={project.images} alt={project.title} />
           )}
@@ -96,7 +106,6 @@ export default async function ProjectDetailsPage({ params }: Props) {
 
         {/* Content Grid */}
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
-          
           {/* Main Content Column */}
           <div className="lg:col-span-2 space-y-12">
             <section>
@@ -104,7 +113,9 @@ export default async function ProjectDetailsPage({ params }: Props) {
                 About the Project
               </h2>
               <div className="prose prose-slate dark:prose-invert max-w-none text-muted-foreground">
-                <p className="whitespace-pre-wrap">{project.detailedDescription}</p>
+                <p className="whitespace-pre-wrap">
+                  {project.detailedDescription}
+                </p>
               </div>
             </section>
 
@@ -113,7 +124,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
                 <h2 className="font-display text-2xl font-bold text-foreground mb-4">
                   Key Features
                 </h2>
-                <ul className="grid gap-3 sm:grid-cols-2">
+                <ul className="grid gap-3 sm:grids-cols-2">
                   {project.keyFeatures.map((feature, idx) => (
                     <li key={idx} className="flex gap-3 text-muted-foreground">
                       <CheckCircle2 className="h-5 w-5 text-brand shrink-0" />
@@ -134,12 +145,10 @@ export default async function ProjectDetailsPage({ params }: Props) {
                     Challenges & Solutions
                   </h2>
                 </div>
-                <p className="text-muted-foreground">
-                  {project.challenges}
-                </p>
+                <p className="text-muted-foreground">{project.challenges}</p>
               </section>
             )}
-            
+
             {project.lessonsLearned && (
               <section className="rounded-2xl border border-border bg-brand/5 p-6 sm:p-8">
                 <div className="flex items-center gap-3 mb-4">
@@ -163,11 +172,15 @@ export default async function ProjectDetailsPage({ params }: Props) {
               <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-foreground mb-6">
                 Project Info
               </h3>
-              
+
               <dl className="space-y-6">
                 <div>
-                  <dt className="text-sm text-muted-foreground mb-1">My Role</dt>
-                  <dd className="font-medium text-foreground">{project.role}</dd>
+                  <dt className="text-sm text-muted-foreground mb-1">
+                    Category
+                  </dt>
+                  <dd className="font-medium text-foreground">
+                    {project.tagline}
+                  </dd>
                 </div>
               </dl>
             </div>
@@ -176,11 +189,11 @@ export default async function ProjectDetailsPage({ params }: Props) {
               <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-foreground mb-6">
                 Technologies Used
               </h3>
-              
+
               <div className="flex flex-wrap gap-2">
                 {project.techStack.map((tech) => (
-                  <div 
-                    key={tech} 
+                  <div
+                    key={tech}
                     className="flex items-center gap-2 rounded-lg border border-border/50 bg-background px-3 py-2 text-sm font-medium text-foreground shadow-sm"
                   >
                     <TechStackIcon name={tech} className="h-4 w-4 text-brand" />
@@ -190,7 +203,6 @@ export default async function ProjectDetailsPage({ params }: Props) {
               </div>
             </div>
           </div>
-          
         </div>
       </div>
     </div>
