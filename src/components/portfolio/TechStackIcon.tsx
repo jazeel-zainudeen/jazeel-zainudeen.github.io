@@ -25,9 +25,13 @@ import {
   SiWordpress,
   SiElementor,
   SiBootstrap,
-  SiFigma
+  SiFigma,
+  SiSupabase,
+  SiCloudinary,
+  SiGoogle,
+  SiDotnet
 } from "react-icons/si";
-import { FaCode, FaAws, FaCss3Alt, FaCartShopping, FaMagnifyingGlass, FaFileCode } from "react-icons/fa6";
+import { FaCode, FaAws, FaCss3Alt, FaCartShopping, FaMagnifyingGlass, FaFileCode, FaNetworkWired } from "react-icons/fa6";
 
 interface TechStackIconProps {
   name: string;
@@ -114,6 +118,15 @@ export function TechStackIcon({ name, className = "w-4 h-4" }: TechStackIconProp
       return <SiBootstrap className={className} />;
     case 'figma':
       return <SiFigma className={className} />;
+    case 'supabase':
+      return <SiSupabase className={className} />;
+    case 'cloudinary':
+      return <SiCloudinary className={className} />;
+    case 'googleapis':
+    case 'google':
+      return <SiGoogle className={className} />;
+    case 'signalr':
+      return <FaNetworkWired className={className} />;
     default:
       return <FaCode className={className} />;
   }
