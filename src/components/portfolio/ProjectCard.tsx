@@ -39,7 +39,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             </span>
             <span className="h-px w-4 bg-border"></span>
             <span className="font-display text-[0.65rem] uppercase tracking-widest text-brand-glow font-semibold">
-              {project.role}
+              {project.tagline}
             </span>
           </div>
           
