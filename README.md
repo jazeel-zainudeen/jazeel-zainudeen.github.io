@@ -1,4 +1,4 @@
-# Jazeel.dev — Portfolio & Business Landing Page
+# Jazeel.dev - Portfolio & Business Landing Page
 
 A modern, dark-themed portfolio and business landing page built with **Next.js 16**, **React 19**, **Tailwind CSS 4** and **Framer Motion**. Deployed to **GitHub Pages** as a static export.
 
@@ -8,16 +8,16 @@ A modern, dark-themed portfolio and business landing page built with **Next.js 1
 
 ## ✨ Features
 
-- **Dark Mode Design** — Premium glassmorphism UI with gradient accents and smooth micro-animations
-- **Responsive Layout** — Mobile-first design with adaptive navigation, grid layouts and typography
-- **Animated Sections** — Scroll-triggered entrance animations powered by Framer Motion
-- **Services Showcase** — Six service cards covering ERP, CRM, HRMS development, maintenance, modernization and dedicated developer hiring
-- **Selected Work Gallery** — Project case studies with impact highlights
-- **Process Timeline** — Step-by-step engagement workflow from discovery call to ongoing support
-- **Client Testimonials** — Social proof section with anonymized client quotes
-- **FAQ Accordion** — Expandable Q&A section with smooth open/close transitions
-- **Contact Form + Calendly** — Validated contact form that pre-fills and redirects to Calendly for booking discovery calls
-- **SEO Optimized** — Full Open Graph, Twitter Card, meta keywords and semantic HTML
+- **Dark Mode Design** - Premium glassmorphism UI with gradient accents and smooth micro-animations
+- **Responsive Layout** - Mobile-first design with adaptive navigation, grid layouts and typography
+- **Animated Sections** - Scroll-triggered entrance animations powered by Framer Motion
+- **Services Showcase** - Six service cards covering ERP, CRM, HRMS development, maintenance, modernization and dedicated developer hiring
+- **Selected Work Gallery** - Project case studies with impact highlights
+- **Process Timeline** - Step-by-step engagement workflow from discovery call to ongoing support
+- **Client Testimonials** - Social proof section with anonymized client quotes
+- **FAQ Accordion** - Expandable Q&A section with smooth open/close transitions
+- **Contact Form + Calendly** - Validated contact form that pre-fills and redirects to Calendly for booking discovery calls
+- **SEO Optimized** - Full Open Graph, Twitter Card, meta keywords and semantic HTML
 
 ---
 

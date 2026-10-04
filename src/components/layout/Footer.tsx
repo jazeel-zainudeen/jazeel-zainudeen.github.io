@@ -26,7 +26,7 @@ export function Footer() {
             </div>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Full stack developer from Kerala, India. I build and look after
-              business software — ERP, CRM, HRMS and the odd IoT platform.
+              business software - ERP, CRM, HRMS and the odd IoT platform.
             </p>
             <div className="mt-6 flex gap-2">
               <a
@@ -268,7 +268,7 @@ export function Footer() {
 
         <div className="rule-t mt-14 flex flex-col items-center justify-between gap-3 pt-6 text-xs text-muted-foreground sm:flex-row">
           <p>© 2026 Jazeel Zainudeen. All rights reserved.</p>
-          <p>Personal site — built and maintained by me.</p>
+          <p>Personal site - built and maintained by me.</p>
         </div>
       </div>
     </footer>

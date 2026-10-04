@@ -1,4 +1,4 @@
-# Jazeel Zainudeen — Full Stack Engineer & Cloud Architect
+# Jazeel Zainudeen - Full Stack Engineer & Cloud Architect
 
 ## Summary
 Jazeel Zainudeen is a Senior Full Stack Engineer based in Kerala, India with over 5+ years of production experience building modern web applications, high-performance Cloud solutions, Next.js / React platforms, custom enterprise ERP/CRM systems, and scalable APIs.

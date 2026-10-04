@@ -354,7 +354,7 @@ export function Header() {
             </div>
 
             <div className="mt-3 pt-3 border-t border-border flex items-center justify-between text-[0.68rem] text-muted-foreground font-display">
-              <span>Kerala, India — Remote</span>
+              <span>Kerala, India - Remote</span>
               <span className="flex items-center gap-1.5 text-brand-glow font-semibold">
                 <span className="size-1.5 rounded-full bg-brand-glow animate-pulse"></span>
                 Open for work

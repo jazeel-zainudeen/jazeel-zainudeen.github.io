@@ -40,7 +40,7 @@ export const projectsData: Project[] = [
   },
   {
     slug: "westford-connect-hrms",
-    title: "WESTFORD CONNECT — HRMS SOFTWARE",
+    title: "WESTFORD CONNECT - HRMS SOFTWARE",
     shortDescription: "Complete revamp of the Westford Connect HRMS web application, tailored to client requirements.",
     detailedDescription: "Revamped the complete HRMS web application for Westford Connect. I was responsible for the entire frontend of the website, as well as handling complex integrations. The platform was built with React and features seamless Google Login, Google Calendar integration, and real-time chat functionality using SignalR. Note: The live application is restricted to authenticated users only, so a public preview is not available.",
     tagline: "Enterprise Software",
@@ -78,7 +78,7 @@ export const projectsData: Project[] = [
   },
   {
     slug: "coagmenta",
-    title: "COAGMENTA — CORPORATE WEBSITE",
+    title: "COAGMENTA - CORPORATE WEBSITE",
     shortDescription: "A pixel-perfect website created from a Figma design, later converted to WordPress using Elementor.",
     detailedDescription: "A picture-perfect corporate website built directly from a client-provided Figma design. Every single design pattern was implemented as a perfect 1-to-1 copy of the original Figma mockup. The site was built completely from scratch using Bootstrap 5 and jQuery, and was later converted into a fully dynamic WordPress theme using Elementor for easy content management. The website also features full multilingual support, including a localized French language version.",
     tagline: "Corporate Website",
@@ -119,7 +119,7 @@ export const projectsData: Project[] = [
   },
   {
     slug: "spares",
-    title: "SPARES — PWA WEB APP",
+    title: "SPARES - PWA WEB APP",
     shortDescription: "A feature-packed, personal-use web application built overnight as a Progressive Web App (PWA).",
     detailedDescription: "Developed a quick, feature-packed web application for a client's personal use. Built entirely overnight, the project involved rapid development and self-reviewed enhancements. The web app is fully functional, completely free to host on Vercel, and available as a Progressive Web App (PWA) for ease of access on mobile devices.",
     tagline: "Web Application",

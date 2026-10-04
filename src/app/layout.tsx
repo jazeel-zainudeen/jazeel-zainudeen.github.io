@@ -28,7 +28,7 @@ const siteUrl = "https://jazeel-zainudeen.github.io";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title:
-    "Jazeel Zainudeen — Full Stack Engineer | Next.js, React & Cloud Architect",
+    "Jazeel Zainudeen - Full Stack Engineer | Next.js, React & Cloud Architect",
   description:
     "Jazeel Zainudeen is a full stack engineer from Kerala, India specializing in high-performance Web Applications, Next.js, React, TypeScript, Cloud APIs & custom Enterprise Software.",
   icons: {
@@ -81,11 +81,11 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "Jazeel Zainudeen — Full Stack Engineer & Cloud Architect",
+    title: "Jazeel Zainudeen - Full Stack Engineer & Cloud Architect",
     description:
-      "Personal portfolio of Jazeel Zainudeen — Full Stack Engineer building high-performance web applications, enterprise platforms & cloud solutions using Next.js, React, and TypeScript.",
+      "Personal portfolio of Jazeel Zainudeen - Full Stack Engineer building high-performance web applications, enterprise platforms & cloud solutions using Next.js, React, and TypeScript.",
     url: siteUrl,
-    siteName: "Jazeel Zainudeen — Jazeel.dev",
+    siteName: "Jazeel Zainudeen - Jazeel.dev",
     locale: "en_US",
     type: "profile",
     images: [
@@ -94,13 +94,13 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         type: "image/jpeg",
-        alt: "Jazeel Zainudeen — Full Stack Engineer & Cloud Architect",
+        alt: "Jazeel Zainudeen - Full Stack Engineer & Cloud Architect",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jazeel Zainudeen — Full Stack Engineer & Cloud Architect",
+    title: "Jazeel Zainudeen - Full Stack Engineer & Cloud Architect",
     description:
       "Building modern web applications, scalable APIs & cloud platforms with Next.js, React & TypeScript.",
     images: ["/assets/seo/og-image.jpg"],
@@ -147,7 +147,7 @@ const jsonLd = {
     {
       "@type": "ProfessionalService",
       "@id": `${siteUrl}/#service`,
-      name: "Jazeel Zainudeen — Web Application & Custom Software Development",
+      name: "Jazeel Zainudeen - Web Application & Custom Software Development",
       url: siteUrl,
       image: `${siteUrl}/assets/seo/og-image.jpg`,
       priceRange: "$$",

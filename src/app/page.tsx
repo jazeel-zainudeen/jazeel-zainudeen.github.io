@@ -31,7 +31,7 @@ const servicesData = [
     num: "02",
     title: "CRM Development",
     description:
-      "Bespoke CRM development from a focused CRM development company — built around your sales pipeline, not someone else's.",
+      "Bespoke CRM development from a focused CRM development company - built around your sales pipeline, not someone else's.",
     benefits: [
       "360° customer view",
       "Sales automation",
@@ -59,7 +59,7 @@ const servicesData = [
     num: "04",
     title: "Web Application Maintenance",
     description:
-      "Reliable web application maintenance and software maintenance services — bug fixes, security patches, feature work and uptime support.",
+      "Reliable web application maintenance and software maintenance services - bug fixes, security patches, feature work and uptime support.",
     benefits: [
       "Predictable monthly retainers",
       "Performance & security monitoring",
@@ -73,7 +73,7 @@ const servicesData = [
     num: "05",
     title: "Legacy Application Modernization",
     description:
-      "Legacy application modernization — re-architect old monolithic apps into high-performance Next.js + React + Cloud architectures.",
+      "Legacy application modernization - re-architect old monolithic apps into high-performance Next.js + React + Cloud architectures.",
     benefits: [
       "Modern UI / UX",
       "Cloud-ready & Serverless",
@@ -87,7 +87,7 @@ const servicesData = [
     num: "06",
     title: "Dedicated Full Stack Developer",
     description:
-      "Hire a remote software developer on a monthly basis — direct communication, your roadmap, your codebase.",
+      "Hire a remote software developer on a monthly basis - direct communication, your roadmap, your codebase.",
     benefits: [
       "Full-time or part-time",
       "Async + daily standups",
@@ -156,22 +156,22 @@ const faqData: FAQItem[] = [
   {
     question: "How much does custom software development cost?",
     answer:
-      "Custom business software development is priced by scope — small internal tools typically start in the low thousands USD, while full ERP, CRM or HRMS builds are scoped after a discovery call. You'll get a clear fixed quote or milestone-based proposal before any work starts. Monthly maintenance retainers are also available.",
+      "Custom business software development is priced by scope - small internal tools typically start in the low thousands USD, while full ERP, CRM or HRMS builds are scoped after a discovery call. You'll get a clear fixed quote or milestone-based proposal before any work starts. Monthly maintenance retainers are also available.",
   },
   {
     question: "Do you provide software maintenance?",
     answer:
-      "Yes. Web application maintenance and software maintenance services are a core part of what I offer — bug fixes, security patches, performance work, feature additions and uptime monitoring on predictable monthly retainers.",
+      "Yes. Web application maintenance and software maintenance services are a core part of what I offer - bug fixes, security patches, performance work, feature additions and uptime monitoring on predictable monthly retainers.",
   },
   {
     question: "Can you work with existing applications?",
     answer:
-      "Absolutely. I regularly take over existing React, Next.js, Node.js, and legacy codebases — including legacy application modernization, refactors, and adding new modules without breaking what already works.",
+      "Absolutely. I regularly take over existing React, Next.js, Node.js, and legacy codebases - including legacy application modernization, refactors, and adding new modules without breaking what already works.",
   },
   {
     question: "Do you provide dedicated developer services?",
     answer:
-      "Yes — you can hire me as a dedicated remote software developer on a part-time or full-time monthly basis, working directly inside your team, tools and roadmap.",
+      "Yes - you can hire me as a dedicated remote software developer on a part-time or full-time monthly basis, working directly inside your team, tools and roadmap.",
   },
   {
     question: "How do you communicate with clients?",
@@ -181,7 +181,7 @@ const faqData: FAQItem[] = [
   {
     question: "What technologies do you use?",
     answer:
-      "Primary stack: Next.js, React, TypeScript, Node.js, Tailwind CSS, PostgreSQL, REST & GraphQL APIs, plus Payload CMS and Laravel where required. The right choice depends on your existing systems and long-term goals — I recommend based on fit and performance.",
+      "Primary stack: Next.js, React, TypeScript, Node.js, Tailwind CSS, PostgreSQL, REST & GraphQL APIs, plus Payload CMS and Laravel where required. The right choice depends on your existing systems and long-term goals - I recommend based on fit and performance.",
   },
 ];
 
@@ -241,7 +241,7 @@ const testimonialsData = [
   },
   {
     quote:
-      "We needed a logistics dashboard tied into our existing systems. The API work and the React UI were both rock solid — leads now have clear delivery visibility.",
+      "We needed a logistics dashboard tied into our existing systems. The API work and the React UI were both rock solid - leads now have clear delivery visibility.",
     author: "Founder",
     company: "Logistics Company",
     ruleL: "lg:rule-l lg:pl-8",
@@ -426,7 +426,7 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-background text-foreground">
-      {/* Sticky Header — flat on mobile at top, capsule when scrolled */}
+      {/* Sticky Header - flat on mobile at top, capsule when scrolled */}
 
       <main>
         {/* Hero Section */}
@@ -442,7 +442,7 @@ export default function Home() {
                 Open to interesting work
               </span>
               <span>/</span>
-              <span>Kerala, India — remote</span>
+              <span>Kerala, India - remote</span>
               <span className="ml-auto hidden lg:inline">
                 Personal site of Jazeel Zainudeen
               </span>
@@ -545,7 +545,7 @@ export default function Home() {
                     <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">
                       04
                     </span>
-                    Kerala, India — Remote
+                    Kerala, India - Remote
                   </div>
                 </div>
               </div>
@@ -745,7 +745,7 @@ export default function Home() {
               </h2>
               <p className="col-span-12 max-w-xl self-end text-muted-foreground lg:col-span-5 lg:col-start-8">
                 Most of my work lives inside companies rather than on the open
-                web — internal systems for manufacturing, logistics, healthcare
+                web - internal systems for manufacturing, logistics, healthcare
                 and recruitment teams.
               </p>
             </div>
@@ -792,7 +792,7 @@ export default function Home() {
                   </ul>
                   <p className="rule-t mt-auto pt-5 text-xs leading-relaxed text-muted-foreground">
                     <span className="font-display font-semibold uppercase tracking-[0.14em] text-foreground">
-                      Solves —{" "}
+                      Solves -{" "}
                     </span>
                     {service.solves}
                   </p>
@@ -1032,7 +1032,7 @@ export default function Home() {
                   <br />a conversation
                 </h2>
                 <p className="mt-6 max-w-md text-ink-foreground/80">
-                  An idea, a question, or just hello — drop me a line and I
+                  An idea, a question, or just hello - drop me a line and I
                   usually reply within a day. WhatsApp works too, if that&apos;s
                   easier.
                 </p>
