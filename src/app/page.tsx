@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useState, useEffect, FormEvent } from "react";
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 
 interface FAQItem {
   question: string;
@@ -272,10 +274,11 @@ export default function Home() {
     company: "",
     email: "",
     phone: "",
-    projectType: "Custom ERP Development",
+    projectType: "",
     message: "",
   });
   const [formSubmitting, setFormSubmitting] = useState(false);
+  const [isProjectDropdownOpen, setIsProjectDropdownOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const [formErrors, setFormErrors] = useState({
@@ -283,6 +286,7 @@ export default function Home() {
     email: "",
     phone: "",
     message: "",
+      projectType: "",
   });
 
   const [touched, setTouched] = useState({
@@ -290,6 +294,7 @@ export default function Home() {
     email: false,
     phone: false,
     message: false,
+      projectType: false,
   });
 
   const handleFaqToggle = (index: number) => {
@@ -357,7 +362,7 @@ export default function Home() {
     }));
   };
 
-  const handleFormSubmit = (e: FormEvent) => {
+  const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     const newTouched = {
@@ -365,6 +370,7 @@ export default function Home() {
       email: true,
       phone: true,
       message: true,
+          projectType: true,
     };
     setTouched(newTouched);
 
@@ -372,12 +378,14 @@ export default function Home() {
     const emailError = validateField("email", formData.email);
     const phoneError = validateField("phone", formData.phone);
     const messageError = validateField("message", formData.message);
+    
 
     const errors = {
       name: nameError,
       email: emailError,
       phone: phoneError,
       message: messageError,
+      projectType: "",
     };
 
     setFormErrors(errors);
@@ -388,43 +396,47 @@ export default function Home() {
 
     setFormSubmitting(true);
 
-    if (typeof window !== "undefined" && (window as any).Tawk_API) {
-      const tawk = (window as any).Tawk_API;
-      tawk.setAttributes({
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        company: formData.company,
-        projectType: formData.projectType,
-        message: formData.message,
-      }, function(error: any) {});
-      
-      tawk.addEvent('request_contact', {
-        'message': formData.message,
-        'projectType': formData.projectType
-      });
-      
-      tawk.maximize();
-    }
+    try {
+      const submissionData = new FormData();
+      submissionData.append("access_key", "b660d21b-5cb4-4675-9811-a9b09e63c548");
+      submissionData.append("subject", `New Inquiry from ${formData.name}`);
+      submissionData.append("name", formData.name);
+      submissionData.append("email", formData.email);
+      submissionData.append("phone", formData.phone || "N/A");
+      submissionData.append("company", formData.company || "N/A");
+      submissionData.append("Project Type", formData.projectType);
+      submissionData.append("message", formData.message);
 
-    setTimeout(() => {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: submissionData,
+      });
+
+      if (response.ok) {
+        setFormSubmitted(true);
+        setFormData({
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          projectType: "",
+          message: "",
+        });
+        setTouched({
+          name: false,
+          email: false,
+          phone: false,
+          message: false,
+          projectType: false,
+        });
+      } else {
+        console.error("Form submission failed");
+      }
+    } catch (error) {
+      console.error("Error submitting form", error);
+    } finally {
       setFormSubmitting(false);
-      setFormSubmitted(true);
-      setFormData({
-        name: "",
-        company: "",
-        email: "",
-        phone: "",
-        projectType: "Custom ERP Development",
-        message: "",
-      });
-      setTouched({
-        name: false,
-        email: false,
-        phone: false,
-        message: false,
-      });
-    }, 600);
+    }
   };
 
   return (
@@ -1444,10 +1456,10 @@ export default function Home() {
                 {formSubmitted ? (
                   <div className="border border-ink-foreground/25 p-8 text-center">
                     <h3 className="font-display text-xl font-semibold mb-2 text-ink-foreground">
-                      Chat Opened!
+                      Message Sent!
                     </h3>
                     <p className="text-ink-foreground/80 text-sm mb-6">
-                      I have received your details. Let's continue our conversation on the live chat!
+                      Thank you for reaching out. I will get back to you as soon as possible!
                     </p>
                     <button
                       type="button"
@@ -1521,15 +1533,24 @@ export default function Home() {
                         <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/75">
                           Phone
                         </span>
-                        <input
-                          type="tel"
-                          name="phone"
+                        <PhoneInput
+                          country={'in'}
+                          enableSearch={true}
                           value={formData.phone}
-                          onChange={handleFormChange}
-                          onBlur={handleFormBlur}
-                          autoComplete="tel"
-                          className="w-full rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 px-4 py-3.5 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-ink-foreground/30 focus:bg-ink-foreground/10 focus:ring-4 focus:ring-ink-foreground/5"
-                          placeholder="+91 ..."
+                          onChange={(val) => {
+                            const value = val ? `+${val}` : "";
+                            setFormData((prev) => ({ ...prev, phone: value }));
+                            if (touched.phone) {
+                              setFormErrors((prev) => ({ ...prev, phone: validateField("phone", value) }));
+                            }
+                          }}
+                          onBlur={() => {
+                            setTouched((prev) => ({ ...prev, phone: true }));
+                            setFormErrors((prev) => ({ ...prev, phone: validateField("phone", formData.phone) }));
+                          }}
+                          containerClass="!w-full"
+                          inputClass="!w-full !rounded-xl !border !border-ink-foreground/10 !bg-ink-foreground/5 !py-[14px] !pl-14 !pr-4 !text-sm !text-ink-foreground placeholder:!text-ink-foreground/40 !backdrop-blur-md transition-all hover:!bg-ink-foreground/10 focus:!border-ink-foreground/30 focus:!bg-ink-foreground/10 focus:!ring-4 focus:!ring-ink-foreground/5"
+                          buttonClass="!bg-transparent !border-0 !pl-3"
                         />
                         {touched.phone && formErrors.phone && (
                           <span className="mt-1 block text-xs text-red-400">
@@ -1543,97 +1564,151 @@ export default function Home() {
                       <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/75">
                         Project Type
                       </span>
-                      <select
-                        name="projectType"
-                        value={formData.projectType}
-                        onChange={handleFormChange}
-                        className="w-full rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 px-4 py-3.5 text-sm text-ink-foreground outline-none backdrop-blur-md transition-all focus:border-ink-foreground/30 focus:bg-ink-foreground/10 focus:ring-4 focus:ring-ink-foreground/5"
-                      >
-                        <option
-                          value="Custom ERP Development"
-                          className="bg-ink text-ink-foreground"
+                      <div className="relative">
+                        <button
+                          type="button"
+                          onClick={() => setIsProjectDropdownOpen(!isProjectDropdownOpen)}
+                          className="w-full flex items-center justify-between rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 px-4 py-3.5 text-sm outline-none backdrop-blur-md transition-all focus:border-ink-foreground/30 focus:bg-ink-foreground/10 focus:ring-4 focus:ring-ink-foreground/5"
                         >
-                          Custom ERP Development
-                        </option>
-                        <option
-                          value="CRM Development"
-                          className="bg-ink text-ink-foreground"
-                        >
-                          CRM Development
-                        </option>
-                        <option
-                          value="HRMS Development"
-                          className="bg-ink text-ink-foreground"
-                        >
-                          HRMS Development
-                        </option>
-                        <option
-                          value="Business Process Automation"
-                          className="bg-ink text-ink-foreground"
-                        >
-                          Business Process Automation
-                        </option>
-                        <option
-                          value="Custom Business Software"
-                          className="bg-ink text-ink-foreground"
-                        >
-                          Custom Business Software
-                        </option>
-                        <option
-                          value="Legacy System Modernization"
-                          className="bg-ink text-ink-foreground"
-                        >
-                          Legacy System Modernization
-                        </option>
-                        <option
-                          value="Web Application Maintenance"
-                          className="bg-ink text-ink-foreground"
-                        >
-                          Web Application Maintenance
-                        </option>
-                        <option
-                          value="Next.js &amp; Payload CMS"
-                          className="bg-ink text-ink-foreground"
-                        >
-                          Next.js &amp; Payload CMS
-                        </option>
-                        <option
-                          value="Laravel Development"
-                          className="bg-ink text-ink-foreground"
-                        >
-                          Laravel Development
-                        </option>
-                        <option
-                          value="PHP Development"
-                          className="bg-ink text-ink-foreground"
-                        >
-                          PHP Development
-                        </option>
-                        <option
-                          value="React Development"
-                          className="bg-ink text-ink-foreground"
-                        >
-                          React Development
-                        </option>
-                        <option
-                          value="MERN Stack Development"
-                          className="bg-ink text-ink-foreground"
-                        >
-                          MERN Stack Development
-                        </option>
-                        <option
-                          value="Dedicated Remote Developer"
-                          className="bg-ink text-ink-foreground"
-                        >
-                          Dedicated Remote Developer
-                        </option>
-                        <option
-                          value="Other / Not Sure"
-                          className="bg-ink text-ink-foreground"
-                        >
-                          Other / Not Sure
-                        </option>
-                      </select>
+                          <span className={formData.projectType ? "text-ink-foreground" : "text-ink-foreground/50"}>
+                            {formData.projectType || "Select a service (Optional)"}
+                          </span>
+                          <svg className={`w-4 h-4 text-ink-foreground/50 transition-transform ${isProjectDropdownOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+                        
+                        {isProjectDropdownOpen && (
+                          <div className="absolute z-10 w-full mt-2 rounded-xl border border-ink-foreground/10 bg-ink overflow-hidden shadow-2xl max-h-[250px] overflow-y-auto">
+                            <ul className="py-2">
+                              
+                              <li>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setFormData(prev => ({ ...prev, projectType: "Custom ERP Development" }));
+                                    setIsProjectDropdownOpen(false);
+                                  }}
+                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
+                                >
+                                  Custom ERP Development
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setFormData(prev => ({ ...prev, projectType: "CRM Development" }));
+                                    setIsProjectDropdownOpen(false);
+                                  }}
+                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
+                                >
+                                  CRM Development
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setFormData(prev => ({ ...prev, projectType: "HRMS Development" }));
+                                    setIsProjectDropdownOpen(false);
+                                  }}
+                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
+                                >
+                                  HRMS Development
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setFormData(prev => ({ ...prev, projectType: "Business Process Automation" }));
+                                    setIsProjectDropdownOpen(false);
+                                  }}
+                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
+                                >
+                                  Business Process Automation
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setFormData(prev => ({ ...prev, projectType: "Custom Business Software" }));
+                                    setIsProjectDropdownOpen(false);
+                                  }}
+                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
+                                >
+                                  Custom Business Software
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setFormData(prev => ({ ...prev, projectType: "Legacy System Modernization" }));
+                                    setIsProjectDropdownOpen(false);
+                                  }}
+                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
+                                >
+                                  Legacy System Modernization
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setFormData(prev => ({ ...prev, projectType: "Web Application Maintenance" }));
+                                    setIsProjectDropdownOpen(false);
+                                  }}
+                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
+                                >
+                                  Web Application Maintenance
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setFormData(prev => ({ ...prev, projectType: "Next.js & Payload CMS" }));
+                                    setIsProjectDropdownOpen(false);
+                                  }}
+                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
+                                >
+                                  Next.js & Payload CMS
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setFormData(prev => ({ ...prev, projectType: "Laravel Development" }));
+                                    setIsProjectDropdownOpen(false);
+                                  }}
+                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
+                                >
+                                  Laravel Development
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setFormData(prev => ({ ...prev, projectType: "PHP Development" }));
+                                    setIsProjectDropdownOpen(false);
+                                  }}
+                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
+                                >
+                                  PHP Development
+                                </button>
+                              </li>
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                      
+                      {/* Hidden input to ensure value is captured in form data just in case */}
+                      <input type="hidden" name="projectType" value={formData.projectType} />
                     </label>
 
                     <label className="block">
