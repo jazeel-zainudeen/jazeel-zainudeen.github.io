@@ -17,7 +17,7 @@ export interface Project {
 
 export const projectsData: Project[] = [
   {
-    slug: "retail-operations-platform",
+    slug: "myg-ecommerce",
     title: "MYG.IN ECOMMERCE DEVELOPMENT",
     shortDescription: "Business and operations platform supporting one of India's largest electronics retail chains.",
     detailedDescription: "A comprehensive platform for myG, a large-scale retail chain. Working in close connection with the operations team, I was responsible for implementing critical web and app API changes, as well as managing updates regarding overall functioning such as payment gateway integrations, shipping integrations, and promotional updates.",
