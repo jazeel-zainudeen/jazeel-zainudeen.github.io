@@ -185,6 +185,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`h-full scroll-smooth ${manrope.variable} ${sora.variable}`}
+      data-scroll-behavior="smooth"
     >
       <head>
         <meta
