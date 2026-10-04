@@ -90,7 +90,13 @@ export function Header() {
             </Link>
           </nav>
 
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-5">
+            <Link
+              href="/portfolio"
+              className="font-display text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-foreground transition-all hover:text-brand"
+            >
+              Portfolio
+            </Link>
             <TawkButton
               className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 font-display text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-brand-foreground transition-all hover:bg-brand-glow shadow-sm"
             >
@@ -98,7 +104,13 @@ export function Header() {
             </TawkButton>
           </div>
 
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-3 md:hidden">
+            <Link
+              href="/portfolio"
+              className="font-display text-[0.65rem] font-semibold uppercase tracking-wider text-foreground hover:text-brand"
+            >
+              Portfolio
+            </Link>
             <TawkButton
               className="inline-flex items-center rounded-full bg-brand px-3 py-1 font-display text-[0.65rem] font-semibold uppercase tracking-wider text-brand-foreground shadow-sm"
             >

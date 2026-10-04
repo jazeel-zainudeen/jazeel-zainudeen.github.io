@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Sora } from "next/font/google";
 import Script from "next/script";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 
 import "./globals.css";
 
@@ -201,8 +203,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full bg-background text-foreground antialiased selection:bg-brand/20 selection:text-brand">
-        {children}
+      <body className="min-h-full flex flex-col bg-background text-foreground antialiased selection:bg-brand/20 selection:text-brand">
+        <Header />
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer />
         {process.env.NEXT_PUBLIC_TAWKTO_PROPERTY_ID && (
           <Script id="tawk-to" strategy="lazyOnload">
             {`
