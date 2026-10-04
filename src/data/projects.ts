@@ -118,5 +118,25 @@ export const projectsData: Project[] = [
     ],
     challenges: "Standardizing distinct and complex JSON responses from three different external news publisher APIs into a single unified format.",
     lessonsLearned: "Deepened knowledge in building scalable RESTful architectures with Laravel and orchestrating multi-source API data aggregation."
+  },
+  {
+    slug: "bobcares-revamp",
+    title: "BOBCARES WEBSITE REVAMP",
+    shortDescription: "Complete revamp of a large-scale corporate website from WordPress to Next.js, featuring modern Figma-based UI/UX.",
+    detailedDescription: "Led the complete revamp of the main Bobcares corporate website. Migrated the legacy WordPress architecture to a high-performance Next.js stack, dramatically improving load times, SEO, and overall user experience. Implemented a pixel-perfect, highly modern design derived from extensive Figma mockups, featuring dark mode elements, smooth animations, and a vastly improved user interface tailored for an enterprise IT support company.",
+    tagline: "Corporate Website Revamp",
+    thumbnail: "/assets/projects/bobcares-mockup.png",
+    images: ["/assets/projects/bobcares-mockup.png"],
+    scrollingPreview: "/assets/projects/bobcares-mockup.png",
+    previewUrl: "https://bobcares.com/",
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Figma"],
+    keyFeatures: [
+      "Full migration from WordPress to a highly optimized Next.js application.",
+      "Pixel-perfect implementation of a modern, complex Figma design.",
+      "Significantly improved Core Web Vitals and overall SEO performance.",
+      "Beautiful, responsive UI with engaging animations and a modern aesthetic."
+    ],
+    challenges: "Migrating a massive amount of legacy content and maintaining SEO rankings while entirely restructuring the frontend.",
+    lessonsLearned: "Gained significant experience in large-scale migrations to modern frameworks and executing high-fidelity enterprise-level UI designs."
   }
 ];
