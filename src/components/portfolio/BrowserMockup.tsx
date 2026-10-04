@@ -2,11 +2,12 @@ import Image from "next/image";
 
 interface BrowserMockupProps {
   imageSrc: string;
+  mobileImageSrc?: string;
   alt: string;
   priority?: boolean;
 }
 
-export function BrowserMockup({ imageSrc, alt, priority = false }: BrowserMockupProps) {
+export function BrowserMockup({ imageSrc, mobileImageSrc, alt, priority = false }: BrowserMockupProps) {
   return (
     <div className="relative flex h-full w-full items-center justify-center overflow-hidden p-6 sm:p-8">
       
@@ -42,6 +43,25 @@ export function BrowserMockup({ imageSrc, alt, priority = false }: BrowserMockup
             <div className="absolute left-1/2 top-0 h-1.5 w-16 -translate-x-1/2 rounded-b-md bg-[#c7c7cc] shadow-inner" />
           </div>
         </div>
+        
+        {/* Mobile/App Frame (iPhone style) */}
+        {mobileImageSrc && (
+          <div className="absolute -bottom-2 -right-2 md:-right-6 z-20 w-[24%] md:w-[22%] min-w-[70px] max-w-[120px] rounded-[1.25rem] border-[5px] md:border-[6px] border-[#1c1c1e] bg-[#1c1c1e] shadow-2xl transition-transform duration-700 ease-out group-hover:-translate-y-2 group-hover:-translate-x-1 group-hover:scale-105">
+            {/* Dynamic Island / Notch */}
+            <div className="absolute left-1/2 top-1.5 z-30 h-1 md:h-1.5 w-1/3 -translate-x-1/2 rounded-full bg-black shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]" />
+            
+            {/* Mobile Screen Display Area (19.5:9 aspect ratio) */}
+            <div className="relative aspect-[9/19.5] w-full overflow-hidden rounded-[0.8rem] bg-background">
+              <Image
+                src={mobileImageSrc}
+                alt={`${alt} mobile view`}
+                fill
+                className="object-cover object-top transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
+                sizes="(max-width: 768px) 30vw, 20vw"
+              />
+            </div>
+          </div>
+        )}
         
       </div>
       

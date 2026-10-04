@@ -17,7 +17,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         {/* Thumbnail Area */}
         <div className="relative aspect-[4/3] w-full overflow-hidden">
           <BrowserMockup 
-            imageSrc={project.thumbnail} 
+            imageSrc={project.thumbnail}
+            mobileImageSrc={project.mobileThumbnail}
             alt={project.title} 
             priority={index < 2} 
           />

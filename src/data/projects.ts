@@ -5,6 +5,7 @@ export interface Project {
   detailedDescription: string;
   tagline: string;
   thumbnail: string;
+  mobileThumbnail?: string;
   images: string[];
   scrollingPreview?: string;
   previewUrl?: string;
@@ -72,5 +73,27 @@ export const projectsData: Project[] = [
     ],
     challenges: "Ensuring 100% design fidelity while transitioning from a static HTML/jQuery build to a dynamic Elementor-based WordPress theme.",
     lessonsLearned: "Mastered the workflow of converting static high-fidelity prototypes into fully dynamic and editable WordPress templates without sacrificing design quality."
+  },
+  {
+    slug: "spares",
+    title: "SPARES — PWA WEB APP",
+    shortDescription: "A feature-packed, personal-use web application built overnight as a Progressive Web App (PWA).",
+    detailedDescription: "Developed a quick, feature-packed web application for a client's personal use. Built entirely overnight, the project involved rapid development and self-reviewed enhancements. The web app is fully functional, completely free to host on Vercel, and available as a Progressive Web App (PWA) for ease of access on mobile devices.",
+    tagline: "Web Application",
+    thumbnail: "/assets/projects/spares-full-screenshot.png",
+    mobileThumbnail: "/assets/projects/spares-mobile-screenshot.png",
+    images: ["/assets/projects/spares-full-screenshot.png"],
+    scrollingPreview: "/assets/projects/spares-full-screenshot.png",
+    previewUrl: "https://spares-mu.vercel.app/",
+    githubUrl: "https://github.com/jazeel-zainudeen/spares",
+    techStack: ["Next.js", "Tailwind CSS", "Supabase", "Cloudinary"],
+    keyFeatures: [
+      "Progressive Web App (PWA) support for installable, app-like experience.",
+      "Supabase integration for robust backend and database management.",
+      "Cloudinary integration for optimized and reliable image storage.",
+      "Rapidly developed and deployed entirely overnight."
+    ],
+    challenges: "Delivering a fully functional, feature-packed application with a proper database and image storage solution overnight.",
+    lessonsLearned: "Gained proficiency in rapidly bootstrapping full-stack Next.js applications using Supabase and Cloudinary."
   }
 ];
