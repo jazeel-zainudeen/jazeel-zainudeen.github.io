@@ -97,5 +97,26 @@ export const projectsData: Project[] = [
     ],
     challenges: "Delivering a fully functional, feature-packed application with a proper database and image storage solution overnight.",
     lessonsLearned: "Gained proficiency in rapidly bootstrapping full-stack Next.js applications using Supabase and Cloudinary."
+  },
+  {
+    slug: "news-aggregator-api",
+    title: "NEWS AGGREGATOR API",
+    shortDescription: "A RESTful API built with Laravel that aggregates news from multiple global sources and provides personalized feeds.",
+    detailedDescription: "Developed a robust RESTful API using Laravel 12 and PHP 8.4 that seamlessly aggregates news articles from major publishers including News API, The Guardian, and The New York Times. The backend was developed with a strong emphasis on clean system architecture, utilizing modern design patterns (such as Service classes, Dependency Injection, and decoupled logic) to ensure high maintainability and scalability. It features secure authentication via Laravel Sanctum and provides high-performance endpoints for users to browse, search, and deeply personalize their daily news feeds.",
+    tagline: "Backend API",
+    thumbnail: "/assets/projects/news-aggregator-api-screenshot.png",
+    images: ["/assets/projects/news-aggregator-api-screenshot.png"],
+    scrollingPreview: "/assets/projects/news-aggregator-api-screenshot.png",
+    githubUrl: "https://github.com/jazeel-zainudeen/news-aggregator-api",
+    techStack: ["Laravel", "PHP", "MySQL", "Docker"],
+    keyFeatures: [
+      "Engineered with clean system architecture and modern backend design patterns.",
+      "Secure API authentication managed seamlessly via Laravel Sanctum.",
+      "Live data aggregation from News API, The Guardian, and The New York Times.",
+      "Customizable news feeds based on user preferences and search criteria.",
+      "Fully dockerized local development environment."
+    ],
+    challenges: "Standardizing distinct and complex JSON responses from three different external news publisher APIs into a single unified format.",
+    lessonsLearned: "Deepened knowledge in building scalable RESTful architectures with Laravel and orchestrating multi-source API data aggregation."
   }
 ];

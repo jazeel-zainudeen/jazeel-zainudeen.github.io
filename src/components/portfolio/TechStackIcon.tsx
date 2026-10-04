@@ -29,7 +29,9 @@ import {
   SiSupabase,
   SiCloudinary,
   SiGoogle,
-  SiDotnet
+  SiDotnet,
+  SiMysql,
+  SiDocker
 } from "react-icons/si";
 import { FaCode, FaAws, FaCss3Alt, FaCartShopping, FaMagnifyingGlass, FaFileCode, FaNetworkWired } from "react-icons/fa6";
 
@@ -127,6 +129,10 @@ export function TechStackIcon({ name, className = "w-4 h-4" }: TechStackIconProp
       return <SiGoogle className={className} />;
     case 'signalr':
       return <FaNetworkWired className={className} />;
+    case 'mysql':
+      return <SiMysql className={className} />;
+    case 'docker':
+      return <SiDocker className={className} />;
     default:
       return <FaCode className={className} />;
   }
