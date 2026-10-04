@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Code2 as Github, CheckCircle2, AlertTriangle, Lightbulb } from "lucide-react";
 import { ImageCarousel } from "@/components/portfolio/ImageCarousel";
+import { ScrollingImagePreview } from "@/components/portfolio/ScrollingImagePreview";
 import { TechStackIcon } from "@/components/portfolio/TechStackIcon";
 import { Metadata } from "next";
 
@@ -86,7 +87,11 @@ export default async function ProjectDetailsPage({ params }: Props) {
 
         {/* Media Showcase */}
         <div className="mb-16">
-          <ImageCarousel images={project.images} alt={project.title} />
+          {project.scrollingPreview ? (
+            <ScrollingImagePreview imageSrc={project.scrollingPreview} alt={project.title} />
+          ) : (
+            <ImageCarousel images={project.images} alt={project.title} />
+          )}
         </div>
 
         {/* Content Grid */}
@@ -163,11 +168,6 @@ export default async function ProjectDetailsPage({ params }: Props) {
                 <div>
                   <dt className="text-sm text-muted-foreground mb-1">My Role</dt>
                   <dd className="font-medium text-foreground">{project.role}</dd>
-                </div>
-                
-                <div>
-                  <dt className="text-sm text-muted-foreground mb-1">Duration</dt>
-                  <dd className="font-medium text-foreground">{project.duration}</dd>
                 </div>
               </dl>
             </div>

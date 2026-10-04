@@ -280,3 +280,13 @@
   align-items: center !important;
   justify-content: center !important;
 }
+
+@keyframes scroll-up-down {
+  0%, 10% { transform: translateY(0); }
+  45%, 55% { transform: translateY(calc(-100% + 100cqh)); }
+  90%, 100% { transform: translateY(0); }
+}
+
+.animate-scroll-up-down {
+  animation: scroll-up-down 15s ease-in-out infinite;
+}

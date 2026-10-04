@@ -17,9 +17,13 @@ import {
   SiMongodb,
   SiRedis,
   SiFirebase,
-  SiMqtt
+  SiMqtt,
+  SiPhp,
+  SiLaravel,
+  SiCodeigniter,
+  SiJquery
 } from "react-icons/si";
-import { FaCode, FaAws, FaCss3Alt } from "react-icons/fa6";
+import { FaCode, FaAws, FaCss3Alt, FaCartShopping, FaMagnifyingGlass, FaFileCode } from "react-icons/fa6";
 
 interface TechStackIconProps {
   name: string;
@@ -82,6 +86,21 @@ export function TechStackIcon({ name, className = "w-4 h-4" }: TechStackIconProp
       return <SiFirebase className={className} />;
     case 'mqtt':
       return <SiMqtt className={className} />;
+    case 'php':
+      return <SiPhp className={className} />;
+    case 'laravel':
+      return <SiLaravel className={className} />;
+    case 'codeigniter':
+      return <SiCodeigniter className={className} />;
+    case 'jquery':
+      return <SiJquery className={className} />;
+    case 'cs-cart':
+    case 'cscart':
+      return <FaCartShopping className={className} />;
+    case 'smarty':
+      return <FaFileCode className={className} />;
+    case 'searchanise':
+      return <FaMagnifyingGlass className={className} />;
     default:
       return <FaCode className={className} />;
   }
