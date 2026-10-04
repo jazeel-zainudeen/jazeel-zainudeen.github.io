@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { TawkButton } from "@/components/ui/TawkButton";
 
 export function Footer() {
   return (
@@ -163,12 +164,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/#contact"
+                <TawkButton
                   className="text-muted-foreground transition-colors hover:text-foreground"
                 >
                   Contact
-                </Link>
+                </TawkButton>
               </li>
             </ul>
           </div>

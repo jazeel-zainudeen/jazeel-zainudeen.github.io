@@ -1,5 +1,6 @@
 import { projectsData } from "@/data/projects";
 import { ProjectCard } from "@/components/portfolio/ProjectCard";
+import { TawkButton } from "@/components/ui/TawkButton";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Metadata } from "next";
@@ -60,12 +61,11 @@ export default function PortfolioListingPage() {
           <p className="mx-auto max-w-xl text-muted-foreground mb-8">
             Whether you need a full enterprise system from scratch or specialized features for your existing app, I can help.
           </p>
-          <Link
-            href="/#contact"
+          <TawkButton
             className="inline-flex items-center justify-center rounded-full bg-brand px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-brand-foreground shadow-lg transition-all hover:bg-brand-glow hover:shadow-xl hover:-translate-y-0.5 active:scale-95"
           >
             Start a Conversation
-          </Link>
+          </TawkButton>
         </div>
 
       </div>

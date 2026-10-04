@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { TawkButton } from "@/components/ui/TawkButton";
 import { useState, useEffect } from "react";
 
 export function Header() {
@@ -90,21 +91,19 @@ export function Header() {
           </nav>
 
           <div className="hidden md:block">
-            <Link
-              href="/#contact"
+            <TawkButton
               className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 font-display text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-brand-foreground transition-all hover:bg-brand-glow shadow-sm"
             >
               Say hello
-            </Link>
+            </TawkButton>
           </div>
 
           <div className="flex items-center gap-2 md:hidden">
-            <Link
-              href="/#contact"
+            <TawkButton
               className="inline-flex items-center rounded-full bg-brand px-3 py-1 font-display text-[0.65rem] font-semibold uppercase tracking-wider text-brand-foreground shadow-sm"
             >
               Say hello
-            </Link>
+            </TawkButton>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="cursor-pointer flex items-center justify-center p-1.5 text-foreground rounded-full border border-border bg-surface active:scale-95 transition-transform"

@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { useState, useEffect, FormEvent } from "react";
-import PhoneInput from 'react-phone-input-2';
-import 'react-phone-input-2/lib/style.css';
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import { TawkButton } from "@/components/ui/TawkButton";
 
 interface FAQItem {
   question: string;
@@ -265,7 +266,10 @@ export default function Home() {
     const val = mobileMenuOpen ? "hidden" : "";
     document.body.style.overflow = val;
     document.documentElement.style.overflow = val;
-    return () => { document.body.style.overflow = ""; document.documentElement.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
   }, [mobileMenuOpen]);
 
   // Contact Form State
@@ -286,7 +290,7 @@ export default function Home() {
     email: "",
     phone: "",
     message: "",
-      projectType: "",
+    projectType: "",
   });
 
   const [touched, setTouched] = useState({
@@ -294,7 +298,7 @@ export default function Home() {
     email: false,
     phone: false,
     message: false,
-      projectType: false,
+    projectType: false,
   });
 
   const handleFaqToggle = (index: number) => {
@@ -370,7 +374,7 @@ export default function Home() {
       email: true,
       phone: true,
       message: true,
-          projectType: true,
+      projectType: true,
     };
     setTouched(newTouched);
 
@@ -378,7 +382,6 @@ export default function Home() {
     const emailError = validateField("email", formData.email);
     const phoneError = validateField("phone", formData.phone);
     const messageError = validateField("message", formData.message);
-    
 
     const errors = {
       name: nameError,
@@ -398,7 +401,10 @@ export default function Home() {
 
     try {
       const submissionData = new FormData();
-      submissionData.append("access_key", "b660d21b-5cb4-4675-9811-a9b09e63c548");
+      submissionData.append(
+        "access_key",
+        "b660d21b-5cb4-4675-9811-a9b09e63c548",
+      );
       submissionData.append("subject", `New Inquiry from ${formData.name}`);
       submissionData.append("name", formData.name);
       submissionData.append("email", formData.email);
@@ -506,21 +512,19 @@ export default function Home() {
           </nav>
 
           <div className="hidden md:block">
-            <a
-              href="#contact"
+            <TawkButton
               className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 font-display text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-brand-foreground transition-all hover:bg-brand-glow shadow-sm"
             >
               Say hello
-            </a>
+            </TawkButton>
           </div>
 
           <div className="flex items-center gap-2 md:hidden">
-            <a
-              href="#contact"
+            <TawkButton
               className="inline-flex items-center rounded-full bg-brand px-3 py-1 font-display text-[0.65rem] font-semibold uppercase tracking-wider text-brand-foreground shadow-sm"
             >
               Say hello
-            </a>
+            </TawkButton>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="cursor-pointer flex items-center justify-center p-1.5 text-foreground rounded-full border border-border bg-surface active:scale-95 transition-transform"
@@ -567,7 +571,9 @@ export default function Home() {
         {/* Mobile Menu Backdrop + Overlay */}
         <div
           className={`fixed inset-0 z-[-1] bg-black/10 backdrop-blur-sm md:hidden transition-opacity duration-300 ${
-            mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+            mobileMenuOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
           }`}
           onClick={() => setMobileMenuOpen(false)}
           aria-hidden="true"
@@ -579,193 +585,193 @@ export default function Home() {
               : "opacity-0 -translate-y-2 scale-[0.97] pointer-events-none"
           }`}
         >
-            <div className="grid grid-cols-2 gap-2.5">
-              <a
-                href="#services"
-                onClick={() => setMobileMenuOpen(false)}
-                className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-all hover:bg-surface active:scale-95"
-              >
-                <div className="flex items-center justify-between text-muted-foreground">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-code-2 text-brand-glow"
-                  >
-                    <path d="m18 16 4-4-4-4" />
-                    <path d="m6 8-4 4 4 4" />
-                    <path d="m14.5 4-5 16" />
-                  </svg>
-                  <span className="font-mono text-[0.62rem] text-muted-foreground">
-                    01
-                  </span>
-                </div>
-                <div className="mt-4">
-                  <span className="block font-display text-xs font-bold text-foreground">
-                    What I do
-                  </span>
-                  <span className="text-[0.65rem] text-muted-foreground">
-                    Services &amp; Stack
-                  </span>
-                </div>
-              </a>
-
-              <a
-                href="#about"
-                onClick={() => setMobileMenuOpen(false)}
-                className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-all hover:bg-surface active:scale-95"
-              >
-                <div className="flex items-center justify-between text-muted-foreground">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-user text-brand-glow"
-                  >
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
-                  <span className="font-mono text-[0.62rem] text-muted-foreground">
-                    02
-                  </span>
-                </div>
-                <div className="mt-4">
-                  <span className="block font-display text-xs font-bold text-foreground">
-                    About
-                  </span>
-                  <span className="text-[0.65rem] text-muted-foreground">
-                    5+ Yrs Experience
-                  </span>
-                </div>
-              </a>
-
-              <a
-                href="#process"
-                onClick={() => setMobileMenuOpen(false)}
-                className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-all hover:bg-surface active:scale-95"
-              >
-                <div className="flex items-center justify-between text-muted-foreground">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-workflow text-brand-glow"
-                  >
-                    <rect width="8" height="8" x="3" y="3" rx="2" />
-                    <path d="M7 11v4a2 2 0 0 0 2 2h4" />
-                    <rect width="8" height="8" x="13" y="13" rx="2" />
-                  </svg>
-                  <span className="font-mono text-[0.62rem] text-muted-foreground">
-                    03
-                  </span>
-                </div>
-                <div className="mt-4">
-                  <span className="block font-display text-xs font-bold text-foreground">
-                    Process
-                  </span>
-                  <span className="text-[0.65rem] text-muted-foreground">
-                    How I work
-                  </span>
-                </div>
-              </a>
-
-              <a
-                href="#work"
-                onClick={() => setMobileMenuOpen(false)}
-                className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-all hover:bg-surface active:scale-95"
-              >
-                <div className="flex items-center justify-between text-muted-foreground">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-briefcase text-brand-glow"
-                  >
-                    <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
-                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                  </svg>
-                  <span className="font-mono text-[0.62rem] text-muted-foreground">
-                    04
-                  </span>
-                </div>
-                <div className="mt-4">
-                  <span className="block font-display text-xs font-bold text-foreground">
-                    Work
-                  </span>
-                  <span className="text-[0.65rem] text-muted-foreground">
-                    Selected Projects
-                  </span>
-                </div>
-              </a>
-            </div>
-
-            <div className="mt-2.5 flex items-center gap-2">
-              <a
-                href="#faq"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex flex-1 items-center justify-between rounded-xl border border-border/60 bg-surface/40 px-3.5 py-2.5 font-display text-xs font-semibold text-foreground transition-all hover:bg-surface"
-              >
-                <span>FAQ</span>
-                <span className="font-mono text-[0.62rem] text-muted-foreground">
-                  05
-                </span>
-              </a>
-              <a
-                href="https://wa.me/918086482422"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-1.5 rounded-xl bg-brand/10 border border-brand/20 px-3.5 py-2.5 font-display text-xs font-bold text-brand-glow transition-all"
-              >
+          <div className="grid grid-cols-2 gap-2.5">
+            <a
+              href="#services"
+              onClick={() => setMobileMenuOpen(false)}
+              className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-all hover:bg-surface active:scale-95"
+            >
+              <div className="flex items-center justify-between text-muted-foreground">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
+                  width="18"
+                  height="18"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="2.5"
+                  strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="lucide lucide-message-circle"
+                  className="lucide lucide-code-2 text-brand-glow"
                 >
-                  <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path>
+                  <path d="m18 16 4-4-4-4" />
+                  <path d="m6 8-4 4 4 4" />
+                  <path d="m14.5 4-5 16" />
                 </svg>
-                <span>WhatsApp</span>
-              </a>
-            </div>
+                <span className="font-mono text-[0.62rem] text-muted-foreground">
+                  01
+                </span>
+              </div>
+              <div className="mt-4">
+                <span className="block font-display text-xs font-bold text-foreground">
+                  What I do
+                </span>
+                <span className="text-[0.65rem] text-muted-foreground">
+                  Services &amp; Stack
+                </span>
+              </div>
+            </a>
 
-            <div className="mt-3 pt-3 border-t border-border flex items-center justify-between text-[0.68rem] text-muted-foreground font-display">
-              <span>Kerala, India — Remote</span>
-              <span className="flex items-center gap-1.5 text-brand-glow font-semibold">
-                <span className="size-1.5 rounded-full bg-brand-glow animate-pulse"></span>
-                Open for work
-              </span>
-            </div>
+            <a
+              href="#about"
+              onClick={() => setMobileMenuOpen(false)}
+              className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-all hover:bg-surface active:scale-95"
+            >
+              <div className="flex items-center justify-between text-muted-foreground">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-user text-brand-glow"
+                >
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                <span className="font-mono text-[0.62rem] text-muted-foreground">
+                  02
+                </span>
+              </div>
+              <div className="mt-4">
+                <span className="block font-display text-xs font-bold text-foreground">
+                  About
+                </span>
+                <span className="text-[0.65rem] text-muted-foreground">
+                  5+ Yrs Experience
+                </span>
+              </div>
+            </a>
+
+            <a
+              href="#process"
+              onClick={() => setMobileMenuOpen(false)}
+              className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-all hover:bg-surface active:scale-95"
+            >
+              <div className="flex items-center justify-between text-muted-foreground">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-workflow text-brand-glow"
+                >
+                  <rect width="8" height="8" x="3" y="3" rx="2" />
+                  <path d="M7 11v4a2 2 0 0 0 2 2h4" />
+                  <rect width="8" height="8" x="13" y="13" rx="2" />
+                </svg>
+                <span className="font-mono text-[0.62rem] text-muted-foreground">
+                  03
+                </span>
+              </div>
+              <div className="mt-4">
+                <span className="block font-display text-xs font-bold text-foreground">
+                  Process
+                </span>
+                <span className="text-[0.65rem] text-muted-foreground">
+                  How I work
+                </span>
+              </div>
+            </a>
+
+            <a
+              href="#work"
+              onClick={() => setMobileMenuOpen(false)}
+              className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-all hover:bg-surface active:scale-95"
+            >
+              <div className="flex items-center justify-between text-muted-foreground">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-briefcase text-brand-glow"
+                >
+                  <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                </svg>
+                <span className="font-mono text-[0.62rem] text-muted-foreground">
+                  04
+                </span>
+              </div>
+              <div className="mt-4">
+                <span className="block font-display text-xs font-bold text-foreground">
+                  Work
+                </span>
+                <span className="text-[0.65rem] text-muted-foreground">
+                  Selected Projects
+                </span>
+              </div>
+            </a>
           </div>
+
+          <div className="mt-2.5 flex items-center gap-2">
+            <a
+              href="#faq"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex flex-1 items-center justify-between rounded-xl border border-border/60 bg-surface/40 px-3.5 py-2.5 font-display text-xs font-semibold text-foreground transition-all hover:bg-surface"
+            >
+              <span>FAQ</span>
+              <span className="font-mono text-[0.62rem] text-muted-foreground">
+                05
+              </span>
+            </a>
+            <a
+              href="https://wa.me/918086482422"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-1.5 rounded-xl bg-brand/10 border border-brand/20 px-3.5 py-2.5 font-display text-xs font-bold text-brand-glow transition-all"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-message-circle"
+              >
+                <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path>
+              </svg>
+              <span>WhatsApp</span>
+            </a>
+          </div>
+
+          <div className="mt-3 pt-3 border-t border-border flex items-center justify-between text-[0.68rem] text-muted-foreground font-display">
+            <span>Kerala, India — Remote</span>
+            <span className="flex items-center gap-1.5 text-brand-glow font-semibold">
+              <span className="size-1.5 rounded-full bg-brand-glow animate-pulse"></span>
+              Open for work
+            </span>
+          </div>
+        </div>
       </header>
 
       <main>
@@ -792,7 +798,7 @@ export default function Home() {
             <div className="grid grid-cols-12 gap-y-8 pt-8 sm:pt-16 md:pt-20 lg:gap-y-12">
               <div className="col-span-12 lg:col-span-9">
                 <h1 className="font-display text-[2.5rem] font-semibold leading-[1.05] tracking-[-0.04em] sm:text-7xl lg:text-[6.2rem]">
-                  Hi, I&apos;m Jazeel.
+                  Hi, I&apos;m Jazeel Zainudeen.
                   <br />I build{" "}
                   <span className="text-brand-glow">software</span>
                   <br />
@@ -1136,12 +1142,11 @@ export default function Home() {
                     </span>
                     {service.solves}
                   </p>
-                  <a
-                    href="#contact"
+                  <TawkButton
                     className="link-rule mt-6 inline-flex w-fit items-center gap-1.5 font-display text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-foreground"
                   >
                     Ask me about this
-                  </a>
+                  </TawkButton>
                 </article>
               ))}
             </div>
@@ -1238,7 +1243,8 @@ export default function Home() {
                 Curious about what I&apos;ve been building?
               </h2>
               <p className="mx-auto max-w-2xl text-lg text-muted-foreground mb-10">
-                Explore a detailed showcase of my recent projects, spanning enterprise web apps, mobile platforms, and IoT dashboards.
+                Explore a detailed showcase of my recent projects, spanning
+                enterprise web apps, mobile platforms, and IoT dashboards.
               </p>
               <a
                 href="/portfolio"
@@ -1445,6 +1451,28 @@ export default function Home() {
                     </svg>
                     WhatsApp
                   </a>
+                  <div className="mt-8">
+                    <TawkButton
+                      className="group flex w-full sm:w-fit items-center justify-center gap-3 rounded-full bg-white px-8 py-4 font-display text-sm font-bold tracking-wider text-black shadow-lg transition-all hover:bg-gray-100 hover:shadow-xl active:scale-95"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-message-square text-brand"
+                        aria-hidden="true"
+                      >
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                      </svg>
+                      <span>Or chat with us</span>
+                    </TawkButton>
+                  </div>
                 </div>
               </div>
 
@@ -1459,7 +1487,8 @@ export default function Home() {
                       Message Sent!
                     </h3>
                     <p className="text-ink-foreground/80 text-sm mb-6">
-                      Thank you for reaching out. I will get back to you as soon as possible!
+                      Thank you for reaching out. I will get back to you as soon
+                      as possible!
                     </p>
                     <button
                       type="button"
@@ -1534,19 +1563,25 @@ export default function Home() {
                           Phone
                         </span>
                         <PhoneInput
-                          country={'in'}
+                          country={"in"}
                           enableSearch={true}
                           value={formData.phone}
                           onChange={(val) => {
                             const value = val ? `+${val}` : "";
                             setFormData((prev) => ({ ...prev, phone: value }));
                             if (touched.phone) {
-                              setFormErrors((prev) => ({ ...prev, phone: validateField("phone", value) }));
+                              setFormErrors((prev) => ({
+                                ...prev,
+                                phone: validateField("phone", value),
+                              }));
                             }
                           }}
                           onBlur={() => {
                             setTouched((prev) => ({ ...prev, phone: true }));
-                            setFormErrors((prev) => ({ ...prev, phone: validateField("phone", formData.phone) }));
+                            setFormErrors((prev) => ({
+                              ...prev,
+                              phone: validateField("phone", formData.phone),
+                            }));
                           }}
                           containerClass="!w-full"
                           inputClass="!w-full !rounded-xl !border !border-ink-foreground/10 !bg-ink-foreground/5 !py-[14px] !pl-14 !pr-4 !text-sm !text-ink-foreground placeholder:!text-ink-foreground/40 !backdrop-blur-md transition-all hover:!bg-ink-foreground/10 focus:!border-ink-foreground/30 focus:!bg-ink-foreground/10 focus:!ring-4 focus:!ring-ink-foreground/5"
@@ -1567,26 +1602,47 @@ export default function Home() {
                       <div className="relative">
                         <button
                           type="button"
-                          onClick={() => setIsProjectDropdownOpen(!isProjectDropdownOpen)}
+                          onClick={() =>
+                            setIsProjectDropdownOpen(!isProjectDropdownOpen)
+                          }
                           className="w-full flex items-center justify-between rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 px-4 py-3.5 text-sm outline-none backdrop-blur-md transition-all focus:border-ink-foreground/30 focus:bg-ink-foreground/10 focus:ring-4 focus:ring-ink-foreground/5"
                         >
-                          <span className={formData.projectType ? "text-ink-foreground" : "text-ink-foreground/50"}>
-                            {formData.projectType || "Select a service (Optional)"}
+                          <span
+                            className={
+                              formData.projectType
+                                ? "text-ink-foreground"
+                                : "text-ink-foreground/50"
+                            }
+                          >
+                            {formData.projectType ||
+                              "Select a service (Optional)"}
                           </span>
-                          <svg className={`w-4 h-4 text-ink-foreground/50 transition-transform ${isProjectDropdownOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                          <svg
+                            className={`w-4 h-4 text-ink-foreground/50 transition-transform ${isProjectDropdownOpen ? "rotate-180" : ""}`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M19 9l-7 7-7-7"
+                            />
                           </svg>
                         </button>
-                        
+
                         {isProjectDropdownOpen && (
                           <div className="absolute z-10 w-full mt-2 rounded-xl border border-ink-foreground/10 bg-ink overflow-hidden shadow-2xl max-h-[250px] overflow-y-auto">
                             <ul className="py-2">
-                              
                               <li>
                                 <button
                                   type="button"
                                   onClick={() => {
-                                    setFormData(prev => ({ ...prev, projectType: "Custom ERP Development" }));
+                                    setFormData((prev) => ({
+                                      ...prev,
+                                      projectType: "Custom ERP Development",
+                                    }));
                                     setIsProjectDropdownOpen(false);
                                   }}
                                   className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
@@ -1598,7 +1654,10 @@ export default function Home() {
                                 <button
                                   type="button"
                                   onClick={() => {
-                                    setFormData(prev => ({ ...prev, projectType: "CRM Development" }));
+                                    setFormData((prev) => ({
+                                      ...prev,
+                                      projectType: "CRM Development",
+                                    }));
                                     setIsProjectDropdownOpen(false);
                                   }}
                                   className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
@@ -1610,7 +1669,10 @@ export default function Home() {
                                 <button
                                   type="button"
                                   onClick={() => {
-                                    setFormData(prev => ({ ...prev, projectType: "HRMS Development" }));
+                                    setFormData((prev) => ({
+                                      ...prev,
+                                      projectType: "HRMS Development",
+                                    }));
                                     setIsProjectDropdownOpen(false);
                                   }}
                                   className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
@@ -1622,7 +1684,11 @@ export default function Home() {
                                 <button
                                   type="button"
                                   onClick={() => {
-                                    setFormData(prev => ({ ...prev, projectType: "Business Process Automation" }));
+                                    setFormData((prev) => ({
+                                      ...prev,
+                                      projectType:
+                                        "Business Process Automation",
+                                    }));
                                     setIsProjectDropdownOpen(false);
                                   }}
                                   className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
@@ -1634,7 +1700,10 @@ export default function Home() {
                                 <button
                                   type="button"
                                   onClick={() => {
-                                    setFormData(prev => ({ ...prev, projectType: "Custom Business Software" }));
+                                    setFormData((prev) => ({
+                                      ...prev,
+                                      projectType: "Custom Business Software",
+                                    }));
                                     setIsProjectDropdownOpen(false);
                                   }}
                                   className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
@@ -1646,7 +1715,11 @@ export default function Home() {
                                 <button
                                   type="button"
                                   onClick={() => {
-                                    setFormData(prev => ({ ...prev, projectType: "Legacy System Modernization" }));
+                                    setFormData((prev) => ({
+                                      ...prev,
+                                      projectType:
+                                        "Legacy System Modernization",
+                                    }));
                                     setIsProjectDropdownOpen(false);
                                   }}
                                   className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
@@ -1658,7 +1731,11 @@ export default function Home() {
                                 <button
                                   type="button"
                                   onClick={() => {
-                                    setFormData(prev => ({ ...prev, projectType: "Web Application Maintenance" }));
+                                    setFormData((prev) => ({
+                                      ...prev,
+                                      projectType:
+                                        "Web Application Maintenance",
+                                    }));
                                     setIsProjectDropdownOpen(false);
                                   }}
                                   className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
@@ -1670,7 +1747,10 @@ export default function Home() {
                                 <button
                                   type="button"
                                   onClick={() => {
-                                    setFormData(prev => ({ ...prev, projectType: "Next.js & Payload CMS" }));
+                                    setFormData((prev) => ({
+                                      ...prev,
+                                      projectType: "Next.js & Payload CMS",
+                                    }));
                                     setIsProjectDropdownOpen(false);
                                   }}
                                   className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
@@ -1682,7 +1762,10 @@ export default function Home() {
                                 <button
                                   type="button"
                                   onClick={() => {
-                                    setFormData(prev => ({ ...prev, projectType: "Laravel Development" }));
+                                    setFormData((prev) => ({
+                                      ...prev,
+                                      projectType: "Laravel Development",
+                                    }));
                                     setIsProjectDropdownOpen(false);
                                   }}
                                   className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
@@ -1694,7 +1777,10 @@ export default function Home() {
                                 <button
                                   type="button"
                                   onClick={() => {
-                                    setFormData(prev => ({ ...prev, projectType: "PHP Development" }));
+                                    setFormData((prev) => ({
+                                      ...prev,
+                                      projectType: "PHP Development",
+                                    }));
                                     setIsProjectDropdownOpen(false);
                                   }}
                                   className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
@@ -1706,9 +1792,13 @@ export default function Home() {
                           </div>
                         )}
                       </div>
-                      
+
                       {/* Hidden input to ensure value is captured in form data just in case */}
-                      <input type="hidden" name="projectType" value={formData.projectType} />
+                      <input
+                        type="hidden"
+                        name="projectType"
+                        value={formData.projectType}
+                      />
                     </label>
 
                     <label className="block">
@@ -1905,12 +1995,11 @@ export default function Home() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#contact"
+                  <TawkButton
                     className="text-muted-foreground transition-colors hover:text-foreground"
                   >
                     Contact
-                  </a>
+                  </TawkButton>
                 </li>
               </ul>
             </div>
