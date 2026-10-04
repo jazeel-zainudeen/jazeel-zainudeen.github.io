@@ -277,7 +277,6 @@ export default function Home() {
   });
   const [formSubmitting, setFormSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [calendlyUrl, setCalendlyUrl] = useState("");
 
   const [formErrors, setFormErrors] = useState({
     name: "",
@@ -389,17 +388,24 @@ export default function Home() {
 
     setFormSubmitting(true);
 
-    const calendlyBase = "https://calendly.com/zainudheenjazeel/30min";
-    const params = new URLSearchParams();
-    if (formData.name) params.set("name", formData.name);
-    if (formData.email) params.set("email", formData.email);
-    if (formData.phone) params.set("a1", formData.phone);
-    if (formData.company) params.set("a2", formData.company);
-    if (formData.projectType) params.set("a3", formData.projectType);
-    const builtUrl = `${calendlyBase}?${params.toString()}`;
-    setCalendlyUrl(builtUrl);
-
-    window.open(builtUrl, "_blank", "noopener,noreferrer");
+    if (typeof window !== "undefined" && (window as any).Tawk_API) {
+      const tawk = (window as any).Tawk_API;
+      tawk.setAttributes({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        projectType: formData.projectType,
+        message: formData.message,
+      }, function(error: any) {});
+      
+      tawk.addEvent('request_contact', {
+        'message': formData.message,
+        'projectType': formData.projectType
+      });
+      
+      tawk.maximize();
+    }
 
     setTimeout(() => {
       setFormSubmitting(false);
@@ -505,7 +511,7 @@ export default function Home() {
             </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="flex items-center justify-center p-1.5 text-foreground rounded-full border border-border bg-surface active:scale-95 transition-transform"
+              className="cursor-pointer flex items-center justify-center p-1.5 text-foreground rounded-full border border-border bg-surface active:scale-95 transition-transform"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
@@ -717,7 +723,7 @@ export default function Home() {
                 </span>
               </a>
               <a
-                href="https://wa.me/918086482422"
+                href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-1.5 rounded-xl bg-brand/10 border border-brand/20 px-3.5 py-2.5 font-display text-xs font-bold text-brand-glow transition-all"
@@ -736,7 +742,7 @@ export default function Home() {
                 >
                   <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path>
                 </svg>
-                <span>WhatsApp</span>
+                <span>Live Chat</span>
               </a>
             </div>
 
@@ -816,7 +822,7 @@ export default function Home() {
                     </span>
                   </a>
                   <a
-                    href="https://wa.me/918086482422?text=Hi%20Jazeel%2C%20saw%20your%20site%20%E2%80%94%20wanted%20to%20say%20hi."
+                    href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2.5 rounded-full border border-border bg-background px-7 py-3.5 font-display text-xs font-semibold tracking-wider text-foreground shadow-sm transition-all hover:bg-surface hover:border-brand-glow/40 active:scale-95"
@@ -1362,7 +1368,7 @@ export default function Home() {
                 </p>
                 <div className="mt-10">
                   <a
-                    href="tel:+918086482422"
+                    href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
                     className="flex items-center gap-3 border-t border-ink-foreground/20 py-4 text-sm text-ink-foreground/85 transition-colors hover:text-ink-foreground"
                   >
                     <svg
@@ -1383,7 +1389,7 @@ export default function Home() {
                     +91 80864 82422
                   </a>
                   <a
-                    href="mailto:zainudheenjazeel@gmail.com"
+                    href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
                     className="flex items-center gap-3 border-t border-ink-foreground/20 py-4 text-sm text-ink-foreground/85 transition-colors hover:text-ink-foreground"
                   >
                     <svg
@@ -1405,7 +1411,7 @@ export default function Home() {
                     zainudheenjazeel@gmail.com
                   </a>
                   <a
-                    href="https://wa.me/918086482422"
+                    href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 border-y border-ink-foreground/20 py-4 text-sm text-ink-foreground/85 transition-colors hover:text-ink-foreground"
@@ -1438,29 +1444,15 @@ export default function Home() {
                 {formSubmitted ? (
                   <div className="border border-ink-foreground/25 p-8 text-center">
                     <h3 className="font-display text-xl font-semibold mb-2 text-ink-foreground">
-                      Calendly Opened!
+                      Chat Opened!
                     </h3>
-                    <p className="text-ink-foreground/80 text-sm mb-4">
-                      A new tab has opened with my calendar. Pick a 30-minute
-                      slot that works for you.
+                    <p className="text-ink-foreground/80 text-sm mb-6">
+                      I have received your details. Let's continue our conversation on the live chat!
                     </p>
-                    {calendlyUrl && (
-                      <p className="text-ink-foreground/75 text-xs mb-6">
-                        Popup didn&apos;t open?{" "}
-                        <a
-                          href={calendlyUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-brand underline"
-                        >
-                          Click here to open Calendly
-                        </a>
-                      </p>
-                    )}
                     <button
                       type="button"
                       onClick={() => setFormSubmitted(false)}
-                      className="inline-flex items-center justify-center gap-2 bg-background px-6 py-3 font-display text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-foreground"
+                      className="cursor-pointer inline-flex items-center justify-center gap-2 bg-background px-6 py-3 font-display text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-foreground"
                     >
                       Send another message
                     </button>
@@ -1479,7 +1471,7 @@ export default function Home() {
                           onChange={handleFormChange}
                           onBlur={handleFormBlur}
                           autoComplete="name"
-                          className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/65 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand"
+                          className="w-full rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 px-4 py-3.5 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-ink-foreground/30 focus:bg-ink-foreground/10 focus:ring-4 focus:ring-ink-foreground/5"
                           placeholder="Your full name"
                         />
                         {touched.name && formErrors.name && (
@@ -1499,7 +1491,7 @@ export default function Home() {
                           value={formData.company}
                           onChange={handleFormChange}
                           autoComplete="organization"
-                          className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/65 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand"
+                          className="w-full rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 px-4 py-3.5 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-ink-foreground/30 focus:bg-ink-foreground/10 focus:ring-4 focus:ring-ink-foreground/5"
                           placeholder="Company name"
                         />
                       </label>
@@ -1515,7 +1507,7 @@ export default function Home() {
                           onChange={handleFormChange}
                           onBlur={handleFormBlur}
                           autoComplete="email"
-                          className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/65 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand"
+                          className="w-full rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 px-4 py-3.5 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-ink-foreground/30 focus:bg-ink-foreground/10 focus:ring-4 focus:ring-ink-foreground/5"
                           placeholder="you@company.com"
                         />
                         {touched.email && formErrors.email && (
@@ -1536,7 +1528,7 @@ export default function Home() {
                           onChange={handleFormChange}
                           onBlur={handleFormBlur}
                           autoComplete="tel"
-                          className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/65 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand"
+                          className="w-full rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 px-4 py-3.5 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-ink-foreground/30 focus:bg-ink-foreground/10 focus:ring-4 focus:ring-ink-foreground/5"
                           placeholder="+91 ..."
                         />
                         {touched.phone && formErrors.phone && (
@@ -1555,7 +1547,7 @@ export default function Home() {
                         name="projectType"
                         value={formData.projectType}
                         onChange={handleFormChange}
-                        className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand"
+                        className="w-full rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 px-4 py-3.5 text-sm text-ink-foreground outline-none backdrop-blur-md transition-all focus:border-ink-foreground/30 focus:bg-ink-foreground/10 focus:ring-4 focus:ring-ink-foreground/5"
                       >
                         <option
                           value="Custom ERP Development"
@@ -1654,7 +1646,7 @@ export default function Home() {
                         value={formData.message}
                         onChange={handleFormChange}
                         onBlur={handleFormBlur}
-                        className="w-full border border-ink-foreground/25 bg-transparent px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-foreground/65 outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand"
+                        className="w-full rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 px-4 py-3.5 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-ink-foreground/30 focus:bg-ink-foreground/10 focus:ring-4 focus:ring-ink-foreground/5"
                         placeholder="Tell me a bit about what you have in mind."
                       ></textarea>
                       {touched.message && formErrors.message && (
@@ -1667,7 +1659,7 @@ export default function Home() {
                     <button
                       type="submit"
                       disabled={formSubmitting}
-                      className="inline-flex w-full items-center justify-center gap-2 bg-background px-6 py-4 font-display text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-foreground transition-colors hover:bg-brand hover:text-white disabled:opacity-70"
+                      className="cursor-pointer inline-flex w-full items-center justify-center gap-2 rounded-xl bg-background px-6 py-4 font-display text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-foreground transition-colors hover:bg-brand-glow hover:text-white disabled:opacity-70 disabled:cursor-not-allowed"
                     >
                       {formSubmitting ? "Sending..." : "Send message"}
                     </button>
@@ -1704,7 +1696,7 @@ export default function Home() {
               </p>
               <div className="mt-6 flex gap-2">
                 <a
-                  href="https://wa.me/918086482422"
+                  href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="WhatsApp"
@@ -1752,7 +1744,7 @@ export default function Home() {
                   </svg>
                 </a>
                 <a
-                  href="mailto:zainudheenjazeel@gmail.com"
+                  href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Email"
@@ -1776,7 +1768,7 @@ export default function Home() {
                   </svg>
                 </a>
                 <a
-                  href="tel:+918086482422"
+                  href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Phone"
@@ -1920,7 +1912,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="tel:+918086482422"
+                    href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
                     className="text-muted-foreground transition-colors hover:text-foreground"
                   >
                     +91 80864 82422
@@ -1928,7 +1920,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="mailto:zainudheenjazeel@gmail.com"
+                    href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
                     className="text-muted-foreground transition-colors hover:text-foreground"
                   >
                     zainudheenjazeel@gmail.com
@@ -1936,7 +1928,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="https://wa.me/918086482422"
+                    href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-muted-foreground transition-colors hover:text-foreground"

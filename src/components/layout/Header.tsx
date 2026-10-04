@@ -107,7 +107,7 @@ export function Header() {
             </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="flex items-center justify-center p-1.5 text-foreground rounded-full border border-border bg-surface active:scale-95 transition-transform"
+              className="cursor-pointer flex items-center justify-center p-1.5 text-foreground rounded-full border border-border bg-surface active:scale-95 transition-transform"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
@@ -318,11 +318,9 @@ export function Header() {
                   05
                 </span>
               </Link>
-              <a
-                href="https://wa.me/918086482422"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-1.5 rounded-xl bg-brand/10 border border-brand/20 px-3.5 py-2.5 font-display text-xs font-bold text-brand-glow transition-all"
+              <button
+                onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
+                className="cursor-pointer flex items-center justify-center gap-1.5 rounded-xl bg-brand/10 border border-brand/20 px-3.5 py-2.5 font-display text-xs font-bold text-brand-glow transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -338,8 +336,8 @@ export function Header() {
                 >
                   <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path>
                 </svg>
-                <span>WhatsApp</span>
-              </a>
+                <span>Live Chat</span>
+              </button>
             </div>
 
             <div className="mt-3 pt-3 border-t border-border flex items-center justify-between text-[0.68rem] text-muted-foreground font-display">

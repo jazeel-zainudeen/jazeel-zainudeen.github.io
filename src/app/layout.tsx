@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Sora } from "next/font/google";
+import Script from "next/script";
 
 import "./globals.css";
 
@@ -24,8 +25,10 @@ const siteUrl = "https://jazeel-zainudeen.github.io";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Jazeel Zainudeen — Full Stack Engineer | Next.js, React & Cloud Architect",
-  description: "Jazeel Zainudeen is a full stack engineer from Kerala, India specializing in high-performance Web Applications, Next.js, React, TypeScript, Cloud APIs & custom Enterprise Software.",
+  title:
+    "Jazeel Zainudeen — Full Stack Engineer | Next.js, React & Cloud Architect",
+  description:
+    "Jazeel Zainudeen is a full stack engineer from Kerala, India specializing in high-performance Web Applications, Next.js, React, TypeScript, Cloud APIs & custom Enterprise Software.",
   icons: {
     icon: [
       { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
@@ -56,7 +59,7 @@ export const metadata: Metadata = {
     "MERN stack developer",
     "web application modernization",
     "business process automation",
-    "dedicated remote developer"
+    "dedicated remote developer",
   ],
   authors: [{ name: "Jazeel Zainudeen", url: siteUrl }],
   creator: "Jazeel Zainudeen",
@@ -77,7 +80,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Jazeel Zainudeen — Full Stack Engineer & Cloud Architect",
-    description: "Personal portfolio of Jazeel Zainudeen — Full Stack Engineer building high-performance web applications, enterprise platforms & cloud solutions using Next.js, React, and TypeScript.",
+    description:
+      "Personal portfolio of Jazeel Zainudeen — Full Stack Engineer building high-performance web applications, enterprise platforms & cloud solutions using Next.js, React, and TypeScript.",
     url: siteUrl,
     siteName: "Jazeel Zainudeen — Jazeel.dev",
     locale: "en_US",
@@ -95,7 +99,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Jazeel Zainudeen — Full Stack Engineer & Cloud Architect",
-    description: "Building modern web applications, scalable APIs & cloud platforms with Next.js, React & TypeScript.",
+    description:
+      "Building modern web applications, scalable APIs & cloud platforms with Next.js, React & TypeScript.",
     images: ["/assets/seo/og-image.jpg"],
     creator: "@jazeeldev",
   },
@@ -107,25 +112,25 @@ const jsonLd = {
     {
       "@type": "Person",
       "@id": `${siteUrl}/#person`,
-      "name": "Jazeel Zainudeen",
-      "url": siteUrl,
-      "image": `${siteUrl}/assets/seo/profile-portrait.jpg`,
-      "jobTitle": "Full Stack Engineer & Cloud Architect",
-      "worksFor": {
+      name: "Jazeel Zainudeen",
+      url: siteUrl,
+      image: `${siteUrl}/assets/seo/profile-portrait.jpg`,
+      jobTitle: "Full Stack Engineer & Cloud Architect",
+      worksFor: {
         "@type": "Organization",
-        "name": "Freelance / Remote Engineer"
+        name: "Freelance / Remote Engineer",
       },
-      "address": {
+      address: {
         "@type": "PostalAddress",
-        "addressLocality": "Kerala",
-        "addressCountry": "India"
+        addressLocality: "Kerala",
+        addressCountry: "India",
       },
-      "sameAs": [
+      sameAs: [
         "https://wa.me/918086482422",
         "https://linkedin.com",
-        "https://github.com/jazeel-zainudeen"
+        "https://github.com/jazeel-zainudeen",
       ],
-      "knowsAbout": [
+      knowsAbout: [
         "Next.js",
         "React",
         "TypeScript",
@@ -134,38 +139,39 @@ const jsonLd = {
         "Web Application Development",
         "Custom ERP & CRM Systems",
         "PostgreSQL & Databases",
-        "REST & GraphQL APIs"
-      ]
+        "REST & GraphQL APIs",
+      ],
     },
     {
       "@type": "ProfessionalService",
       "@id": `${siteUrl}/#service`,
-      "name": "Jazeel Zainudeen — Web Application & Custom Software Development",
-      "url": siteUrl,
-      "image": `${siteUrl}/assets/seo/og-image.jpg`,
-      "priceRange": "$$",
-      "address": {
+      name: "Jazeel Zainudeen — Web Application & Custom Software Development",
+      url: siteUrl,
+      image: `${siteUrl}/assets/seo/og-image.jpg`,
+      priceRange: "$$",
+      address: {
         "@type": "PostalAddress",
-        "addressLocality": "Kerala",
-        "addressCountry": "India"
+        addressLocality: "Kerala",
+        addressCountry: "India",
       },
-      "provider": {
-        "@id": `${siteUrl}/#person`
+      provider: {
+        "@id": `${siteUrl}/#person`,
       },
-      "areaServed": "Worldwide",
-      "knowsLanguage": ["English", "Malayalam"]
+      areaServed: "Worldwide",
+      knowsLanguage: ["English", "Malayalam"],
     },
     {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
-      "url": siteUrl,
-      "name": "Jazeel Zainudeen Portfolio",
-      "description": "Full Stack Engineer specializing in Next.js, React, TypeScript & Custom Enterprise Software.",
-      "publisher": {
-        "@id": `${siteUrl}/#person`
-      }
-    }
-  ]
+      url: siteUrl,
+      name: "Jazeel Zainudeen Portfolio",
+      description:
+        "Full Stack Engineer specializing in Next.js, React, TypeScript & Custom Enterprise Software.",
+      publisher: {
+        "@id": `${siteUrl}/#person`,
+      },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -174,7 +180,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`h-full scroll-smooth ${manrope.variable} ${sora.variable}`}>
+    <html
+      lang="en"
+      className={`h-full scroll-smooth ${manrope.variable} ${sora.variable}`}
+    >
       <head>
         <meta
           name="google-site-verification"
@@ -194,6 +203,20 @@ export default function RootLayout({
       </head>
       <body className="min-h-full bg-background text-foreground antialiased selection:bg-brand/20 selection:text-brand">
         {children}
+        {process.env.NEXT_PUBLIC_TAWKTO_PROPERTY_ID && (
+          <Script id="tawk-to" strategy="lazyOnload">
+            {`
+              var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+              (function(){
+              var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+              s1.async=true;
+              s1.src='https://embed.tawk.to/${process.env.NEXT_PUBLIC_TAWKTO_PROPERTY_ID}/${process.env.NEXT_PUBLIC_TAWKTO_WIDGET_ID || "default"}?layout=modern';
+              s1.charset='UTF-8';
+              s0.parentNode.insertBefore(s1,s0);
+              })();
+            `}
+          </Script>
+        )}
       </body>
     </html>
   );

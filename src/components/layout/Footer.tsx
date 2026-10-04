@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -27,9 +29,7 @@ export function Footer() {
             </p>
             <div className="mt-6 flex gap-2">
               <a
-                href="https://wa.me/918086482422"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
                 aria-label="WhatsApp"
                 className="grid size-9 place-items-center border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
               >
@@ -75,9 +75,7 @@ export function Footer() {
                 </svg>
               </a>
               <a
-                href="mailto:zainudheenjazeel@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
                 aria-label="Email"
                 className="grid size-9 place-items-center border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
               >
@@ -99,9 +97,7 @@ export function Footer() {
                 </svg>
               </a>
               <a
-                href="tel:+918086482422"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
                 aria-label="Phone"
                 className="grid size-9 place-items-center border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
               >
@@ -243,7 +239,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="tel:+918086482422"
+                  href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
                   className="text-muted-foreground transition-colors hover:text-foreground"
                 >
                   +91 80864 82422
@@ -251,7 +247,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:zainudheenjazeel@gmail.com"
+                  href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
                   className="text-muted-foreground transition-colors hover:text-foreground"
                 >
                   zainudheenjazeel@gmail.com
@@ -259,7 +255,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://wa.me/918086482422"
+                  href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).Tawk_API) (window as any).Tawk_API.maximize(); }}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground transition-colors hover:text-foreground"
