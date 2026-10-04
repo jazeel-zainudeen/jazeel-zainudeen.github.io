@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Project } from "@/data/projects";
 import { TechStackIcon } from "./TechStackIcon";
 import { ArrowUpRight } from "lucide-react";
+import { BrowserMockup } from "./BrowserMockup";
 
 interface ProjectCardProps {
   project: Project;
@@ -14,14 +15,11 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
     <Link href={`/portfolio/${project.slug}`} className="group block h-full">
       <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/5">
         {/* Thumbnail Area */}
-        <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface">
-          <Image
-            src={project.thumbnail}
-            alt={project.title}
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            priority={index < 2}
+        <div className="relative aspect-[4/3] w-full overflow-hidden">
+          <BrowserMockup 
+            imageSrc={project.thumbnail} 
+            alt={project.title} 
+            priority={index < 2} 
           />
           {/* Overlay gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
