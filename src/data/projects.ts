@@ -60,7 +60,7 @@ export const projectsData: Project[] = [
     slug: "coagmenta",
     title: "COAGMENTA — CORPORATE WEBSITE",
     shortDescription: "A pixel-perfect website created from a Figma design, later converted to WordPress using Elementor.",
-    detailedDescription: "A picture-perfect corporate website built directly from a client-provided Figma design. Every single design pattern was implemented as a perfect 1-to-1 copy of the original Figma mockup. The site was built completely from scratch using Bootstrap 5 and jQuery, and was later converted into a fully dynamic WordPress theme using Elementor for easy content management.",
+    detailedDescription: "A picture-perfect corporate website built directly from a client-provided Figma design. Every single design pattern was implemented as a perfect 1-to-1 copy of the original Figma mockup. The site was built completely from scratch using Bootstrap 5 and jQuery, and was later converted into a fully dynamic WordPress theme using Elementor for easy content management. The website also features full multilingual support, including a localized French language version.",
     tagline: "Corporate Website",
     thumbnail: "/assets/projects/coagmenta-full-screenshot.png",
     images: ["/assets/projects/coagmenta-full-screenshot.png"],
@@ -70,7 +70,8 @@ export const projectsData: Project[] = [
     keyFeatures: [
       "Pixel-perfect implementation from a high-fidelity Figma design.",
       "Custom-built, responsive frontend using Bootstrap 5 and jQuery.",
-      "Seamless integration with WordPress and Elementor for dynamic content management."
+      "Seamless integration with WordPress and Elementor for dynamic content management.",
+      "Full multilingual integration featuring French language support."
     ],
     challenges: "Ensuring 100% design fidelity while transitioning from a static HTML/jQuery build to a dynamic Elementor-based WordPress theme.",
     lessonsLearned: "Mastered the workflow of converting static high-fidelity prototypes into fully dynamic and editable WordPress templates without sacrificing design quality."
