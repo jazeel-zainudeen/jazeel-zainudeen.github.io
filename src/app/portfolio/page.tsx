@@ -25,25 +25,13 @@ export default function PortfolioListingPage() {
             Back to Home
           </Link>
           <h1 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl mb-4">
-            Selected Work
+            My Portfolio
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            A collection of robust, scalable applications I&apos;ve built across ERP, CRM, mobile, and IoT domains. 
+            A curated selection of robust web and mobile applications I&apos;ve developed, from ERP systems to cutting-edge corporate platforms.
           </p>
         </div>
 
-        {/* Filter/Tags (Optional, can expand later) */}
-        <div className="mt-12 flex flex-wrap gap-3 pb-4 border-b border-border">
-          <button className="rounded-full bg-brand px-4 py-1.5 text-sm font-medium text-brand-foreground transition-colors">
-            All Projects
-          </button>
-          <button className="rounded-full border border-border bg-surface px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-surface-2 hover:text-foreground">
-            Web Apps
-          </button>
-          <button className="rounded-full border border-border bg-surface px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-surface-2 hover:text-foreground">
-            Mobile
-          </button>
-        </div>
 
         {/* Grid Section */}
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
