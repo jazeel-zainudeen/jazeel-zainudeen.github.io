@@ -50,6 +50,37 @@ export default function PortfolioListingPage() {
           {projectsData.map((project, idx) => (
             <ProjectCard key={project.slug} project={project} index={idx} />
           ))}
+
+          {/* Blurred "More Projects" Card */}
+          <div className="group relative flex h-full min-h-[420px] flex-col overflow-hidden rounded-2xl border border-dashed border-border/60 bg-surface/20 transition-all hover:bg-surface/40 hover:border-brand/30 cursor-default">
+            {/* Blurred Background Skeleton */}
+            <div className="absolute inset-0 pointer-events-none select-none opacity-20 filter blur-[4px] transition-all duration-500 group-hover:blur-[2px] group-hover:opacity-30">
+              <div className="relative aspect-[4/3] w-full bg-muted/60" />
+              <div className="flex flex-1 flex-col p-6">
+                <div className="h-2 w-12 rounded-full bg-foreground/20 mb-4" />
+                <div className="h-5 w-3/4 rounded-md bg-foreground/30 mb-3" />
+                <div className="h-3 w-full rounded-md bg-foreground/20 mb-2" />
+                <div className="h-3 w-5/6 rounded-md bg-foreground/20 mb-6" />
+                <div className="mt-auto flex gap-2 pt-4 border-t border-border/50">
+                  <div className="h-6 w-16 rounded-md bg-foreground/20" />
+                  <div className="h-6 w-16 rounded-md bg-foreground/20" />
+                </div>
+              </div>
+            </div>
+            
+            {/* Overlay Content */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10">
+              <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-background/80 backdrop-blur-md shadow-sm border border-border/50 text-muted-foreground transition-all duration-500 group-hover:scale-110 group-hover:text-brand group-hover:border-brand/30 group-hover:shadow-brand/5 group-hover:shadow-lg">
+                <span className="text-2xl font-light leading-none">+</span>
+              </div>
+              <h3 className="font-display text-xl font-bold tracking-tight text-foreground/90 mb-2">
+                And Much More
+              </h3>
+              <p className="text-sm text-muted-foreground max-w-[220px]">
+                Showcasing selected work. Other projects are private or coming soon.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* CTA Section */}
