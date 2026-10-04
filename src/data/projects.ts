@@ -55,5 +55,25 @@ export const projectsData: Project[] = [
     ],
     challenges: "Migrating complex legacy payroll logic without disrupting active employee cycles.",
     lessonsLearned: "The importance of robust end-to-end testing when refactoring legacy business logic."
+  },
+  {
+    slug: "coagmenta",
+    title: "COAGMENTA — CORPORATE WEBSITE",
+    shortDescription: "A pixel-perfect website created from a Figma design, later converted to WordPress using Elementor.",
+    detailedDescription: "A picture-perfect corporate website built directly from a client-provided Figma design. Every single design pattern was implemented as a perfect 1-to-1 copy of the original Figma mockup. The site was built completely from scratch using Bootstrap 5 and jQuery, and was later converted into a fully dynamic WordPress theme using Elementor for easy content management.",
+    role: "Frontend Developer",
+    duration: "2 Months",
+    thumbnail: "/assets/projects/coagmenta-thumbnail.jpg",
+    images: ["/assets/projects/coagmenta-thumbnail.jpg"],
+    scrollingPreview: "/assets/projects/coagmenta-full-screenshot.png",
+    previewUrl: "https://coagmenta.com/",
+    techStack: ["WordPress", "Elementor", "Bootstrap 5", "jQuery", "Figma"],
+    keyFeatures: [
+      "Pixel-perfect implementation from a high-fidelity Figma design.",
+      "Custom-built, responsive frontend using Bootstrap 5 and jQuery.",
+      "Seamless integration with WordPress and Elementor for dynamic content management."
+    ],
+    challenges: "Ensuring 100% design fidelity while transitioning from a static HTML/jQuery build to a dynamic Elementor-based WordPress theme.",
+    lessonsLearned: "Mastered the workflow of converting static high-fidelity prototypes into fully dynamic and editable WordPress templates without sacrificing design quality."
   }
 ];
