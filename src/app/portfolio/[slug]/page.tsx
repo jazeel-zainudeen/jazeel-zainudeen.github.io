@@ -88,7 +88,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
         {/* Media Showcase */}
         <div className="mb-16">
           {project.scrollingPreview ? (
-            <ScrollingImagePreview imageSrc={project.scrollingPreview} alt={project.title} />
+            <ScrollingImagePreview imageSrc={project.scrollingPreview} alt={project.title} previewUrl={project.previewUrl} />
           ) : (
             <ImageCarousel images={project.images} alt={project.title} />
           )}

@@ -1,15 +1,17 @@
 "use client";
 
 import Image from "next/image";
+import { ExternalLink } from "lucide-react";
 
 interface ScrollingImagePreviewProps {
   imageSrc: string;
   alt: string;
+  previewUrl?: string;
 }
 
-export function ScrollingImagePreview({ imageSrc, alt }: ScrollingImagePreviewProps) {
+export function ScrollingImagePreview({ imageSrc, alt, previewUrl }: ScrollingImagePreviewProps) {
   return (
-    <div className="relative w-full rounded-2xl border border-border/60 bg-surface/30 p-2 shadow-2xl md:p-4">
+    <div className="group relative w-full rounded-2xl border border-border/60 bg-surface/30 p-2 shadow-2xl md:p-4">
       {/* Browser Top Bar Mockup */}
       <div className="mb-3 flex items-center gap-1.5 px-2 md:mb-4 md:px-0">
         <div className="size-2.5 rounded-full bg-red-400/80 md:size-3"></div>
@@ -30,6 +32,21 @@ export function ScrollingImagePreview({ imageSrc, alt }: ScrollingImagePreviewPr
             unoptimized // Useful for very long screenshots to prevent next/image height clipping
           />
         </div>
+
+        {/* Hover Overlay */}
+        {previewUrl && (
+          <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/40 opacity-0 backdrop-blur-[2px] transition-all duration-300 group-hover:opacity-100">
+            <a
+              href={previewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground shadow-lg transition-transform hover:scale-105 active:scale-95"
+            >
+              <ExternalLink className="h-5 w-5" />
+              Live Preview
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );
