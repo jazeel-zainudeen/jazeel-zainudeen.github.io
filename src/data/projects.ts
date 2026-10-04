@@ -37,18 +37,19 @@ export const projectsData: Project[] = [
     lessonsLearned: "Gained extensive experience in architecting and maintaining complex, multi-provider payment pipelines and syncing legacy POS hardware with modern cloud APIs."
   },
   {
-    slug: "hrms-revamp",
-    title: "HRMS — Software Revamp",
-    shortDescription: "Complete revamp of a legacy HRMS used by a recruitment group.",
-    detailedDescription: "Modernized a legacy Human Resources Management System to cut payroll processing time and improve UX for hundreds of daily users. Includes modules for attendance, payroll, leave management, and an employee self-service portal.",
+    slug: "westford-connect-hrms",
+    title: "WESTFORD CONNECT — HRMS SOFTWARE",
+    shortDescription: "Complete revamp of the Westford Connect HRMS web application, tailored to client requirements.",
+    detailedDescription: "Revamped the complete HRMS web application for Westford Connect. I was responsible for the entire frontend of the website, as well as handling complex integrations. The platform was built with React and features seamless Google Login, Google Calendar integration, and real-time chat functionality using SignalR. Note: The live application is restricted to authenticated users only, so a public preview is not available.",
     tagline: "Enterprise Software",
-    thumbnail: "/assets/projects/hrms-revamp.jpg",
-    images: ["/assets/projects/hrms-revamp.jpg"],
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Redux"],
+    thumbnail: "/assets/projects/westford-connect-hrms-mockup.jpeg",
+    images: ["/assets/projects/westford-connect-hrms-full-screenshot.jpeg"],
+    scrollingPreview: "/assets/projects/westford-connect-hrms-full-screenshot.jpeg",
+    techStack: ["React", "TypeScript", "Tailwind CSS", "SignalR", "Google APIs"],
     keyFeatures: [
-      "Employee self-service dashboard for leaves and attendance.",
-      "Automated payroll calculation engine.",
-      "Modernized, responsive UI/UX."
+      "Real-time chat integration using SignalR.",
+      "Google Login and Google Calendar integrations.",
+      "Employee self-service dashboard for leaves and attendance."
     ],
     challenges: "Migrating complex legacy payroll logic without disrupting active employee cycles.",
     lessonsLearned: "The importance of robust end-to-end testing when refactoring legacy business logic."

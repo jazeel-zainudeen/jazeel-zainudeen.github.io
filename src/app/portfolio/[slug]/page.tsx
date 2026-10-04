@@ -56,7 +56,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
 
         {/* Header */}
         <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <div className="max-w-2xl">
+          <div className={project.previewUrl || project.githubUrl ? "max-w-2xl" : ""}>
             <h1 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl mb-4">
               {project.title}
             </h1>
