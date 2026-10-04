@@ -24,6 +24,7 @@ export const projectsData: Project[] = [
     detailedDescription: "A comprehensive platform for myG, a large-scale retail chain. Working in close connection with the operations team, I was responsible for implementing critical web and app API changes, as well as managing updates regarding overall functioning such as payment gateway integrations, shipping integrations, and promotional updates.",
     tagline: "E-Commerce Platform",
     thumbnail: "/assets/projects/myg-full-screenshot.jpg",
+    mobileThumbnail: "/assets/projects/myg-mobile-screenshot.jpeg",
     images: ["/assets/projects/myg-full-screenshot.jpg"],
     scrollingPreview: "/assets/projects/myg-full-screenshot.jpg",
     previewUrl: "https://www.myg.in/",
