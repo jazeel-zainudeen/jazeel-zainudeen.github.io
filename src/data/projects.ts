@@ -57,6 +57,26 @@ export const projectsData: Project[] = [
     lessonsLearned: "The importance of robust end-to-end testing when refactoring legacy business logic."
   },
   {
+    slug: "bobcares-revamp",
+    title: "BOBCARES WEBSITE REVAMP",
+    shortDescription: "Complete revamp of a large-scale corporate website from WordPress to Next.js, featuring modern Figma-based UI/UX.",
+    detailedDescription: "Led the complete revamp of the main Bobcares corporate website. Migrated the legacy WordPress architecture to a high-performance Next.js stack, dramatically improving load times, SEO, and overall user experience. Implemented a pixel-perfect, highly modern design derived from extensive Figma mockups, featuring dark mode elements, smooth animations, and a vastly improved user interface tailored for an enterprise IT support company.",
+    tagline: "Corporate Website Revamp",
+    thumbnail: "/assets/projects/bobcares-mockup.png",
+    images: ["/assets/projects/bobcares-mockup.png"],
+    scrollingPreview: "/assets/projects/bobcares-mockup.png",
+    previewUrl: "https://bobcares.com/",
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Figma"],
+    keyFeatures: [
+      "Full migration from WordPress to a highly optimized Next.js application.",
+      "Pixel-perfect implementation of a modern, complex Figma design.",
+      "Significantly improved Core Web Vitals and overall SEO performance.",
+      "Beautiful, responsive UI with engaging animations and a modern aesthetic."
+    ],
+    challenges: "Migrating a massive amount of legacy content and maintaining SEO rankings while entirely restructuring the frontend.",
+    lessonsLearned: "Gained significant experience in large-scale migrations to modern frameworks and executing high-fidelity enterprise-level UI designs."
+  },
+  {
     slug: "coagmenta",
     title: "COAGMENTA — CORPORATE WEBSITE",
     shortDescription: "A pixel-perfect website created from a Figma design, later converted to WordPress using Elementor.",
@@ -75,28 +95,6 @@ export const projectsData: Project[] = [
     ],
     challenges: "Ensuring 100% design fidelity while transitioning from a static HTML/jQuery build to a dynamic Elementor-based WordPress theme.",
     lessonsLearned: "Mastered the workflow of converting static high-fidelity prototypes into fully dynamic and editable WordPress templates without sacrificing design quality."
-  },
-  {
-    slug: "spares",
-    title: "SPARES — PWA WEB APP",
-    shortDescription: "A feature-packed, personal-use web application built overnight as a Progressive Web App (PWA).",
-    detailedDescription: "Developed a quick, feature-packed web application for a client's personal use. Built entirely overnight, the project involved rapid development and self-reviewed enhancements. The web app is fully functional, completely free to host on Vercel, and available as a Progressive Web App (PWA) for ease of access on mobile devices.",
-    tagline: "Web Application",
-    thumbnail: "/assets/projects/spares-full-screenshot.png",
-    mobileThumbnail: "/assets/projects/spares-mobile-screenshot.png",
-    images: ["/assets/projects/spares-full-screenshot.png"],
-    scrollingPreview: "/assets/projects/spares-full-screenshot.png",
-    previewUrl: "https://spares-mu.vercel.app/",
-    githubUrl: "https://github.com/jazeel-zainudeen/spares",
-    techStack: ["Next.js", "Tailwind CSS", "Supabase", "Cloudinary"],
-    keyFeatures: [
-      "Progressive Web App (PWA) support for installable, app-like experience.",
-      "Supabase integration for robust backend and database management.",
-      "Cloudinary integration for optimized and reliable image storage.",
-      "Rapidly developed and deployed entirely overnight."
-    ],
-    challenges: "Delivering a fully functional, feature-packed application with a proper database and image storage solution overnight.",
-    lessonsLearned: "Gained proficiency in rapidly bootstrapping full-stack Next.js applications using Supabase and Cloudinary."
   },
   {
     slug: "news-aggregator-api",
@@ -120,23 +118,25 @@ export const projectsData: Project[] = [
     lessonsLearned: "Deepened knowledge in building scalable RESTful architectures with Laravel and orchestrating multi-source API data aggregation."
   },
   {
-    slug: "bobcares-revamp",
-    title: "BOBCARES WEBSITE REVAMP",
-    shortDescription: "Complete revamp of a large-scale corporate website from WordPress to Next.js, featuring modern Figma-based UI/UX.",
-    detailedDescription: "Led the complete revamp of the main Bobcares corporate website. Migrated the legacy WordPress architecture to a high-performance Next.js stack, dramatically improving load times, SEO, and overall user experience. Implemented a pixel-perfect, highly modern design derived from extensive Figma mockups, featuring dark mode elements, smooth animations, and a vastly improved user interface tailored for an enterprise IT support company.",
-    tagline: "Corporate Website Revamp",
-    thumbnail: "/assets/projects/bobcares-mockup.png",
-    images: ["/assets/projects/bobcares-mockup.png"],
-    scrollingPreview: "/assets/projects/bobcares-mockup.png",
-    previewUrl: "https://bobcares.com/",
-    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Figma"],
+    slug: "spares",
+    title: "SPARES — PWA WEB APP",
+    shortDescription: "A feature-packed, personal-use web application built overnight as a Progressive Web App (PWA).",
+    detailedDescription: "Developed a quick, feature-packed web application for a client's personal use. Built entirely overnight, the project involved rapid development and self-reviewed enhancements. The web app is fully functional, completely free to host on Vercel, and available as a Progressive Web App (PWA) for ease of access on mobile devices.",
+    tagline: "Web Application",
+    thumbnail: "/assets/projects/spares-full-screenshot.png",
+    mobileThumbnail: "/assets/projects/spares-mobile-screenshot.png",
+    images: ["/assets/projects/spares-full-screenshot.png"],
+    scrollingPreview: "/assets/projects/spares-full-screenshot.png",
+    previewUrl: "https://spares-mu.vercel.app/",
+    githubUrl: "https://github.com/jazeel-zainudeen/spares",
+    techStack: ["Next.js", "Tailwind CSS", "Supabase", "Cloudinary"],
     keyFeatures: [
-      "Full migration from WordPress to a highly optimized Next.js application.",
-      "Pixel-perfect implementation of a modern, complex Figma design.",
-      "Significantly improved Core Web Vitals and overall SEO performance.",
-      "Beautiful, responsive UI with engaging animations and a modern aesthetic."
+      "Progressive Web App (PWA) support for installable, app-like experience.",
+      "Supabase integration for robust backend and database management.",
+      "Cloudinary integration for optimized and reliable image storage.",
+      "Rapidly developed and deployed entirely overnight."
     ],
-    challenges: "Migrating a massive amount of legacy content and maintaining SEO rankings while entirely restructuring the frontend.",
-    lessonsLearned: "Gained significant experience in large-scale migrations to modern frameworks and executing high-fidelity enterprise-level UI designs."
+    challenges: "Delivering a fully functional, feature-packed application with a proper database and image storage solution overnight.",
+    lessonsLearned: "Gained proficiency in rapidly bootstrapping full-stack Next.js applications using Supabase and Cloudinary."
   }
 ];
