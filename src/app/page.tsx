@@ -221,61 +221,6 @@ const processData = [
   },
 ];
 
-const selectedWorkData = [
-  {
-    num: "01",
-    tag: "Retail · India",
-    title: "Retail Operations Platform",
-    description:
-      "Internal business platform supporting one of India's largest electronics retail chains with operations, inventory and reporting modules.",
-    impact:
-      "Streamlined multi-branch workflows and reduced manual reporting time across stores.",
-    image: "/assets/projects/retail-operations-platform.jpg",
-    alt: "Retail Operations Platform — Retail · India",
-    orderImage: "",
-    orderText: "lg:col-start-9",
-  },
-  {
-    num: "02",
-    tag: "On-demand services",
-    title: "Handyman Marketplace App",
-    description:
-      "Two-sided mobile platform connecting customers with verified handymen — bookings, live tracking, in-app payments and provider onboarding.",
-    impact:
-      "Replaced WhatsApp-based dispatch with a fully automated booking & payout pipeline.",
-    image: "/assets/projects/handyman-marketplace.jpg",
-    alt: "Handyman Marketplace App — On-demand services",
-    orderImage: "lg:order-2 lg:col-start-6",
-    orderText: "lg:order-1 lg:col-start-1",
-  },
-  {
-    num: "03",
-    tag: "Recruitment & HR",
-    title: "HRMS — Software Revamp",
-    description:
-      "Complete revamp of a legacy HRMS used by a recruitment group — attendance, payroll, leave management and employee self-service.",
-    impact:
-      "Cut payroll processing time and modernized the UX for hundreds of daily users.",
-    image: "/assets/projects/hrms-revamp.jpg",
-    alt: "HRMS — Software Revamp — Recruitment & HR",
-    orderImage: "",
-    orderText: "lg:col-start-9",
-  },
-  {
-    num: "04",
-    tag: "Energy · IoT",
-    title: "IoT Gas Station Management Portal",
-    description:
-      "Full IoT-integrated web application + API layer for fuel station operations — live pump telemetry, sales reconciliation and admin dashboards.",
-    impact:
-      "Real-time visibility into pump activity and automated end-of-day sales reporting.",
-    image: "/assets/projects/gas-station-portal.jpg",
-    alt: "IoT Gas Station Management Portal — Energy · IoT",
-    orderImage: "lg:order-2 lg:col-start-6",
-    orderText: "lg:order-1 lg:col-start-1",
-  },
-];
-
 const testimonialsData = [
   {
     quote:
@@ -1261,7 +1206,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Selected Work Section - Clean Background */}
+        {/* Selected Work Section - Replaced by CTA */}
         <section id="work" className="bg-background py-14 sm:py-32">
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
             <div className="rule-b flex items-baseline justify-between pb-4">
@@ -1270,86 +1215,19 @@ export default function Home() {
                 05
               </span>
             </div>
-            <div className="grid grid-cols-12 gap-y-6 pt-8 lg:gap-x-12">
-              <h2 className="col-span-12 font-display text-3xl font-semibold leading-[1.05] sm:text-5xl lg:col-span-6">
-                A few projects
-                <br />
-                I&apos;m proud of
+            <div className="mt-16 rounded-3xl bg-surface px-6 py-20 text-center sm:px-12 border border-border shadow-sm">
+              <h2 className="font-display text-4xl font-semibold leading-[1.05] sm:text-5xl mb-6">
+                Curious about what I&apos;ve been building?
               </h2>
-              <p className="col-span-12 max-w-xl self-end text-muted-foreground lg:col-span-5 lg:col-start-8">
-                Most of this work sits behind NDAs, so it&apos;s described by
-                domain rather than by client name.
+              <p className="mx-auto max-w-2xl text-lg text-muted-foreground mb-10">
+                Explore a detailed showcase of my recent projects, spanning enterprise web apps, mobile platforms, and IoT dashboards.
               </p>
-            </div>
-            <div className="mt-10 space-y-12 sm:space-y-20">
-              {selectedWorkData.map((work, wIdx) => (
-                <article
-                  key={wIdx}
-                  className="group grid grid-cols-12 gap-y-6 lg:gap-x-12"
-                >
-                  <div
-                    className={`col-span-12 lg:col-span-7 ${work.orderImage}`}
-                  >
-                    <div className="relative overflow-hidden rounded-xl border border-border/50 shadow-md transition-shadow group-hover:shadow-xl">
-                      <Image
-                        src={work.image}
-                        alt={work.alt}
-                        loading="lazy"
-                        width={1024}
-                        height={640}
-                        className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                      />
-                      <span className="absolute left-0 top-0 inline-flex items-center gap-1.5 bg-ink px-3 py-1.5 font-display text-[0.62rem] uppercase tracking-[0.16em] text-ink-foreground">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="lucide lucide-lock size-3"
-                          aria-hidden="true"
-                        >
-                          <rect
-                            width="18"
-                            height="11"
-                            x="3"
-                            y="11"
-                            rx="2"
-                            ry="2"
-                          ></rect>
-                          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                        </svg>
-                        NDA Signed
-                      </span>
-                    </div>
-                  </div>
-                  <div
-                    className={`col-span-12 self-center lg:col-span-4 ${work.orderText}`}
-                  >
-                    <span className="index-num text-xs text-muted-foreground">
-                      {work.num} / {work.tag}
-                    </span>
-                    <h3 className="mt-3 font-display text-2xl font-semibold leading-tight sm:text-3xl transition-colors group-hover:text-brand-glow">
-                      {work.title}
-                    </h3>
-                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                      {work.description}
-                    </p>
-                    <p className="rule-t mt-6 pt-5 text-sm">
-                      <span className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-brand">
-                        Impact —{" "}
-                      </span>
-                      <span className="text-muted-foreground">
-                        {work.impact}
-                      </span>
-                    </p>
-                  </div>
-                </article>
-              ))}
+              <a
+                href="/portfolio"
+                className="inline-flex items-center justify-center rounded-full bg-brand px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-brand-foreground shadow-lg transition-all hover:bg-brand-glow hover:-translate-y-0.5 active:scale-95"
+              >
+                View My Portfolio
+              </a>
             </div>
           </div>
         </section>
