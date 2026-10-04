@@ -14,10 +14,10 @@ export function BrowserMockup({ imageSrc, mobileImageSrc, alt, priority = false 
       <div className="relative flex w-full max-w-4xl flex-col items-center">
         
         {/* Macbook Screen Bezel */}
-        <div className="relative z-10 w-[90%] md:w-[85%] rounded-[1rem] border-[12px] md:border-[16px] border-[#1c1c1e] bg-[#1c1c1e] shadow-2xl transition-transform duration-700 ease-out group-hover:-translate-y-1">
+        <div className="relative z-10 w-[90%] md:w-[85%] rounded-[0.75rem] md:rounded-[1rem] border-[6px] md:border-[8px] border-[#1c1c1e] bg-[#1c1c1e] shadow-2xl transition-transform duration-700 ease-out group-hover:-translate-y-1">
           
           {/* Camera Dot */}
-          <div className="absolute left-1/2 top-[-8px] md:top-[-10px] h-1.5 w-1.5 md:h-2 md:w-2 -translate-x-1/2 rounded-full bg-[#3a3a3c] shadow-inner" />
+          <div className="absolute left-1/2 top-[-4px] md:top-[-6px] h-1 w-1 md:h-1.5 md:w-1.5 -translate-x-1/2 rounded-full bg-[#3a3a3c] shadow-inner" />
           
           {/* Screen Display Area (16:10 aspect ratio) */}
           <div className="relative aspect-[16/10] w-full overflow-hidden rounded-sm md:rounded-md bg-background">
@@ -46,9 +46,9 @@ export function BrowserMockup({ imageSrc, mobileImageSrc, alt, priority = false 
         
         {/* Mobile/App Frame (iPhone style) */}
         {mobileImageSrc && (
-          <div className="absolute -bottom-2 -right-2 md:-right-6 z-20 w-[24%] md:w-[22%] min-w-[70px] max-w-[120px] rounded-[1.25rem] border-[5px] md:border-[6px] border-[#1c1c1e] bg-[#1c1c1e] shadow-2xl transition-transform duration-700 ease-out group-hover:-translate-y-2 group-hover:-translate-x-1 group-hover:scale-105">
+          <div className="absolute -bottom-2 -right-2 md:-right-6 z-20 w-[24%] md:w-[22%] min-w-[70px] max-w-[120px] rounded-[1rem] border-[3px] md:border-[4px] border-[#1c1c1e] bg-[#1c1c1e] shadow-2xl transition-transform duration-700 ease-out group-hover:-translate-y-2 group-hover:-translate-x-1 group-hover:scale-105">
             {/* Dynamic Island / Notch */}
-            <div className="absolute left-1/2 top-1.5 z-30 h-1 md:h-1.5 w-1/3 -translate-x-1/2 rounded-full bg-black shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]" />
+            <div className="absolute left-1/2 top-1 z-30 h-1 md:h-1.5 w-1/3 -translate-x-1/2 rounded-full bg-black shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]" />
             
             {/* Mobile Screen Display Area (19.5:9 aspect ratio) */}
             <div className="relative aspect-[9/19.5] w-full overflow-hidden rounded-[0.8rem] bg-background">
