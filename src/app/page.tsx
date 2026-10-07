@@ -6,6 +6,16 @@ import { useState, FormEvent } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { TawkButton } from "@/components/ui/TawkButton";
+import { HeroWebGL } from "@/components/interactive/HeroWebGL";
+import { Magnetic } from "@/components/interactive/Magnetic";
+import { TiltCard } from "@/components/interactive/TiltCard";
+import { CounterNumber } from "@/components/interactive/CounterNumber";
+import { KineticMarquee } from "@/components/interactive/KineticMarquee";
+import { LiveStatusClock } from "@/components/interactive/LiveStatusClock";
+import { useSound } from "@/components/interactive/SoundEffects";
+import { ProjectCard } from "@/components/portfolio/ProjectCard";
+import { projectsData } from "@/data/projects";
+import { ArrowUpRight, ArrowRight, MessageCircle } from "lucide-react";
 
 interface FAQItem {
   question: string;
@@ -20,126 +30,116 @@ const servicesData = [
       "Custom ERP development services tailored to inventory, finance, manufacturing and operations workflows.",
     benefits: [
       "Unified data across departments",
-      "Real-time reporting",
-      "Scales with your business",
+      "Real-time reporting & metrics",
+      "Scales seamlessly with your business",
     ],
     solves:
       "Replaces spreadsheets, disconnected tools and slow manual processes.",
     colSpan: "lg:col-span-2",
-    ruleL: "",
   },
   {
     num: "02",
     title: "CRM Development",
     description:
-      "Bespoke CRM development from a focused CRM development company - built around your sales pipeline, not someone else's.",
+      "Bespoke CRM development from a focused software architect - built around your sales pipeline, not rigid templates.",
     benefits: [
-      "360° customer view",
-      "Sales automation",
-      "Custom pipelines & reports",
+      "360° customer & deal view",
+      "Automated lead follow-ups",
+      "Custom analytics & reporting",
     ],
-    solves: "Lost leads, no follow-up visibility, sales teams stuck in email.",
+    solves: "Lost leads, zero pipeline visibility, teams trapped in email.",
     colSpan: "",
-    ruleL: "lg:rule-l",
   },
   {
     num: "03",
     title: "HRMS Development",
     description:
-      "HRMS software development covering attendance, payroll, leave, performance and employee self-service.",
+      "HRMS software development covering attendance, payroll, leave management, performance metrics and employee portals.",
     benefits: [
       "Payroll & attendance in one place",
-      "Employee self-service portal",
-      "Compliance-ready reports",
+      "Employee self-service dashboard",
+      "Compliance-ready reporting",
     ],
     solves: "Manual HR ops, payroll errors, scattered employee data.",
     colSpan: "",
-    ruleL: "lg:rule-l",
   },
   {
     num: "04",
-    title: "Web Application Maintenance",
+    title: "Web App Maintenance",
     description:
-      "Reliable web application maintenance and software maintenance services - bug fixes, security patches, feature work and uptime support.",
+      "Reliable web application maintenance and continuous software engineering - bug fixes, security patches and uptime support.",
     benefits: [
       "Predictable monthly retainers",
-      "Performance & security monitoring",
-      "Fast response SLAs",
+      "Performance & security audits",
+      "Fast response SLA guarantees",
     ],
-    solves: "Aging codebases, broken features, no dev on call.",
+    solves: "Aging codebases, broken features, no dedicated dev on call.",
     colSpan: "",
-    ruleL: "",
   },
   {
     num: "05",
-    title: "Legacy Application Modernization",
+    title: "Legacy App Modernization",
     description:
-      "Legacy application modernization - re-architect old monolithic apps into high-performance Next.js + React + Cloud architectures.",
+      "Transform legacy monoliths into high-performance, modern Next.js + React + Cloud architectures with zero downtime.",
     benefits: [
-      "Modern UI / UX",
-      "Cloud-ready & Serverless",
-      "Lower hosting costs",
+      "Blazing UI / UX performance",
+      "Cloud-native & Serverless",
+      "Drastically reduced infrastructure cost",
     ],
-    solves: "Outdated tech, security risks, vendors that disappeared.",
+    solves: "Outdated stacks, security vulnerabilities, vanished vendors.",
     colSpan: "",
-    ruleL: "lg:rule-l",
   },
   {
     num: "06",
-    title: "Dedicated Full Stack Developer",
+    title: "Dedicated Full Stack Engineer",
     description:
-      "Hire a remote software developer on a monthly basis - direct communication, your roadmap, your codebase.",
+      "Hire a remote senior engineer on a dedicated monthly retainer - direct communication, embedded in your git repository.",
     benefits: [
-      "Full-time or part-time",
-      "Async + daily standups",
-      "No agency overhead",
+      "Full-time or part-time sprints",
+      "Async communication + standups",
+      "Zero agency bloat or markups",
     ],
-    solves: "Need consistent dev velocity without hiring full-time.",
+    solves: "Need consistent development velocity without hiring full-time.",
     colSpan: "lg:col-span-2",
-    ruleL: "lg:rule-l",
   },
 ];
 
 const whyWorkWithMeData = [
   {
     num: "01",
-    title: "Five years in",
+    title: "Five years in production",
     description:
-      "Production systems across ERP, CRM, HRMS and IoT-driven platforms.",
-    ruleL: "",
+      "Architected and shipped production systems across ERP, CRM, HRMS, and IoT-driven platforms.",
   },
   {
     num: "02",
-    title: "Workflow first",
+    title: "Workflow first, code second",
     description:
-      "I start from how people actually work, not from a feature list.",
-    ruleL: "lg:border-l lg:border-ink-foreground/20 lg:pl-8",
+      "I start from how real teams actually work day-to-day, not from an abstract feature checklist.",
   },
   {
     num: "03",
-    title: "I stay around",
-    description: "Most systems I build, I keep maintaining long after launch.",
-    ruleL: "lg:border-l lg:border-ink-foreground/20 lg:pl-8",
+    title: "I stick around long-term",
+    description:
+      "Most systems I engineer, I continue maintaining and scaling long after the initial deployment.",
   },
   {
     num: "04",
-    title: "Clean foundations",
+    title: "Rock-solid foundations",
     description:
-      "Next.js + React + TypeScript setups that survive growth instead of collapsing under it.",
-    ruleL: "",
+      "Next.js + React + TypeScript architectures engineered to thrive under load rather than buckle.",
   },
   {
     num: "05",
-    title: "Direct to me",
+    title: "Direct developer access",
     description:
-      "You talk to the person writing the code. No layers in between.",
-    ruleL: "lg:border-l lg:border-ink-foreground/20 lg:pl-8",
+      "You collaborate directly with the architect writing your code. No middle managers or translators.",
   },
   {
     num: "06",
-    title: "No fluff",
-    description: "Honest feedback, realistic timelines, zero jargon.",
-    ruleL: "lg:border-l lg:border-ink-foreground/20 lg:pl-8",
+    title: "Zero fluff, radical honesty",
+    description:
+      "Clear feedback, realistic timelines, measurable deliverables, and zero technical jargon.",
   },
 ];
 
@@ -152,7 +152,7 @@ const faqData: FAQItem[] = [
   {
     question: "How long does a typical project take?",
     answer:
-      "A MVP or specialized web application feature usually takes 2 to 4 weeks. Comprehensive ERP, CRM or enterprise platform developments range from 6 to 12 weeks depending on scope, module depth, and integration needs.",
+      "A fast MVP or specialized web application feature usually takes 2 to 4 weeks. Comprehensive ERP, CRM or enterprise platform developments range from 6 to 12 weeks depending on scope, module depth, and integration needs.",
   },
   {
     question: "How much does custom software development cost?",
@@ -186,42 +186,42 @@ const faqData: FAQItem[] = [
   },
 ];
 
-const faqs = faqData;
-
 const processData = [
   {
     step: "01",
     title: "Discovery Call",
     description:
-      "Understand your business, current systems, pain points and goals.",
+      "Understand your business workflows, current software stack, pain points, and strategic goals.",
   },
   {
     step: "02",
-    title: "Requirement Analysis",
+    title: "Requirement Architecture",
     description:
-      "Document workflows, user roles, integrations and success metrics.",
+      "Map out data models, user roles, security constraints, third-party integrations, and milestone roadmap.",
   },
   {
     step: "03",
-    title: "Development Plan",
-    description: "Clear scope, milestones, timelines and transparent pricing.",
+    title: "Engineering Plan",
+    description:
+      "Transparent fixed quote or milestone scope with documented timeline commitments.",
   },
   {
     step: "04",
-    title: "Agile Development",
-    description: "Weekly demos, frequent feedback, working software early.",
+    title: "Iterative Sprints",
+    description:
+      "Continuous delivery with weekly playable demos and frequent feedback loops.",
   },
   {
     step: "05",
-    title: "Testing & Deployment",
+    title: "UAT & Deployment",
     description:
-      "QA, UAT, secure deployment, data migration and team training.",
+      "Rigorous quality assurance, end-to-end testing, zero-downtime cloud deployment, and team onboarding.",
   },
   {
     step: "06",
-    title: "Ongoing Support",
+    title: "Ongoing Evolution",
     description:
-      "Maintenance retainers, feature work and 24×7 monitoring options.",
+      "Proactive monitoring retainers, feature roadmap sprints, and 24/7 uptime SLAs.",
   },
 ];
 
@@ -230,27 +230,40 @@ const testimonialsData = [
     quote:
       "Jazeel rebuilt our internal production tracking tool from a tangled spreadsheet into a real ERP module. Reporting that used to take a full day now runs in minutes.",
     author: "Operations Director",
-    company: "Manufacturing Company",
-    ruleL: "",
+    company: "Manufacturing Enterprise",
   },
   {
     quote:
       "Our HRMS revamp was on time, on scope, and the team still maintains it on a monthly retainer. Communication is the best we've had with any developer.",
     author: "Head of Talent",
     company: "Recruitment Agency",
-    ruleL: "lg:rule-l lg:pl-8",
   },
   {
     quote:
       "We needed a logistics dashboard tied into our existing systems. The API work and the React UI were both rock solid - leads now have clear delivery visibility.",
     author: "Founder",
     company: "Logistics Company",
-    ruleL: "lg:rule-l lg:pl-8",
   },
+];
+
+const marqueeItems = [
+  "Next.js 16",
+  "React 19",
+  "TypeScript",
+  "Three.js",
+  "GSAP",
+  "Tailwind CSS",
+  "PostgreSQL",
+  "Node.js",
+  "REST & GraphQL",
+  "Cloud APIs",
+  "Enterprise ERP",
+  "Custom CRM",
 ];
 
 export default function Home() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const { playPop, playHover } = useSound();
 
   // Contact Form State
   const [formData, setFormData] = useState({
@@ -282,6 +295,7 @@ export default function Home() {
   });
 
   const handleFaqToggle = (index: number) => {
+    playPop();
     setActiveFaq(activeFaq === index ? null : index);
   };
 
@@ -348,6 +362,7 @@ export default function Home() {
 
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    playPop();
 
     const newTouched = {
       name: true,
@@ -425,304 +440,320 @@ export default function Home() {
     }
   };
 
-  return (
-    <div className="relative min-h-screen bg-background text-foreground">
-      {/* Sticky Header - flat on mobile at top, capsule when scrolled */}
+  // Top 3 featured projects for homepage showcase
+  const featuredProjects = projectsData.slice(0, 3);
 
+  return (
+    <div className="relative min-h-screen bg-background text-foreground selection:bg-brand/15">
       <main>
-        {/* Hero Section */}
+        {/* ============================================================ */}
+        {/* Hero Section with Interactive Three.js WebGL Core */}
+        {/* ============================================================ */}
         <section
           id="top"
-          className="relative overflow-hidden pt-14 sm:pt-36 md:pt-44"
+          className="relative min-h-[92vh] flex flex-col justify-between overflow-x-clip pt-20 sm:pt-32 md:pt-36 pb-12"
         >
-          <div className="mx-auto max-w-[88rem] px-4 sm:px-6 lg:px-8">
-            {/* Top Status Strip */}
-            <div className="rule-b hidden sm:flex flex-wrap items-center gap-x-4 gap-y-2 pb-4 font-display text-[0.68rem] uppercase tracking-[0.22em] text-muted-foreground">
-              <span className="flex items-center gap-2 text-brand-glow">
-                <span className="size-1.5 rounded-full bg-brand-glow animate-pulse"></span>
-                Open to interesting work
-              </span>
-              <span>/</span>
-              <span>Kerala, India - remote</span>
-              <span className="ml-auto hidden lg:inline">
-                Personal site of Jazeel Zainudeen
-              </span>
+          {/* Three.js Interactive Particle Polyhedron Canvas */}
+          <HeroWebGL />
+
+          <div className="relative z-10 mx-auto max-w-[88rem] px-4 sm:px-6 lg:px-8 w-full">
+            {/* Top Status Strip with Live IST Clock */}
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border/60 pb-5">
+              <div className="flex items-center gap-3">
+                <LiveStatusClock />
+                <span className="hidden sm:inline font-mono text-[0.68rem] text-muted-foreground uppercase tracking-widest">
+                  AVAILABLE FOR Q2 CONTRACTS
+                </span>
+              </div>
+
+              <div className="hidden lg:flex items-center gap-3 font-mono text-[0.68rem] text-muted-foreground tracking-widest uppercase">
+                <span>FULL STACK ENGINEER</span>
+                <span className="text-border">/</span>
+                <span>CLOUD ARCHITECT</span>
+              </div>
             </div>
 
-            {/* Main Hero Header & Paragraph */}
-            <div className="grid grid-cols-12 gap-y-8 pt-8 sm:pt-16 md:pt-20 lg:gap-y-12">
-              <div className="col-span-12 lg:col-span-9">
-                <h1 className="font-display text-[2.5rem] font-semibold leading-[1.05] tracking-[-0.04em] sm:text-7xl lg:text-[6.2rem]">
+            {/* Main Hero Typography & Callout */}
+            <div className="grid grid-cols-12 gap-y-10 pt-10 sm:pt-16 md:pt-20 lg:gap-x-12 items-end">
+              <div className="col-span-12 lg:col-span-8">
+                <div className="inline-flex items-center gap-2 mb-4">
+                  <span className="h-1.5 w-8 rounded-full bg-brand" />
+                  <span className="font-display text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                    Full Stack Engineer · Next.js &amp; Cloud Architect
+                  </span>
+                </div>
+
+                <h1 className="font-display text-[2.15rem] font-semibold leading-[1.15] tracking-[-0.035em] sm:text-4xl lg:text-[3.1rem] xl:text-[3.5rem]">
                   Hi, I&apos;m Jazeel Zainudeen.
-                  <br />I build{" "}
-                  <span className="text-brand-glow">software</span>
                   <br />
-                  <span className="text-muted-foreground">
-                    that solves real problems.
+                  <span className="text-foreground">
+                    Architecting scalable{" "}
+                    <span className="relative inline-block text-brand-glow">
+                      web applications
+                      <span className="absolute bottom-1 left-0 right-0 h-1 bg-brand-glow/20 rounded-full" />
+                    </span>
+                  </span>{" "}
+                  <span className="text-muted-foreground font-normal">
+                    &amp; enterprise platforms.
                   </span>
                 </h1>
               </div>
 
-              <div className="col-span-12 lg:col-span-5 lg:col-start-8 lg:-mt-16">
-                <p className="rule-l pl-5 sm:pl-6 text-base sm:text-lg leading-relaxed text-muted-foreground">
-                  A full stack developer from Kerala, India. For the past five
-                  years I&apos;ve spent my days building ERP, CRM and HRMS
-                  systems, modernizing old codebases, and keeping them alive
-                  long after launch. This is my corner of the internet.
-                </p>
-                <div className="mt-8 sm:mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-                  <a
-                    href="#contact"
-                    className="group inline-flex items-center justify-center gap-3 rounded-full bg-ink px-7 py-3.5 font-display text-xs font-semibold tracking-wider text-ink-foreground shadow-md transition-all hover:bg-ink/90 active:scale-95"
-                  >
-                    <span>Book a discovery call</span>
-                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand text-brand-foreground transition-transform group-hover:translate-x-0.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-arrow-right"
+              <div className="col-span-12 lg:col-span-4">
+                <div className="rounded-2xl border border-border/80 bg-surface/40 p-6 sm:p-7 backdrop-blur-xl shadow-lg shadow-black/5">
+                  <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
+                    Full stack developer from Kerala, India. For over half a decade,
+                    I&apos;ve crafted high-performance ERP, CRM, and cloud architectures,
+                    modernized aging stacks, and maintained critical operations long
+                    after deployment.
+                  </p>
+
+                  <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                    <Magnetic strength={0.25} className="w-full sm:w-auto">
+                      <a
+                        href="#contact"
+                        onMouseEnter={playHover}
+                        onClick={playPop}
+                        data-cursor="CALL"
+                        className="group flex w-full items-center justify-center gap-3 rounded-full bg-foreground px-6 py-3.5 font-display text-xs font-semibold tracking-wider text-background shadow-md transition-all hover:bg-brand-glow hover:shadow-xl active:scale-95"
                       >
-                        <path d="M5 12h14"></path>
-                        <path d="m12 5 7 7-7 7"></path>
-                      </svg>
-                    </span>
-                  </a>
-                  <a
-                    href="https://wa.me/918086482422"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2.5 rounded-full border border-border bg-background px-7 py-3.5 font-display text-xs font-semibold tracking-wider text-foreground shadow-sm transition-all hover:bg-surface hover:border-brand-glow/40 active:scale-95"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-message-circle text-brand-glow"
-                    >
-                      <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path>
-                    </svg>
-                    <span>Direct WhatsApp</span>
-                  </a>
+                        <span>Book discovery call</span>
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </a>
+                    </Magnetic>
+
+                    <Magnetic strength={0.25} className="w-full sm:w-auto">
+                      <a
+                        href="https://wa.me/918086482422"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onMouseEnter={playHover}
+                        onClick={playPop}
+                        data-cursor="CHAT"
+                        className="flex w-full items-center justify-center gap-2 rounded-full border border-border/80 bg-background/90 px-5 py-3.5 font-display text-xs font-semibold tracking-wider text-foreground shadow-sm backdrop-blur-md transition-all hover:border-brand-glow/50 hover:bg-surface active:scale-95"
+                      >
+                        <MessageCircle className="h-4 w-4 text-emerald-500" />
+                        <span>WhatsApp</span>
+                      </a>
+                    </Magnetic>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Stats Row - Spacious layout with Framer Motion staggered entrance */}
-            <div className="relative mt-14 sm:mt-20 md:mt-24 grid grid-cols-12 gap-y-6 pb-16 sm:pb-24">
-              <div className="col-span-12 lg:col-span-10 lg:col-start-2">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <div className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm transition-colors hover:border-brand/30 hover:bg-surface/60">
-                    <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">
-                      01
-                    </span>
-                    Full Stack since 2019
-                  </div>
-                  <div className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm transition-colors hover:border-brand/30 hover:bg-surface/60">
-                    <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">
-                      02
-                    </span>
-                    Next.js · React · TypeScript
-                  </div>
-                  <div className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm transition-colors hover:border-brand/30 hover:bg-surface/60">
-                    <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">
-                      03
-                    </span>
-                    ERP, CRM &amp; HRMS
-                  </div>
-                  <div className="rule-t rounded-xl border border-white/5 bg-surface/30 p-5 font-display text-sm font-medium backdrop-blur-sm transition-colors hover:border-brand/30 hover:bg-surface/60">
-                    <span className="index-num block sm:inline mr-3 text-xs sm:text-sm font-bold text-brand-glow">
-                      04
-                    </span>
-                    Kerala, India - Remote
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Tech Stack Banner */}
-        <section
-          aria-label="Tech stack"
-          className="bg-ink py-10 text-ink-foreground"
-        >
-          <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
-            <p className="font-display text-[0.68rem] uppercase tracking-[0.24em] text-ink-foreground/75">
-              Tools I work with every day
-            </p>
-            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">
-                Next.js
-                <span
-                  className="h-4 w-px bg-ink-foreground/25"
-                  aria-hidden="true"
-                ></span>
-              </span>
-              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">
-                React
-                <span
-                  className="h-4 w-px bg-ink-foreground/25"
-                  aria-hidden="true"
-                ></span>
-              </span>
-              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">
-                TypeScript
-                <span
-                  className="h-4 w-px bg-ink-foreground/25"
-                  aria-hidden="true"
-                ></span>
-              </span>
-              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">
-                Node.js
-                <span
-                  className="h-4 w-px bg-ink-foreground/25"
-                  aria-hidden="true"
-                ></span>
-              </span>
-              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">
-                Tailwind CSS
-                <span
-                  className="h-4 w-px bg-ink-foreground/25"
-                  aria-hidden="true"
-                ></span>
-              </span>
-              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">
-                PostgreSQL
-                <span
-                  className="h-4 w-px bg-ink-foreground/25"
-                  aria-hidden="true"
-                ></span>
-              </span>
-              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">
-                REST &amp; GraphQL
-                <span
-                  className="h-4 w-px bg-ink-foreground/25"
-                  aria-hidden="true"
-                ></span>
-              </span>
-              <span className="flex items-center gap-6 font-display text-lg font-medium tracking-tight text-ink-foreground/85 sm:text-xl">
-                Cloud / Serverless
-              </span>
-            </div>
-          </div>
-        </section>
-
-        {/* About Section - Soft Surface Background */}
-        <section
-          id="about"
-          className="bg-surface/50 py-14 sm:bg-transparent sm:py-32"
-        >
-          <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
-            <div className="rule-b flex items-baseline justify-between pb-4">
-              <span className="eyebrow">About</span>
-              <span className="index-num text-xs text-muted-foreground">
-                01
-              </span>
-            </div>
-            <div className="grid grid-cols-12 gap-y-8 pt-8 lg:gap-x-12">
-              <div className="col-span-12 sm:col-span-6 lg:col-span-4">
-                <div className="relative">
-                  <div className="absolute -bottom-4 -right-4 hidden h-full w-full bg-sand sm:block"></div>
-                  <Image
-                    src="/assets/seo/jazeel-zainudeen-profile.jpg"
-                    alt="Jazeel Zainudeen, Full Stack Developer"
-                    width={440}
-                    height={550}
-                    priority
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-                    className="relative aspect-[4/5] w-full object-cover object-top"
-                  />
-                </div>
-              </div>
-              <div className="col-span-12 lg:col-span-7 lg:col-start-6">
-                <h2 className="font-display text-3xl font-semibold leading-[1.05] sm:text-5xl">
-                  A little
-                  <br />
-                  about me
-                </h2>
-                <p className="mt-7 max-w-xl text-muted-foreground">
-                  I&apos;m{" "}
-                  <span className="font-medium text-foreground">
-                    Jazeel Zainudeen
+            {/* Interactive Stats Row with Animated Number Counters */}
+            <div className="mt-14 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4">
+              <TiltCard maxTilt={5}>
+                <div className="rounded-2xl border border-border/80 bg-surface/50 p-5 sm:p-6 backdrop-blur-md transition-colors hover:border-brand-glow/40 hover:bg-surface/80">
+                  <span className="font-mono text-xs font-bold text-brand-glow mb-2 block">
+                    01 // TENURE
                   </span>
-                  , a full stack engineer based in Kerala, India. Over the last
-                  five years I&apos;ve built production web applications,
-                  high-performance Cloud solutions, ERP systems, CRM platforms,
-                  and internal automations that quietly save teams hours every
-                  week.
-                </p>
-                <p className="mt-4 max-w-xl text-muted-foreground">
-                  I&apos;ve worked with small teams and larger companies across
-                  manufacturing, logistics, healthcare and recruitment. I
-                  specialize in modern JavaScript/TypeScript ecosystems,
-                  micro-frontends, and robust cloud backend architectures.
-                </p>
-                <div className="mt-10 grid grid-cols-3">
-                  <div className="rule-t py-4 pr-3">
-                    <div className="index-num text-3xl font-semibold sm:text-4xl">
-                      5+
-                    </div>
-                    <div className="mt-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">
-                      Years building
-                    </div>
+                  <div className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+                    <CounterNumber end={5} suffix="+ Yrs" />
                   </div>
-                  <div className="rule-t py-4 pr-3">
-                    <div className="index-num text-3xl font-semibold sm:text-4xl">
-                      20+
-                    </div>
-                    <div className="mt-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">
-                      Systems shipped
-                    </div>
-                  </div>
-                  <div className="rule-t py-4 pr-3">
-                    <div className="index-num text-3xl font-semibold sm:text-4xl">
-                      4
-                    </div>
-                    <div className="mt-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">
-                      Industries
-                    </div>
-                  </div>
+                  <p className="mt-1 text-xs text-muted-foreground uppercase tracking-wider font-display">
+                    Full Stack Engineering
+                  </p>
                 </div>
+              </TiltCard>
+
+              <TiltCard maxTilt={5}>
+                <div className="rounded-2xl border border-border/80 bg-surface/50 p-5 sm:p-6 backdrop-blur-md transition-colors hover:border-brand-glow/40 hover:bg-surface/80">
+                  <span className="font-mono text-xs font-bold text-brand-glow mb-2 block">
+                    02 // SHIPPED
+                  </span>
+                  <div className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+                    <CounterNumber end={20} suffix="+ Apps" />
+                  </div>
+                  <p className="mt-1 text-xs text-muted-foreground uppercase tracking-wider font-display">
+                    Production Systems
+                  </p>
+                </div>
+              </TiltCard>
+
+              <TiltCard maxTilt={5}>
+                <div className="rounded-2xl border border-border/80 bg-surface/50 p-5 sm:p-6 backdrop-blur-md transition-colors hover:border-brand-glow/40 hover:bg-surface/80">
+                  <span className="font-mono text-xs font-bold text-brand-glow mb-2 block">
+                    03 // FOCUS
+                  </span>
+                  <div className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+                    Next.js
+                  </div>
+                  <p className="mt-1 text-xs text-muted-foreground uppercase tracking-wider font-display">
+                    React · TS · Cloud APIs
+                  </p>
+                </div>
+              </TiltCard>
+
+              <TiltCard maxTilt={5}>
+                <div className="rounded-2xl border border-border/80 bg-surface/50 p-5 sm:p-6 backdrop-blur-md transition-colors hover:border-brand-glow/40 hover:bg-surface/80">
+                  <span className="font-mono text-xs font-bold text-brand-glow mb-2 block">
+                    04 // DOMAINS
+                  </span>
+                  <div className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+                    <CounterNumber end={4} suffix=" Sectors" />
+                  </div>
+                  <p className="mt-1 text-xs text-muted-foreground uppercase tracking-wider font-display">
+                    ERP · CRM · HRMS · IoT
+                  </p>
+                </div>
+              </TiltCard>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================ */}
+        {/* Kinetic Scroll-Velocity Marquee Ribbon */}
+        {/* ============================================================ */}
+        <section
+          aria-label="Core technologies"
+          className="relative border-y border-border/80 bg-surface/80 backdrop-blur-md py-2 overflow-hidden"
+        >
+          <KineticMarquee items={marqueeItems} speed={35} />
+        </section>
+
+        {/* ============================================================ */}
+        {/* Featured Projects Showcase (Direct Interactive Experience) */}
+        {/* ============================================================ */}
+        <section id="work" className="relative py-20 sm:py-32">
+          <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
+            <div className="flex flex-wrap items-baseline justify-between border-b border-border/80 pb-4">
+              <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-brand-glow">
+                Selected Work
+              </span>
+              <span className="font-mono text-xs text-muted-foreground">01 // RECENT BUILDS</span>
+            </div>
+
+            <div className="grid grid-cols-12 gap-y-6 pt-10 lg:gap-x-12 items-end">
+              <div className="col-span-12 lg:col-span-7">
+                <h2 className="font-display text-3xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl tracking-tight">
+                  Systems engineered for
+                  <br />
+                  real operational scale
+                </h2>
+              </div>
+              <div className="col-span-12 lg:col-span-5 flex lg:justify-end">
+                <Link
+                  href="/portfolio"
+                  data-cursor="ALL"
+                  onMouseEnter={playHover}
+                  className="group inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/60 px-6 py-3 font-display text-xs font-bold uppercase tracking-wider text-foreground backdrop-blur-sm transition-all hover:border-foreground hover:bg-surface active:scale-95"
+                >
+                  <span>Explore full portfolio</span>
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Grid of 3 Featured Interactive Project Cards */}
+            <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {featuredProjects.map((project, idx) => (
+                <ProjectCard key={project.slug} project={project} index={idx} />
+              ))}
+            </div>
+
+            {/* Direct Invitation Banner */}
+            <div className="mt-14 rounded-3xl border border-dashed border-border/80 bg-surface/30 p-8 text-center sm:p-12">
+              <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground">
+                Looking for specific industry platforms?
+              </h3>
+              <p className="mx-auto mt-2 max-w-xl text-sm text-muted-foreground leading-relaxed">
+                Explore case studies covering e-commerce sync pipelines, HRMS self-service dashboards, and high-volume ERP integrations.
+              </p>
+              <div className="mt-6 flex justify-center">
+                <Link
+                  href="/portfolio"
+                  data-cursor="VIEW"
+                  onMouseEnter={playHover}
+                  onClick={playPop}
+                  className="inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3 font-display text-xs font-semibold uppercase tracking-wider text-background shadow-lg transition-all hover:bg-brand-glow active:scale-95"
+                >
+                  <span>View all projects</span>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================ */}
+        {/* About Section with 3D Image Perspective */}
+        {/* ============================================================ */}
+        <section id="about" className="relative bg-surface/40 py-20 sm:py-32 border-y border-border/60">
+          <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
+            <div className="flex items-baseline justify-between border-b border-border/80 pb-4">
+              <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-brand-glow">
+                About The Engineer
+              </span>
+              <span className="font-mono text-xs text-muted-foreground">02 // PROFILE</span>
+            </div>
+
+            <div className="grid grid-cols-12 gap-y-12 pt-12 lg:gap-x-14 items-center">
+              <div className="col-span-12 sm:col-span-6 lg:col-span-5">
+                <TiltCard
+                  maxTilt={8}
+                  className="rounded-3xl border border-border/80 bg-card p-3 shadow-2xl transition-all duration-300 hover:shadow-brand-glow/15"
+                >
+                  <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
+                    <Image
+                      src="/assets/seo/jazeel-zainudeen-profile.jpg"
+                      alt="Jazeel Zainudeen, Full Stack Developer"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 450px"
+                      className="object-cover object-top transition-transform duration-700 hover:scale-105"
+                    />
+                  </div>
+                  <div className="mt-4 flex items-center justify-between px-2 pb-1">
+                    <div>
+                      <div className="font-display text-sm font-bold text-foreground">Jazeel Zainudeen</div>
+                      <div className="text-xs text-muted-foreground font-mono">Kerala, India</div>
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-[0.65rem] font-semibold text-emerald-600 font-mono">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      AVAILABLE
+                    </span>
+                  </div>
+                </TiltCard>
+              </div>
+
+              <div className="col-span-12 lg:col-span-7">
+                <h2 className="font-display text-3xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl tracking-tight">
+                  Turning complex workflow chaos into dependable code
+                </h2>
+                <p className="mt-8 text-base sm:text-lg leading-relaxed text-muted-foreground">
+                  I&apos;m <span className="font-semibold text-foreground">Jazeel Zainudeen</span>, a full stack engineer based in Kerala, India. Over the last five years, I&apos;ve engineered enterprise web applications, scalable Cloud APIs, custom ERP platforms, and business automation pipelines that eliminate hundreds of hours of manual labor for teams.
+                </p>
+                <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
+                  I partner directly with technical founders, operational leads, and agencies across manufacturing, logistics, healthcare, and retail. I cut through buzzwords and deliver fast, maintainable TypeScript architectures built to last.
+                </p>
+
+                {/* Tech Chips */}
                 <div className="mt-10">
-                  <p className="eyebrow mb-4">Core expertise</p>
-                  <div className="flex flex-wrap gap-x-5 gap-y-2">
-                    <span className="font-display text-sm text-muted-foreground">
-                      Next.js 15
-                    </span>
-                    <span className="font-display text-sm text-muted-foreground">
-                      React 19
-                    </span>
-                    <span className="font-display text-sm text-muted-foreground">
-                      TypeScript
-                    </span>
-                    <span className="font-display text-sm text-muted-foreground">
-                      Node.js
-                    </span>
-                    <span className="font-display text-sm text-muted-foreground">
-                      Tailwind CSS
-                    </span>
-                    <span className="font-display text-sm text-muted-foreground">
-                      PostgreSQL
-                    </span>
-                    <span className="font-display text-sm text-muted-foreground">
-                      Cloud Architecture
-                    </span>
-                    <span className="font-display text-sm text-muted-foreground">
-                      Enterprise Web Applications
-                    </span>
+                  <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-foreground mb-4">
+                    Core Technical Stack
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Next.js 16",
+                      "React 19",
+                      "TypeScript",
+                      "Three.js",
+                      "Node.js",
+                      "PostgreSQL",
+                      "Tailwind CSS",
+                      "REST & GraphQL",
+                      "Docker & Cloud",
+                      "Payload CMS",
+                      "Laravel",
+                    ].map((tech) => (
+                      <span
+                        key={tech}
+                        onMouseEnter={playHover}
+                        className="rounded-full border border-border/80 bg-background/80 px-4 py-1.5 font-display text-xs font-semibold text-foreground shadow-sm transition-all hover:border-brand-glow hover:bg-surface"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -730,111 +761,120 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Services Section - Clean Background */}
-        <section id="services" className="bg-background py-14 sm:py-32">
+        {/* ============================================================ */}
+        {/* Services Section with 3D Spotlight Cards */}
+        {/* ============================================================ */}
+        <section id="services" className="relative py-20 sm:py-32">
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
-            <div className="rule-b flex items-baseline justify-between pb-4">
-              <span className="eyebrow">What I work on</span>
-              <span className="index-num text-xs text-muted-foreground">
-                02
+            <div className="flex items-baseline justify-between border-b border-border/80 pb-4">
+              <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-brand-glow">
+                Capabilities
               </span>
+              <span className="font-mono text-xs text-muted-foreground">03 // SERVICES</span>
             </div>
-            <div className="grid grid-cols-12 gap-y-6 pt-8 lg:gap-x-12">
-              <h2 className="col-span-12 font-display text-3xl font-semibold leading-[1.05] sm:text-5xl lg:col-span-6">
-                The kind of things
-                <br />I build
+
+            <div className="grid grid-cols-12 gap-y-6 pt-10 lg:gap-x-12 items-end">
+              <h2 className="col-span-12 font-display text-3xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl tracking-tight lg:col-span-7">
+                Software engineered for
+                <br />
+                specific business needs
               </h2>
-              <p className="col-span-12 max-w-xl self-end text-muted-foreground lg:col-span-5 lg:col-start-8">
-                Most of my work lives inside companies rather than on the open
-                web - internal systems for manufacturing, logistics, healthcare
-                and recruitment teams.
+              <p className="col-span-12 max-w-xl text-base text-muted-foreground lg:col-span-5">
+                Most of my work powers internal enterprise engines rather than disposable landing pages - mission-critical tools where downtime is not an option.
               </p>
             </div>
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {servicesData.map((service, i) => (
-                <article
+                <TiltCard
                   key={i}
-                  className={`group rule-t flex flex-col p-6 transition-colors hover:bg-surface sm:p-8 ${service.colSpan} ${service.ruleL}`}
+                  maxTilt={6}
+                  as="article"
+                  data-cursor="EXPLORE"
+                  onMouseEnter={playHover}
+                  className={`group flex h-full flex-col rounded-3xl border border-border/80 bg-card p-7 sm:p-8 transition-all duration-300 hover:border-brand-glow/40 hover:shadow-2xl hover:shadow-black/5 ${service.colSpan}`}
                 >
                   <div className="flex items-start justify-between">
-                    <span className="index-num text-4xl font-semibold text-sand transition-colors group-hover:text-brand">
+                    <span className="font-mono text-3xl font-bold text-muted-foreground/60 transition-colors group-hover:text-foreground">
                       {service.num}
                     </span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-arrow-up-right size-5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand"
-                      aria-hidden="true"
-                    >
-                      <path d="M7 7h10v10"></path>
-                      <path d="M7 17 17 7"></path>
-                    </svg>
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface text-muted-foreground transition-all group-hover:bg-foreground group-hover:text-background group-hover:scale-110">
+                      <ArrowUpRight className="h-5 w-5" />
+                    </div>
                   </div>
-                  <h3 className="mt-8 font-display text-2xl font-semibold tracking-tight">
+
+                  <h3 className="mt-6 font-display text-2xl font-bold tracking-tight text-foreground">
                     {service.title}
                   </h3>
-                  <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                     {service.description}
                   </p>
-                  <ul className="mt-6 space-y-2 text-sm text-foreground/80">
+
+                  <ul className="mt-6 space-y-2 text-xs sm:text-sm text-foreground/80">
                     {service.benefits.map((benefit, bIdx) => (
-                      <li key={bIdx} className="flex gap-3">
-                        <span className="mt-2.5 h-px w-3 shrink-0 bg-brand"></span>
-                        {benefit}
+                      <li key={bIdx} className="flex items-center gap-2.5">
+                        <span className="h-1.5 w-1.5 rounded-full bg-brand-glow" />
+                        <span>{benefit}</span>
                       </li>
                     ))}
                   </ul>
-                  <p className="rule-t mt-auto pt-5 text-xs leading-relaxed text-muted-foreground">
-                    <span className="font-display font-semibold uppercase tracking-[0.14em] text-foreground">
-                      Solves -{" "}
-                    </span>
-                    {service.solves}
-                  </p>
-                  <TawkButton className="link-rule mt-6 inline-flex w-fit items-center gap-1.5 font-display text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-foreground">
-                    Ask me about this
-                  </TawkButton>
-                </article>
+
+                  <div className="mt-auto pt-6 border-t border-border/60">
+                    <p className="text-xs text-muted-foreground">
+                      <span className="font-semibold text-foreground uppercase tracking-wider font-display">
+                        Solves —{" "}
+                      </span>
+                      {service.solves}
+                    </p>
+                    <TawkButton
+                      onMouseEnter={playHover}
+                      onClick={playPop}
+                      className="mt-4 inline-flex items-center gap-1.5 font-display text-xs font-bold uppercase tracking-wider text-foreground hover:text-brand-glow transition-colors"
+                    >
+                      <span>Discuss this requirement</span>
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </TawkButton>
+                  </div>
+                </TiltCard>
               ))}
             </div>
           </div>
         </section>
 
-        {/* How I Work / Why Work With Me Section - Dark Ink */}
-        <section className="bg-ink py-14 text-ink-foreground sm:py-32">
-          <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
+        {/* ============================================================ */}
+        {/* Why Work With Me (Dark High-Contrast Ink Section) */}
+        {/* ============================================================ */}
+        <section className="relative bg-ink py-20 text-ink-foreground sm:py-32 overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.03),transparent_70%)] pointer-events-none" />
+
+          <div className="relative mx-auto max-w-[88rem] px-4 sm:px-8">
             <div className="flex items-baseline justify-between border-b border-ink-foreground/20 pb-4">
-              <span className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-ink-foreground/80">
-                How I work
+              <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-ink-foreground/80">
+                Guiding Principles
               </span>
-              <span className="index-num text-xs text-ink-foreground/75">
-                03
-              </span>
+              <span className="font-mono text-xs text-ink-foreground/60">04 // STANDARDS</span>
             </div>
-            <h2 className="max-w-3xl pt-8 font-display text-3xl font-semibold leading-[1.05] sm:text-5xl">
-              A few things
+
+            <h2 className="max-w-3xl pt-10 font-display text-3xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl tracking-tight">
+              A few guarantees
               <br />
               worth knowing
             </h2>
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {whyWorkWithMeData.map((item, idx) => (
                 <div
                   key={idx}
-                  className={`border-t border-ink-foreground/20 py-6 pr-6 ${item.ruleL}`}
+                  onMouseEnter={playHover}
+                  className="rounded-2xl border border-ink-foreground/15 bg-ink-foreground/5 p-7 backdrop-blur-md transition-all hover:bg-ink-foreground/10 hover:border-ink-foreground/30"
                 >
-                  <span className="index-num text-xs text-ink-foreground/75">
+                  <span className="font-mono text-xs font-bold text-brand-glow">
                     {item.num}
                   </span>
-                  <h3 className="mt-3 font-display text-xl font-semibold">
+                  <h3 className="mt-3 font-display text-xl font-bold tracking-tight text-white">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-foreground/80">
+                  <p className="mt-2 text-sm leading-relaxed text-ink-foreground/75">
                     {item.description}
                   </p>
                 </div>
@@ -843,318 +883,286 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Process Section - Soft Surface Background */}
-        <section
-          id="process"
-          className="bg-surface/50 py-14 sm:bg-transparent sm:py-32"
-        >
+        {/* ============================================================ */}
+        {/* Process Section */}
+        {/* ============================================================ */}
+        <section id="process" className="relative py-20 sm:py-32">
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
-            <div className="rule-b flex items-baseline justify-between pb-4">
-              <span className="eyebrow">My process</span>
-              <span className="index-num text-xs text-muted-foreground">
-                04
+            <div className="flex items-baseline justify-between border-b border-border/80 pb-4">
+              <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-brand-glow">
+                Methodology
               </span>
+              <span className="font-mono text-xs text-muted-foreground">05 // WORKFLOW</span>
             </div>
-            <h2 className="max-w-3xl pt-8 font-display text-3xl font-semibold leading-[1.05] sm:text-5xl">
-              How a project
+
+            <h2 className="max-w-3xl pt-10 font-display text-3xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl tracking-tight">
+              Predictable execution,
               <br />
-              usually goes
+              zero surprises
             </h2>
-            <div className="mt-10">
+
+            <div className="mt-12 divide-y divide-border/80">
               {processData.map((p, pIdx) => (
                 <div
                   key={pIdx}
-                  className="rule-t group grid grid-cols-12 items-baseline gap-y-2 py-5 transition-colors hover:bg-surface"
+                  onMouseEnter={playHover}
+                  className="group grid grid-cols-12 items-baseline gap-y-3 py-7 transition-colors hover:bg-surface/50 px-4 rounded-xl"
                 >
-                  <span className="index-num col-span-12 text-3xl font-semibold text-sand transition-colors group-hover:text-brand sm:col-span-2 sm:text-5xl">
+                  <span className="font-mono col-span-12 text-3xl font-bold text-muted-foreground/60 transition-colors group-hover:text-foreground sm:col-span-2 sm:text-4xl">
                     {p.step}
                   </span>
-                  <h3 className="col-span-12 font-display text-xl font-semibold sm:col-span-4">
+                  <h3 className="col-span-12 font-display text-xl sm:text-2xl font-bold tracking-tight text-foreground sm:col-span-4">
                     {p.title}
                   </h3>
-                  <p className="col-span-12 text-sm text-muted-foreground sm:col-span-6">
+                  <p className="col-span-12 text-sm sm:text-base leading-relaxed text-muted-foreground sm:col-span-6">
                     {p.description}
                   </p>
                 </div>
               ))}
-              <div className="rule-t"></div>
             </div>
           </div>
         </section>
 
-        {/* Selected Work Section - Replaced by CTA */}
-        <section id="work" className="bg-background py-14 sm:py-32">
+        {/* ============================================================ */}
+        {/* Testimonials */}
+        {/* ============================================================ */}
+        <section className="relative bg-surface/40 py-20 sm:py-32 border-y border-border/60">
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
-            <div className="rule-b flex items-baseline justify-between pb-4">
-              <span className="eyebrow">Things I&apos;ve built</span>
-              <span className="index-num text-xs text-muted-foreground">
-                05
+            <div className="flex items-baseline justify-between border-b border-border/80 pb-4">
+              <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-brand-glow">
+                Client Feedback
               </span>
+              <span className="font-mono text-xs text-muted-foreground">06 // REPUTATION</span>
             </div>
-            <div className="mt-16 rounded-3xl bg-surface px-6 py-20 text-center sm:px-12 border border-border shadow-sm">
-              <h2 className="font-display text-4xl font-semibold leading-[1.05] sm:text-5xl mb-6">
-                Curious about what I&apos;ve been building?
-              </h2>
-              <p className="mx-auto max-w-2xl text-lg text-muted-foreground mb-10">
-                Explore a detailed showcase of my recent projects, spanning
-                enterprise web apps, mobile platforms, and IoT dashboards.
-              </p>
-              <Link
-                href="/portfolio"
-                className="inline-flex items-center justify-center rounded-full bg-brand px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-brand-foreground shadow-lg transition-all hover:bg-brand-glow hover:-translate-y-0.5 active:scale-95"
-              >
-                View My Portfolio
-              </Link>
-            </div>
-          </div>
-        </section>
 
-        {/* Testimonials Section - Soft Surface Background */}
-        <section className="bg-surface/50 py-14 sm:bg-transparent sm:py-32">
-          <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
-            <div className="rule-b flex items-baseline justify-between pb-4">
-              <span className="eyebrow">Kind words</span>
-              <span className="index-num text-xs text-muted-foreground">
-                06
-              </span>
-            </div>
-            <h2 className="max-w-3xl pt-8 font-display text-3xl font-semibold leading-[1.05] sm:text-5xl">
-              What people
+            <h2 className="max-w-3xl pt-10 font-display text-3xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl tracking-tight">
+              What partners say
               <br />
-              I&apos;ve worked with say
+              about my delivery
             </h2>
-            <div className="mt-10 grid grid-cols-1 lg:grid-cols-3">
+
+            <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
               {testimonialsData.map((t, tIdx) => (
-                <figure
+                <TiltCard
                   key={tIdx}
-                  className={`rule-t flex flex-col py-6 pr-8 ${t.ruleL}`}
+                  maxTilt={6}
+                  as="figure"
+                  className="flex h-full flex-col rounded-3xl border border-border/80 bg-card p-8 shadow-sm transition-all duration-300 hover:shadow-2xl hover:shadow-black/5 hover:border-brand-glow/30"
                 >
-                  <span className="font-display text-4xl leading-none text-sand">
+                  <span className="font-display text-5xl leading-none text-muted-foreground/30 font-serif">
                     “
                   </span>
-                  <blockquote className="mt-3 font-display text-base leading-snug tracking-tight text-foreground sm:text-lg">
+                  <blockquote className="mt-3 font-display text-base leading-relaxed text-foreground flex-1">
                     {t.quote}
                   </blockquote>
-                  <figcaption className="rule-t mt-auto pt-4">
-                    <div className="font-display text-sm font-semibold">
+                  <figcaption className="mt-6 pt-5 border-t border-border/60">
+                    <div className="font-display text-sm font-bold text-foreground">
                       {t.author}
                     </div>
-                    <div className="mt-0.5 text-xs uppercase tracking-[0.14em] text-muted-foreground">
+                    <div className="mt-0.5 font-mono text-xs text-muted-foreground">
                       {t.company}
                     </div>
                   </figcaption>
-                </figure>
+                </TiltCard>
               ))}
             </div>
           </div>
         </section>
 
-        {/* FAQ Section - Clean Background */}
-        <section id="faq" className="bg-background py-14 sm:py-32">
+        {/* ============================================================ */}
+        {/* FAQ Section */}
+        {/* ============================================================ */}
+        <section id="faq" className="relative py-20 sm:py-32">
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
-            <div className="rule-b flex items-baseline justify-between pb-4">
-              <span className="eyebrow">FAQ</span>
-              <span className="index-num text-xs text-muted-foreground">
-                07
+            <div className="flex items-baseline justify-between border-b border-border/80 pb-4">
+              <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-brand-glow">
+                Frequently Asked
               </span>
+              <span className="font-mono text-xs text-muted-foreground">07 // ANSWERS</span>
             </div>
-            <div className="grid grid-cols-12 gap-y-8 pt-8 lg:gap-x-12">
-              <h2 className="col-span-12 font-display text-3xl font-semibold leading-[1.05] sm:text-5xl lg:col-span-4">
-                Questions,
+
+            <div className="grid grid-cols-12 gap-y-10 pt-10 lg:gap-x-12">
+              <h2 className="col-span-12 font-display text-3xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl tracking-tight lg:col-span-5">
+                Clear answers to
                 <br />
-                answered
+                common questions
               </h2>
-              <div className="col-span-12 lg:col-span-7 lg:col-start-6">
-                <div>
-                  {faqs.map((faq, index) => {
+
+              <div className="col-span-12 lg:col-span-7">
+                <div className="divide-y divide-border/80">
+                  {faqData.map((faq, index) => {
                     const isOpen = activeFaq === index;
                     return (
-                      <div key={index} className="rule-t border-b-0">
+                      <div key={index} className="py-2">
                         <h3>
                           <button
                             type="button"
                             onClick={() => handleFaqToggle(index)}
-                            className="flex w-full items-center justify-between py-5 text-left font-display text-base font-medium transition-all hover:no-underline"
+                            className="flex w-full items-center justify-between py-4 text-left font-display text-base sm:text-lg font-bold text-foreground transition-all hover:text-brand-glow"
                             aria-expanded={isOpen}
                           >
                             <span>{faq.question}</span>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="24"
-                              height="24"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-                              aria-hidden="true"
+                            <div
+                              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ease-out ${
+                                isOpen
+                                  ? "rotate-180 border-foreground/30 bg-foreground/10"
+                                  : "border-border/80 bg-surface"
+                              }`}
                             >
-                              <path d="m6 9 6 6 6-6"></path>
-                            </svg>
+                              <svg
+                                className="h-4 w-4 text-foreground transition-transform duration-300"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2.5"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="m6 9 6 6 6-6"
+                                />
+                              </svg>
+                            </div>
                           </button>
                         </h3>
-                        {isOpen && (
-                          <div className="overflow-hidden text-sm">
-                            <div className="pb-5 text-muted-foreground leading-relaxed">
+                        <div
+                          className={`grid transition-[grid-template-rows,opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                            isOpen
+                              ? "grid-rows-[1fr] opacity-100"
+                              : "grid-rows-[0fr] opacity-0"
+                          }`}
+                        >
+                          <div className="overflow-hidden">
+                            <div className="pb-5 pt-1 text-sm sm:text-base leading-relaxed text-muted-foreground">
                               {faq.answer}
                             </div>
                           </div>
-                        )}
+                        </div>
                       </div>
                     );
                   })}
-                  <div className="rule-t"></div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
+        {/* ============================================================ */}
         {/* Contact Section */}
+        {/* ============================================================ */}
         <section
           id="contact"
-          className="overflow-hidden bg-ink py-14 text-ink-foreground sm:py-32"
+          className="relative overflow-hidden bg-ink py-20 text-ink-foreground sm:py-32"
         >
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
             <div className="flex items-baseline justify-between border-b border-ink-foreground/20 pb-4">
-              <span className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-ink-foreground/80">
-                Say hello
+              <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-ink-foreground/80">
+                Initiate Project
               </span>
-              <span className="index-num text-xs text-ink-foreground/75">
-                08
-              </span>
+              <span className="font-mono text-xs text-ink-foreground/60">08 // CONTACT</span>
             </div>
+
             <div className="grid grid-cols-12 gap-y-12 pt-14 lg:gap-x-12">
               <div className="col-span-12 lg:col-span-5">
-                <h2 className="font-display text-3xl font-semibold leading-[1.05] sm:text-5xl">
-                  Let&apos;s have
-                  <br />a conversation
+                <h2 className="font-display text-3xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl tracking-tight text-white">
+                  Let&apos;s build
+                  <br />
+                  something lasting
                 </h2>
-                <p className="mt-6 max-w-md text-ink-foreground/80">
-                  An idea, a question, or just hello - drop me a line and I
-                  usually reply within a day. WhatsApp works too, if that&apos;s
-                  easier.
+                <p className="mt-6 max-w-md text-base leading-relaxed text-ink-foreground/80">
+                  Whether you have an established architectural specification or just need clarity on timelines and stack feasibility, drop me a note below. Direct replies within 24 hours.
                 </p>
-                <div className="mt-10">
-                  <a
-                    href="tel:+918086482422"
-                    className="flex items-center gap-3 border-t border-ink-foreground/20 py-4 text-sm text-ink-foreground/85 transition-colors hover:text-ink-foreground"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-phone size-4 text-brand"
-                      aria-hidden="true"
-                    >
-                      <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path>
-                    </svg>
-                    +91 80864 82422
-                  </a>
+
+                <div className="mt-10 space-y-4">
                   <a
                     href="mailto:zainudheenjazeel@gmail.com"
-                    className="flex items-center gap-3 border-t border-ink-foreground/20 py-4 text-sm text-ink-foreground/85 transition-colors hover:text-ink-foreground"
+                    onMouseEnter={playHover}
+                    className="flex items-center gap-3 rounded-2xl border border-ink-foreground/15 bg-ink-foreground/5 p-4 text-sm text-ink-foreground transition-all hover:bg-ink-foreground/10 hover:border-ink-foreground/30"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-mail size-4 text-brand"
-                      aria-hidden="true"
-                    >
-                      <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
-                      <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                    </svg>
-                    zainudheenjazeel@gmail.com
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand/20 text-brand-glow">
+                      <svg
+                        className="h-5 w-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"
+                        />
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="text-xs text-ink-foreground/60 font-mono">DIRECT EMAIL</div>
+                      <div className="font-semibold text-white">zainudheenjazeel@gmail.com</div>
+                    </div>
                   </a>
+
                   <a
                     href="https://wa.me/918086482422"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 border-y border-ink-foreground/20 py-4 text-sm text-ink-foreground/85 transition-colors hover:text-ink-foreground"
+                    onMouseEnter={playHover}
+                    className="flex items-center gap-3 rounded-2xl border border-ink-foreground/15 bg-ink-foreground/5 p-4 text-sm text-ink-foreground transition-all hover:bg-ink-foreground/10 hover:border-ink-foreground/30"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-message-circle size-4 text-brand"
-                      aria-hidden="true"
-                    >
-                      <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path>
-                    </svg>
-                    WhatsApp
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
+                      <MessageCircle className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <div className="text-xs text-ink-foreground/60 font-mono">WHATSAPP CHAT</div>
+                      <div className="font-semibold text-white">+91 80864 82422</div>
+                    </div>
                   </a>
-                  <div className="mt-8">
-                    <TawkButton className="group flex w-full sm:w-fit items-center justify-center gap-3 rounded-full bg-white px-8 py-4 font-display text-sm font-medium tracking-wider text-black shadow-lg transition-all hover:bg-gray-100 hover:shadow-xl active:scale-95">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-message-square text-brand"
-                        aria-hidden="true"
-                      >
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                      </svg>
-                      <span>OR CHAT WITH US</span>
+
+                  <div className="pt-4">
+                    <TawkButton
+                      onMouseEnter={playHover}
+                      onClick={playPop}
+                      className="group flex w-full items-center justify-center gap-3 rounded-2xl bg-white p-4 font-display text-sm font-bold tracking-wider text-black shadow-xl transition-all hover:bg-gray-100 active:scale-95"
+                    >
+                      <span>LIVE CHAT VIA TAWK</span>
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </TawkButton>
                   </div>
                 </div>
               </div>
 
+              {/* Form with Web3Forms */}
               <form
                 onSubmit={handleFormSubmit}
-                className="col-span-12 space-y-5 lg:col-span-6 lg:col-start-7"
+                className="col-span-12 space-y-5 lg:col-span-7"
                 noValidate
               >
                 {formSubmitted ? (
-                  <div className="border border-ink-foreground/25 p-8 text-center">
-                    <h3 className="font-display text-xl font-semibold mb-2 text-ink-foreground">
-                      Message Sent!
+                  <div className="rounded-3xl border border-ink-foreground/25 bg-ink-foreground/5 p-10 text-center backdrop-blur-xl">
+                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 mb-4">
+                      <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <h3 className="font-display text-2xl font-bold mb-2 text-white">
+                      Message Received!
                     </h3>
-                    <p className="text-ink-foreground/80 text-sm mb-6">
-                      Thank you for reaching out. I will get back to you as soon
-                      as possible!
+                    <p className="text-ink-foreground/80 text-sm max-w-md mx-auto mb-6">
+                      Thank you for reaching out. I will review your requirements and respond within 24 hours.
                     </p>
                     <button
                       type="button"
                       onClick={() => setFormSubmitted(false)}
-                      className="cursor-pointer inline-flex items-center justify-center gap-2 bg-background px-6 py-3 font-display text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-foreground"
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3 font-display text-xs font-bold uppercase tracking-wider text-black transition-all hover:bg-gray-100 active:scale-95"
                     >
                       Send another message
                     </button>
                   </div>
                 ) : (
-                  <>
+                  <div className="rounded-3xl border border-ink-foreground/15 bg-ink-foreground/5 p-6 sm:p-8 backdrop-blur-xl">
                     <div className="grid gap-5 sm:grid-cols-2">
                       <label className="block">
-                        <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/75">
-                          Name
+                        <span className="mb-2 block font-display text-[0.65rem] font-bold uppercase tracking-[0.18em] text-ink-foreground/75">
+                          Your Name *
                         </span>
                         <input
                           type="text"
@@ -1163,8 +1171,8 @@ export default function Home() {
                           onChange={handleFormChange}
                           onBlur={handleFormBlur}
                           autoComplete="name"
-                          className="w-full rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 px-4 py-3.5 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-ink-foreground/30 focus:bg-ink-foreground/10 focus:ring-4 focus:ring-ink-foreground/5"
-                          placeholder="Your full name"
+                          className="w-full rounded-xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-3.5 text-sm text-white placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-brand-glow focus:bg-ink-foreground/10 focus:ring-2 focus:ring-brand-glow/20"
+                          placeholder="e.g. Alex Mercer"
                         />
                         {touched.name && formErrors.name && (
                           <span className="mt-1 block text-xs text-red-400">
@@ -1174,8 +1182,8 @@ export default function Home() {
                       </label>
 
                       <label className="block">
-                        <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/75">
-                          Company
+                        <span className="mb-2 block font-display text-[0.65rem] font-bold uppercase tracking-[0.18em] text-ink-foreground/75">
+                          Company / Organization
                         </span>
                         <input
                           type="text"
@@ -1183,14 +1191,14 @@ export default function Home() {
                           value={formData.company}
                           onChange={handleFormChange}
                           autoComplete="organization"
-                          className="w-full rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 px-4 py-3.5 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-ink-foreground/30 focus:bg-ink-foreground/10 focus:ring-4 focus:ring-ink-foreground/5"
-                          placeholder="Company name"
+                          className="w-full rounded-xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-3.5 text-sm text-white placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-brand-glow focus:bg-ink-foreground/10 focus:ring-2 focus:ring-brand-glow/20"
+                          placeholder="e.g. Acme Corp"
                         />
                       </label>
 
                       <label className="block">
-                        <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/75">
-                          Email
+                        <span className="mb-2 block font-display text-[0.65rem] font-bold uppercase tracking-[0.18em] text-ink-foreground/75">
+                          Work Email *
                         </span>
                         <input
                           type="email"
@@ -1199,8 +1207,8 @@ export default function Home() {
                           onChange={handleFormChange}
                           onBlur={handleFormBlur}
                           autoComplete="email"
-                          className="w-full rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 px-4 py-3.5 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-ink-foreground/30 focus:bg-ink-foreground/10 focus:ring-4 focus:ring-ink-foreground/5"
-                          placeholder="you@company.com"
+                          className="w-full rounded-xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-3.5 text-sm text-white placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-brand-glow focus:bg-ink-foreground/10 focus:ring-2 focus:ring-brand-glow/20"
+                          placeholder="alex@acme.com"
                         />
                         {touched.email && formErrors.email && (
                           <span className="mt-1 block text-xs text-red-400">
@@ -1210,8 +1218,8 @@ export default function Home() {
                       </label>
 
                       <label className="block">
-                        <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/75">
-                          Phone
+                        <span className="mb-2 block font-display text-[0.65rem] font-bold uppercase tracking-[0.18em] text-ink-foreground/75">
+                          Phone / WhatsApp
                         </span>
                         <PhoneInput
                           country={"in"}
@@ -1235,7 +1243,7 @@ export default function Home() {
                             }));
                           }}
                           containerClass="!w-full"
-                          inputClass="!w-full !rounded-xl !border !border-ink-foreground/10 !bg-ink-foreground/5 !py-[14px] !pl-14 !pr-4 !text-sm !text-ink-foreground placeholder:!text-ink-foreground/40 !backdrop-blur-md transition-all hover:!bg-ink-foreground/10 focus:!border-ink-foreground/30 focus:!bg-ink-foreground/10 focus:!ring-4 focus:!ring-ink-foreground/5"
+                          inputClass="!w-full !rounded-xl !border !border-ink-foreground/15 !bg-ink-foreground/5 !py-[14px] !pl-14 !pr-4 !text-sm !text-white placeholder:!text-ink-foreground/40 !backdrop-blur-md transition-all hover:!bg-ink-foreground/10 focus:!border-brand-glow focus:!bg-ink-foreground/10 focus:!ring-2 focus:!ring-brand-glow/20"
                           buttonClass="!bg-transparent !border-0 !pl-3"
                         />
                         {touched.phone && formErrors.phone && (
@@ -1246,27 +1254,18 @@ export default function Home() {
                       </label>
                     </div>
 
-                    <label className="block">
-                      <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/75">
-                        Project Type
+                    <label className="block mt-5">
+                      <span className="mb-2 block font-display text-[0.65rem] font-bold uppercase tracking-[0.18em] text-ink-foreground/75">
+                        Project Scope / Category
                       </span>
                       <div className="relative">
                         <button
                           type="button"
-                          onClick={() =>
-                            setIsProjectDropdownOpen(!isProjectDropdownOpen)
-                          }
-                          className="w-full flex items-center justify-between rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 px-4 py-3.5 text-sm outline-none backdrop-blur-md transition-all focus:border-ink-foreground/30 focus:bg-ink-foreground/10 focus:ring-4 focus:ring-ink-foreground/5"
+                          onClick={() => setIsProjectDropdownOpen(!isProjectDropdownOpen)}
+                          className="w-full flex items-center justify-between rounded-xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-3.5 text-sm outline-none backdrop-blur-md transition-all focus:border-brand-glow focus:ring-2 focus:ring-brand-glow/20 text-white"
                         >
-                          <span
-                            className={
-                              formData.projectType
-                                ? "text-ink-foreground"
-                                : "text-ink-foreground/50"
-                            }
-                          >
-                            {formData.projectType ||
-                              "Select a service (Optional)"}
+                          <span className={formData.projectType ? "text-white" : "text-ink-foreground/50"}>
+                            {formData.projectType || "Select a service focus (Optional)"}
                           </span>
                           <svg
                             className={`w-4 h-4 text-ink-foreground/50 transition-transform ${isProjectDropdownOpen ? "rotate-180" : ""}`}
@@ -1274,197 +1273,52 @@ export default function Home() {
                             stroke="currentColor"
                             viewBox="0 0 24 24"
                           >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M19 9l-7 7-7-7"
-                            />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                           </svg>
                         </button>
 
                         {isProjectDropdownOpen && (
-                          <div className="absolute z-10 w-full mt-2 rounded-xl border border-ink-foreground/10 bg-ink overflow-hidden shadow-2xl max-h-[250px] overflow-y-auto">
-                            <ul className="py-2">
-                              <li>
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setFormData((prev) => ({
-                                      ...prev,
-                                      projectType: "Custom ERP Development",
-                                    }));
-                                    setIsProjectDropdownOpen(false);
-                                  }}
-                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
-                                >
-                                  Custom ERP Development
-                                </button>
-                              </li>
-                              <li>
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setFormData((prev) => ({
-                                      ...prev,
-                                      projectType: "CRM Development",
-                                    }));
-                                    setIsProjectDropdownOpen(false);
-                                  }}
-                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
-                                >
-                                  CRM Development
-                                </button>
-                              </li>
-                              <li>
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setFormData((prev) => ({
-                                      ...prev,
-                                      projectType: "HRMS Development",
-                                    }));
-                                    setIsProjectDropdownOpen(false);
-                                  }}
-                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
-                                >
-                                  HRMS Development
-                                </button>
-                              </li>
-                              <li>
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setFormData((prev) => ({
-                                      ...prev,
-                                      projectType:
-                                        "Business Process Automation",
-                                    }));
-                                    setIsProjectDropdownOpen(false);
-                                  }}
-                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
-                                >
-                                  Business Process Automation
-                                </button>
-                              </li>
-                              <li>
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setFormData((prev) => ({
-                                      ...prev,
-                                      projectType: "Custom Business Software",
-                                    }));
-                                    setIsProjectDropdownOpen(false);
-                                  }}
-                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
-                                >
-                                  Custom Business Software
-                                </button>
-                              </li>
-                              <li>
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setFormData((prev) => ({
-                                      ...prev,
-                                      projectType:
-                                        "Legacy System Modernization",
-                                    }));
-                                    setIsProjectDropdownOpen(false);
-                                  }}
-                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
-                                >
-                                  Legacy System Modernization
-                                </button>
-                              </li>
-                              <li>
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setFormData((prev) => ({
-                                      ...prev,
-                                      projectType:
-                                        "Web Application Maintenance",
-                                    }));
-                                    setIsProjectDropdownOpen(false);
-                                  }}
-                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
-                                >
-                                  Web Application Maintenance
-                                </button>
-                              </li>
-                              <li>
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setFormData((prev) => ({
-                                      ...prev,
-                                      projectType: "Next.js & Payload CMS",
-                                    }));
-                                    setIsProjectDropdownOpen(false);
-                                  }}
-                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
-                                >
-                                  Next.js & Payload CMS
-                                </button>
-                              </li>
-                              <li>
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setFormData((prev) => ({
-                                      ...prev,
-                                      projectType: "Laravel Development",
-                                    }));
-                                    setIsProjectDropdownOpen(false);
-                                  }}
-                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
-                                >
-                                  Laravel Development
-                                </button>
-                              </li>
-                              <li>
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setFormData((prev) => ({
-                                      ...prev,
-                                      projectType: "PHP Development",
-                                    }));
-                                    setIsProjectDropdownOpen(false);
-                                  }}
-                                  className="w-full text-left px-4 py-2.5 text-sm text-ink-foreground hover:bg-ink-foreground/10 transition-colors"
-                                >
-                                  PHP Development
-                                </button>
-                              </li>
-                            </ul>
+                          <div className="absolute z-20 w-full mt-2 rounded-xl border border-ink-foreground/20 bg-ink p-2 shadow-2xl max-h-[260px] overflow-y-auto">
+                            {[
+                              "Custom ERP Development",
+                              "CRM Development",
+                              "HRMS Development",
+                              "Legacy Modernization",
+                              "Dedicated Senior Developer",
+                              "Web Application Maintenance",
+                              "Next.js / React Architecture",
+                            ].map((opt) => (
+                              <button
+                                key={opt}
+                                type="button"
+                                onClick={() => {
+                                  setFormData((prev) => ({ ...prev, projectType: opt }));
+                                  setIsProjectDropdownOpen(false);
+                                }}
+                                className="w-full text-left px-3 py-2 text-sm text-ink-foreground hover:bg-ink-foreground/10 hover:text-white rounded-lg transition-colors"
+                              >
+                                {opt}
+                              </button>
+                            ))}
                           </div>
                         )}
                       </div>
-
-                      {/* Hidden input to ensure value is captured in form data just in case */}
-                      <input
-                        type="hidden"
-                        name="projectType"
-                        value={formData.projectType}
-                      />
+                      <input type="hidden" name="projectType" value={formData.projectType} />
                     </label>
 
-                    <label className="block">
-                      <span className="mb-2 block font-display text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-ink-foreground/75">
-                        Message
+                    <label className="block mt-5">
+                      <span className="mb-2 block font-display text-[0.65rem] font-bold uppercase tracking-[0.18em] text-ink-foreground/75">
+                        Tell Me About The Project *
                       </span>
                       <textarea
                         name="message"
-                        rows={5}
+                        rows={4}
                         value={formData.message}
                         onChange={handleFormChange}
                         onBlur={handleFormBlur}
-                        className="w-full rounded-xl border border-ink-foreground/10 bg-ink-foreground/5 px-4 py-3.5 text-sm text-ink-foreground placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-ink-foreground/30 focus:bg-ink-foreground/10 focus:ring-4 focus:ring-ink-foreground/5"
-                        placeholder="Tell me a bit about what you have in mind."
-                      ></textarea>
+                        className="w-full rounded-xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-3.5 text-sm text-white placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-brand-glow focus:bg-ink-foreground/10 focus:ring-2 focus:ring-brand-glow/20"
+                        placeholder="What systems are you looking to build, replace, or maintain?"
+                      />
                       {touched.message && formErrors.message && (
                         <span className="mt-1 block text-xs text-red-400">
                           {formErrors.message}
@@ -1475,19 +1329,17 @@ export default function Home() {
                     <button
                       type="submit"
                       disabled={formSubmitting}
-                      className="cursor-pointer inline-flex w-full items-center justify-center gap-2 rounded-xl bg-background px-6 py-4 font-display text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-foreground transition-colors hover:bg-brand-glow hover:text-white disabled:opacity-70 disabled:cursor-not-allowed"
+                      className="cursor-pointer mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 font-display text-xs font-bold uppercase tracking-wider text-black transition-colors hover:bg-gray-100 disabled:opacity-70 disabled:cursor-not-allowed"
                     >
-                      {formSubmitting ? "Sending..." : "Send message"}
+                      {formSubmitting ? "Dispatching..." : "Send Project Inquiry"}
                     </button>
-                  </>
+                  </div>
                 )}
               </form>
             </div>
           </div>
         </section>
       </main>
-
-      {/* Footer */}
     </div>
   );
 }

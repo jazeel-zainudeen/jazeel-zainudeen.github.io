@@ -3,6 +3,11 @@ import { Manrope, Sora } from "next/font/google";
 import Script from "next/script";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { SmoothScroll } from "@/components/interactive/SmoothScroll";
+import { CustomCursor } from "@/components/interactive/CustomCursor";
+import { ScrollProgressBar } from "@/components/interactive/ScrollProgressBar";
+import { NoiseOverlay } from "@/components/interactive/NoiseOverlay";
+import { SoundProvider } from "@/components/interactive/SoundEffects";
 
 import "./globals.css";
 
@@ -184,8 +189,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`h-full scroll-smooth ${manrope.variable} ${sora.variable}`}
-      data-scroll-behavior="smooth"
+      className={`h-full ${manrope.variable} ${sora.variable}`}
     >
       <head>
         <meta
@@ -205,11 +209,16 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground antialiased selection:bg-brand/20 selection:text-brand">
-        <Header />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
+        <SoundProvider>
+          <SmoothScroll>
+            <ScrollProgressBar />
+            <NoiseOverlay />
+            <CustomCursor />
+            <Header />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </SmoothScroll>
+        </SoundProvider>
         {process.env.NEXT_PUBLIC_TAWKTO_PROPERTY_ID && (
           <Script id="tawk-to" strategy="lazyOnload">
             {`
