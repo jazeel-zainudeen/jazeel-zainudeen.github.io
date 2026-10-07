@@ -25,8 +25,9 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Full stack developer from Kerala, India. I build and look after
-              business software - ERP, CRM, HRMS and the odd IoT platform.
+              Full stack developer based in Kerala, India, focused on building
+              scalable ERP, CRM, and HRMS systems while modernizing legacy
+              platforms and supporting software long after deployment.
             </p>
             <div className="mt-6 flex gap-2">
               <a

@@ -116,7 +116,7 @@ const jsonLd = {
       "@id": `${siteUrl}/#person`,
       name: "Jazeel Zainudeen",
       url: siteUrl,
-      image: `${siteUrl}/assets/seo/profile-portrait.jpg`,
+      image: `${siteUrl}/assets/seo/jazeel-zainudeen-profile.jpg`,
       jobTitle: "Full Stack Engineer & Cloud Architect",
       worksFor: {
         "@type": "Organization",
@@ -194,7 +194,7 @@ export default function RootLayout({
         />
         <link
           rel="preload"
-          href="/assets/seo/profile-portrait.jpg"
+          href="/assets/seo/jazeel-zainudeen-profile.jpg"
           as="image"
           type="image/jpeg"
           fetchPriority="high"

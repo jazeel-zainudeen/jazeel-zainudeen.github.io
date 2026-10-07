@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, FormEvent } from "react";
+import Link from "next/link";
+import { useState, FormEvent } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { TawkButton } from "@/components/ui/TawkButton";
@@ -636,7 +637,7 @@ export default function Home() {
                 <div className="relative">
                   <div className="absolute -bottom-4 -right-4 hidden h-full w-full bg-sand sm:block"></div>
                   <Image
-                    src="/assets/seo/profile-portrait.jpg"
+                    src="/assets/seo/jazeel-zainudeen-profile.jpg"
                     alt="Jazeel Zainudeen, Full Stack Developer"
                     width={440}
                     height={550}
@@ -898,12 +899,12 @@ export default function Home() {
                 Explore a detailed showcase of my recent projects, spanning
                 enterprise web apps, mobile platforms, and IoT dashboards.
               </p>
-              <a
+              <Link
                 href="/portfolio"
                 className="inline-flex items-center justify-center rounded-full bg-brand px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-brand-foreground shadow-lg transition-all hover:bg-brand-glow hover:-translate-y-0.5 active:scale-95"
               >
                 View My Portfolio
-              </a>
+              </Link>
             </div>
           </div>
         </section>
