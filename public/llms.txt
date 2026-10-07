@@ -5,8 +5,8 @@ Jazeel Zainudeen is a Senior Full Stack Engineer based in Kerala, India with ove
 
 ## Primary Skills & Tech Stack
 - **Frontend & Modern Web**: Next.js, React, TypeScript, Tailwind CSS, Modern Web Architecture
-- **Backend & Cloud**: Node.js, TypeScript, REST APIs, GraphQL, Serverless / Cloud Architecture
-- **Databases**: PostgreSQL, MongoDB, Redis, MySQL
+- **Backend & Cloud**: Node.js, PHP, Laravel, REST APIs, GraphQL, Serverless / Cloud Architecture
+- **Databases**: PostgreSQL, MongoDB, Redis, MySQL, Supabase
 - **Architecture**: Modern Web Applications, Custom ERP Systems, CRM Platforms, Legacy App Modernization, Cloud Migration
 
 ## Location & Contact Information
@@ -17,11 +17,14 @@ Jazeel Zainudeen is a Senior Full Stack Engineer based in Kerala, India with ove
 
 ## Site Resources
 - [Homepage](https://jazeel-zainudeen.github.io/)
+- [Portfolio Directory](https://jazeel-zainudeen.github.io/portfolio)
 - [Sitemap](https://jazeel-zainudeen.github.io/sitemap.xml)
 - [Robots.txt](https://jazeel-zainudeen.github.io/robots.txt)
 
-## Featured Projects & Experience
-1. **Internal Production ERP System**: Manufacturing resource planning, stock reconciliation, real-time job-card tracking.
-2. **Handyman & On-Demand Service Marketplace**: Customer booking mobile portal + admin dispatch.
-3. **Recruitment HRMS Revamp**: Complete modernized UX for payroll, attendance, leave management.
-4. **IoT Fuel Station Portal**: Real-time telemetry, automated pump reconciliation dashboards.
+## Featured Projects & Case Studies
+1. [myG.in E-Commerce Platform](https://jazeel-zainudeen.github.io/portfolio/myg-ecommerce): Business and operations platform supporting one of India's largest electronics retail chains.
+2. [Westford Connect - HRMS Software](https://jazeel-zainudeen.github.io/portfolio/westford-connect-hrms): Complete revamp of enterprise HRMS platform with SignalR real-time chat and Google APIs.
+3. [Bobcares Website Revamp](https://jazeel-zainudeen.github.io/portfolio/bobcares-revamp): Migration of large-scale corporate infrastructure from WordPress to high-performance Next.js.
+4. [Coagmenta - Corporate Website](https://jazeel-zainudeen.github.io/portfolio/coagmenta): Pixel-perfect multilingual corporate web application.
+5. [News Aggregator API](https://jazeel-zainudeen.github.io/portfolio/news-aggregator-api): High-performance RESTful API built with Laravel 12 & PHP 8.4 aggregating major global publishers.
+6. [Spares - PWA Web App](https://jazeel-zainudeen.github.io/portfolio/spares): Fast Progressive Web App built with Next.js, Supabase, and Cloudinary.
