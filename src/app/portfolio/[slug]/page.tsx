@@ -10,6 +10,8 @@ import {
   Calendar,
   Layers,
   Sparkles,
+  MessageCircle,
+  Mail,
 } from "lucide-react";
 import { InteractiveProjectShowcase } from "@/components/portfolio/InteractiveProjectShowcase";
 import { ProjectHeaderActions } from "@/components/portfolio/ProjectHeaderActions";
@@ -245,16 +247,30 @@ export default async function ProjectDetailsPage({ params }: Props) {
               <p className="text-xs text-muted-foreground mb-5 leading-relaxed">
                 Whether scaling an enterprise ERP or bootstrapping high-load web APIs, let&apos;s evaluate your technical scope.
               </p>
-              <Magnetic strength={0.25} className="w-full">
-                <a
-                  href="/#contact"
-                  data-cursor="CHAT"
-                  className="group flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-background shadow-md transition-all hover:bg-brand-glow active:scale-95"
-                >
-                  <span>Discuss Project Scope</span>
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                </a>
-              </Magnetic>
+              <div className="flex flex-col gap-2.5">
+                <Magnetic strength={0.25} className="w-full">
+                  <a
+                    href={`https://wa.me/918086482422?text=${encodeURIComponent(`Hi Jazeel, I would like to discuss building a system similar to ${project.title}.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor="CHAT"
+                    className="group flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-background shadow-md transition-all hover:bg-brand-glow active:scale-95"
+                  >
+                    <MessageCircle className="h-3.5 w-3.5 text-emerald-400" />
+                    <span>Chat on WhatsApp</span>
+                  </a>
+                </Magnetic>
+                <Magnetic strength={0.2} className="w-full">
+                  <a
+                    href={`mailto:zainudheenjazeel@gmail.com?subject=${encodeURIComponent(`Project Scope: ${project.title}`)}&body=${encodeURIComponent(`Hi Jazeel,\n\nI was looking at ${project.title} on your portfolio and would like to discuss a project with similar architecture.\n\nBest regards,`)}`}
+                    data-cursor="EMAIL"
+                    className="flex w-full items-center justify-center gap-2 rounded-full border border-border/80 bg-surface px-4 py-2 text-xs font-medium text-muted-foreground transition-all hover:text-foreground hover:border-foreground/40"
+                  >
+                    <Mail className="h-3.5 w-3.5" />
+                    <span>Send Direct Email</span>
+                  </a>
+                </Magnetic>
+              </div>
             </div>
           </div>
         </div>

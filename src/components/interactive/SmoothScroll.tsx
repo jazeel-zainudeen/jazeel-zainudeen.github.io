@@ -34,16 +34,35 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     // Smooth out micro frame spikes rather than hard-dropping frames
     gsap.ticker.lagSmoothing(500, 33);
 
+    // Scroll to initial hash on mount if arriving with a hash (e.g. /#contact)
+    if (window.location.hash) {
+      setTimeout(() => {
+        const targetEl = document.querySelector(window.location.hash);
+        if (targetEl) {
+          lenis.scrollTo(targetEl as HTMLElement, { offset: -40, duration: 1.2 });
+        }
+      }, 350);
+    }
+
     // Handle internal anchor clicks smoothly
     const handleAnchorClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement).closest("a");
       if (!target) return;
       const href = target.getAttribute("href");
-      if (href && href.startsWith("#") && href.length > 1) {
-        const elem = document.querySelector(href);
+      if (!href) return;
+
+      // Check if it's an on-page anchor ('#target') or root anchor ('/#target' when already on '/')
+      const isAnchor =
+        (href.startsWith("#") && href.length > 1) ||
+        (href.startsWith("/#") && window.location.pathname === "/");
+
+      if (isAnchor) {
+        const hash = href.startsWith("/#") ? href.slice(1) : href;
+        const elem = document.querySelector(hash);
         if (elem) {
           e.preventDefault();
-          lenis.scrollTo(elem as HTMLElement, { offset: -30, duration: 1.2 });
+          lenis.scrollTo(elem as HTMLElement, { offset: -40, duration: 1.2 });
+          window.history.pushState(null, "", hash);
         }
       }
     };
