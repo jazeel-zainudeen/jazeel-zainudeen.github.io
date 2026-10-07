@@ -53,7 +53,7 @@ export default function PortfolioListingPage() {
           <TiltCard maxTilt={5}>
             <div className="group relative flex h-full min-h-[420px] flex-col overflow-hidden rounded-2xl border border-dashed border-border/80 bg-surface/30 transition-all hover:bg-surface/50 hover:border-brand/40 cursor-default">
               {/* Blurred Background Skeleton */}
-              <div className="absolute inset-0 pointer-events-none select-none opacity-20 filter blur-[4px] transition-all duration-500 group-hover:blur-[2px] group-hover:opacity-30">
+              <div className="absolute inset-0 pointer-events-none select-none opacity-20 filter blur-[3px] transition-opacity duration-300 group-hover:opacity-35">
                 <div className="relative aspect-[4/3] w-full bg-muted/60" />
                 <div className="flex flex-1 flex-col p-6">
                   <div className="h-2 w-12 rounded-full bg-foreground/20 mb-4" />

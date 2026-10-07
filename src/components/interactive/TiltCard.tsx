@@ -20,13 +20,25 @@ export function TiltCard({
 }: TiltCardProps) {
   const cardRef = useRef<HTMLElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
+  const rectRef = useRef<DOMRect | null>(null);
   const rafId = useRef<number | null>(null);
+
+  const handleMouseEnter = () => {
+    const card = cardRef.current;
+    if (!card) return;
+    rectRef.current = card.getBoundingClientRect();
+    // Fast response during active mouse tracking
+    card.style.transition = "transform 0.06s ease-out, box-shadow 0.25s ease-out, border-color 0.25s ease-out";
+  };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     const card = cardRef.current;
     if (!card) return;
 
-    const rect = card.getBoundingClientRect();
+    if (!rectRef.current) {
+      rectRef.current = card.getBoundingClientRect();
+    }
+    const rect = rectRef.current;
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
@@ -38,7 +50,7 @@ export function TiltCard({
 
     if (rafId.current) cancelAnimationFrame(rafId.current);
 
-    // Direct RAF transform update: zero React re-renders on mousemove!
+    // Direct RAF transform update: zero React re-renders, zero layout thrashing
     rafId.current = requestAnimationFrame(() => {
       card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) scale3d(1.01, 1.01, 1.01)`;
       if (glowRef.current) {
@@ -50,8 +62,11 @@ export function TiltCard({
 
   const handleMouseLeave = () => {
     if (rafId.current) cancelAnimationFrame(rafId.current);
+    rectRef.current = null;
     const card = cardRef.current;
     if (card) {
+      // Smooth cinematic return on exit
+      card.style.transition = "transform 0.5s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.3s ease-out, border-color 0.3s ease-out";
       card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
     }
     if (glowRef.current) {
@@ -62,11 +77,12 @@ export function TiltCard({
   return (
     <Component
       ref={cardRef as React.Ref<any>}
+      onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
         transform: "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
-        transition: "transform 0.3s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.3s ease-out, border-color 0.3s ease-out",
+        transition: "transform 0.4s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.3s ease-out, border-color 0.3s ease-out",
         willChange: "transform",
       }}
       className={`relative ${className}`}
@@ -80,7 +96,7 @@ export function TiltCard({
         >
           <div
             ref={glowRef}
-            className="h-full w-full opacity-0 transition-opacity duration-500 ease-out"
+            className="h-full w-full opacity-0 transition-opacity duration-300 ease-out"
           />
         </div>
       )}
