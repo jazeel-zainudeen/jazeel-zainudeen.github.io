@@ -32,7 +32,7 @@ export function LiveStatusClock() {
       </span>
       <span className="font-semibold text-foreground">KERALA, IN</span>
       <span className="text-border">|</span>
-      <span className="tabular-nums tracking-widest text-foreground font-medium">
+      <span suppressHydrationWarning className="tabular-nums tracking-widest text-foreground font-medium">
         {time || "05:30:00"} IST
       </span>
     </div>

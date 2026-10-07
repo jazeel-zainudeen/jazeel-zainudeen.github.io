@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function ScrollProgressBar() {
   const barRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     let ticking = false;
 
     const updateBar = () => {
@@ -34,6 +36,8 @@ export function ScrollProgressBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  if (!mounted) return null;
+
   return (
     <div
       aria-hidden="true"
@@ -41,6 +45,7 @@ export function ScrollProgressBar() {
     >
       <div
         ref={barRef}
+        suppressHydrationWarning
         className="h-full w-full origin-left bg-gradient-to-r from-brand to-brand-glow will-change-transform shadow-[0_0_10px_rgba(17,24,39,0.5)]"
         style={{ transform: "scaleX(0)" }}
       />
