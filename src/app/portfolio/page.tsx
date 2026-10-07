@@ -15,32 +15,49 @@ export const metadata: Metadata = {
 
 export default function PortfolioListingPage() {
   return (
-    <div className="min-h-screen bg-background pt-24 pb-20 sm:pt-32">
+    <div className="min-h-screen bg-background pt-28 pb-24 sm:pt-36">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header Section */}
-        <div className="max-w-3xl">
+        {/* Top Back Navigation with Generous Separation */}
+        <div className="mb-10 sm:mb-12">
           <Magnetic strength={0.25}>
             <Link
               href="/"
               data-cursor="BACK"
-              className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/60 px-4 py-1.5 text-xs font-semibold text-muted-foreground backdrop-blur-md transition-all hover:border-foreground hover:text-foreground mb-8"
+              className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/60 px-4 py-2 text-xs font-semibold text-muted-foreground backdrop-blur-md transition-all hover:border-foreground hover:text-foreground"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
-              Back to Home
+              <span>Back to Home</span>
             </Link>
           </Magnetic>
-          <div className="inline-flex items-center gap-2 mb-3 block">
-            <span className="h-1.5 w-6 rounded-full bg-brand" />
-            <span className="font-display text-xs font-semibold uppercase tracking-[0.22em] text-brand-glow">
-              Curated Production Work
-            </span>
+        </div>
+
+        {/* Spacious Header Section */}
+        <div className="mb-14 sm:mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 pb-8 border-b border-border/60">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 mb-4">
+              <span className="h-1.5 w-6 rounded-full bg-brand" />
+              <span className="font-display text-xs font-semibold uppercase tracking-[0.22em] text-brand-glow">
+                Curated Production Work
+              </span>
+            </div>
+            <h1 className="font-display text-4xl sm:text-6xl font-bold tracking-tight text-foreground mb-5 leading-[1.08]">
+              Engineering Portfolio
+            </h1>
+            <p className="text-base sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
+              A curated selection of robust web and enterprise applications I&apos;ve developed, from multi-store retail ERPs to mission-critical corporate platforms.
+            </p>
           </div>
-          <h1 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-6xl mb-4">
-            Engineering Portfolio
-          </h1>
-          <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-            A curated selection of robust web and enterprise applications I&apos;ve developed, from multi-store retail ERPs to mission-critical corporate platforms.
-          </p>
+
+          {/* Clean Metric Badge on the Right */}
+          <div className="flex items-center gap-3 shrink-0">
+            <div className="inline-flex items-center gap-3 rounded-2xl border border-border/80 bg-surface/50 px-5 py-3 backdrop-blur-md shadow-xs">
+              <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
+              <div className="text-left">
+                <div className="font-mono text-xs font-semibold text-foreground">6 PRODUCTION SYSTEMS</div>
+                <div className="text-[0.68rem] text-muted-foreground">Architected · Deployed · Scaled</div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Grid Section */}

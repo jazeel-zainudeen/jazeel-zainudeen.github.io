@@ -6,6 +6,7 @@ import {
   AlertTriangle,
   Lightbulb,
   ArrowRight,
+  ArrowLeft,
   ShieldCheck,
   Calendar,
   Layers,
@@ -57,28 +58,45 @@ export default async function ProjectDetailsPage({ params }: Props) {
   return (
     <div className="min-h-screen bg-background pt-24 pb-24 sm:pt-32">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        {/* Interactive Header Actions (Back button & Share & Live links) */}
-        <div className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <div className="max-w-2xl">
-            <ProjectHeaderActions
-              previewUrl={project.previewUrl}
-              githubUrl={project.githubUrl}
-              title={project.title}
-            />
+        {/* Back Navigation with Generous Separation */}
+        <div className="mb-10 sm:mb-12">
+          <Magnetic strength={0.25}>
+            <Link
+              href="/portfolio"
+              data-cursor="BACK"
+              className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/60 px-4 py-2 text-xs font-semibold text-muted-foreground backdrop-blur-md transition-all hover:border-foreground hover:text-foreground"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              <span>Back to Portfolio</span>
+            </Link>
+          </Magnetic>
+        </div>
 
-            <div className="inline-flex items-center gap-2 mb-3">
+        {/* Spacious 2-Column Header: Title on Left, Action Buttons on Right */}
+        <div className="mb-12 sm:mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 mb-4">
               <span className="h-1.5 w-6 rounded-full bg-brand" />
               <span className="font-display text-xs font-semibold uppercase tracking-[0.22em] text-brand-glow">
                 {project.tagline}
               </span>
             </div>
 
-            <h1 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-foreground mb-4">
+            <h1 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-foreground mb-4 leading-[1.08]">
               {project.title}
             </h1>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
               {project.shortDescription}
             </p>
+          </div>
+
+          {/* Action buttons (Live Preview, Source Code, Share) cleanly aligned on the right */}
+          <div className="shrink-0 self-start md:self-end">
+            <ProjectHeaderActions
+              previewUrl={project.previewUrl}
+              githubUrl={project.githubUrl}
+              title={project.title}
+            />
           </div>
         </div>
 
