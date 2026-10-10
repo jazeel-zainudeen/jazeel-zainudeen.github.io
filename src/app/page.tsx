@@ -612,69 +612,6 @@ export default function Home() {
           <KineticMarquee items={marqueeItems} speed={35} />
         </section>
 
-        {/* ============================================================ */}
-        {/* Featured Projects Showcase (Direct Interactive Experience) */}
-        {/* ============================================================ */}
-        <section id="work" className="relative py-20 sm:py-32">
-          <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
-            <div className="flex flex-wrap items-baseline justify-between border-b border-border/80 pb-4">
-              <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-brand-glow">
-                Selected Work
-              </span>
-              <span className="font-mono text-xs text-muted-foreground">01 // RECENT BUILDS</span>
-            </div>
-
-            <div className="grid grid-cols-12 gap-y-6 pt-10 lg:gap-x-12 items-end">
-              <div className="col-span-12 lg:col-span-7">
-                <h2 className="font-display text-3xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl tracking-tight">
-                  Systems engineered for
-                  <br />
-                  real operational scale
-                </h2>
-              </div>
-              <div className="col-span-12 lg:col-span-5 flex lg:justify-end">
-                <Link
-                  href="/portfolio"
-                  data-cursor="ALL"
-                  onMouseEnter={playHover}
-                  className="group inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/60 px-6 py-3 font-display text-xs font-bold uppercase tracking-wider text-foreground backdrop-blur-sm transition-all hover:border-foreground hover:bg-surface active:scale-95"
-                >
-                  <span>Explore full portfolio</span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Grid of 3 Featured Interactive Project Cards */}
-            <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {featuredProjects.map((project, idx) => (
-                <ProjectCard key={project.slug} project={project} index={idx} />
-              ))}
-            </div>
-
-            {/* Direct Invitation Banner */}
-            <div className="mt-14 rounded-3xl border border-dashed border-border/80 bg-surface/30 p-8 text-center sm:p-12">
-              <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground">
-                Looking for specific industry platforms?
-              </h3>
-              <p className="mx-auto mt-2 max-w-xl text-sm text-muted-foreground leading-relaxed">
-                Explore case studies covering e-commerce sync pipelines, HRMS self-service dashboards, and high-volume ERP integrations.
-              </p>
-              <div className="mt-6 flex justify-center">
-                <Link
-                  href="/portfolio"
-                  data-cursor="VIEW"
-                  onMouseEnter={playHover}
-                  onClick={playPop}
-                  className="inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3 font-display text-xs font-semibold uppercase tracking-wider text-background shadow-lg transition-all hover:bg-brand-glow active:scale-95"
-                >
-                  <span>View all projects</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* ============================================================ */}
         {/* About Section with 3D Image Perspective */}
@@ -685,7 +622,7 @@ export default function Home() {
               <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-brand-glow">
                 About The Engineer
               </span>
-              <span className="font-mono text-xs text-muted-foreground">02 // PROFILE</span>
+              <span className="font-mono text-xs text-muted-foreground">01 // PROFILE</span>
             </div>
 
             <div className="grid grid-cols-12 gap-y-12 pt-12 lg:gap-x-14 items-center">
@@ -770,7 +707,7 @@ export default function Home() {
               <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-brand-glow">
                 Capabilities
               </span>
-              <span className="font-mono text-xs text-muted-foreground">03 // SERVICES</span>
+              <span className="font-mono text-xs text-muted-foreground">02 // SERVICES</span>
             </div>
 
             <div className="grid grid-cols-12 gap-y-6 pt-10 lg:gap-x-12 items-end">
@@ -852,7 +789,7 @@ export default function Home() {
               <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-ink-foreground/80">
                 Guiding Principles
               </span>
-              <span className="font-mono text-xs text-ink-foreground/60">04 // STANDARDS</span>
+              <span className="font-mono text-xs text-ink-foreground/60">03 // STANDARDS</span>
             </div>
 
             <h2 className="max-w-3xl pt-10 font-display text-3xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl tracking-tight">
@@ -892,7 +829,7 @@ export default function Home() {
               <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-brand-glow">
                 Methodology
               </span>
-              <span className="font-mono text-xs text-muted-foreground">05 // WORKFLOW</span>
+              <span className="font-mono text-xs text-muted-foreground">04 // WORKFLOW</span>
             </div>
 
             <h2 className="max-w-3xl pt-10 font-display text-3xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl tracking-tight">
@@ -919,6 +856,70 @@ export default function Home() {
                   </p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================ */}
+        {/* Featured Projects Showcase (Direct Interactive Experience) */}
+        {/* ============================================================ */}
+        <section id="work" className="relative py-20 sm:py-32">
+          <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
+            <div className="flex flex-wrap items-baseline justify-between border-b border-border/80 pb-4">
+              <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-brand-glow">
+                Selected Work
+              </span>
+              <span className="font-mono text-xs text-muted-foreground">05 // RECENT BUILDS</span>
+            </div>
+
+            <div className="grid grid-cols-12 gap-y-6 pt-10 lg:gap-x-12 items-end">
+              <div className="col-span-12 lg:col-span-7">
+                <h2 className="font-display text-3xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl tracking-tight">
+                  Systems engineered for
+                  <br />
+                  real operational scale
+                </h2>
+              </div>
+              <div className="col-span-12 lg:col-span-5 flex lg:justify-end">
+                <Link
+                  href="/portfolio"
+                  data-cursor="ALL"
+                  onMouseEnter={playHover}
+                  className="group inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/60 px-6 py-3 font-display text-xs font-bold uppercase tracking-wider text-foreground backdrop-blur-sm transition-all hover:border-foreground hover:bg-surface active:scale-95"
+                >
+                  <span>Explore full portfolio</span>
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Grid of 3 Featured Interactive Project Cards */}
+            <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {featuredProjects.map((project, idx) => (
+                <ProjectCard key={project.slug} project={project} index={idx} />
+              ))}
+            </div>
+
+            {/* Direct Invitation Banner */}
+            <div className="mt-14 rounded-3xl border border-dashed border-border/80 bg-surface/30 p-8 text-center sm:p-12">
+              <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground">
+                Looking for specific industry platforms?
+              </h3>
+              <p className="mx-auto mt-2 max-w-xl text-sm text-muted-foreground leading-relaxed">
+                Explore case studies covering e-commerce sync pipelines, HRMS self-service dashboards, and high-volume ERP integrations.
+              </p>
+              <div className="mt-6 flex justify-center">
+                <Link
+                  href="/portfolio"
+                  data-cursor="VIEW"
+                  onMouseEnter={playHover}
+                  onClick={playPop}
+                  className="inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3 font-display text-xs font-semibold uppercase tracking-wider text-background shadow-lg transition-all hover:bg-brand-glow active:scale-95"
+                >
+                  <span>View all projects</span>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
             </div>
           </div>
         </section>
