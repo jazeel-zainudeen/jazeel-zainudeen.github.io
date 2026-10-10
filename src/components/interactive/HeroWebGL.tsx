@@ -182,7 +182,7 @@ export function HeroWebGL() {
         isVisible = entry.isIntersecting;
         if (isVisible) {
           if (!animationFrameId) {
-            animate();
+            animate(performance.now());
           }
         } else {
           if (animationFrameId) {
@@ -195,7 +195,7 @@ export function HeroWebGL() {
     );
 
     observer.observe(container);
-    animate();
+    animate(performance.now());
 
     return () => {
       observer.disconnect();
