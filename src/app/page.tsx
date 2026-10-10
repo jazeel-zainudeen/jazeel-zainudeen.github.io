@@ -502,10 +502,10 @@ export default function Home() {
               <div className="col-span-12 lg:col-span-4">
                 <div className="rounded-2xl border border-border/80 bg-surface/40 p-6 sm:p-7 backdrop-blur-xl shadow-lg shadow-black/5">
                   <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
-                    Full stack developer from Kerala, India. For over half a decade,
-                    I&apos;ve crafted high-performance ERP, CRM, and cloud architectures,
-                    modernized aging stacks, and maintained critical operations long
-                    after deployment.
+                    Full stack developer from Kerala, India. For over half a
+                    decade, I&apos;ve crafted high-performance ERP, CRM, and
+                    cloud architectures, modernized aging stacks, and maintained
+                    critical operations long after deployment.
                   </p>
 
                   <div className="mt-8 flex flex-col sm:flex-row gap-3">
@@ -542,7 +542,7 @@ export default function Home() {
             </div>
 
             {/* Interactive Stats Row with Animated Number Counters */}
-            <div className="mt-14 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="mt-14 sm:mt-20 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <TiltCard maxTilt={5}>
                 <div className="rounded-2xl border border-border/80 bg-surface/50 p-5 sm:p-6 backdrop-blur-md transition-colors hover:border-brand-glow/40 hover:bg-surface/80">
                   <span className="font-mono text-xs font-bold text-brand-glow mb-2 block">
@@ -612,17 +612,21 @@ export default function Home() {
           <KineticMarquee items={marqueeItems} speed={35} />
         </section>
 
-
         {/* ============================================================ */}
         {/* About Section with 3D Image Perspective */}
         {/* ============================================================ */}
-        <section id="about" className="relative bg-surface/40 py-20 sm:py-32 border-y border-border/60">
+        <section
+          id="about"
+          className="relative bg-surface/40 py-20 sm:py-32 border-y border-border/60"
+        >
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
             <div className="flex items-baseline justify-between border-b border-border/80 pb-4">
               <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-brand-glow">
                 About The Engineer
               </span>
-              <span className="font-mono text-xs text-muted-foreground">01 // PROFILE</span>
+              <span className="font-mono text-xs text-muted-foreground">
+                01 // PROFILE
+              </span>
             </div>
 
             <div className="grid grid-cols-12 gap-y-12 pt-12 lg:gap-x-14 items-center">
@@ -642,8 +646,12 @@ export default function Home() {
                   </div>
                   <div className="mt-4 flex items-center justify-between px-2 pb-1">
                     <div>
-                      <div className="font-display text-sm font-bold text-foreground">Jazeel Zainudeen</div>
-                      <div className="text-xs text-muted-foreground font-mono">Kerala, India</div>
+                      <div className="font-display text-sm font-bold text-foreground">
+                        Jazeel Zainudeen
+                      </div>
+                      <div className="text-xs text-muted-foreground font-mono">
+                        Kerala, India
+                      </div>
                     </div>
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-[0.65rem] font-semibold text-emerald-600 font-mono">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -658,10 +666,21 @@ export default function Home() {
                   Turning complex workflow chaos into dependable code
                 </h2>
                 <p className="mt-8 text-base sm:text-lg leading-relaxed text-muted-foreground">
-                  I&apos;m <span className="font-semibold text-foreground">Jazeel Zainudeen</span>, a full stack engineer based in Kerala, India. Over the last five years, I&apos;ve engineered enterprise web applications, scalable Cloud APIs, custom ERP platforms, and business automation pipelines that eliminate hundreds of hours of manual labor for teams.
+                  I&apos;m{" "}
+                  <span className="font-semibold text-foreground">
+                    Jazeel Zainudeen
+                  </span>
+                  , a full stack engineer based in Kerala, India. Over the last
+                  five years, I&apos;ve engineered enterprise web applications,
+                  scalable Cloud APIs, custom ERP platforms, and business
+                  automation pipelines that eliminate hundreds of hours of
+                  manual labor for teams.
                 </p>
                 <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
-                  I partner directly with technical founders, operational leads, and agencies across manufacturing, logistics, healthcare, and retail. I cut through buzzwords and deliver fast, maintainable TypeScript architectures built to last.
+                  I partner directly with technical founders, operational leads,
+                  and agencies across manufacturing, logistics, healthcare, and
+                  retail. I cut through buzzwords and deliver fast, maintainable
+                  TypeScript architectures built to last.
                 </p>
 
                 {/* Tech Chips */}
@@ -707,7 +726,9 @@ export default function Home() {
               <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-brand-glow">
                 Capabilities
               </span>
-              <span className="font-mono text-xs text-muted-foreground">02 // SERVICES</span>
+              <span className="font-mono text-xs text-muted-foreground">
+                02 // SERVICES
+              </span>
             </div>
 
             <div className="grid grid-cols-12 gap-y-6 pt-10 lg:gap-x-12 items-end">
@@ -717,7 +738,9 @@ export default function Home() {
                 specific business needs
               </h2>
               <p className="col-span-12 max-w-xl text-base text-muted-foreground lg:col-span-5">
-                Most of my work powers internal enterprise engines rather than disposable landing pages - mission-critical tools where downtime is not an option.
+                Most of my work powers internal enterprise engines rather than
+                disposable landing pages - mission-critical tools where downtime
+                is not an option.
               </p>
             </div>
 
@@ -789,7 +812,9 @@ export default function Home() {
               <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-ink-foreground/80">
                 Guiding Principles
               </span>
-              <span className="font-mono text-xs text-ink-foreground/60">03 // STANDARDS</span>
+              <span className="font-mono text-xs text-ink-foreground/60">
+                03 // STANDARDS
+              </span>
             </div>
 
             <h2 className="max-w-3xl pt-10 font-display text-3xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl tracking-tight">
@@ -829,7 +854,9 @@ export default function Home() {
               <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-brand-glow">
                 Methodology
               </span>
-              <span className="font-mono text-xs text-muted-foreground">04 // WORKFLOW</span>
+              <span className="font-mono text-xs text-muted-foreground">
+                04 // WORKFLOW
+              </span>
             </div>
 
             <h2 className="max-w-3xl pt-10 font-display text-3xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl tracking-tight">
@@ -869,7 +896,9 @@ export default function Home() {
               <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-brand-glow">
                 Selected Work
               </span>
-              <span className="font-mono text-xs text-muted-foreground">05 // RECENT BUILDS</span>
+              <span className="font-mono text-xs text-muted-foreground">
+                05 // RECENT BUILDS
+              </span>
             </div>
 
             <div className="grid grid-cols-12 gap-y-6 pt-10 lg:gap-x-12 items-end">
@@ -906,7 +935,8 @@ export default function Home() {
                 Looking for specific industry platforms?
               </h3>
               <p className="mx-auto mt-2 max-w-xl text-sm text-muted-foreground leading-relaxed">
-                Explore case studies covering e-commerce sync pipelines, HRMS self-service dashboards, and high-volume ERP integrations.
+                Explore case studies covering e-commerce sync pipelines, HRMS
+                self-service dashboards, and high-volume ERP integrations.
               </p>
               <div className="mt-6 flex justify-center">
                 <Link
@@ -933,7 +963,9 @@ export default function Home() {
               <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-brand-glow">
                 Client Feedback
               </span>
-              <span className="font-mono text-xs text-muted-foreground">06 // REPUTATION</span>
+              <span className="font-mono text-xs text-muted-foreground">
+                06 // REPUTATION
+              </span>
             </div>
 
             <h2 className="max-w-3xl pt-10 font-display text-3xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl tracking-tight">
@@ -979,7 +1011,9 @@ export default function Home() {
               <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-brand-glow">
                 Frequently Asked
               </span>
-              <span className="font-mono text-xs text-muted-foreground">07 // ANSWERS</span>
+              <span className="font-mono text-xs text-muted-foreground">
+                07 // ANSWERS
+              </span>
             </div>
 
             <div className="grid grid-cols-12 gap-y-10 pt-10 lg:gap-x-12">
@@ -1060,7 +1094,9 @@ export default function Home() {
               <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-ink-foreground/80">
                 Initiate Project
               </span>
-              <span className="font-mono text-xs text-ink-foreground/60">08 // CONTACT</span>
+              <span className="font-mono text-xs text-ink-foreground/60">
+                08 // CONTACT
+              </span>
             </div>
 
             <div className="grid grid-cols-12 gap-y-12 pt-14 lg:gap-x-12">
@@ -1071,7 +1107,9 @@ export default function Home() {
                   something lasting
                 </h2>
                 <p className="mt-6 max-w-md text-base leading-relaxed text-ink-foreground/80">
-                  Whether you have an established architectural specification or just need clarity on timelines and stack feasibility, drop me a note below. Direct replies within 24 hours.
+                  Whether you have an established architectural specification or
+                  just need clarity on timelines and stack feasibility, drop me
+                  a note below. Direct replies within 24 hours.
                 </p>
 
                 <div className="mt-10 space-y-4">
@@ -1097,8 +1135,12 @@ export default function Home() {
                       </svg>
                     </div>
                     <div>
-                      <div className="text-xs text-ink-foreground/60 font-mono">DIRECT EMAIL</div>
-                      <div className="font-semibold text-white">zainudheenjazeel@gmail.com</div>
+                      <div className="text-xs text-ink-foreground/60 font-mono">
+                        DIRECT EMAIL
+                      </div>
+                      <div className="font-semibold text-white">
+                        zainudheenjazeel@gmail.com
+                      </div>
                     </div>
                   </a>
 
@@ -1113,8 +1155,12 @@ export default function Home() {
                       <MessageCircle className="h-5 w-5" />
                     </div>
                     <div>
-                      <div className="text-xs text-ink-foreground/60 font-mono">WHATSAPP CHAT</div>
-                      <div className="font-semibold text-white">+91 80864 82422</div>
+                      <div className="text-xs text-ink-foreground/60 font-mono">
+                        WHATSAPP CHAT
+                      </div>
+                      <div className="font-semibold text-white">
+                        +91 80864 82422
+                      </div>
                     </div>
                   </a>
 
@@ -1140,15 +1186,26 @@ export default function Home() {
                 {formSubmitted ? (
                   <div className="rounded-3xl border border-ink-foreground/25 bg-ink-foreground/5 p-10 text-center backdrop-blur-xl">
                     <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 mb-4">
-                      <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                      <svg
+                        className="h-8 w-8"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2.5"
+                          d="M5 13l4 4L19 7"
+                        />
                       </svg>
                     </div>
                     <h3 className="font-display text-2xl font-bold mb-2 text-white">
                       Message Received!
                     </h3>
                     <p className="text-ink-foreground/80 text-sm max-w-md mx-auto mb-6">
-                      Thank you for reaching out. I will review your requirements and respond within 24 hours.
+                      Thank you for reaching out. I will review your
+                      requirements and respond within 24 hours.
                     </p>
                     <button
                       type="button"
@@ -1262,11 +1319,20 @@ export default function Home() {
                       <div className="relative">
                         <button
                           type="button"
-                          onClick={() => setIsProjectDropdownOpen(!isProjectDropdownOpen)}
+                          onClick={() =>
+                            setIsProjectDropdownOpen(!isProjectDropdownOpen)
+                          }
                           className="w-full flex items-center justify-between rounded-xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-3.5 text-sm outline-none backdrop-blur-md transition-all focus:border-brand-glow focus:ring-2 focus:ring-brand-glow/20 text-white"
                         >
-                          <span className={formData.projectType ? "text-white" : "text-ink-foreground/50"}>
-                            {formData.projectType || "Select a service focus (Optional)"}
+                          <span
+                            className={
+                              formData.projectType
+                                ? "text-white"
+                                : "text-ink-foreground/50"
+                            }
+                          >
+                            {formData.projectType ||
+                              "Select a service focus (Optional)"}
                           </span>
                           <svg
                             className={`w-4 h-4 text-ink-foreground/50 transition-transform ${isProjectDropdownOpen ? "rotate-180" : ""}`}
@@ -1274,7 +1340,12 @@ export default function Home() {
                             stroke="currentColor"
                             viewBox="0 0 24 24"
                           >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M19 9l-7 7-7-7"
+                            />
                           </svg>
                         </button>
 
@@ -1293,7 +1364,10 @@ export default function Home() {
                                 key={opt}
                                 type="button"
                                 onClick={() => {
-                                  setFormData((prev) => ({ ...prev, projectType: opt }));
+                                  setFormData((prev) => ({
+                                    ...prev,
+                                    projectType: opt,
+                                  }));
                                   setIsProjectDropdownOpen(false);
                                 }}
                                 className="w-full text-left px-3 py-2 text-sm text-ink-foreground hover:bg-ink-foreground/10 hover:text-white rounded-lg transition-colors"
@@ -1304,7 +1378,11 @@ export default function Home() {
                           </div>
                         )}
                       </div>
-                      <input type="hidden" name="projectType" value={formData.projectType} />
+                      <input
+                        type="hidden"
+                        name="projectType"
+                        value={formData.projectType}
+                      />
                     </label>
 
                     <label className="block mt-5">
@@ -1332,7 +1410,9 @@ export default function Home() {
                       disabled={formSubmitting}
                       className="cursor-pointer mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 font-display text-xs font-bold uppercase tracking-wider text-black transition-colors hover:bg-gray-100 disabled:opacity-70 disabled:cursor-not-allowed"
                     >
-                      {formSubmitting ? "Dispatching..." : "Send Project Inquiry"}
+                      {formSubmitting
+                        ? "Dispatching..."
+                        : "Send Project Inquiry"}
                     </button>
                   </div>
                 )}

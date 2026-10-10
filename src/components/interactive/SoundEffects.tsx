@@ -103,22 +103,12 @@ export function SoundToggle() {
       onClick={toggleSound}
       data-cursor="sound"
       aria-label={soundEnabled ? "Mute audio effects" : "Enable tactile sound effects"}
-      className="group relative flex items-center gap-1.5 rounded-full border border-border/80 bg-background/80 px-2.5 py-1 text-xs font-medium text-muted-foreground backdrop-blur-md transition-all hover:border-foreground hover:text-foreground active:scale-95"
+      className="group relative flex items-center justify-center rounded-full border border-border/80 bg-background/80 p-2 text-muted-foreground backdrop-blur-md transition-all hover:border-foreground hover:text-foreground active:scale-95"
     >
       {soundEnabled ? (
-        <>
-          <span className="flex items-center gap-0.5 h-3">
-            <span className="h-2 w-0.5 rounded-full bg-brand animate-pulse" />
-            <span className="h-3 w-0.5 rounded-full bg-brand-glow animate-pulse delay-75" />
-            <span className="h-1.5 w-0.5 rounded-full bg-brand animate-pulse delay-150" />
-          </span>
-          <span className="font-mono text-[0.65rem] tracking-wider uppercase text-foreground">SFX ON</span>
-        </>
+        <Volume2 className="h-4 w-4 text-foreground" />
       ) : (
-        <>
-          <VolumeX className="h-3 w-3 text-muted-foreground group-hover:text-foreground" />
-          <span className="font-mono text-[0.65rem] tracking-wider uppercase">SFX OFF</span>
-        </>
+        <VolumeX className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
       )}
     </button>
   );
