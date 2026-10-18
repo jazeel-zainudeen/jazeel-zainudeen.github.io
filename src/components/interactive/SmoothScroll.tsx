@@ -1,15 +1,53 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, Suspense } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export function SmoothScroll({ children }: { children: React.ReactNode }) {
+function SmoothScrollInner({ children }: { children: React.ReactNode }) {
+  const lenisRef = useRef<Lenis | null>(null);
+  const pathname = usePathname();
+
+  // Reset scroll to top immediately whenever route / pathname changes
+  useEffect(() => {
+    // If arriving with an anchor hash, allow smooth scroll to the target element
+    if (window.location.hash) {
+      const timer = setTimeout(() => {
+        const targetEl = document.querySelector(window.location.hash);
+        if (targetEl && lenisRef.current) {
+          lenisRef.current.scrollTo(targetEl as HTMLElement, { offset: -40, duration: 1.2 });
+        }
+      }, 200);
+      return () => clearTimeout(timer);
+    }
+
+    // Always reset scroll to top (0, 0) immediately on page switch
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
+    // Refresh ScrollTrigger after route transition
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 120);
+
+    return () => clearTimeout(refreshTimer);
+  }, [pathname]);
+
   useEffect(() => {
     // Respect user's motion preferences
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
+    }
+
+    // Disable browser default scroll restoration so it doesn't conflict with Lenis
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
     }
 
     gsap.registerPlugin(ScrollTrigger);
@@ -23,6 +61,8 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       wheelMultiplier: 1.0,
       touchMultiplier: 1.2,
     });
+
+    lenisRef.current = lenis;
 
     lenis.on("scroll", ScrollTrigger.update);
 
@@ -73,8 +113,17 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       document.removeEventListener("click", handleAnchorClick);
       gsap.ticker.remove(tickerCallback);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
 
   return <>{children}</>;
+}
+
+export function SmoothScroll({ children }: { children: React.ReactNode }) {
+  return (
+    <Suspense fallback={<>{children}</>}>
+      <SmoothScrollInner>{children}</SmoothScrollInner>
+    </Suspense>
+  );
 }
