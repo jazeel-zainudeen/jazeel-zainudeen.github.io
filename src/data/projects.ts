@@ -18,27 +18,6 @@ export interface Project {
 
 export const projectsData: Project[] = [
   {
-    slug: "myg-ecommerce",
-    title: "MYG.IN ECOMMERCE DEVELOPMENT",
-    shortDescription: "Business and operations platform supporting one of India's largest electronics retail chains.",
-    detailedDescription: "A comprehensive platform for myG, a large-scale retail chain. Working in close connection with the operations team, I was responsible for implementing critical web and app API changes, as well as managing updates regarding overall functioning such as payment gateway integrations, shipping integrations, and promotional updates.",
-    tagline: "E-Commerce Platform",
-    thumbnail: "/assets/projects/thumbnails/myg-thumb.webp",
-    mobileThumbnail: "/assets/projects/thumbnails/myg-mobile-thumb.webp",
-    images: ["/assets/projects/myg-full-screenshot.jpg"],
-    scrollingPreview: "/assets/projects/myg-full-screenshot.jpg",
-    previewUrl: "https://www.myg.in/",
-    techStack: ["CS-Cart", "Smarty", "PHP", "CodeIgniter", "Laravel", "jQuery"],
-    keyFeatures: [
-      "Seamless payment gateway integration of Bajaj Finserv, alongside other integrations like PayU, Snapmint, PineLabs, and Cashfree.",
-      "Integrated and maintained their POS system to ensure accurate, real-time inventory syncing.",
-      "Managed the kiosk software deployed in retail stores to beautifully showcase live inventory to customers.",
-      "Developed robust web and app APIs in close coordination with the operations team."
-    ],
-    challenges: "Handling real-time data sync across hundreds of stores while rolling out critical payment and promotional updates.",
-    lessonsLearned: "Gained extensive experience in architecting and maintaining complex, multi-provider payment pipelines and syncing legacy POS hardware with modern cloud APIs."
-  },
-  {
     slug: "westford-connect-hrms",
     title: "WESTFORD CONNECT - HRMS SOFTWARE",
     shortDescription: "Complete revamp of the Westford Connect HRMS web application, tailored to client requirements.",
@@ -75,6 +54,27 @@ export const projectsData: Project[] = [
     ],
     challenges: "Migrating a massive amount of legacy content and maintaining SEO rankings while entirely restructuring the frontend.",
     lessonsLearned: "Gained significant experience in large-scale migrations to modern frameworks and executing high-fidelity enterprise-level UI designs."
+  },
+  {
+    slug: "myg-ecommerce",
+    title: "MYG.IN ECOMMERCE DEVELOPMENT",
+    shortDescription: "Business and operations platform supporting one of India's largest electronics retail chains.",
+    detailedDescription: "A comprehensive platform for myG, a large-scale retail chain. Working in close connection with the operations team, I was responsible for implementing critical web and app API changes, as well as managing updates regarding overall functioning such as payment gateway integrations, shipping integrations, and promotional updates.",
+    tagline: "E-Commerce Platform",
+    thumbnail: "/assets/projects/thumbnails/myg-thumb.webp",
+    mobileThumbnail: "/assets/projects/thumbnails/myg-mobile-thumb.webp",
+    images: ["/assets/projects/myg-full-screenshot.jpg"],
+    scrollingPreview: "/assets/projects/myg-full-screenshot.jpg",
+    previewUrl: "https://www.myg.in/",
+    techStack: ["CS-Cart", "Smarty", "PHP", "CodeIgniter", "Laravel", "jQuery"],
+    keyFeatures: [
+      "Seamless payment gateway integration of Bajaj Finserv, alongside other integrations like PayU, Snapmint, PineLabs, and Cashfree.",
+      "Integrated and maintained their POS system to ensure accurate, real-time inventory syncing.",
+      "Managed the kiosk software deployed in retail stores to beautifully showcase live inventory to customers.",
+      "Developed robust web and app APIs in close coordination with the operations team."
+    ],
+    challenges: "Handling real-time data sync across hundreds of stores while rolling out critical payment and promotional updates.",
+    lessonsLearned: "Gained extensive experience in architecting and maintaining complex, multi-provider payment pipelines and syncing legacy POS hardware with modern cloud APIs."
   },
   {
     slug: "coagmenta",

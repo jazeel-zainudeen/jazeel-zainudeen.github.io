@@ -22,9 +22,9 @@ Jazeel Zainudeen is a Senior Full Stack Engineer based in Kerala, India with ove
 - [Robots.txt](https://jazeel-zainudeen.github.io/robots.txt)
 
 ## Featured Projects & Case Studies
-1. [myG.in E-Commerce Platform](https://jazeel-zainudeen.github.io/portfolio/myg-ecommerce): Business and operations platform supporting one of India's largest electronics retail chains.
-2. [Westford Connect - HRMS Software](https://jazeel-zainudeen.github.io/portfolio/westford-connect-hrms): Complete revamp of enterprise HRMS platform with SignalR real-time chat and Google APIs.
-3. [Bobcares Website Revamp](https://jazeel-zainudeen.github.io/portfolio/bobcares-revamp): Migration of large-scale corporate infrastructure from WordPress to high-performance Next.js.
+1. [Westford Connect - HRMS Software](https://jazeel-zainudeen.github.io/portfolio/westford-connect-hrms): Complete revamp of enterprise HRMS platform with SignalR real-time chat and Google APIs.
+2. [Bobcares Website Revamp](https://jazeel-zainudeen.github.io/portfolio/bobcares-revamp): Migration of large-scale corporate infrastructure from WordPress to high-performance Next.js.
+3. [myG.in E-Commerce Platform](https://jazeel-zainudeen.github.io/portfolio/myg-ecommerce): Business and operations platform supporting one of India's largest electronics retail chains.
 4. [Coagmenta - Corporate Website](https://jazeel-zainudeen.github.io/portfolio/coagmenta): Pixel-perfect multilingual corporate web application.
 5. [News Aggregator API](https://jazeel-zainudeen.github.io/portfolio/news-aggregator-api): High-performance RESTful API built with Laravel 12 & PHP 8.4 aggregating major global publishers.
 6. [Spares - PWA Web App](https://jazeel-zainudeen.github.io/portfolio/spares): Fast Progressive Web App built with Next.js, Supabase, and Cloudinary.
