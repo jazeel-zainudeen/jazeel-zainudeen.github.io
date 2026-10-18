@@ -121,7 +121,13 @@ const jsonLd = {
       "@id": `${siteUrl}/#person`,
       name: "Jazeel Zainudeen",
       url: siteUrl,
-      image: `${siteUrl}/assets/seo/jazeel-zainudeen-profile.jpg`,
+      image: {
+        "@type": "ImageObject",
+        "@id": `${siteUrl}/#personImage`,
+        url: `${siteUrl}/assets/seo/jazeel-zainudeen-profile.jpg`,
+        caption: "Jazeel Zainudeen - Full Stack Engineer & Cloud Architect",
+        contentUrl: `${siteUrl}/assets/seo/jazeel-zainudeen-profile.jpg`,
+      },
       jobTitle: "Full Stack Engineer & Cloud Architect",
       worksFor: {
         "@type": "Organization",
@@ -134,7 +140,7 @@ const jsonLd = {
       },
       sameAs: [
         "https://wa.me/918086482422",
-        "https://linkedin.com",
+        "https://www.linkedin.com/in/jazeel-zainudeen/",
         "https://github.com/jazeel-zainudeen",
       ],
       knowsAbout: [

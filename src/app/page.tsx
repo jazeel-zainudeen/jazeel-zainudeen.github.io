@@ -638,7 +638,9 @@ export default function Home() {
                   <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
                     <Image
                       src="/assets/seo/jazeel-zainudeen-profile.jpg"
-                      alt="Jazeel Zainudeen, Full Stack Developer"
+                      alt="Jazeel Zainudeen - Full Stack Engineer & Cloud Architect"
+                      title="Jazeel Zainudeen"
+                      priority
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 450px"
                       className="object-cover object-top transition-transform duration-700 hover:scale-105"
