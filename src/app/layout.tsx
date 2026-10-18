@@ -228,14 +228,16 @@ export default function RootLayout({
         {process.env.NEXT_PUBLIC_TAWKTO_PROPERTY_ID && (
           <Script id="tawk-to" strategy="lazyOnload">
             {`
-              var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-              (function(){
-              var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-              s1.async=true;
-              s1.src='https://embed.tawk.to/${process.env.NEXT_PUBLIC_TAWKTO_PROPERTY_ID}/${process.env.NEXT_PUBLIC_TAWKTO_WIDGET_ID || "default"}?layout=modern';
-              s1.charset='UTF-8';
-              s0.parentNode.insertBefore(s1,s0);
-              })();
+              if (typeof navigator === "undefined" || !/bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent)) {
+                var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+                (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/${process.env.NEXT_PUBLIC_TAWKTO_PROPERTY_ID}/${process.env.NEXT_PUBLIC_TAWKTO_WIDGET_ID || "default"}?layout=modern';
+                s1.charset='UTF-8';
+                s0.parentNode.insertBefore(s1,s0);
+                })();
+              }
             `}
           </Script>
         )}
