@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Homepage -->
   <url>
     <loc>https://jazeel-zainudeen.github.io/</loc>
     <lastmod>2026-10-18</lastmod>
@@ -9,73 +10,170 @@
     <image:image>
       <image:loc>https://jazeel-zainudeen.github.io/assets/seo/jazeel-zainudeen-profile.jpg</image:loc>
       <image:title>Jazeel Zainudeen - Full Stack Engineer &amp; Cloud Architect</image:title>
-      <image:caption>Jazeel Zainudeen, Full Stack Developer and Cloud Architect based in Kerala, India</image:caption>
+      <image:caption>Portrait of Jazeel Zainudeen, Senior Full Stack Developer &amp; Cloud Architect based in Kerala, India</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/seo/og-image.jpg</image:loc>
+      <image:title>Jazeel Zainudeen Portfolio Preview</image:title>
+      <image:caption>Building modern web applications, scalable APIs &amp; cloud platforms with Next.js, React &amp; TypeScript</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/brand/logo.png</image:loc>
+      <image:title>Jazeel Zainudeen Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/projects/thumbnails/westford-thumb.webp</image:loc>
+      <image:title>Westford Connect - HRMS Software</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/projects/thumbnails/bobcares-thumb.webp</image:loc>
+      <image:title>Bobcares Website Revamp</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/projects/thumbnails/myg-thumb.webp</image:loc>
+      <image:title>myG.in E-Commerce Development</image:title>
     </image:image>
   </url>
+
+  <!-- Portfolio Archive -->
   <url>
     <loc>https://jazeel-zainudeen.github.io/portfolio</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/projects/thumbnails/westford-thumb.webp</image:loc>
+      <image:title>Westford Connect - HRMS Software Thumbnail</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/projects/thumbnails/bobcares-thumb.webp</image:loc>
+      <image:title>Bobcares Website Revamp Thumbnail</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/projects/thumbnails/myg-thumb.webp</image:loc>
+      <image:title>myG.in E-Commerce Development Thumbnail</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/projects/thumbnails/coagmenta-thumb.webp</image:loc>
+      <image:title>Coagmenta Corporate Website Thumbnail</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/projects/thumbnails/news-thumb.webp</image:loc>
+      <image:title>News Aggregator API Thumbnail</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/projects/thumbnails/spares-thumb.webp</image:loc>
+      <image:title>Spares PWA Web App Thumbnail</image:title>
+    </image:image>
   </url>
+
+  <!-- 1. Westford Connect HRMS -->
   <url>
     <loc>https://jazeel-zainudeen.github.io/portfolio/westford-connect-hrms</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
     <image:image>
       <image:loc>https://jazeel-zainudeen.github.io/assets/projects/westford-connect-hrms-full-screenshot.jpeg</image:loc>
-      <image:title>Westford Connect - HRMS Software</image:title>
+      <image:title>Westford Connect HRMS Application Screenshot</image:title>
+      <image:caption>Complete revamp of enterprise HRMS platform with SignalR real-time chat, Google Calendar, and Google Login integration.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/projects/thumbnails/westford-thumb.webp</image:loc>
+      <image:title>Westford Connect - HRMS Software Showcase</image:title>
     </image:image>
   </url>
+
+  <!-- 2. Bobcares Website Revamp -->
   <url>
     <loc>https://jazeel-zainudeen.github.io/portfolio/bobcares-revamp</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
     <image:image>
       <image:loc>https://jazeel-zainudeen.github.io/assets/projects/bobcares-mockup.png</image:loc>
-      <image:title>Bobcares Website Revamp</image:title>
+      <image:title>Bobcares Corporate Website Mockup</image:title>
+      <image:caption>High-performance Next.js migration of enterprise corporate website with modern Figma-based UI/UX.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/projects/thumbnails/bobcares-thumb.webp</image:loc>
+      <image:title>Bobcares Website Revamp Showcase</image:title>
     </image:image>
   </url>
+
+  <!-- 3. myG.in E-Commerce -->
   <url>
     <loc>https://jazeel-zainudeen.github.io/portfolio/myg-ecommerce</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
     <image:image>
       <image:loc>https://jazeel-zainudeen.github.io/assets/projects/myg-full-screenshot.jpg</image:loc>
-      <image:title>myG.in E-Commerce Development</image:title>
+      <image:title>myG.in E-Commerce Retail Platform Interface</image:title>
+      <image:caption>Business and operations platform supporting one of India's largest electronics retail chains.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/projects/thumbnails/myg-thumb.webp</image:loc>
+      <image:title>myG.in E-Commerce Development Showcase</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/projects/thumbnails/myg-mobile-thumb.webp</image:loc>
+      <image:title>myG.in Mobile Responsive Interface</image:title>
     </image:image>
   </url>
+
+  <!-- 4. Coagmenta Corporate Website -->
   <url>
     <loc>https://jazeel-zainudeen.github.io/portfolio/coagmenta</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
     <image:image>
       <image:loc>https://jazeel-zainudeen.github.io/assets/projects/coagmenta-full-screenshot.png</image:loc>
-      <image:title>Coagmenta Corporate Website</image:title>
+      <image:title>Coagmenta Corporate Website Screenshot</image:title>
+      <image:caption>Pixel-perfect corporate website built from Figma design with multilingual French support.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/projects/thumbnails/coagmenta-thumb.webp</image:loc>
+      <image:title>Coagmenta Corporate Website Showcase</image:title>
     </image:image>
   </url>
+
+  <!-- 5. News Aggregator API -->
   <url>
     <loc>https://jazeel-zainudeen.github.io/portfolio/news-aggregator-api</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
     <image:image>
       <image:loc>https://jazeel-zainudeen.github.io/assets/projects/news-aggregator-api-screenshot.png</image:loc>
-      <image:title>News Aggregator API</image:title>
+      <image:title>News Aggregator API Architecture</image:title>
+      <image:caption>RESTful API built with Laravel 12 and PHP 8.4 aggregating articles from News API, The Guardian, and The New York Times.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/projects/thumbnails/news-thumb.webp</image:loc>
+      <image:title>News Aggregator API Showcase</image:title>
     </image:image>
   </url>
+
+  <!-- 6. Spares PWA Web App -->
   <url>
     <loc>https://jazeel-zainudeen.github.io/portfolio/spares</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
     <image:image>
       <image:loc>https://jazeel-zainudeen.github.io/assets/projects/spares-full-screenshot.png</image:loc>
-      <image:title>Spares PWA Web App</image:title>
+      <image:title>Spares PWA Application Interface</image:title>
+      <image:caption>Progressive Web App built with Next.js, Supabase backend, and Cloudinary image storage.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/projects/thumbnails/spares-thumb.webp</image:loc>
+      <image:title>Spares PWA Web App Showcase</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jazeel-zainudeen.github.io/assets/projects/thumbnails/spares-mobile-thumb.webp</image:loc>
+      <image:title>Spares Mobile Web App Showcase</image:title>
     </image:image>
   </url>
 </urlset>
