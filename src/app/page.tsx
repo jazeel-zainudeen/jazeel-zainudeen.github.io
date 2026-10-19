@@ -641,9 +641,10 @@ export default function Home() {
                       alt="Jazeel Zainudeen - Full Stack Engineer & Cloud Architect"
                       title="Jazeel Zainudeen"
                       priority
-                      fill
+                      width={1000}
+                      height={1249}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 450px"
-                      className="object-cover object-top transition-transform duration-700 hover:scale-105"
+                      className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-105"
                     />
                   </div>
                   <div className="mt-4 flex items-center justify-between px-2 pb-1">
