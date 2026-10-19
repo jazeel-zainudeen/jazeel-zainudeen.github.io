@@ -11,6 +11,16 @@ export const metadata: Metadata = {
   title: "Portfolio | Jazeel Zainudeen",
   description:
     "A showcase of my recent production systems spanning custom ERP platforms, HRMS dashboards, e-commerce architectures, and cloud APIs.",
+  robots: {
+    index: true,
+    follow: true,
+    noimageindex: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: true,
+    },
+  },
 };
 
 export default function PortfolioListingPage() {

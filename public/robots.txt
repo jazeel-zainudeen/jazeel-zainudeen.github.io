@@ -2,6 +2,10 @@
 User-agent: *
 Allow: /
 
+# Block project image indexing (prevent project screenshots from appearing in Google Images)
+User-agent: Googlebot-Image
+Disallow: /assets/projects/
+
 # AI Web Crawlers & LLM Indexing (ChatGPT, Gemini, Claude, Perplexity, Apple)
 User-agent: GPTBot
 Allow: /

@@ -33,6 +33,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${project.title} | Jazeel Zainudeen`,
     description: project.shortDescription,
+    robots: {
+      index: true,
+      follow: true,
+      noimageindex: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: true,
+      },
+    },
   };
 }
 
