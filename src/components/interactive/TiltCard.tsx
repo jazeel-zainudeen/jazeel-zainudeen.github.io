@@ -76,7 +76,7 @@ export function TiltCard({
 
   return (
     <Component
-      ref={cardRef as React.Ref<any>}
+      ref={cardRef as React.Ref<never>}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}

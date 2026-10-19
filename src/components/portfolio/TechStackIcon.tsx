@@ -29,7 +29,6 @@ import {
   SiSupabase,
   SiCloudinary,
   SiGoogle,
-  SiDotnet,
   SiMysql,
   SiDocker
 } from "react-icons/si";

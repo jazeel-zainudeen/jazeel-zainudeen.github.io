@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, createContext, useContext } from "react";
+import { useState, createContext, useContext } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 
 interface SoundContextType {
@@ -18,16 +18,17 @@ const SoundContext = createContext<SoundContextType>({
 });
 
 export function SoundProvider({ children }: { children: React.ReactNode }) {
-  const [soundEnabled, setSoundEnabled] = useState(false);
-  const [audioCtx, setAudioCtx] = useState<AudioContext | null>(null);
-
-  useEffect(() => {
-    // Check saved preference
-    const saved = localStorage.getItem("sound-enabled");
-    if (saved === "true") {
-      setSoundEnabled(true);
+  const [soundEnabled, setSoundEnabled] = useState(() => {
+    if (typeof window !== "undefined") {
+      try {
+        return localStorage.getItem("sound-enabled") === "true";
+      } catch {
+        return false;
+      }
     }
-  }, []);
+    return false;
+  });
+  const [audioCtx, setAudioCtx] = useState<AudioContext | null>(null);
 
   const getAudioContext = () => {
     if (audioCtx) return audioCtx;

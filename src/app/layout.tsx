@@ -36,15 +36,6 @@ export const metadata: Metadata = {
     "Jazeel Zainudeen - Full Stack Engineer | Next.js, React & Cloud Architect",
   description:
     "Jazeel Zainudeen is a full stack engineer from Kerala, India specializing in high-performance Web Applications, Next.js, React, TypeScript, Cloud APIs & custom Enterprise Software.",
-  icons: {
-    icon: [
-      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
-      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/favicon.ico" },
-    ],
-    shortcut: "/favicon.ico",
-    apple: "/apple-icon.png",
-  },
   alternates: {
     canonical: siteUrl,
   },

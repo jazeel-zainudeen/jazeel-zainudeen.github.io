@@ -6,15 +6,22 @@ interface TawkButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
   children: React.ReactNode;
 }
 
+interface TawkWindow extends Window {
+  Tawk_API?: {
+    maximize?: () => void;
+  };
+}
+
 export function TawkButton({ children, className, onClick, ...props }: TawkButtonProps) {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (onClick) onClick(e);
     if (e.defaultPrevented) return;
 
     // Check if Tawk is loaded and available
-    if (typeof window !== "undefined" && (window as any).Tawk_API?.maximize) {
+    const win = typeof window !== "undefined" ? (window as unknown as TawkWindow) : null;
+    if (win?.Tawk_API?.maximize) {
       try {
-        (window as any).Tawk_API.maximize();
+        win.Tawk_API.maximize();
         return;
       } catch (err) {
         console.warn("Tawk maximize error", err);

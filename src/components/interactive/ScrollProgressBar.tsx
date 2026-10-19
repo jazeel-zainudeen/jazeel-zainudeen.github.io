@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState, Suspense } from "react";
+import { useEffect, useRef, useCallback, Suspense } from "react";
 import { usePathname } from "next/navigation";
 
 function ScrollProgressBarInner() {
   const barRef = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const prevPathRef = useRef<string>(pathname);
   const isNavigatingRef = useRef(false);
@@ -13,13 +12,42 @@ function ScrollProgressBarInner() {
   const finishTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Helper to calculate current scroll progress
-  const getScrollProgress = () => {
+  const getScrollProgress = useCallback(() => {
     const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
     if (totalHeight <= 0) return 0;
     return Math.min(1, Math.max(0, window.scrollY / totalHeight));
-  };
+  }, []);
 
-  const startNavLoading = () => {
+  const completeNavLoading = useCallback(() => {
+    const bar = barRef.current;
+    if (!bar) return;
+
+    if (trickleTimerRef.current) clearInterval(trickleTimerRef.current);
+    if (finishTimerRef.current) clearTimeout(finishTimerRef.current);
+
+    // Complete to 100%
+    bar.style.transition = "transform 180ms ease-out";
+    bar.style.transform = "scaleX(1)";
+
+    // After hitting 100%, reset cleanly to 0 for the top of the new page
+    finishTimerRef.current = setTimeout(() => {
+      if (!barRef.current) return;
+      barRef.current.style.transition = "transform 220ms ease-in-out";
+      barRef.current.style.transform = "scaleX(0)";
+
+      setTimeout(() => {
+        if (!barRef.current) return;
+        barRef.current.style.transition = "";
+        isNavigatingRef.current = false;
+
+        // Re-sync with the new page scroll position (top = 0)
+        const p = getScrollProgress();
+        barRef.current.style.transform = `scaleX(${p})`;
+      }, 230);
+    }, 180);
+  }, [getScrollProgress]);
+
+  const startNavLoading = useCallback(() => {
     const bar = barRef.current;
     if (!bar) return;
 
@@ -52,36 +80,7 @@ function ScrollProgressBarInner() {
     finishTimerRef.current = setTimeout(() => {
       completeNavLoading();
     }, 6000);
-  };
-
-  const completeNavLoading = () => {
-    const bar = barRef.current;
-    if (!bar) return;
-
-    if (trickleTimerRef.current) clearInterval(trickleTimerRef.current);
-    if (finishTimerRef.current) clearTimeout(finishTimerRef.current);
-
-    // Complete to 100%
-    bar.style.transition = "transform 180ms ease-out";
-    bar.style.transform = "scaleX(1)";
-
-    // After hitting 100%, reset cleanly to 0 for the top of the new page
-    finishTimerRef.current = setTimeout(() => {
-      if (!barRef.current) return;
-      barRef.current.style.transition = "transform 220ms ease-in-out";
-      barRef.current.style.transform = "scaleX(0)";
-
-      setTimeout(() => {
-        if (!barRef.current) return;
-        barRef.current.style.transition = "";
-        isNavigatingRef.current = false;
-
-        // Re-sync with the new page scroll position (top = 0)
-        const p = getScrollProgress();
-        barRef.current.style.transform = `scaleX(${p})`;
-      }, 230);
-    }, 180);
-  };
+  }, [completeNavLoading, getScrollProgress]);
 
   // Detect route / pathname changes and complete loading
   useEffect(() => {
@@ -91,11 +90,10 @@ function ScrollProgressBarInner() {
         completeNavLoading();
       }
     }
-  }, [pathname]);
+  }, [pathname, completeNavLoading]);
 
   // Click interceptor for route navigation & browser popstate
   useEffect(() => {
-    setMounted(true);
 
     const handleClick = (e: MouseEvent) => {
       if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
@@ -173,9 +171,7 @@ function ScrollProgressBarInner() {
       if (trickleTimerRef.current) clearInterval(trickleTimerRef.current);
       if (finishTimerRef.current) clearTimeout(finishTimerRef.current);
     };
-  }, []);
-
-  if (!mounted) return null;
+  }, [startNavLoading, getScrollProgress]);
 
   return (
     <div
