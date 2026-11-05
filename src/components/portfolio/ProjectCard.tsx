@@ -21,11 +21,11 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
     >
       <TiltCard
         maxTilt={5}
-        className="flex h-full flex-col rounded-2xl border border-border/80 bg-card transition-all duration-300 hover:border-brand-glow/40 hover:shadow-2xl hover:shadow-black/5"
+        className="flex h-full flex-col rounded-2xl border border-border/80 bg-card transition-[border-color,box-shadow] duration-300 hover:border-brand-glow/40 hover:shadow-2xl hover:shadow-black/5"
       >
         {/* Thumbnail Area */}
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-t-2xl bg-surface/40">
-          <div className="h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]">
+          <div className="h-full w-full motion-safe:transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:group-hover:scale-[1.04]">
             <BrowserMockup 
               imageSrc={project.thumbnail}
               mobileImageSrc={project.mobileThumbnail}
@@ -36,8 +36,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           {/* Subtle vignette overlay on hover */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           
-          <div className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-background/90 text-brand opacity-0 shadow-lg backdrop-blur-md transition-all duration-300 group-hover:opacity-100 group-hover:scale-110">
-            <ArrowUpRight className="h-5 w-5" />
+          <div className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-background/90 text-brand opacity-0 shadow-lg backdrop-blur-md transition-[opacity,transform] duration-300 group-hover:opacity-100 motion-safe:group-hover:scale-110">
+            <ArrowUpRight className="h-5 w-5" aria-hidden="true" />
           </div>
         </div>
 

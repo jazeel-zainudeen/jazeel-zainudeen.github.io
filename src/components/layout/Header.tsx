@@ -86,35 +86,35 @@ export function Header() {
             <Link
               href="/#services"
               onMouseEnter={playHover}
-              className="font-display text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
+              className="font-display text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               <RollingText text="What I do" />
             </Link>
             <Link
               href="/#about"
               onMouseEnter={playHover}
-              className="font-display text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
+              className="font-display text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               <RollingText text="About" />
             </Link>
             <Link
               href="/#process"
               onMouseEnter={playHover}
-              className="font-display text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
+              className="font-display text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               <RollingText text="Process" />
             </Link>
             <Link
               href="/portfolio"
               onMouseEnter={playHover}
-              className="font-display text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-foreground transition-colors hover:text-brand"
+              className="font-display text-xs font-medium text-foreground transition-colors hover:text-brand"
             >
               <RollingText text="Work" />
             </Link>
             <Link
               href="/#faq"
               onMouseEnter={playHover}
-              className="font-display text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
+              className="font-display text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               <RollingText text="FAQ" />
             </Link>
@@ -127,7 +127,7 @@ export function Header() {
             <Link
               href="/portfolio"
               onMouseEnter={playHover}
-              className="font-display text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-foreground transition-all hover:text-brand"
+              className="font-display text-xs font-medium text-foreground transition-colors hover:text-brand"
             >
               <RollingText text="Portfolio" />
             </Link>
@@ -137,7 +137,7 @@ export function Header() {
                 onMouseEnter={playHover}
                 onClick={playPop}
                 data-cursor="HELLO"
-                className="group inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2 font-display text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-background transition-all hover:bg-brand-glow hover:shadow-lg active:scale-95"
+                className="group inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2 font-display text-xs font-medium text-background transition-colors hover:bg-brand-glow hover:shadow-lg active:scale-95"
               >
                 <span>Say hello</span>
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 group-hover:scale-125 transition-transform" />
@@ -217,7 +217,7 @@ export function Header() {
           aria-hidden="true"
         />
         <div
-          className={`mx-auto mt-2 max-w-[calc(100%-1.5rem)] rounded-2xl border border-border bg-background/98 p-4 backdrop-blur-2xl md:hidden shadow-2xl transition-all duration-300 origin-top ${
+          className={`mx-auto mt-2 max-w-[calc(100%-1.5rem)] rounded-2xl border border-border bg-background/98 p-4 backdrop-blur-2xl md:hidden shadow-2xl transition-[opacity,transform] duration-300 origin-top ${
             mobileMenuOpen
               ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
               : "opacity-0 -translate-y-2 scale-[0.97] pointer-events-none"
@@ -227,7 +227,7 @@ export function Header() {
             <Link
               href="/#services"
               onClick={() => setMobileMenuOpen(false)}
-              className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-all hover:bg-surface active:scale-95"
+              className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-colors hover:bg-surface active:scale-95"
             >
               <div className="flex items-center justify-between text-muted-foreground">
                 <svg
@@ -241,6 +241,7 @@ export function Header() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   className="lucide lucide-code-2 text-brand-glow"
+                  aria-hidden="true"
                 >
                   <path d="m18 16 4-4-4-4" />
                   <path d="m6 8-4 4 4 4" />
@@ -257,7 +258,7 @@ export function Header() {
             <Link
               href="/#about"
               onClick={() => setMobileMenuOpen(false)}
-              className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-all hover:bg-surface active:scale-95"
+              className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-colors hover:bg-surface active:scale-95"
             >
               <div className="flex items-center justify-between text-muted-foreground">
                 <svg
@@ -271,6 +272,7 @@ export function Header() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   className="lucide lucide-user text-brand-glow"
+                  aria-hidden="true"
                 >
                   <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
                   <circle cx="12" cy="7" r="4" />
@@ -286,7 +288,7 @@ export function Header() {
             <Link
               href="/#process"
               onClick={() => setMobileMenuOpen(false)}
-              className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-all hover:bg-surface active:scale-95"
+              className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-colors hover:bg-surface active:scale-95"
             >
               <div className="flex items-center justify-between text-muted-foreground">
                 <svg
@@ -300,6 +302,7 @@ export function Header() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   className="lucide lucide-workflow text-brand-glow"
+                  aria-hidden="true"
                 >
                   <rect width="8" height="8" x="3" y="3" rx="2" />
                   <path d="M7 11v4a2 2 0 0 0 2 2h4" />
@@ -316,7 +319,7 @@ export function Header() {
             <Link
               href="/portfolio"
               onClick={() => setMobileMenuOpen(false)}
-              className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-all hover:bg-surface active:scale-95"
+              className="group flex flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-3.5 transition-colors hover:bg-surface active:scale-95"
             >
               <div className="flex items-center justify-between text-muted-foreground">
                 <svg
@@ -330,6 +333,7 @@ export function Header() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   className="lucide lucide-briefcase text-brand-glow"
+                  aria-hidden="true"
                 >
                   <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
                   <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
@@ -347,7 +351,7 @@ export function Header() {
             <Link
               href="/#faq"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex flex-1 items-center justify-between rounded-xl border border-border/60 bg-surface/40 px-3.5 py-2.5 font-display text-xs font-semibold text-foreground transition-all hover:bg-surface"
+              className="flex flex-1 items-center justify-between rounded-xl border border-border/60 bg-surface/40 px-3.5 py-2.5 font-display text-xs font-semibold text-foreground transition-colors hover:bg-surface"
             >
               <span>FAQ</span>
               <span className="font-mono text-[0.62rem] text-muted-foreground">05</span>
@@ -356,7 +360,7 @@ export function Header() {
               href="https://wa.me/918086482422"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-1.5 rounded-xl bg-brand/10 border border-brand/20 px-3.5 py-2.5 font-display text-xs font-bold text-brand-glow transition-all"
+              className="flex items-center justify-center gap-1.5 rounded-xl bg-brand/10 border border-brand/20 px-3.5 py-2.5 font-display text-xs font-bold text-brand-glow transition-colors"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -368,6 +372,7 @@ export function Header() {
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                aria-hidden="true"
                 className="lucide lucide-message-circle"
               >
                 <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path>

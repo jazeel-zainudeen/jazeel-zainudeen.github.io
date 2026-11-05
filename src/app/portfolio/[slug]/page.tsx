@@ -71,9 +71,9 @@ export default async function ProjectDetailsPage({ params }: Props) {
             <Link
               href="/portfolio"
               data-cursor="BACK"
-              className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/60 px-4 py-2 text-xs font-semibold text-muted-foreground backdrop-blur-md transition-all hover:border-foreground hover:text-foreground"
+              className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/60 px-4 py-2 text-xs font-semibold text-muted-foreground backdrop-blur-md transition-colors hover:border-foreground hover:text-foreground"
             >
-              <ArrowLeft className="h-3.5 w-3.5" />
+              <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
               <span>Back to Portfolio</span>
             </Link>
           </Magnetic>
@@ -84,7 +84,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 mb-4">
               <span className="h-1.5 w-6 rounded-full bg-brand" />
-              <span className="font-display text-xs font-semibold uppercase tracking-[0.22em] text-brand-glow">
+              <span className="font-display text-xs font-medium text-brand-glow">
                 {project.tagline}
               </span>
             </div>
@@ -146,10 +146,10 @@ export default async function ProjectDetailsPage({ params }: Props) {
                   {project.keyFeatures.map((feature, idx) => (
                     <div
                       key={idx}
-                      className="group flex items-start gap-3.5 rounded-xl border border-border/80 bg-surface/40 p-4 backdrop-blur-md transition-all duration-300 hover:border-brand-glow/40 hover:bg-surface/70 hover:shadow-md"
+                      className="group flex items-start gap-3.5 rounded-xl border border-border/80 bg-surface/40 p-4 backdrop-blur-md transition-colors duration-300 hover:border-brand-glow/40 hover:bg-surface/70 hover:shadow-md"
                     >
-                      <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand-glow transition-transform group-hover:scale-110">
-                        <CheckCircle2 className="h-4 w-4" />
+                      <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand-glow motion-safe:transition-transform motion-safe:group-hover:scale-110">
+                        <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
                       </div>
                       <p className="text-sm sm:text-base text-muted-foreground group-hover:text-foreground transition-colors leading-relaxed">
                         {feature}
@@ -164,10 +164,10 @@ export default async function ProjectDetailsPage({ params }: Props) {
             {project.challenges && (
               <section>
                 <TiltCard maxTilt={3}>
-                  <div className="rounded-2xl border border-border/80 bg-surface/50 p-6 sm:p-8 backdrop-blur-xl transition-all hover:border-amber-500/40 hover:shadow-lg">
+                  <div className="rounded-2xl border border-border/80 bg-surface/50 p-6 sm:p-8 backdrop-blur-xl transition-[border-color,box-shadow] hover:border-amber-500/40 hover:shadow-lg">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-500/10 text-amber-500">
-                        <AlertTriangle className="h-5 w-5" />
+                        <AlertTriangle className="h-5 w-5" aria-hidden="true" />
                       </div>
                       <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground">
                         Challenges & Solutions
@@ -185,10 +185,10 @@ export default async function ProjectDetailsPage({ params }: Props) {
             {project.lessonsLearned && (
               <section>
                 <TiltCard maxTilt={3}>
-                  <div className="rounded-2xl border border-border/80 bg-brand/5 p-6 sm:p-8 backdrop-blur-xl transition-all hover:border-brand-glow/40 hover:shadow-lg">
+                  <div className="rounded-2xl border border-border/80 bg-brand/5 p-6 sm:p-8 backdrop-blur-xl transition-[border-color,box-shadow] hover:border-brand-glow/40 hover:shadow-lg">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand/10 text-brand-glow">
-                        <Lightbulb className="h-5 w-5" />
+                        <Lightbulb className="h-5 w-5" aria-hidden="true" />
                       </div>
                       <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground">
                         Architectural Insights
@@ -207,14 +207,14 @@ export default async function ProjectDetailsPage({ params }: Props) {
           <div className="space-y-6 lg:sticky lg:top-24 lg:self-start">
             {/* Project Specs Card */}
             <div className="rounded-2xl border border-border/80 bg-surface/60 p-6 backdrop-blur-xl shadow-sm">
-              <h3 className="font-display text-xs font-bold uppercase tracking-[0.2em] text-foreground mb-6 flex items-center gap-2">
-                <Layers className="h-3.5 w-3.5 text-brand-glow" />
+              <h3 className="font-display text-xs font-semibold text-foreground mb-6 flex items-center gap-2">
+                <Layers className="h-3.5 w-3.5 text-brand-glow" aria-hidden="true" />
                 <span>System Specs</span>
               </h3>
 
               <dl className="space-y-5 text-sm">
                 <div>
-                  <dt className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
+                  <dt className="text-xs text-muted-foreground mb-1">
                     Platform Category
                   </dt>
                   <dd className="font-semibold text-foreground">
@@ -223,17 +223,17 @@ export default async function ProjectDetailsPage({ params }: Props) {
                 </div>
 
                 <div className="pt-3 border-t border-border/60">
-                  <dt className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
+                  <dt className="text-xs text-muted-foreground mb-1">
                     Deployment Status
                   </dt>
                   <dd className="flex items-center gap-2 text-foreground font-semibold">
-                    <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="h-2 w-2 rounded-full bg-emerald-500 motion-safe:animate-pulse" />
                     <span>Production Verified</span>
                   </dd>
                 </div>
 
                 <div className="pt-3 border-t border-border/60">
-                  <dt className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
+                  <dt className="text-xs text-muted-foreground mb-1">
                     Role & Scope
                   </dt>
                   <dd className="text-foreground font-medium">
@@ -245,8 +245,8 @@ export default async function ProjectDetailsPage({ params }: Props) {
 
             {/* Interactive Technologies Used */}
             <div className="rounded-2xl border border-border/80 bg-surface/60 p-6 backdrop-blur-xl shadow-sm">
-              <h3 className="font-display text-xs font-bold uppercase tracking-[0.2em] text-foreground mb-4 flex items-center gap-2">
-                <Sparkles className="h-3.5 w-3.5 text-brand-glow" />
+              <h3 className="font-display text-xs font-semibold text-foreground mb-4 flex items-center gap-2">
+                <Sparkles className="h-3.5 w-3.5 text-brand-glow" aria-hidden="true" />
                 <span>Technologies</span>
               </h3>
 
@@ -255,7 +255,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
                   <div
                     key={tech}
                     data-cursor="TECH"
-                    className="flex items-center gap-2 rounded-lg border border-border/70 bg-background/80 px-3 py-1.5 text-xs font-medium text-foreground shadow-xs transition-all hover:border-brand-glow/50 hover:bg-surface hover:-translate-y-0.5"
+                    className="flex items-center gap-2 rounded-lg border border-border/70 bg-background/80 px-3 py-1.5 text-xs font-medium text-foreground shadow-xs transition-colors hover:border-brand-glow/50 hover:bg-surface"
                   >
                     <TechStackIcon name={tech} className="h-3.5 w-3.5 text-brand-glow" />
                     <span>{tech}</span>
@@ -279,9 +279,9 @@ export default async function ProjectDetailsPage({ params }: Props) {
                     target="_blank"
                     rel="noopener noreferrer"
                     data-cursor="CHAT"
-                    className="group flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-background shadow-md transition-all hover:bg-brand-glow active:scale-95"
+                    className="group flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-4 py-2.5 text-xs font-semibold text-background shadow-md transition-colors hover:bg-brand-glow active:scale-95"
                   >
-                    <MessageCircle className="h-3.5 w-3.5 text-emerald-400" />
+                    <MessageCircle className="h-3.5 w-3.5 text-emerald-400" aria-hidden="true" />
                     <span>Chat on WhatsApp</span>
                   </a>
                 </Magnetic>
@@ -289,9 +289,9 @@ export default async function ProjectDetailsPage({ params }: Props) {
                   <a
                     href={`mailto:zainudheenjazeel@gmail.com?subject=${encodeURIComponent(`Project Scope: ${project.title}`)}&body=${encodeURIComponent(`Hi Jazeel,\n\nI was looking at ${project.title} on your portfolio and would like to discuss a project with similar architecture.\n\nBest regards,`)}`}
                     data-cursor="EMAIL"
-                    className="flex w-full items-center justify-center gap-2 rounded-full border border-border/80 bg-surface px-4 py-2 text-xs font-medium text-muted-foreground transition-all hover:text-foreground hover:border-foreground/40"
+                    className="flex w-full items-center justify-center gap-2 rounded-full border border-border/80 bg-surface px-4 py-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground hover:border-foreground/40"
                   >
-                    <Mail className="h-3.5 w-3.5" />
+                    <Mail className="h-3.5 w-3.5" aria-hidden="true" />
                     <span>Send Direct Email</span>
                   </a>
                 </Magnetic>

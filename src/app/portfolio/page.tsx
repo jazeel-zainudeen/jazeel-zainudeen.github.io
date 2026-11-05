@@ -33,9 +33,9 @@ export default function PortfolioListingPage() {
             <Link
               href="/"
               data-cursor="BACK"
-              className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/60 px-4 py-2 text-xs font-semibold text-muted-foreground backdrop-blur-md transition-all hover:border-foreground hover:text-foreground"
+              className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/60 px-4 py-2 text-xs font-semibold text-muted-foreground backdrop-blur-md transition-colors hover:border-foreground hover:text-foreground"
             >
-              <ArrowLeft className="h-3.5 w-3.5" />
+              <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
               <span>Back to Home</span>
             </Link>
           </Magnetic>
@@ -46,7 +46,7 @@ export default function PortfolioListingPage() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 mb-4">
               <span className="h-1.5 w-6 rounded-full bg-brand" />
-              <span className="font-display text-xs font-semibold uppercase tracking-[0.22em] text-brand-glow">
+              <span className="font-display text-xs font-medium text-brand-glow">
                 Curated Production Work
               </span>
             </div>
@@ -61,10 +61,10 @@ export default function PortfolioListingPage() {
           {/* Clean Metric Badge on the Right */}
           <div className="flex items-center gap-3 shrink-0">
             <div className="inline-flex items-center gap-3 rounded-2xl border border-border/80 bg-surface/50 px-5 py-3 backdrop-blur-md shadow-xs">
-              <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 motion-safe:animate-pulse" />
               <div className="text-left">
                 <div className="font-mono text-xs font-semibold text-foreground">6 PRODUCTION SYSTEMS</div>
-                <div className="text-[0.68rem] text-muted-foreground">Architected · Deployed · Scaled</div>
+                <div className="text-[0.68rem] text-muted-foreground">Architected, Deployed, Scaled</div>
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@ export default function PortfolioListingPage() {
 
           {/* Blurred "More Projects" Card */}
           <TiltCard maxTilt={5}>
-            <div className="group relative flex h-full min-h-[420px] flex-col overflow-hidden rounded-2xl border border-dashed border-border/80 bg-surface/30 transition-all hover:bg-surface/50 hover:border-brand/40 cursor-default">
+            <div className="group relative flex h-full min-h-[420px] flex-col overflow-hidden rounded-2xl border border-dashed border-border/80 bg-surface/30 transition-colors hover:bg-surface/50 hover:border-brand/40 cursor-default">
               {/* Blurred Background Skeleton */}
               <div className="absolute inset-0 pointer-events-none select-none opacity-20 filter blur-[3px] transition-opacity duration-300 group-hover:opacity-35">
                 <div className="relative aspect-[4/3] w-full bg-muted/60" />
@@ -96,7 +96,7 @@ export default function PortfolioListingPage() {
 
               {/* Overlay Content */}
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10">
-                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-background/90 backdrop-blur-md shadow-md border border-border/70 text-muted-foreground transition-all duration-500 group-hover:scale-110 group-hover:text-brand group-hover:border-brand/40 group-hover:shadow-xl">
+                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-background/90 backdrop-blur-md shadow-md border border-border/70 text-muted-foreground transition-colors duration-500 motion-safe:group-hover:scale-110 group-hover:text-brand group-hover:border-brand/40 group-hover:shadow-xl">
                   <span className="text-2xl font-light leading-none">+</span>
                 </div>
                 <h3 className="font-display text-xl font-bold tracking-tight text-foreground mb-2">
@@ -123,10 +123,10 @@ export default function PortfolioListingPage() {
             <Magnetic strength={0.3}>
               <TawkButton
                 data-cursor="HELLO"
-                className="inline-flex items-center gap-2 rounded-full bg-foreground px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-background shadow-lg transition-all hover:bg-brand-glow active:scale-95"
+                className="inline-flex items-center gap-2 rounded-full bg-foreground px-8 py-3.5 text-xs font-semibold text-background shadow-lg transition-colors hover:bg-brand-glow active:scale-95"
               >
                 <span>Start a conversation</span>
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </TawkButton>
             </Magnetic>
           </div>

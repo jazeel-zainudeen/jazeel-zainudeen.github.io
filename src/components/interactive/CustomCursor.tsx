@@ -104,14 +104,14 @@ export function CustomCursor() {
     >
       <div
         ref={cursorRef}
-        className={`fixed left-0 top-0 rounded-full bg-foreground will-change-transform transition-[width,height,opacity,background-color] duration-150 ease-out ${
+        className={`fixed left-0 top-0 rounded-full bg-foreground will-change-transform transition-[opacity,background-color] duration-150 ease-out ${
           cursorText ? "opacity-0" : isHovered ? "h-2 w-2 bg-brand-glow" : "h-1.5 w-1.5"
         }`}
       />
 
       <div
         ref={followerRef}
-        className={`fixed left-0 top-0 flex items-center justify-center rounded-full border will-change-transform transition-[width,height,background-color,border-color] duration-200 ease-out ${
+        className={`fixed left-0 top-0 flex items-center justify-center rounded-full border will-change-transform transition-[background-color,border-color] duration-200 ease-out ${
           cursorText
             ? "h-20 w-20 border-brand/40 bg-foreground text-background shadow-2xl backdrop-blur-sm"
             : isHovered
@@ -122,7 +122,7 @@ export function CustomCursor() {
         }`}
       >
         {cursorText && (
-          <span className="font-display text-[0.62rem] font-bold uppercase tracking-widest text-background select-none animate-in fade-in zoom-in-95 duration-150">
+          <span className="font-display text-[0.68rem] font-medium text-background select-none motion-safe:animate-in motion-safe:fade-in motion-safe:zoom-in-95 duration-150">
             {cursorText}
           </span>
         )}

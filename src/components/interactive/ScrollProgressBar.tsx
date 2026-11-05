@@ -181,7 +181,7 @@ function ScrollProgressBarInner() {
       <div
         ref={barRef}
         suppressHydrationWarning
-        className="h-full w-full origin-left bg-gradient-to-r from-brand to-brand-glow will-change-transform shadow-[0_0_10px_rgba(17,24,39,0.5)]"
+        className="h-full w-full origin-left bg-gradient-to-r from-brand to-brand-glow will-change-transform shadow-sm"
         style={{ transform: "scaleX(0)" }}
       />
     </div>

@@ -451,7 +451,7 @@ export default function Home() {
         {/* ============================================================ */}
         <section
           id="top"
-          className="relative min-h-[92vh] flex flex-col justify-between overflow-x-clip pt-20 sm:pt-32 md:pt-36 pb-12"
+          className="relative min-h-[92dvh] flex flex-col justify-between overflow-x-clip pt-20 sm:pt-32 md:pt-36 pb-12"
         >
           {/* Three.js Interactive Particle Polyhedron Canvas */}
           <HeroWebGL />
@@ -461,15 +461,15 @@ export default function Home() {
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border/60 pb-5">
               <div className="flex items-center gap-3">
                 <LiveStatusClock />
-                <span className="hidden sm:inline font-mono text-[0.68rem] text-muted-foreground uppercase tracking-widest">
-                  AVAILABLE FOR Q2 CONTRACTS
+                <span className="hidden sm:inline font-mono text-[0.68rem] text-muted-foreground">
+                  Available for contracts
                 </span>
               </div>
 
-              <div className="hidden lg:flex items-center gap-3 font-mono text-[0.68rem] text-muted-foreground tracking-widest uppercase">
-                <span>FULL STACK ENGINEER</span>
+              <div className="hidden lg:flex items-center gap-3 font-mono text-[0.68rem] text-muted-foreground">
+                <span>Full Stack Engineer</span>
                 <span className="text-border">/</span>
-                <span>CLOUD ARCHITECT</span>
+                <span>Cloud Architect</span>
               </div>
             </div>
 
@@ -478,8 +478,8 @@ export default function Home() {
               <div className="col-span-12 lg:col-span-8">
                 <div className="inline-flex items-center gap-2 mb-4">
                   <span className="h-1.5 w-8 rounded-full bg-brand" />
-                  <span className="font-display text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                    Full Stack Engineer · Next.js &amp; Cloud Architect
+                  <span className="font-display text-xs font-medium text-muted-foreground">
+                    Full stack engineer &amp; cloud architect
                   </span>
                 </div>
 
@@ -505,7 +505,7 @@ export default function Home() {
                     Full stack developer from Kerala, India. For over half a
                     decade, I&apos;ve crafted high-performance ERP, CRM, and
                     cloud architectures, modernized aging stacks, and maintained
-                    critical operations long after deployment.
+                    operations long after deployment.
                   </p>
 
                   <div className="mt-8 flex flex-col sm:flex-row gap-3">
@@ -515,10 +515,10 @@ export default function Home() {
                         onMouseEnter={playHover}
                         onClick={playPop}
                         data-cursor="CALL"
-                        className="group flex w-full items-center justify-center gap-3 rounded-full bg-foreground px-6 py-3.5 font-display text-xs font-semibold tracking-wider text-background shadow-md transition-all hover:bg-brand-glow hover:shadow-xl active:scale-95"
+                        className="group flex w-full items-center justify-center gap-3 rounded-full bg-foreground px-6 py-3.5 font-display text-xs font-semibold tracking-wider text-background shadow-md transition-colors hover:bg-brand-glow hover:shadow-xl active:scale-95"
                       >
                         <span>Book discovery call</span>
-                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="h-4 w-4 motion-safe:transition-transform motion-safe:group-hover:translate-x-1" aria-hidden="true" />
                       </a>
                     </Magnetic>
 
@@ -530,9 +530,9 @@ export default function Home() {
                         onMouseEnter={playHover}
                         onClick={playPop}
                         data-cursor="CHAT"
-                        className="flex w-full items-center justify-center gap-2 rounded-full border border-border/80 bg-background/90 px-5 py-3.5 font-display text-xs font-semibold tracking-wider text-foreground shadow-sm backdrop-blur-md transition-all hover:border-brand-glow/50 hover:bg-surface active:scale-95"
+                        className="flex w-full items-center justify-center gap-2 rounded-full border border-border/80 bg-background/90 px-5 py-3.5 font-display text-xs font-semibold tracking-wider text-foreground shadow-sm backdrop-blur-md transition-colors hover:border-brand-glow/50 hover:bg-surface active:scale-95"
                       >
-                        <MessageCircle className="h-4 w-4 text-emerald-500" />
+                        <MessageCircle className="h-4 w-4 text-emerald-500" aria-hidden="true" />
                         <span>WhatsApp</span>
                       </a>
                     </Magnetic>
@@ -551,7 +551,7 @@ export default function Home() {
                   <div className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
                     <CounterNumber end={5} suffix="+ Yrs" />
                   </div>
-                  <p className="mt-1 text-xs text-muted-foreground uppercase tracking-wider font-display">
+                  <p className="mt-1 text-xs text-muted-foreground font-display">
                     Full Stack Engineering
                   </p>
                 </div>
@@ -565,7 +565,7 @@ export default function Home() {
                   <div className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
                     <CounterNumber end={20} suffix="+ Apps" />
                   </div>
-                  <p className="mt-1 text-xs text-muted-foreground uppercase tracking-wider font-display">
+                  <p className="mt-1 text-xs text-muted-foreground font-display">
                     Production Systems
                   </p>
                 </div>
@@ -579,8 +579,8 @@ export default function Home() {
                   <div className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
                     Next.js
                   </div>
-                  <p className="mt-1 text-xs text-muted-foreground uppercase tracking-wider font-display">
-                    React · TS · Cloud APIs
+                  <p className="mt-1 text-xs text-muted-foreground font-display">
+                    React, TS, Cloud APIs
                   </p>
                 </div>
               </TiltCard>
@@ -593,8 +593,8 @@ export default function Home() {
                   <div className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
                     <CounterNumber end={4} suffix=" Sectors" />
                   </div>
-                  <p className="mt-1 text-xs text-muted-foreground uppercase tracking-wider font-display">
-                    ERP · CRM · HRMS · IoT
+                  <p className="mt-1 text-xs text-muted-foreground font-display">
+                    ERP, CRM, HRMS, IoT
                   </p>
                 </div>
               </TiltCard>
@@ -633,7 +633,7 @@ export default function Home() {
               <div className="col-span-12 sm:col-span-6 lg:col-span-5">
                 <TiltCard
                   maxTilt={8}
-                  className="rounded-3xl border border-border/80 bg-card p-3 shadow-2xl transition-all duration-300 hover:shadow-brand-glow/15"
+                  className="rounded-3xl border border-border/80 bg-card p-3 shadow-2xl transition-[box-shadow,border-color] duration-300 hover:shadow-brand-glow/15"
                 >
                   <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
                     <Image
@@ -644,7 +644,7 @@ export default function Home() {
                       width={1000}
                       height={1249}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 450px"
-                      className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-105"
+                      className="h-full w-full object-cover object-top motion-safe:transition-transform duration-700 motion-safe:hover:scale-105"
                     />
                   </div>
                   <div className="mt-4 flex items-center justify-between px-2 pb-1">
@@ -688,7 +688,7 @@ export default function Home() {
 
                 {/* Tech Chips */}
                 <div className="mt-10">
-                  <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-foreground mb-4">
+                  <p className="font-display text-xs font-semibold text-foreground mb-4">
                     Core Technical Stack
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -708,7 +708,7 @@ export default function Home() {
                       <span
                         key={tech}
                         onMouseEnter={playHover}
-                        className="rounded-full border border-border/80 bg-background/80 px-4 py-1.5 font-display text-xs font-semibold text-foreground shadow-sm transition-all hover:border-brand-glow hover:bg-surface"
+                        className="rounded-full border border-border/80 bg-background/80 px-4 py-1.5 font-display text-xs font-medium text-foreground shadow-sm transition-colors hover:border-brand-glow hover:bg-surface"
                       >
                         {tech}
                       </span>
@@ -742,7 +742,7 @@ export default function Home() {
               </h2>
               <p className="col-span-12 max-w-xl text-base text-muted-foreground lg:col-span-5">
                 Most of my work powers internal enterprise engines rather than
-                disposable landing pages - mission-critical tools where downtime
+                disposable landing pages, focused on production reliability where downtime
                 is not an option.
               </p>
             </div>
@@ -755,14 +755,14 @@ export default function Home() {
                   as="article"
                   data-cursor="EXPLORE"
                   onMouseEnter={playHover}
-                  className={`group flex h-full flex-col rounded-3xl border border-border/80 bg-card p-7 sm:p-8 transition-all duration-300 hover:border-brand-glow/40 hover:shadow-2xl hover:shadow-black/5 ${service.colSpan}`}
+                  className={`group flex h-full flex-col rounded-3xl border border-border/80 bg-card p-7 sm:p-8 transition-[border-color,box-shadow] duration-300 hover:border-brand-glow/40 hover:shadow-2xl hover:shadow-black/5 ${service.colSpan}`}
                 >
                   <div className="flex items-start justify-between">
                     <span className="font-mono text-3xl font-bold text-muted-foreground/60 transition-colors group-hover:text-foreground">
                       {service.num}
                     </span>
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface text-muted-foreground transition-all group-hover:bg-foreground group-hover:text-background group-hover:scale-110">
-                      <ArrowUpRight className="h-5 w-5" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface text-muted-foreground transition-colors group-hover:bg-foreground group-hover:text-background motion-safe:group-hover:scale-110">
+                      <ArrowUpRight className="h-5 w-5" aria-hidden="true" />
                     </div>
                   </div>
 
@@ -784,18 +784,18 @@ export default function Home() {
 
                   <div className="mt-auto pt-6 border-t border-border/60">
                     <p className="text-xs text-muted-foreground">
-                      <span className="font-semibold text-foreground uppercase tracking-wider font-display">
-                        Solves —{" "}
+                      <span className="font-semibold text-foreground font-display">
+                        Solves:{" "}
                       </span>
                       {service.solves}
                     </p>
                     <TawkButton
                       onMouseEnter={playHover}
                       onClick={playPop}
-                      className="mt-4 inline-flex items-center gap-1.5 font-display text-xs font-bold uppercase tracking-wider text-foreground hover:text-brand-glow transition-colors"
+                      className="mt-4 inline-flex items-center gap-1.5 font-display text-xs font-medium text-foreground hover:text-brand-glow transition-colors"
                     >
                       <span>Discuss this requirement</span>
-                      <ArrowRight className="h-3.5 w-3.5" />
+                      <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                     </TawkButton>
                   </div>
                 </TiltCard>
@@ -808,11 +808,11 @@ export default function Home() {
         {/* Why Work With Me (Dark High-Contrast Ink Section) */}
         {/* ============================================================ */}
         <section className="relative bg-ink py-20 text-ink-foreground sm:py-32 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.03),transparent_70%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-neutral-900/40 pointer-events-none" />
 
           <div className="relative mx-auto max-w-[88rem] px-4 sm:px-8">
             <div className="flex items-baseline justify-between border-b border-ink-foreground/20 pb-4">
-              <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-ink-foreground/80">
+              <span className="font-display text-xs font-semibold text-ink-foreground/80">
                 Guiding Principles
               </span>
               <span className="font-mono text-xs text-ink-foreground/60">
@@ -831,7 +831,7 @@ export default function Home() {
                 <div
                   key={idx}
                   onMouseEnter={playHover}
-                  className="rounded-2xl border border-ink-foreground/15 bg-ink-foreground/5 p-7 backdrop-blur-md transition-all hover:bg-ink-foreground/10 hover:border-ink-foreground/30"
+                  className="rounded-2xl border border-ink-foreground/15 bg-ink-foreground/5 p-7 backdrop-blur-md transition-colors hover:bg-ink-foreground/10 hover:border-ink-foreground/30"
                 >
                   <span className="font-mono text-xs font-bold text-brand-glow">
                     {item.num}
@@ -917,10 +917,10 @@ export default function Home() {
                   href="/portfolio"
                   data-cursor="ALL"
                   onMouseEnter={playHover}
-                  className="group inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/60 px-6 py-3 font-display text-xs font-bold uppercase tracking-wider text-foreground backdrop-blur-sm transition-all hover:border-foreground hover:bg-surface active:scale-95"
+                  className="group inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/60 px-6 py-3 font-display text-xs font-semibold text-foreground backdrop-blur-sm transition-colors hover:border-foreground hover:bg-surface active:scale-95"
                 >
                   <span>Explore full portfolio</span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <ArrowUpRight className="h-4 w-4 motion-safe:transition-transform motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5" aria-hidden="true" />
                 </Link>
               </div>
             </div>
@@ -947,10 +947,10 @@ export default function Home() {
                   data-cursor="VIEW"
                   onMouseEnter={playHover}
                   onClick={playPop}
-                  className="inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3 font-display text-xs font-semibold uppercase tracking-wider text-background shadow-lg transition-all hover:bg-brand-glow active:scale-95"
+                  className="inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3 font-display text-xs font-medium text-background shadow-lg transition-colors hover:bg-brand-glow active:scale-95"
                 >
                   <span>View all projects</span>
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </div>
             </div>
@@ -983,7 +983,7 @@ export default function Home() {
                   key={tIdx}
                   maxTilt={6}
                   as="figure"
-                  className="flex h-full flex-col rounded-3xl border border-border/80 bg-card p-8 shadow-sm transition-all duration-300 hover:shadow-2xl hover:shadow-black/5 hover:border-brand-glow/30"
+                  className="flex h-full flex-col rounded-3xl border border-border/80 bg-card p-8 shadow-sm transition-[border-color,box-shadow] duration-300 hover:shadow-2xl hover:shadow-black/5 hover:border-brand-glow/30"
                 >
                   <span className="font-display text-5xl leading-none text-muted-foreground/30 font-serif">
                     “
@@ -1036,23 +1036,24 @@ export default function Home() {
                           <button
                             type="button"
                             onClick={() => handleFaqToggle(index)}
-                            className="flex w-full items-center justify-between py-4 text-left font-display text-base sm:text-lg font-bold text-foreground transition-all hover:text-brand-glow"
+                            className="flex w-full items-center justify-between py-4 text-left font-display text-base sm:text-lg font-bold text-foreground transition-colors hover:text-brand-glow"
                             aria-expanded={isOpen}
                           >
                             <span>{faq.question}</span>
                             <div
-                              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ease-out ${
+                              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ease-out ${
                                 isOpen
-                                  ? "rotate-180 border-foreground/30 bg-foreground/10"
+                                  ? "border-foreground/30 bg-foreground/10"
                                   : "border-border/80 bg-surface"
                               }`}
                             >
                               <svg
-                                className="h-4 w-4 text-foreground transition-transform duration-300"
+                                className={`h-4 w-4 text-foreground motion-safe:transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
                                 fill="none"
                                 stroke="currentColor"
                                 strokeWidth="2.5"
                                 viewBox="0 0 24 24"
+                                aria-hidden="true"
                               >
                                 <path
                                   strokeLinecap="round"
@@ -1094,7 +1095,7 @@ export default function Home() {
         >
           <div className="mx-auto max-w-[88rem] px-4 sm:px-8">
             <div className="flex items-baseline justify-between border-b border-ink-foreground/20 pb-4">
-              <span className="font-display text-[0.68rem] font-bold uppercase tracking-[0.24em] text-ink-foreground/80">
+              <span className="font-display text-xs font-semibold text-ink-foreground/80">
                 Initiate Project
               </span>
               <span className="font-mono text-xs text-ink-foreground/60">
@@ -1119,7 +1120,7 @@ export default function Home() {
                   <a
                     href="mailto:zainudheenjazeel@gmail.com"
                     onMouseEnter={playHover}
-                    className="flex items-center gap-3 rounded-2xl border border-ink-foreground/15 bg-ink-foreground/5 p-4 text-sm text-ink-foreground transition-all hover:bg-ink-foreground/10 hover:border-ink-foreground/30"
+                    className="flex items-center gap-3 rounded-2xl border border-ink-foreground/15 bg-ink-foreground/5 p-4 text-sm text-ink-foreground transition-colors hover:bg-ink-foreground/10 hover:border-ink-foreground/30"
                   >
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand/20 text-brand-glow">
                       <svg
@@ -1127,6 +1128,7 @@ export default function Home() {
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
+                        aria-hidden="true"
                       >
                         <path
                           strokeLinecap="round"
@@ -1152,10 +1154,10 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onMouseEnter={playHover}
-                    className="flex items-center gap-3 rounded-2xl border border-ink-foreground/15 bg-ink-foreground/5 p-4 text-sm text-ink-foreground transition-all hover:bg-ink-foreground/10 hover:border-ink-foreground/30"
+                    className="flex items-center gap-3 rounded-2xl border border-ink-foreground/15 bg-ink-foreground/5 p-4 text-sm text-ink-foreground transition-colors hover:bg-ink-foreground/10 hover:border-ink-foreground/30"
                   >
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
-                      <MessageCircle className="h-5 w-5" />
+                      <MessageCircle className="h-5 w-5" aria-hidden="true" />
                     </div>
                     <div>
                       <div className="text-xs text-ink-foreground/60 font-mono">
@@ -1171,10 +1173,10 @@ export default function Home() {
                     <TawkButton
                       onMouseEnter={playHover}
                       onClick={playPop}
-                      className="group flex w-full items-center justify-center gap-3 rounded-2xl bg-white p-4 font-display text-sm font-bold tracking-wider text-black shadow-xl transition-all hover:bg-gray-100 active:scale-95"
+                      className="group flex w-full items-center justify-center gap-3 rounded-2xl bg-white p-4 font-display text-sm font-semibold text-black shadow-xl transition-colors hover:bg-gray-100 active:scale-95"
                     >
-                      <span>LIVE CHAT VIA TAWK</span>
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      <span>Live chat via Tawk</span>
+                      <ArrowRight className="h-4 w-4 motion-safe:transition-transform motion-safe:group-hover:translate-x-1" aria-hidden="true" />
                     </TawkButton>
                   </div>
                 </div>
@@ -1194,6 +1196,7 @@ export default function Home() {
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
+                        aria-hidden="true"
                       >
                         <path
                           strokeLinecap="round"
@@ -1213,7 +1216,7 @@ export default function Home() {
                     <button
                       type="button"
                       onClick={() => setFormSubmitted(false)}
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3 font-display text-xs font-bold uppercase tracking-wider text-black transition-all hover:bg-gray-100 active:scale-95"
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3 font-display text-xs font-semibold text-black transition-colors hover:bg-gray-100 active:scale-95"
                     >
                       Send another message
                     </button>
@@ -1222,7 +1225,7 @@ export default function Home() {
                   <div className="rounded-3xl border border-ink-foreground/15 bg-ink-foreground/5 p-6 sm:p-8 backdrop-blur-xl">
                     <div className="grid gap-5 sm:grid-cols-2">
                       <label className="block">
-                        <span className="mb-2 block font-display text-[0.65rem] font-bold uppercase tracking-[0.18em] text-ink-foreground/75">
+                        <span className="mb-2 block font-display text-xs font-medium text-ink-foreground/75">
                           Your Name *
                         </span>
                         <input
@@ -1232,7 +1235,7 @@ export default function Home() {
                           onChange={handleFormChange}
                           onBlur={handleFormBlur}
                           autoComplete="name"
-                          className="w-full rounded-xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-3.5 text-sm text-white placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-brand-glow focus:bg-ink-foreground/10 focus:ring-2 focus:ring-brand-glow/20"
+                          className="w-full rounded-xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-3.5 text-sm text-white placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-colors focus:border-brand-glow focus:bg-ink-foreground/10 focus:ring-2 focus:ring-brand-glow/20"
                           placeholder="e.g. Alex Mercer"
                         />
                         {touched.name && formErrors.name && (
@@ -1243,7 +1246,7 @@ export default function Home() {
                       </label>
 
                       <label className="block">
-                        <span className="mb-2 block font-display text-[0.65rem] font-bold uppercase tracking-[0.18em] text-ink-foreground/75">
+                        <span className="mb-2 block font-display text-xs font-medium text-ink-foreground/75">
                           Company / Organization
                         </span>
                         <input
@@ -1252,13 +1255,13 @@ export default function Home() {
                           value={formData.company}
                           onChange={handleFormChange}
                           autoComplete="organization"
-                          className="w-full rounded-xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-3.5 text-sm text-white placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-brand-glow focus:bg-ink-foreground/10 focus:ring-2 focus:ring-brand-glow/20"
+                          className="w-full rounded-xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-3.5 text-sm text-white placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-colors focus:border-brand-glow focus:bg-ink-foreground/10 focus:ring-2 focus:ring-brand-glow/20"
                           placeholder="e.g. Acme Corp"
                         />
                       </label>
 
                       <label className="block">
-                        <span className="mb-2 block font-display text-[0.65rem] font-bold uppercase tracking-[0.18em] text-ink-foreground/75">
+                        <span className="mb-2 block font-display text-xs font-medium text-ink-foreground/75">
                           Work Email *
                         </span>
                         <input
@@ -1268,7 +1271,7 @@ export default function Home() {
                           onChange={handleFormChange}
                           onBlur={handleFormBlur}
                           autoComplete="email"
-                          className="w-full rounded-xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-3.5 text-sm text-white placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-brand-glow focus:bg-ink-foreground/10 focus:ring-2 focus:ring-brand-glow/20"
+                          className="w-full rounded-xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-3.5 text-sm text-white placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-colors focus:border-brand-glow focus:bg-ink-foreground/10 focus:ring-2 focus:ring-brand-glow/20"
                           placeholder="alex@acme.com"
                         />
                         {touched.email && formErrors.email && (
@@ -1279,7 +1282,7 @@ export default function Home() {
                       </label>
 
                       <label className="block">
-                        <span className="mb-2 block font-display text-[0.65rem] font-bold uppercase tracking-[0.18em] text-ink-foreground/75">
+                        <span className="mb-2 block font-display text-xs font-medium text-ink-foreground/75">
                           Phone / WhatsApp
                         </span>
                         <PhoneInput
@@ -1304,7 +1307,7 @@ export default function Home() {
                             }));
                           }}
                           containerClass="!w-full"
-                          inputClass="!w-full !rounded-xl !border !border-ink-foreground/15 !bg-ink-foreground/5 !py-[14px] !pl-14 !pr-4 !text-sm !text-white placeholder:!text-ink-foreground/40 !backdrop-blur-md transition-all hover:!bg-ink-foreground/10 focus:!border-brand-glow focus:!bg-ink-foreground/10 focus:!ring-2 focus:!ring-brand-glow/20"
+                          inputClass="!w-full !rounded-xl !border !border-ink-foreground/15 !bg-ink-foreground/5 !py-[14px] !pl-14 !pr-4 !text-sm !text-white placeholder:!text-ink-foreground/40 !backdrop-blur-md transition-colors hover:!bg-ink-foreground/10 focus:!border-brand-glow focus:!bg-ink-foreground/10 focus:!ring-2 focus:!ring-brand-glow/20"
                           buttonClass="!bg-transparent !border-0 !pl-3"
                         />
                         {touched.phone && formErrors.phone && (
@@ -1316,7 +1319,7 @@ export default function Home() {
                     </div>
 
                     <label className="block mt-5">
-                      <span className="mb-2 block font-display text-[0.65rem] font-bold uppercase tracking-[0.18em] text-ink-foreground/75">
+                      <span className="mb-2 block font-display text-xs font-medium text-ink-foreground/75">
                         Project Scope / Category
                       </span>
                       <div className="relative">
@@ -1325,7 +1328,7 @@ export default function Home() {
                           onClick={() =>
                             setIsProjectDropdownOpen(!isProjectDropdownOpen)
                           }
-                          className="w-full flex items-center justify-between rounded-xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-3.5 text-sm outline-none backdrop-blur-md transition-all focus:border-brand-glow focus:ring-2 focus:ring-brand-glow/20 text-white"
+                          className="w-full flex items-center justify-between rounded-xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-3.5 text-sm outline-none backdrop-blur-md transition-colors focus:border-brand-glow focus:ring-2 focus:ring-brand-glow/20 text-white"
                         >
                           <span
                             className={
@@ -1342,6 +1345,7 @@ export default function Home() {
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
+                            aria-hidden="true"
                           >
                             <path
                               strokeLinecap="round"
@@ -1389,7 +1393,7 @@ export default function Home() {
                     </label>
 
                     <label className="block mt-5">
-                      <span className="mb-2 block font-display text-[0.65rem] font-bold uppercase tracking-[0.18em] text-ink-foreground/75">
+                      <span className="mb-2 block font-display text-xs font-medium text-ink-foreground/75">
                         Tell Me About The Project *
                       </span>
                       <textarea
@@ -1398,7 +1402,7 @@ export default function Home() {
                         value={formData.message}
                         onChange={handleFormChange}
                         onBlur={handleFormBlur}
-                        className="w-full rounded-xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-3.5 text-sm text-white placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-all focus:border-brand-glow focus:bg-ink-foreground/10 focus:ring-2 focus:ring-brand-glow/20"
+                        className="w-full rounded-xl border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-3.5 text-sm text-white placeholder:text-ink-foreground/40 outline-none backdrop-blur-md transition-colors focus:border-brand-glow focus:bg-ink-foreground/10 focus:ring-2 focus:ring-brand-glow/20"
                         placeholder="What systems are you looking to build, replace, or maintain?"
                       />
                       {touched.message && formErrors.message && (
@@ -1411,7 +1415,7 @@ export default function Home() {
                     <button
                       type="submit"
                       disabled={formSubmitting}
-                      className="cursor-pointer mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 font-display text-xs font-bold uppercase tracking-wider text-black transition-colors hover:bg-gray-100 disabled:opacity-70 disabled:cursor-not-allowed"
+                      className="cursor-pointer mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 font-display text-xs font-semibold text-black transition-colors hover:bg-gray-100 disabled:opacity-70 disabled:cursor-not-allowed"
                     >
                       {formSubmitting
                         ? "Dispatching..."

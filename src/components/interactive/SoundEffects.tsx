@@ -104,12 +104,12 @@ export function SoundToggle() {
       onClick={toggleSound}
       data-cursor="sound"
       aria-label={soundEnabled ? "Mute audio effects" : "Enable tactile sound effects"}
-      className="group relative flex items-center justify-center rounded-full border border-border/80 bg-background/80 p-2 text-muted-foreground backdrop-blur-md transition-all hover:border-foreground hover:text-foreground active:scale-95"
+      className="group relative flex items-center justify-center rounded-full border border-border/80 bg-background/80 p-2 text-muted-foreground backdrop-blur-md transition-colors hover:border-foreground hover:text-foreground active:scale-95"
     >
       {soundEnabled ? (
-        <Volume2 className="h-4 w-4 text-foreground" />
+        <Volume2 className="h-4 w-4 text-foreground" aria-hidden="true" />
       ) : (
-        <VolumeX className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
+        <VolumeX className="h-4 w-4 text-muted-foreground group-hover:text-foreground" aria-hidden="true" />
       )}
     </button>
   );

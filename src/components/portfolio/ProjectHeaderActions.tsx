@@ -50,10 +50,10 @@ export function ProjectHeaderActions({
             onMouseEnter={playHover}
             onClick={playPop}
             data-cursor="VISIT"
-            className="group inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-background shadow-md transition-all hover:bg-brand-glow hover:shadow-xl active:scale-95"
+            className="group inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-xs font-medium text-background shadow-md transition-colors hover:bg-brand-glow hover:shadow-xl active:scale-95"
           >
             <span>Live Preview</span>
-            <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ExternalLink className="h-3.5 w-3.5 motion-safe:transition-transform motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5" aria-hidden="true" />
           </a>
         </Magnetic>
       )}
@@ -67,10 +67,10 @@ export function ProjectHeaderActions({
             onMouseEnter={playHover}
             onClick={playPop}
             data-cursor="CODE"
-            className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/80 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-foreground backdrop-blur-md transition-all hover:bg-surface-2 hover:border-foreground/40 active:scale-95"
+            className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/80 px-5 py-2.5 text-xs font-medium text-foreground backdrop-blur-md transition-colors hover:bg-surface-2 hover:border-foreground/40 active:scale-95"
           >
-            <Github className="h-3.5 w-3.5" />
-            <span>Source Code</span>
+            <Github className="h-3.5 w-3.5" aria-hidden="true" />
+            <span>Source code</span>
           </a>
         </Magnetic>
       )}
@@ -82,13 +82,13 @@ export function ProjectHeaderActions({
           onClick={handleShare}
           onMouseEnter={playHover}
           aria-label="Share project link"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border/80 bg-surface/80 text-muted-foreground backdrop-blur-md transition-all hover:border-foreground hover:text-foreground active:scale-95 cursor-pointer"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border/80 bg-surface/80 text-muted-foreground backdrop-blur-md transition-colors hover:border-foreground hover:text-foreground active:scale-95 cursor-pointer"
           title="Share / Copy Link"
         >
           {copied ? (
-            <Check className="h-4 w-4 text-emerald-500 animate-in zoom-in-75 duration-150" />
+            <Check className="h-4 w-4 text-emerald-500 animate-in zoom-in-75 duration-150" aria-hidden="true" />
           ) : (
-            <Share2 className="h-4 w-4" />
+            <Share2 className="h-4 w-4" aria-hidden="true" />
           )}
         </button>
       </Magnetic>

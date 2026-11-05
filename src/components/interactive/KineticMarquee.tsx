@@ -88,7 +88,7 @@ export function KineticMarquee({
       <div ref={trackRef} className="inline-flex items-center gap-8 will-change-transform">
         {repeatedItems.map((item, idx) => (
           <div key={idx} className="inline-flex items-center gap-8">
-            <span className="font-display text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground/80 hover:text-foreground transition-colors">
+            <span className="font-display text-xs font-medium text-muted-foreground/80 hover:text-foreground transition-colors">
               {item}
             </span>
             <span className="h-1.5 w-1.5 rounded-full bg-brand/40" />

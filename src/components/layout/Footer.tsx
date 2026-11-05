@@ -49,7 +49,7 @@ export function Footer() {
                   aria-label="WhatsApp"
                   onMouseEnter={playHover}
                   onClick={playPop}
-                  className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background"
+                  className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +74,7 @@ export function Footer() {
                   aria-label="LinkedIn"
                   onMouseEnter={playHover}
                   onClick={playPop}
-                  className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background"
+                  className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +102,7 @@ export function Footer() {
                   aria-label="Email"
                   onMouseEnter={playHover}
                   onClick={playPop}
-                  className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background"
+                  className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +129,7 @@ export function Footer() {
                   aria-label="Phone"
                   onMouseEnter={playHover}
                   onClick={playPop}
-                  className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background"
+                  className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

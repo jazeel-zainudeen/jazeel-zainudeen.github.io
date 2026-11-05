@@ -25,15 +25,16 @@ export function LiveStatusClock() {
   }, []);
 
   return (
-    <div className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/60 px-3 py-1 font-mono text-[0.68rem] text-muted-foreground backdrop-blur-md shadow-sm">
+    <div className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur-md shadow-sm">
       <span className="relative flex h-2 w-2">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+        <span className="absolute inline-flex h-full w-full motion-safe:animate-ping rounded-full bg-emerald-400 opacity-75"></span>
         <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
       </span>
-      <span className="font-semibold text-foreground">KERALA, IN</span>
+      <span className="font-semibold text-foreground">Kerala, IN</span>
       <span className="text-border">|</span>
-      <span suppressHydrationWarning className="tabular-nums tracking-widest text-foreground font-medium">
-        {time || "05:30:00"} IST
+      <span suppressHydrationWarning className="tabular-nums text-foreground font-medium">
+        <span className="font-mono">{time || "05:30:00"}</span>{" "}
+        <span className="font-sans text-[0.7rem] text-muted-foreground">IST</span>
       </span>
     </div>
   );
