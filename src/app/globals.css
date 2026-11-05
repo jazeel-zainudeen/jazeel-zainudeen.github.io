@@ -262,8 +262,3 @@
 .animate-scroll-up-down {
   animation: scroll-up-down 15s ease-in-out infinite;
 }
-
-.animate-scroll-up-down:hover,
-.animate-scroll-up-down:focus {
-  animation-play-state: paused;
-}

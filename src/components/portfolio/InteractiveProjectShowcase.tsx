@@ -31,8 +31,25 @@ export function InteractiveProjectShowcase({
   const [isAutoScrolling, setIsAutoScrolling] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [canScroll, setCanScroll] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
   const modalScrollRef = useRef<HTMLDivElement>(null);
   const { playHover, playPop } = useSound();
+
+  const handleImageLoad = () => {
+    if (imgRef.current && containerRef.current) {
+      const imgH = imgRef.current.offsetHeight;
+      const contH = containerRef.current.offsetHeight;
+      setCanScroll(imgH > contH + 50);
+    }
+  };
+
+  useEffect(() => {
+    handleImageLoad();
+    window.addEventListener("resize", handleImageLoad);
+    return () => window.removeEventListener("resize", handleImageLoad);
+  }, [imageSrc]);
 
   // Extract display host/domain for the mock address bar
   const displayHost = previewUrl
@@ -121,82 +138,89 @@ export function InteractiveProjectShowcase({
             </div>
           </div>
 
-          {/* Interactive Action Controls */}
-          <div className="order-2 sm:order-3 flex items-center gap-2">
-            {/* Auto-Scroll Toggle Button */}
-            <button
-              type="button"
-              onClick={() => {
-                playPop();
-                setIsAutoScrolling((prev) => !prev);
-              }}
-              onMouseEnter={playHover}
-              className={`flex h-7 items-center gap-1.5 rounded-md border border-border/70 px-2.5 text-xs font-medium transition-colors ${
-                isAutoScrolling
-                  ? "bg-brand/10 text-brand-glow border-brand/30"
-                  : "bg-background/60 text-muted-foreground hover:text-foreground"
-              }`}
-              title={isAutoScrolling ? "Pause auto-scroll" : "Resume auto-scroll"}
-            >
-              {isAutoScrolling ? (
-                <>
-                  <Pause className="h-3 w-3" />
-                  <span className="hidden sm:inline">Pause</span>
-                </>
-              ) : (
-                <>
-                  <Play className="h-3 w-3" />
-                  <span className="hidden sm:inline">Auto-Scroll</span>
-                </>
-              )}
-            </button>
+          {/* Interactive Action Controls (Only shown if image is scrollable) */}
+          {canScroll && (
+            <div className="order-2 sm:order-3 flex items-center gap-2">
+              {/* Auto-Scroll Toggle Button */}
+              <button
+                type="button"
+                onClick={() => {
+                  playPop();
+                  setIsAutoScrolling((prev) => !prev);
+                }}
+                onMouseEnter={playHover}
+                className={`flex h-7 items-center gap-1.5 rounded-md border border-border/70 px-2.5 text-xs font-medium transition-colors ${
+                  isAutoScrolling
+                    ? "bg-brand/10 text-brand-glow border-brand/30"
+                    : "bg-background/60 text-muted-foreground hover:text-foreground"
+                }`}
+                title={isAutoScrolling ? "Pause auto-scroll" : "Resume auto-scroll"}
+              >
+                {isAutoScrolling ? (
+                  <>
+                    <Pause className="h-3 w-3" />
+                    <span className="hidden sm:inline">Pause</span>
+                  </>
+                ) : (
+                  <>
+                    <Play className="h-3 w-3" />
+                    <span className="hidden sm:inline">Auto-Scroll</span>
+                  </>
+                )}
+              </button>
 
-            {/* Fullscreen Expand Lightbox Button */}
-            <button
-              type="button"
-              onClick={() => {
-                playPop();
-                setIsFullscreen(true);
-              }}
-              onMouseEnter={playHover}
-              className="flex h-7 items-center gap-1.5 rounded-md border border-border/70 bg-background/60 px-2.5 text-xs font-medium text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
-              title="Expand Full View"
-            >
-              <Maximize2 className="h-3.5 w-3.5" />
-              <span className="hidden sm:inline">Expand</span>
-            </button>
-          </div>
+              {/* Fullscreen Expand Lightbox Button */}
+              <button
+                type="button"
+                onClick={() => {
+                  playPop();
+                  setIsFullscreen(true);
+                }}
+                onMouseEnter={playHover}
+                className="flex h-7 items-center gap-1.5 rounded-md border border-border/70 bg-background/60 px-2.5 text-xs font-medium text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
+                title="Expand Full View"
+              >
+                <Maximize2 className="h-3.5 w-3.5" />
+                <span className="hidden sm:inline">Expand</span>
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Viewport Display Area (16:10 Desktop Window) */}
         <div
+          ref={containerRef}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           className="relative aspect-[16/10] md:aspect-video w-full overflow-hidden rounded-b-2xl bg-background/95 [container-type:size]"
         >
           {/* Scrolling Image Layer */}
           <div
-            className="absolute inset-x-0 top-0 w-full motion-safe:animate-scroll-up-down"
+            className={`absolute inset-x-0 top-0 w-full ${canScroll ? "animate-scroll-up-down" : ""}`}
             style={{
               animationPlayState: isHovered || !isAutoScrolling ? "paused" : "running",
             }}
           >
             <Image
+              ref={imgRef}
               src={imageSrc}
               alt={alt}
               width={1400}
               height={4500}
+              onLoad={handleImageLoad}
               className="w-full h-auto object-top select-none"
               priority
               unoptimized
             />
           </div>
 
-          {/* Micro-interaction Hint pill */}
-          <div className="pointer-events-none absolute bottom-4 left-4 z-10 flex items-center gap-2 rounded-full border border-border/60 bg-background/85 px-3 py-1 text-[0.68rem] font-medium text-muted-foreground backdrop-blur-md shadow-sm transition-opacity duration-300 group-hover:opacity-100 opacity-60">
-            <Sparkles className="h-3 w-3 text-brand-glow motion-safe:animate-pulse" aria-hidden="true" />
-            <span>Hover to pause · Click Expand for full scroll</span>
-          </div>
+          {/* Micro-interaction Hint pill (Only shown if scrollable) */}
+          {canScroll && (
+            <div className="pointer-events-none absolute bottom-4 left-4 z-10 flex items-center gap-2 rounded-full border border-border/60 bg-background/85 px-3 py-1 text-[0.68rem] font-medium text-muted-foreground backdrop-blur-md shadow-sm transition-opacity duration-300 group-hover:opacity-100 opacity-60">
+              <Sparkles className="h-3 w-3 text-brand-glow motion-safe:animate-pulse" aria-hidden="true" />
+              <span>Hover to pause · Click Expand for full scroll</span>
+            </div>
+          )}
 
           {/* Quick Live Preview Floating CTA on hover */}
           {previewUrl && (
